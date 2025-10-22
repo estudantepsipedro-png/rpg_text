@@ -1,0 +1,4281 @@
+{
+  "magic_system": {
+    "id": "light_magic",
+    "name": "Magia de Luz",
+    "version": "1.0.0",
+    "category": "Elemental/Divina",
+    "rarity": "Comum",
+    
+    "essence": {
+      "description": "A Magia de Luz governa a iluminação, refração, semiótica, transporte e manipulação da luz — desde a luz visível até a energia cósmica dos astros. É uma magia de manifestação, onde o mago não apenas cria luz, mas a utiliza como veículo, linguagem e poder.",
+      "core_principles": [
+        "Luz como veículo de transporte e energia",
+        "Refração e manipulação do espectro luminoso",
+        "Conexão com energia astral e cósmica",
+        "Pureza moral como amplificador de poder",
+        "Incorruptibilidade - a Luz não reconhece poder sem pureza"
+      ],
+      "philosophical_basis": "A Luz é incorruptível e responde apenas àqueles que demonstram pureza de intenção e precisão de execução. O poder cresce com a harmonia entre usuário, Verdade e Bem."
+    },
+
+    "parallel_attribute": {
+      "name": "Beatificação",
+      "short_name": "O(A) Beatificado(a)",
+      "type": "Atributo Espiritual",
+      "range": [0, 10],
+      "description": "Mede a pureza moral, a precisão das ações e a harmonia do usuário com a Verdade e o Bem. Atua como multiplicador universal para todas as habilidades de Luz.",
+      
+      "scaling": {
+        "calculation": "Beatificação aumenta com ações justas e perfeitamente executadas. Diminui com falhas morais, enganos ou crueldade. O sistema reconhece tanto intenção quanto execução.",
+        "multiplier_formula": "Poder Base × (1 + Beatificação/5)",
+        "efficiency_formula": "(10 + Beatificação×10)% de eficiência total"
+      },
+
+      "tiers": [
+        {
+          "grade": 0,
+          "title": "O Apagado",
+          "description": "A luz não o reconhece. Magias são inertes.",
+          "effects": {
+            "efficiency": "-90%",
+            "restrictions": ["Sem refração ou teletransporte", "Apenas luz básica manifestável"],
+            "narrative_impact": "Luz criada é fraca, tremula e instável"
+          }
+        },
+        {
+          "grade_range": [1, 2],
+          "title": "O Iluminado",
+          "description": "Contato inicial com a Luz; magias básicas controladas.",
+          "effects": {
+            "power_bonus": "+10%",
+            "perception_bonus": "+2",
+            "narrative_impact": "Luz responde timidamente, mas obedece"
+          }
+        },
+        {
+          "grade_range": [3, 4],
+          "title": "O Justo",
+          "description": "A Luz reage à moral e intenção.",
+          "effects": {
+            "power_bonus": "+25%",
+            "precision_bonus": "Feixes mais precisos (+3 acerto)",
+            "narrative_impact": "Luz manifesta-se com firmeza e clareza"
+          }
+        },
+        {
+          "grade_range": [5, 6],
+          "title": "O Puro",
+          "description": "A presença do usuário ilumina naturalmente.",
+          "effects": {
+            "power_bonus": "+50%",
+            "abilities_improved": ["Cura aprimorada", "Refração mais eficaz"],
+            "passive_aura": "Aura luminosa de 3 metros",
+            "narrative_impact": "Ambiente ao redor brilha sutilmente em sua presença"
+          }
+        },
+        {
+          "grade_range": [7, 8],
+          "title": "O Santo",
+          "description": "Atos justos resplandecem; a presença cega o mal.",
+          "effects": {
+            "power_bonus": "+100%",
+            "special_abilities": ["Transporte instantâneo em luz pura", "Luz consciente que age por conta própria"],
+            "defensive": "Criaturas malignas sofrem desvantagem ao atacá-lo",
+            "narrative_impact": "Suas ações deixam rastros de luz dourada; inimigos malignos recuam instintivamente"
+          }
+        },
+        {
+          "grade": 9,
+          "title": "O Beatificado",
+          "description": "A Luz o reconhece como um dos seus; magias ganham autonomia.",
+          "effects": {
+            "power_bonus": "+200%",
+            "creation": "Pode criar astros menores (planetas luminosos miniaturizados)",
+            "autonomy": "Magias de luz continuam após conjuração, agindo conforme sua vontade",
+            "narrative_impact": "Feixes de luz movem-se inteligentemente, protegendo e atacando por iniciativa própria"
+          }
+        },
+        {
+          "grade": 10,
+          "title": "O Imaculado",
+          "description": "Manifestação viva da própria luz.",
+          "effects": {
+            "synergy": "Infinita - sem custo, tempo ou limitação",
+            "transcendence": "Torna-se parcialmente luz viva",
+            "ultimate_power": "Todas as habilidades de Luz são instantâneas e sem custo",
+            "narrative_impact": "Corpo brilha com luz própria; pode se dissolver em luz pura temporariamente"
+          }
+        }
+      ],
+
+      "advancement_conditions": {
+        "positive": [
+          {
+            "action": "Proteger inocentes com luz",
+            "gain": "+0.5 por ato significativo"
+          },
+          {
+            "action": "Usar luz exclusivamente para o bem",
+            "gain": "+0.2 por uso consistente"
+          },
+          {
+            "action": "Sacrifício pessoal luminoso",
+            "gain": "+1 a +2 dependendo da magnitude"
+          },
+          {
+            "action": "Purificar local corrompido com luz",
+            "gain": "+0.8 a +1.5"
+          },
+          {
+            "action": "Cura altruísta sem recompensa",
+            "gain": "+0.3 por cura"
+          },
+          {
+            "action": "Ação perfeitamente executada com intenção pura",
+            "gain": "+0.1 a +0.5"
+          }
+        ],
+        "negative": [
+          {
+            "action": "Usar luz para causar sofrimento desnecessário",
+            "loss": "-1 a -3"
+          },
+          {
+            "action": "Enganar ou mentir deliberadamente",
+            "loss": "-0.5 a -1.5"
+          },
+          {
+            "action": "Ato de crueldade",
+            "loss": "-2 a -4"
+          },
+          {
+            "action": "Falha moral grave",
+            "loss": "-1 a -2"
+          },
+          {
+            "action": "Execução imperfeita com consequências ruins",
+            "loss": "-0.3 a -0.8"
+          },
+          {
+            "action": "Uso de magia de luz para corrupção",
+            "loss": "-3 a -5"
+          }
+        ]
+      },
+
+      "special_mechanics": {
+        "luz_vivente": {
+          "unlock_grade": 7,
+          "description": "A luz ao redor do usuário torna-se consciente, protegendo-o e agindo conforme sua vontade.",
+          "effects": [
+            "Defesa automática contra ataques surpresa",
+            "Feixes luminosos reagem antes da ordem consciente",
+            "Luz ambiente responde a emoções e necessidades"
+          ]
+        },
+        "luz_da_verdade": {
+          "unlock_grade": 7,
+          "description": "Usuário altamente beatificado é imune a ilusões e mentiras.",
+          "effects": [
+            "Imunidade total a magias de ilusão",
+            "Detecta mentiras automaticamente na presença de luz",
+            "Enxerga através de disfarces e enganos"
+          ]
+        }
+      }
+    },
+
+    "resource_system": {
+      "primary_resource": {
+        "name": "Energia Luminar",
+        "abbreviation": "EL",
+        "base_pool": "100 + (Nível × 15) + (Beatificação × 20)",
+        "regeneration": {
+          "passive": "5% por turno em área iluminada",
+          "rest": "100% após descanso completo",
+          "meditation": "20% por hora de meditação sob luz solar",
+          "beatification_bonus": "+5% regeneração por ponto de Beatificação acima de 5"
+        },
+        "cost_reduction": "Beatificação reduz custos em (Beatificação × 3)%"
+      },
+      
+      "secondary_resource": {
+        "name": "Reserva Astral",
+        "abbreviation": "RA",
+        "unlock_level": 70,
+        "base_pool": "50 + ((Nível - 70) × 10)",
+        "description": "Energia absorvida de fontes astrais. Usada para habilidades cósmicas e de alto poder.",
+        "regeneration": {
+          "astral_absorption": "Absorver luz de estrelas, sol ou lua: +10 RA por minuto",
+          "complete_rest": "Recuperação total sob céu noturno estrelado"
+        }
+      }
+    },
+
+    "passive_abilities": {
+      "initial_passive": {
+        "name": "Corpo Luminar",
+        "unlock_level": 1,
+        "description": "O usuário é envolto por uma camada de luz viva que reage automaticamente à escuridão e a intenções hostis, oferecendo percepção e defesa leve.",
+        "effects": [
+          {
+            "type": "defensive",
+            "value": "+2 CA contra ataques na escuridão"
+          },
+          {
+            "type": "perception",
+            "value": "+3 Percepção em ambientes com luz"
+          },
+          {
+            "type": "utility",
+            "description": "Ilumina automaticamente 1 metro ao redor em escuridão total"
+          },
+          {
+            "type": "reactive",
+            "description": "Luz pulsa levemente ao detectar hostilidade próxima"
+          }
+        ],
+        "scaling": "Intensidade aumenta com nível e Beatificação",
+        "narrative_description": "Uma aura sutil de luz dourada cerca o usuário, respondendo instintivamente a perigos e necessidades."
+      },
+
+      "level_10": {
+        "name": "Corpo Luminar Aprimorado",
+        "unlock_level": 10,
+        "type": "upgrade",
+        "description": "Corpo Luminar torna-se mais reativo e poderoso.",
+        "new_effects": [
+          {
+            "type": "defensive",
+            "value": "+4 CA contra ataques na escuridão (aumentado)"
+          },
+          {
+            "type": "reactive_defense",
+            "description": "Chance de 20% de desviar automaticamente ataques físicos com barreira de luz reflexa"
+          },
+          {
+            "type": "illumination",
+            "value": "Raio de iluminação aumenta para 3 metros"
+          }
+        ]
+      },
+
+      "level_20": {
+        "name": "Sensibilidade Luminosa",
+        "unlock_level": 20,
+        "description": "Sente fontes de luz em um vasto raio, podendo perceber assinaturas luminosas únicas.",
+        "effects": [
+          {
+            "type": "detection",
+            "range": "100 metros de raio",
+            "description": "Detecta todas as fontes de luz natural e mágica"
+          },
+          {
+            "type": "analysis",
+            "description": "Identifica natureza da luz (natural, mágica, divina, profana)"
+          },
+          {
+            "type": "tracking",
+            "description": "Pode rastrear seres de luz ou que usaram magia de luz recentemente"
+          }
+        ],
+        "narrative_usage": "Fecha os olhos e 'sente' a luz ao redor como um mapa tridimensional luminoso em sua mente"
+      },
+
+      "level_30": {
+        "name": "Corpo de Prisma",
+        "unlock_level": 30,
+        "description": "Refrata a luz ao redor automaticamente, reduzindo dano direto.",
+        "effects": [
+          {
+            "type": "damage_reduction",
+            "value": "15% de redução de dano físico e energético"
+          },
+          {
+            "type": "refraction",
+            "description": "Ataques direcionados têm 25% de chance de errar devido à distorção luminosa"
+          },
+          {
+            "type": "aesthetic",
+            "description": "Corpo apresenta efeito prismático sutil, como um arco-íris móvel"
+          }
+        ],
+        "interaction_beatification": "Beatificação 7+: Redução aumenta para 25% e chance de erro para 40%"
+      },
+
+      "level_40": {
+        "name": "Passagem Fotônica",
+        "unlock_level": 40,
+        "description": "Teletransporte instantâneo entre duas fontes de luz visíveis.",
+        "mechanics": {
+          "cost": "30 EL por uso",
+          "range": "Linha de visão até 50 metros",
+          "requirements": "Duas fontes de luz com intensidade mínima (tocha ou maior)",
+          "limitations": "Não funciona através de barreiras anti-magia",
+          "cooldown": "1 turno entre usos"
+        },
+        "narrative_description": "Corpo se dissolve em fótons e reconstitui instantaneamente em outra fonte luminosa",
+        "tactical_applications": [
+          "Evasão de ataques",
+          "Flanqueamento instantâneo",
+          "Travessia de obstáculos",
+          "Resgate rápido de aliados"
+        ]
+      },
+
+      "level_50": {
+        "name": "Olhos do Sol",
+        "unlock_level": 50,
+        "description": "Visão total em qualquer iluminação, incluindo espectros invisíveis.",
+        "effects": [
+          {
+            "type": "vision",
+            "description": "Enxerga perfeitamente em escuridão total, luz cegante ou qualquer nível intermediário"
+          },
+          {
+            "type": "spectrum",
+            "description": "Visão estendida: ultravioleta, infravermelho e espectro astral"
+          },
+          {
+            "type": "detection",
+            "description": "Detecta criaturas invisíveis que ainda interagem com luz"
+          },
+          {
+            "type": "immunity",
+            "description": "Imune a cegueira por luz intensa"
+          }
+        ],
+        "beatification_bonus": "Beatificação 7+: Enxerga auras morais (bem, mal, neutro)"
+      },
+
+      "level_60": {
+        "name": "Forja Luminosa",
+        "unlock_level": 60,
+        "description": "Embui luz em armas e materiais, tornando-os incandescentes e mais eficazes.",
+        "mechanics": {
+          "cost": "20 EL por arma/item",
+          "duration": "10 minutos ou até dissipar",
+          "effects_on_weapons": [
+            "+2d6 dano radiante adicional",
+            "Ignora resistências físicas de criaturas das trevas",
+            "Arma brilha intensamente (fonte de luz de 5 metros)"
+          ],
+          "effects_on_armor": [
+            "+3 CA",
+            "Resistência +10 contra magia sombria",
+            "Aura protetora que repele mortos-vivos menores"
+          ]
+        },
+        "group_utility": "Pode ser usado em equipamento de aliados",
+        "narrative_description": "Toca o objeto e luz dourada flui pelos seus contornos, infundindo-o com poder luminoso"
+      },
+
+      "level_70": {
+        "name": "Domínio Solar Parcial",
+        "unlock_level": 70,
+        "description": "Pode absorver luz natural dos astros para fortalecer magias e recuperar energia.",
+        "mechanics": {
+          "absorption_rate": {
+            "sunlight_direct": "+15 RA e +30 EL por minuto",
+            "sunlight_indirect": "+8 RA e +15 EL por minuto",
+            "moonlight": "+5 RA e +10 EL por minuto",
+            "starlight": "+3 RA e +5 EL por minuto"
+          },
+          "empowerment": "Magias de luz custam 50% menos quando sob luz solar direta",
+          "storage": "Pode armazenar até 100 pontos de energia solar para uso posterior (dura 24 horas)"
+        },
+        "special_interaction": "Durante o dia, todas as habilidades de luz têm +20% de eficácia"
+      }
+    },
+
+    "active_abilities": {
+      "tier_1_10": [
+        {
+          "level": 1,
+          "name": "Aprimoramento Geral",
+          "type": "passive_boost",
+          "description": "Ativação completa da passiva Corpo Luminar e fortalecimento dos fundamentos mágicos.",
+          "effects": ["Corpo Luminar ativo", "Base de Energia Luminar estabelecida"]
+        },
+        {
+          "level": 2,
+          "name": "Luz Manifestada",
+          "type": "active_creation",
+          "description": "Cria e molda luz pura em formas básicas que obedecem comandos mentais simples, servindo como linguagem, ferramenta e véu.",
+          "cost": "10 EL por manifestação",
+          "duration": "Concentração ou até 1 minuto",
+          "capabilities": [
+            "Esferas luminosas flutuantes",
+            "Feixes direcionais de luz",
+            "Cortinas ou paredes de luz translúcida",
+            "Formas geométricas simples"
+          ],
+          "intensity_control": "Pode variar de luz suave a clarão ofuscante",
+          "tactical_uses": [
+            "Iluminação",
+            "Distração",
+            "Sinalização",
+            "Bloqueio visual temporário",
+            "Codificar mensagens em padrões de luz",
+            "Criar trilhas para Passagem Fotônica futura"
+          ],
+          "beatification_interactions": {
+            "0-2": "Formas tremulam; clarões falham sob pressão",
+            "3-5": "Manifestações estáveis; clarão ofuscante confiável",
+            "6-7": "Luz ganha semi-agência: segue intenção implícita",
+            "8-10": "Luz entende contexto: evita ferir inocentes, realça caminhos seguros"
+          },
+          "synergy": [
+            "Corpo de Prisma: formas projetam padrões que confundem mira",
+            "Refração Direcional: duplica imagens criadas para iludir"
+          ],
+          "narrative_examples": [
+            "Cria orbe de luz que flutua seguindo o comando",
+            "Manifesta cortina luminosa para cegar temporariamente inimigos",
+            "Forma símbolo luminoso no ar como sinal para aliados",
+            "Pinta runas de luz sobre a água, enviando aviso pela superfície"
+          ]
+        },
+        {
+          "level": 3,
+          "type": "improvement",
+          "description": "Luz Manifestada torna-se mais sólida e controlável",
+          "new_capability": "Formas podem ser mantidas sem concentração ativa por até 5 minutos"
+        },
+        {
+          "level": 4,
+          "type": "improvement",
+          "description": "Intensidade de Luz Manifestada aumenta",
+          "new_capability": "Pode criar luz intensa o suficiente para causar desconforto visual (não dano)"
+        },
+        {
+          "level": 5,
+          "type": "improvement",
+          "description": "Controle refinado permite múltiplas manifestações simultâneas",
+          "new_capability": "Até 3 manifestações ao mesmo tempo"
+        },
+        {
+          "level": 6,
+          "type": "improvement",
+          "description": "Formas luminosas respondem a comandos mentais mais complexos",
+          "new_capability": "Manifestações podem se mover seguindo padrões programados"
+        },
+        {
+          "level": 7,
+          "type": "improvement",
+          "description": "Luz criada pode assumir cores variadas do espectro",
+          "new_capability": "Controle cromático completo"
+        },
+        {
+          "level": 8,
+          "type": "improvement",
+          "description": "Manifestações ganham semi-solidez",
+          "new_capability": "Podem criar barreiras leves que oferecem resistência física mínima"
+        },
+        {
+          "level": 9,
+          "type": "improvement",
+          "description": "Eficiência energética aprimorada",
+          "new_capability": "Custo reduzido para 7 EL por manifestação"
+        }
+      ],
+
+      "tier_11_20": [
+        {
+          "level": 12,
+          "name": "Refração Direcional",
+          "type": "active_manipulation",
+          "description": "Desvia feixes de luz, cria miragens e dobra a trajetória luminosa para controle de percepção, informação e posição.",
+          "cost": "15 EL por uso",
+          "duration": "Concentração, até 2 minutos",
+          "applications": [
+            {
+              "name": "Desvio de Luz",
+              "description": "Curva luz ao redor de objeto ou pessoa, criando invisibilidade parcial",
+              "effectiveness": "30% de chance de ataques errarem alvo desviado"
+            },
+            {
+              "name": "Miragem",
+              "description": "Cria imagem ilusória duplicata através da refração",
+              "complexity": "Cópia visual perfeita, sem substância"
+            },
+            {
+              "name": "Dobra Ofensiva",
+              "description": "Desvia feixes de luz hostis (como raios solares concentrados) de volta ao emissor",
+              "success_rate": "Teste de Inteligência vs CD do ataque"
+            }
+          ],
+          "beatification_interactions": {
+            "0-2": "Refrações imprecisas criam rastros fáceis de detectar",
+            "3-5": "Dobra limpa; miragens convencem a olho nu",
+            "6-7": "Ilusões ganham parallax correto e sombra coerente",
+            "8-10": "Refração consciente: miragens respondem a voz e contexto"
+          },
+          "environmental_notes": [
+            "Névoa, chuva e poeira tornam refrações mais críveis",
+            "Trevas profundas reduzem eficácia de ilusões visuais"
+          ],
+          "synergy": [
+            "Luz Manifestada: usa formas como 'lentes' móveis",
+            "Luz Transversal: cria corredores falsos para emboscadas"
+          ],
+          "tactical_superiority": "Essencial para combate contra outros usuários de luz",
+          "narrative_examples": [
+            "Curva luz ao redor de aliado, tornando-o quase invisível",
+            "Cria três imagens duplicatas de si mesmo",
+            "Refrata raio inimigo desviando-o para o solo"
+          ]
+        },
+        {
+          "level": 13,
+          "type": "improvement",
+          "description": "Área de efeito da Refração aumenta",
+          "new_capability": "Pode afetar área de 3 metros de raio"
+        },
+        {
+          "level": 14,
+          "type": "improvement",
+          "description": "Múltiplas refrações simultâneas possíveis",
+          "new_capability": "Até 2 efeitos de refração ativos ao mesmo tempo"
+        },
+        {
+          "level": 15,
+          "type": "improvement",
+          "description": "Precisão de dobra luminosa aprimorada",
+          "new_capability": "+3 em testes para desviar ataques baseados em luz"
+        },
+        {
+          "level": 16,
+          "type": "improvement",
+          "description": "Eficiência energética melhorada",
+          "new_capability": "Custo reduzido para 12 EL"
+        },
+        {
+          "level": 17,
+          "type": "improvement",
+          "description": "Miragens ganham movimento básico",
+          "new_capability": "Ilusões podem andar e gesticular de forma convincente"
+        },
+        {
+          "level": 18,
+          "type": "improvement",
+          "description": "Duração estendida sem concentração",
+          "new_capability": "Mantém refração por até 5 minutos após lançamento inicial"
+        },
+        {
+          "level": 19,
+          "type": "improvement",
+          "description": "Invisibilidade aprimorada",
+          "new_capability": "Desvio de luz aumenta chance de erro para 50%"
+        }
+      ],
+
+      "tier_21_30": [
+        {
+          "level": 22,
+          "name": "Raios Concentrados",
+          "type": "active_offense",
+          "description": "Emite jatos intensos de luz concentrada que perfuram e queimam alvos com precisão cirúrgica; também corta e cauteriza materiais.",
+          "cost": "25 EL por disparo",
+          "damage": {
+            "base": "3d8 + (Nível/2) radiante",
+            "type": "Perfurante/Radiante",
+            "scaling": "Beatificação adiciona +(Beatificação)d6"
+          },
+          "range": "30 metros em linha reta",
+          "properties": [
+            "Ignora cobertura leve",
+            "Causa queimaduras luminosas persistentes (1d4 por turno por 2 turnos)",
+            "Especialmente eficaz contra criaturas das trevas (dano dobrado)",
+            "Pode ser mantido como feixe contínuo por custo adicional"
+          ],
+          "beatification_interactions": {
+            "0-2": "Feixes oscilam e perdem coesão além de 15m",
+            "3-5": "Raios retilíneos, corte limpo",
+            "6-7": "Feixe ajusta trajetória por refração microcontrolada (ignora cobertura média)",
+            "8-10": "Raios exibem 'vontade' de evitar dano colateral"
+          },
+          "environmental_notes": [
+            "Cristais e prismas podem dividir o raio em múltiplos feixes",
+            "Calor residual pode incendiar materiais secos"
+          ],
+          "synergy": [
+            "Luz Transversal: viaja pelo próprio feixe para reposicionamento",
+            "Espectro Prisional: ricocheteia internamente para dano multiplicado"
+          ],
+          "tactical_applications": [
+            "Perfuração de armaduras",
+            "Corte preciso de materiais",
+            "Cauterização de feridas",
+            "Destruição de mortos-vivos menores"
+          ],
+          "narrative_description": "Palma ou dedo apontado dispara raio branco-dourado intenso que corta o ar com assobio agudo"
+        },
+        {
+          "level": 23,
+          "type": "improvement",
+          "description": "Penetração de Raios aumentada",
+          "new_capability": "Ignora cobertura média e +2d6 dano"
+        },
+        {
+          "level": 24,
+          "type": "improvement",
+          "description": "Múltiplos disparos rápidos",
+          "new_capability": "Pode disparar rajada de 3 raios por custo de 60 EL"
+        },
+        {
+          "level": 25,
+          "type": "improvement",
+          "description": "Feixe sustentado disponível",
+          "new_capability": "Pode manter feixe contínuo: 15 EL/turno, 2d8+Nível/2 por turno"
+        },
+        {
+          "level": 26,
+          "type": "improvement",
+          "description": "Queimadura luminosa intensificada",
+          "new_capability": "Queimaduras duram 3 turnos e causam 1d6 por turno"
+        },
+        {
+          "level": 27,
+          "type": "improvement",
+          "description": "Alcance estendido",
+          "new_capability": "Alcance aumenta para 50 metros"
+        },
+        {
+          "level": 28,
+          "type": "improvement",
+          "description": "Precisão aprimorada",
+          "new_capability": "+4 para acerto com Raios Concentrados"
+        },
+        {
+          "level": 29,
+          "type": "improvement",
+          "description": "Eficiência energética máxima para essa habilidade",
+          "new_capability": "Custo reduzido para 20 EL por disparo"
+        }
+      ],
+
+      "tier_31_40": [
+        {
+          "level": 32,
+          "name": "Luz Transversal",
+          "type": "active_mobility",
+          "description": "Permite mover-se através de feixes de luz como se fossem portais unidimensionais.",
+          "cost": "35 EL por travessia",
+          "mechanics": {
+            "activation": "Toca um feixe de luz e se projeta através dele até seu fim",
+            "speed": "Viaja à velocidade da luz pelo feixe (efetivamente instantâneo para distâncias curtas)",
+            "range": "Qualquer feixe visível até 100 metros",
+            "requirements": "Feixe deve ter mínimo de 10cm de diâmetro e conectar dois pontos sem interrupção"
+          },
+          "beatification_interactions": {
+            "0-2": "Risco de descoerência: teste para não emergir deslocado 1m",
+            "3-5": "Travessias estáveis; menor vertigem",
+            "6-7": "Pode curvar sutilmente direção ao final do feixe",
+            "8-10": "Escolhe a exata fase/ângulo de saída; ignora turbulência luminosa"
+          },
+          "environmental_notes": [
+            "Feixes poeirentos (partículas no ar) facilitam ancoragem",
+            "Trevas mágicas cortam rotas; criar feixes com Luz Manifestada contorna"
+          ],
+          "synergy": [
+            "Raios Concentrados: dispara e atravessa o próprio feixe",
+            "Portal Prisma (mais tarde): encadeia saltos para reposição global"
+          ],
+          "limitations": [
+            "Não pode atravessar superfícies totalmente opacas",
+            "Emerge na direção do feixe ao final",
+            "Vulnerável durante travessia se feixe for dissipado"
+          ],
+          "creative_applications": [
+            "Viajar através do próprio Raio Concentrado",
+            "Usar raio de sol atravessando fresta de janela",
+            "Criar feixe com Luz Manifestada para criar rota de viagem",
+            "Perseguição através de espaços estreitos"
+          ],
+          "narrative_description": "Corpo se converte em fótons e flui pelo feixe luminoso como água por cano"
+        },
+        {
+          "level": 33,
+          "type": "improvement",
+          "description": "Velocidade de reação melhorada",
+          "new_capability": "Pode usar Luz Transversal como reação a ataques"
+        },
+        {
+          "level": 34,
+          "type": "improvement",
+          "description": "Travessia múltipla",
+          "new_capability": "Pode 'saltar' entre múltiplos feixes em sequência sem sair da forma luminosa"
+        },
+        {
+          "level": 35,
+          "type": "improvement",
+          "description": "Alcance expandido",
+          "new_capability": "Pode atravessar feixes de até 200 metros"
+        },
+        {
+          "level": 36,
+          "type": "improvement",
+          "description": "Proteção durante travessia",
+          "new_capability": "Imune a ataques enquanto em forma de luz no feixe"
+        },
+        {
+          "level": 37,
+          "type": "improvement",
+          "description": "Eficiência aprimorada",
+          "new_capability": "Custo reduzido para 25 EL por travessia"
+        },
+        {
+          "level": 38,
+          "type": "improvement",
+          "description": "Feixes mais finos utilizáveis",
+          "new_capability": "Pode usar feixes de apenas 2cm de diâmetro"
+        },
+        {
+          "level": 39,
+          "type": "improvement",
+          "description": "Transporte de aliado",
+          "new_capability": "Pode levar um aliado tocado consigo (custo dobrado)"
+        }
+      ],
+
+      "tier_41_50": [
+        {
+          "level": 42,
+          "name": "Campo Solar",
+          "type": "active_aura",
+          "description": "Invoca aura radiante que queima inimigos e cura aliados simultaneamente.",
+          "cost": "50 EL para ativar + 10 EL por turno mantido",
+          "duration": "Concentração, até 5 minutos",
+          "radius": "10 metros centrado no usuário",
+          "effects": {
+            "on_enemies": {
+              "damage": "2d10 + Beatificação radiante por turno dentro da aura",
+              "additional": "Criaturas das trevas sofrem desvantagem em ataques",
+              "persistent": "Queimaduras continuam por 1 turno após deixar aura (1d6)"
+            },
+            "on_allies": {
+              "healing": "1d8 + Beatificação por turno dentro da aura",
+              "buff": "+2 em testes de resistência",
+              "protection": "Resistência contra magia sombria"
+            }
+          },
+          "beatification_interactions": {
+            "0-2": "Aura vacila; cura reduzida e dano menor",
+            "3-5": "Aura constante; cura/dano estáveis",
+            "6-7": "Aura discrimina hostis sem esforço; aliados ganham resistência extra",
+            "8-10": "Aura benevolente/intolerante: maximiza cura para justos e queima corrupção latente"
+          },
+          "environmental_notes": [
+            "Sob sol direto, raio e potência aumentam naturalmente",
+            "Em locais profanos, a aura range e exige +5 EL/turno"
+          ],
+          "synergy": [
+            "Espectro Prisional: selar inimigo dentro da aura",
+            "Arquitetura Estelar (estrela curativa): sobrepõe curas em pulso"
+          ],
+          "visual_signature": "Aura dourada pulsante que emana ondas de calor visível",
+          "strategic_value": "Transforma área em zona controlada, favorecendo grupo",
+          "interaction_environment": "Ilumina área completamente, dissipa trevas mágicas de até nível 40"
+        },
+        {
+          "level": 43,
+          "type": "improvement",
+          "description": "Intensidade aumentada",
+          "new_capability": "Dano aumenta para 3d10 + Beatificação; cura para 2d8 + Beatificação"
+        },
+        {
+          "level": 44,
+          "type": "improvement",
+          "description": "Raio de ação expandido",
+          "new_capability": "Raio aumenta para 15 metros"
+        },
+        {
+          "level": 45,
+          "type": "improvement",
+          "description": "Eficiência aprimorada",
+          "new_capability": "Custo de manutenção reduzido para 7 EL por turno"
+        },
+        {
+          "level": 46,
+          "type": "improvement",
+          "description": "Pulso inicial potente",
+          "new_capability": "Ao ativar, causa 5d10 radiante em todos inimigos no raio"
+        },
+        {
+          "level": 47,
+          "type": "improvement",
+          "description": "Cura amplificada",
+          "new_capability": "Cura aumenta para 2d10 + Beatificação por turno"
+        },
+        {
+          "level": 48,
+          "type": "improvement",
+          "description": "Mobilidade mantida",
+          "new_capability": "Campo Solar move-se com o usuário sem perda de potência"
+        },
+        {
+          "level": 49,
+          "type": "improvement",
+          "description": "Purificação incorporada",
+          "new_capability": "Remove uma condição negativa menor de aliados por turno automaticamente"
+        }
+      ],
+
+      "tier_51_60": [
+        {
+          "level": 52,
+          "name": "Espectro Prisional",
+          "type": "active_control",
+          "description": "Cria prismas de luz sólida altamente resistentes para conter energia e matéria.",
+          "cost": "60 EL por prisão",
+          "duration": "Concentração ou até 10 minutos",
+          "size_options": {
+            "personal": "Cubo de 2m³ para conter 1 criatura média",
+            "expanded": "Cubo de 5m³ para grupo (custo +30 EL)",
+            "massive": "Cubo de 10m³ para criaturas grandes (custo +60 EL)"
+          },
+          "properties": {
+            "hp_equivalent": "100 + (Nível × 5) + (Beatificação × 20) pontos de vida",
+            "resistances": "Resistente a dano físico não-mágico, imune a magia de luz",
+            "special": [
+              "Transparente - permite visão mas não passagem",
+              "Pode ser programado para permitir ar ou seleção de substâncias",
+              "Reflete ataques de luz de dentro para fora"
+            ]
+          },
+          "beatification_interactions": {
+            "0-2": "Prismas com microfissuras; chance de falha sob impacto",
+            "3-5": "Estruturas estáveis; programação simples de filtros",
+            "6-7": "Geometria adaptativa que redistribui força",
+            "8-10": "Prisma 'vivo': antecipa tentativas de fuga e reconfigura"
+          },
+          "environmental_notes": [
+            "Cristais no cenário reforçam a coerência da prisão",
+            "Trevas mágicas corroem faces se Beatificação < 5"
+          ],
+          "synergy": [
+            "Campo Solar: campo de execução controlada",
+            "Raios Concentrados: ricochetes internos para dano composto"
+          ],
+          "applications": [
+            "Aprisionamento de inimigos",
+            "Contenção de explosões ou magias perigosas",
+            "Proteção de alvos vulneráveis",
+            "Isolamento de áreas contaminadas"
+          ],
+          "narrative_description": "Paredes cristalinas de luz solidificada surgem em padrão geométrico perfeito, aprisionando tudo dentro"
+        },
+        {
+          "level": 53,
+          "type": "improvement",
+          "description": "Durabilidade aumentada",
+          "new_capability": "HP aumenta para 150 + (Nível × 7) + (Beatificação × 25)"
+        },
+        {
+          "level": 54,
+          "type": "improvement",
+          "description": "Criação instantânea",
+          "new_capability": "Prisão se forma instantaneamente, pode aprisionar alvos de surpresa"
+        },
+        {
+          "level": 55,
+          "type": "improvement",
+          "description": "Múltiplas prisões",
+          "new_capability": "Pode manter até 2 prisões simultaneamente"
+        },
+        {
+          "level": 56,
+          "type": "improvement",
+          "description": "Adaptação dinâmica",
+          "new_capability": "Pode redimensionar prisão existente gastando EL adicional"
+        },
+        {
+          "level": 57,
+          "type": "improvement",
+          "description": "Espinhos internos opcionais",
+          "new_capability": "Pode criar estacas de luz dentro da prisão: 2d8 perfurante a cada tentativa de fuga"
+        },
+        {
+          "level": 58,
+          "type": "improvement",
+          "description": "Eficiência aprimorada",
+          "new_capability": "Custo base reduzido para 50 EL"
+        },
+        {
+          "level": 59,
+          "type": "improvement",
+          "description": "Formas complexas",
+          "new_capability": "Não limitado a cubos; pode criar esferas, cilindros, ou formas irregulares"
+        }
+      ],
+
+      "tier_61_70": [
+        {
+          "level": 62,
+          "name": "Sopro Estelar",
+          "type": "active_ultimate",
+          "description": "Libera clarão devastador ou regenerador canalizando poder astral concentrado.",
+          "cost": "80 EL + 20 RA",
+          "cooldown": "3 turnos",
+          "forms": {
+            "destrutivo": {
+              "name": "Explosão Estelar",
+              "area": "Cone de 20 metros",
+              "damage": "8d12 + (Beatificação × 2d6) radiante",
+              "effects": [
+                "Cega alvos por 1d3 turnos (CD: 20 + Beatificação para resistir)",
+                "Ignora resistências de criaturas das trevas",
+                "Desintegra mortos-vivos menores instantaneamente",
+                "Cria zona de luz intensa que persiste por 1 minuto"
+              ],
+              "visual": "Explosão ofuscante de luz branca-azulada com ondas de calor visível"
+            },
+            "regenerador": {
+              "name": "Radiância Restauradora",
+              "area": "Raio de 15 metros centrado no usuário",
+              "healing": "6d10 + (Beatificação × 10) para todos aliados",
+              "effects": [
+                "Remove todas condições negativas menores",
+                "Regeneração acelerada: +2d6 HP por turno por 3 turnos",
+                "Concede imunidade temporária a necromancia (5 turnos)",
+                "Revitaliza mentalmente: +5 em próximo teste de Sabedoria/Inteligência"
+              ],
+              "visual": "Onda dourada suave pulsa para fora, envolvendo aliados em luz calmante"
+            }
+          },
+          "beatification_interactions": {
+            "0-2": "Risco de exaustão adicional e brilho instável",
+            "3-5": "Resultados previsíveis; alcance padrão",
+            "6-7": "Controle refinado: seleciona alvos com precisão",
+            "8-10": "Bênção/flagelo perfeitos: sem dano colateral, efeitos maximizados"
+          },
+          "environmental_notes": [
+            "Sob céu estrelado, custo de RA efetivo -5",
+            "Eclipses favorecem a forma regeneradora"
+          ],
+          "synergy": [
+            "Arquitetura Estelar: canaliza através de estrelas criadas para cobertura total",
+            "Campo Solar: mantém pressão após o pulso"
+          ],
+          "advanced_mechanic": "Usuário escolhe forma no momento da conjuração",
+          "beatification_interaction": "Beatificação 8+: Pode usar ambas formas simultaneamente (custo total: 120 EL + 30 RA)"
+        },
+        {
+          "level": 63,
+          "type": "improvement",
+          "description": "Potência destrutiva aumentada",
+          "new_capability": "Dano aumenta para 10d12 + (Beatificação × 3d6)"
+        },
+        {
+          "level": 64,
+          "type": "improvement",
+          "description": "Cura intensificada",
+          "new_capability": "Cura aumenta para 8d10 + (Beatificação × 12)"
+        },
+        {
+          "level": 65,
+          "type": "improvement",
+          "description": "Cooldown reduzido",
+          "new_capability": "Cooldown diminui para 2 turnos"
+        },
+        {
+          "level": 66,
+          "type": "improvement",
+          "description": "Área expandida",
+          "new_capability": "Cone aumenta para 30m; raio aumenta para 20m"
+        },
+        {
+          "level": 67,
+          "type": "improvement",
+          "description": "Eficiência aprimorada",
+          "new_capability": "Custo reduzido para 70 EL + 15 RA"
+        },
+        {
+          "level": 68,
+          "type": "improvement",
+          "description": "Controle preciso",
+          "new_capability": "Pode excluir alvos específicos da área de efeito"
+        },
+        {
+          "level": 69,
+          "type": "improvement",
+          "description": "Ressurreição parcial",
+          "new_capability": "Forma regeneradora pode reviver aliado morto há menos de 1 minuto (custo +50 RA)"
+        }
+      ]
+    },
+
+    "specialization_paths": {
+      "unlock_level": 71,
+      "description": "No nível 71, o usuário deve escolher um dos três caminhos de especialização avançada. Esta escolha é permanente e define o desenvolvimento final da magia.",
+      "selection_rules": {
+        "permanent": true,
+        "exclusive": "Apenas um caminho pode ser escolhido",
+        "prerequisite": "Deve ter Beatificação mínima de 4 para qualquer caminho"
+      },
+
+      "paths": [
+        {
+          "id": "fotolise",
+          "name": "Caminho da Destruição - Fotólise",
+          "focus": "Poder destrutivo concentrado da luz como arma suprema",
+          "philosophy": "A luz purifica através da aniquilação do mal. Fotólise é a decomposição pela luz pura.",
+          "deeper_philosophy": {
+            "core_tenet": "A luz não é apenas energia - é justiça manifesta. Cada fóton carrega o peso moral de sua origem.",
+            "destruction_as_mercy": "Aniquilar o mal é o maior ato de compaixão possível. Deixar o mal existir é condenar inocentes ao sofrimento.",
+            "purity_through_fire": "A luz destrutiva queima impureza, deixando apenas o que é verdadeiro e justo. O que sobrevive ao fogo solar é digno de existir.",
+            "cosmic_perspective": "Em escala cósmica, estrelas nascem e morrem constantemente. A destruição é parte natural do ciclo de renovação universal.",
+            "moral_absolutism": "Não há meio-termo com o mal. Compromissos com corrupção apenas a espalham. A luz deve ser implacável em sua pureza.",
+            "redemption_through_annihilation": "Às vezes, a única redenção possível é a destruição completa, permitindo que uma nova essência pura nasça das cinzas."
+          },
+          "transformation_narrative": {
+            "level_71_awakening": "O primeiro uso de Ira Solar marca uma mudança fundamental. O usuário sente o peso moral de cada fóton que canaliza - não é mais apenas poder, mas responsabilidade cósmica.",
+            "level_81_ascension": "Chuva de Fótons revela a verdadeira natureza do caminho: não se trata de destruir indivíduos, mas de purificar regiões inteiras. O usuário torna-se um instrumento de renovação planetária.",
+            "level_91_transcendence": "Coração do Sol é o momento de maior clareza e maior perigo. O usuário não apenas usa luz - torna-se luz. A linha entre pessoa e força cósmica desaparece, e a responsabilidade se torna absoluta.",
+            "psychological_toll": "Cada uso de poder destrutivo deixa uma marca na alma. Usuários de Fotólise desenvolvem uma sensibilidade aguçada ao mal, mas também uma tendência ao isolamento - poucos conseguem entender o peso de ser o instrumento da justiça cósmica.",
+            "social_impact": "Comunidades veem usuários de Fotólise como protetores necessários mas temidos. Sua presença significa que o mal será encontrado e destruído - mas também que a violência é iminente.",
+            "beatification_challenges": "Manter Beatificação alta enquanto se especializa em destruição requer disciplina mental extrema. Cada ato destrutivo deve ser justificado, cada vida tomada deve ser necessária. A tentação de usar poder para vingança pessoal é constante."
+          },
+          "ultimate_techniques": {
+            "solar_judgment": {
+              "name": "Julgamento Solar",
+              "unlock_requirement": "Beatificação 9+, nível 95+",
+              "description": "Convocação de um tribunal de luz que julga a essência moral de todos presentes",
+              "mechanics": "Área de 100m de raio; todos devem passar em teste de Carisma vs CD 25 ou revelar suas intenções verdadeiras. Inimigos com corrupção alta são automaticamente marcados para destruição.",
+              "narrative": "O céu se abre como um olho gigante, e raios de luz descem como sentenças divinas. A verdade se torna visível para todos."
+            },
+            "nova_cascade": {
+              "name": "Cascata de Nova",
+              "unlock_requirement": "Beatificação 10, nível 100",
+              "description": "Cria uma sequência de explosões estelares que se propagam através de conexões luminosas",
+              "mechanics": "Inicia com uma explosão que cria novas fontes de luz, cada uma explodindo em sequência. Pode se espalhar por quilômetros se houver luz suficiente para conectar.",
+              "narrative": "Como uma supernova em cadeia, a destruição se propaga através de toda luz existente, purificando tudo em seu caminho."
+            },
+            "solar_phoenix": {
+              "name": "Fênix Solar",
+              "unlock_requirement": "Beatificação 8+, nível 90+",
+              "description": "Transforma-se em uma criatura de luz pura que renasce de suas próprias cinzas",
+              "mechanics": "Ao morrer, explode em luz que cura aliados e danifica inimigos. Renasce com 50% HP após 1 turno, mas só pode ser usado 1x por combate.",
+              "narrative": "Corpo se dissolve em chamas solares, mas da destruição nasce uma nova forma, mais pura e poderosa."
+            }
+          },
+          "path_specific_challenges": {
+            "trial_of_mercy": "O usuário deve escolher entre destruir um inimigo que se arrependeu genuinamente ou mostrar misericórdia, sabendo que isso pode custar vidas inocentes no futuro.",
+            "burden_of_justice": "Cada decisão de vida ou morte pesa na consciência. O usuário deve justificar cada ato destrutivo para manter Beatificação alta.",
+            "isolation_of_power": "O poder destrutivo afasta outros. O usuário deve encontrar formas de manter conexões humanas enquanto carrega o peso da justiça cósmica.",
+            "temptation_of_vengeance": "A facilidade de destruir pode levar à vingança pessoal. O usuário deve distinguir entre justiça e vingança constantemente."
+          },
+          "famous_users": {
+            "solaris_the_implacable": "Lendário paladino que purificou um continente inteiro de corrupção demoníaca, mas nunca mais conseguiu viver entre pessoas comuns.",
+            "nova_guardian": "Mística que protegeu uma cidade por séculos, mas cada uso de seu poder a deixou mais distante da humanidade.",
+            "phoenix_judge": "Juiz celestial que presidiu o julgamento de deuses caídos, mas pagou o preço de se tornar mais luz que humano."
+          },
+          "aesthetic": "Luz branca-azulada intensa, raios perfurantes, explosões de energia pura",
+          
+          "tier_71_80": {
+            "primary_ability": {
+              "name": "Ira Solar",
+              "unlock_level": 71,
+              "description": "Liberação de energia solar concentrada em único golpe devastador.",
+              "cost": "100 EL + 30 RA",
+              "cooldown": "5 turnos",
+              "damage": "12d12 + (Nível × 2) + (Beatificação × 4d6) radiante",
+              "range": "Toque ou projétil de 50 metros",
+              "properties": [
+                "Crítico automático contra criaturas das trevas",
+                "Ignora todas resistências e imunidades a radiante",
+                "Causa explosão secundária de 5d10 em raio de 5m ao redor do alvo",
+                "Marca alvo com 'Chama Solar' - 3d10 por turno por 3 turnos"
+              ],
+              "narrative": "Concentra energia do sol em um único ponto, liberando devastação absoluta"
+            },
+            "passive_improvements": [
+              "Todas habilidades ofensivas de luz ganham +3d6 dano",
+              "+20% de chance de crítico com ataques de luz",
+              "Raios Concentrados podem ser disparados como ação bônus",
+              "Campo Solar causa dano dobrado a inimigos"
+            ]
+          },
+
+          "tier_81_90": {
+            "primary_ability": {
+              "name": "Chuva de Fótons",
+              "unlock_level": 81,
+              "description": "Bombardeia área massiva com centenas de feixes estelares simultaneamente.",
+              "cost": "150 EL + 50 RA",
+              "cooldown": "1 uso por combate",
+              "area": "Cilindro de 30m de raio, 50m de altura",
+              "duration": "3 turnos de bombardeio contínuo",
+              "effects": {
+                "per_turn": "8d10 + (Beatificação × 2d6) radiante para todos na área",
+                "cumulative": "Dano aumenta a cada turno (+2d10 por turno)",
+                "terrain": "Área fica saturada com luz residual por 10 minutos",
+                "aftermath": "Solo brilha levemente, concede visão verdadeira na área"
+              },
+              "tactical_value": "Aniquila exércitos, destrói fortificações, purifica grandes áreas",
+              "narrative": "Céu acima escurece brevemente antes de explodir em milhares de raios luminosos descendentes"
+            },
+            "passive_improvements": [
+              "Sopro Estelar (forma destrutiva) pode ser usado 2x antes do cooldown",
+              "Todas explosões de luz têm +10m de raio",
+              "Inimigos derrotados por luz explodem em 3d8 radiante (raio 3m)",
+              "Resistência pessoal: imune a próprio dano de luz"
+            ]
+          },
+
+          "tier_91_100": {
+            "primary_ability": {
+              "name": "Coração do Sol",
+              "unlock_level": 91,
+              "description": "Transforma-se temporariamente em fonte luminosa viva que cega e incinera tudo ao redor.",
+              "cost": "200 EL + 100 RA (ativação) + 30 EL por turno",
+              "duration": "Até 10 turnos ou desativação voluntária",
+              "transformation_effects": {
+                "appearance": "Corpo torna-se luz branca pura incandescente, irradiando poder insuportável",
+                "aura_passive": {
+                  "radius": "20 metros",
+                  "damage": "5d12 radiante por turno automático",
+                  "blind": "Criaturas sem proteção são cegas automaticamente",
+                  "terrain": "Tudo inflamável incinera, metal derrete, pedra racha"
+                },
+                "enhanced_abilities": {
+                  "all_light_spells": "Custam 0 EL durante transformação",
+                  "movement": "Voa à velocidade de 20m por turno",
+                  "defense": "CA +10, resistência a todo dano não-sombrio",
+                  "attacks": "Cada ataque corpo-a-corpo causa 10d10 radiante adicional"
+                },
+                "drawback": "Após desativar, fica exausto: -4 em todos atributos por 1 hora"
+              },
+              "beatification_synergy": "Beatificação 9+: Pode usar indefinidamente sem exaustão",
+              "narrative": "Torna-se estrela viva e ambulante, presença que oblitera trevas"
+            },
+            "capstone_passive": {
+              "name": "Fotólise Perpétua",
+              "description": "Domínio destrutivo absoluto da luz",
+              "effects": [
+                "Todo dano de luz causado ignora imunidades completamente",
+                "Crítico com luz em 18-20",
+                "Ao matar inimigo com luz, recupera 50 EL e 20 RA",
+                "Presença passiva: -2 em todos atributos de inimigos em 30m",
+                "Uma vez por dia: pode lançar qualquer habilidade destrutiva sem custo"
+              ]
+            }
+          }
+        },
+
+        {
+          "id": "refracao",
+          "name": "Caminho da Estratégia - Refração",
+          "focus": "Manipulação tática da luz para controle absoluto do campo de batalha",
+          "philosophy": "Luz não é apenas poder bruto, mas informação, posição e ilusão. A vitória vem do domínio do que se vê.",
+          "deeper_philosophy": {
+            "core_tenet": "A luz é a linguagem da realidade. Quem domina como a luz se comporta, domina como a realidade se manifesta.",
+            "perception_as_reality": "O que se vê é o que existe. Se você pode controlar o que outros veem, você controla sua realidade.",
+            "information_as_power": "Conhecimento é poder, mas conhecimento da verdade é poder absoluto. A luz revela todas as verdades.",
+            "strategy_as_art": "A guerra não é sobre força - é sobre fazer o inimigo lutar contra si mesmo. A luz refratada é a arte da confusão perfeita.",
+            "reality_as_illusion": "Toda realidade é uma ilusão sustentada por percepção. A luz refratada apenas revela essa verdade fundamental.",
+            "control_through_understanding": "Para controlar o campo de batalha, você deve primeiro entender como a luz o ilumina. Cada fóton carrega informação estratégica."
+          },
+          "transformation_narrative": {
+            "level_71_awakening": "O primeiro uso de Labirinto de Luz marca uma mudança fundamental. O usuário percebe que a realidade é maleável - não apenas a luz, mas o próprio espaço pode ser dobrado pela vontade.",
+            "level_81_ascension": "Portal Prisma revela a verdadeira natureza do caminho: não se trata de manipular percepção, mas de transcender as limitações do espaço-tempo. O usuário torna-se um arquiteto da realidade.",
+            "level_91_transcendence": "Olho Estelar é o momento de maior clareza e maior isolamento. O usuário não apenas vê tudo - compreende tudo. A linha entre observador e observado desaparece, e a responsabilidade de saber tudo se torna absoluta.",
+            "psychological_toll": "Cada ato de manipulação da percepção deixa uma marca de desconfiança na alma. Usuários de Refração desenvolvem uma capacidade extrema de ver através de mentiras, mas também uma tendência a questionar toda realidade. O peso de saber que nada é como parece pode ser esmagador.",
+            "social_impact": "Comunidades veem usuários de Refração como mestres da verdade e da mentira. Sua presença significa que segredos serão descobertos e ilusões serão reveladas. Mas também significa que ninguém pode confiar completamente em suas próprias percepções.",
+            "beatification_challenges": "Manter Beatificação alta enquanto se especializa em ilusão requer integridade absoluta. Cada mentira contada através da luz corrompe a pureza. A tentação de usar poder para manipular outros é constante, mas cada ato de engano corrompe a luz."
+          },
+          "ultimate_techniques": {
+            "reality_weaver": {
+              "name": "Tecelão da Realidade",
+              "unlock_requirement": "Beatificação 9+, nível 95+",
+              "description": "Reescreve temporariamente as leis da física em uma área através da manipulação da luz",
+              "mechanics": "Área de 100m de raio; pode alterar gravidade, velocidade da luz, e propriedades da matéria por 1 hora. Todos na área devem passar em teste de Sabedoria ou ficam confusos sobre a natureza da realidade.",
+              "narrative": "O espaço se dobra e se refrata como cristal líquido, e as leis da física se tornam sugestões flexíveis."
+            },
+            "cosmic_mirror": {
+              "name": "Espelho Cósmico",
+              "unlock_requirement": "Beatificação 10, nível 100",
+              "description": "Cria uma reflexão perfeita do universo que pode ser manipulada independentemente",
+              "mechanics": "Cria uma cópia espelhada de uma área de 1km de raio que existe em um plano paralelo. Mudanças no espelho afetam a realidade, e vice-versa. O espelho dura indefinidamente se mantido.",
+              "narrative": "O mundo se duplica como em um espelho perfeito, e o usuário fica entre dois universos, controlando ambos."
+            },
+            "truth_revealer": {
+              "name": "Revelador da Verdade",
+              "unlock_requirement": "Beatificação 8+, nível 90+",
+              "description": "Remove todas as ilusões e revela a verdade absoluta de tudo em uma área vasta",
+              "mechanics": "Área de 500m de raio; todas as ilusões, disfarces, mentiras e encantamentos são revelados. Todos na área devem passar em teste de Carisma ou revelam seus segredos mais profundos.",
+              "narrative": "A luz se torna tão pura que nada pode se esconder dela. Toda mentira se dissolve, toda ilusão se desfaz, e apenas a verdade nua permanece."
+            }
+          },
+          "path_specific_challenges": {
+            "burden_of_omniscience": "O usuário deve escolher entre revelar uma verdade dolorosa que destruirá relacionamentos ou manter uma ilusão que preservará a paz.",
+            "temptation_of_control": "A facilidade de manipular percepção pode levar ao controle total. O usuário deve encontrar formas de usar poder sem dominar outros.",
+            "isolation_of_truth": "Saber que nada é como parece pode afastar outros. O usuário deve encontrar formas de se conectar sem perder a capacidade de ver a verdade.",
+            "perfectionism_of_illusion": "O medo de ser enganado pode paralisar. O usuário deve aprender que às vezes a ilusão é necessária para proteger a verdade."
+          },
+          "famous_users": {
+            "prism_master": "Lendário estrategista que nunca perdeu uma batalha, mas nunca conseguiu confiar em ninguém, nem mesmo em si mesmo.",
+            "reality_architect": "Místico que construiu cidades inteiras de luz refratada, mas pagou o preço de se tornar mais ilusão que pessoa.",
+            "truth_seeker": "Sábio que revelou todos os segredos do reino, mas cada verdade descoberta o deixou mais isolado da humanidade."
+          },
+          "aesthetic": "Luz prismática multicolorida, ilusões elaboradas, geometrias impossíveis",
+          
+          "tier_71_80": {
+            "primary_ability": {
+              "name": "Labirinto de Luz",
+              "unlock_level": 71,
+              "description": "Dobra o espaço com luz refratada, criando ilusões sólidas e labirinto tridimensional.",
+              "cost": "120 EL + 40 RA",
+              "duration": "Concentração, até 10 minutos",
+              "area": "Cubo de 50m³ ou área irregular equivalente",
+              "mechanics": {
+                "structure": "Cria paredes ilusórias de luz que parecem e funcionam como sólidas",
+                "navigation": "Apenas conjurador conhece caminho verdadeiro",
+                "confusion": "Inimigos devem passar em CD 25 Inteligência a cada turno ou ficam perdidos",
+                "trap_potential": "Pode criar 'portas' que levam a outros pontos do labirinto",
+                "sensory_override": "Anula sentidos direcionais; bússolas e magia de localização falham"
+              },
+              "tactical_applications": [
+                "Separar inimigos do grupo",
+                "Proteger localização de algo importante",
+                "Criar emboscadas perfeitas",
+                "Comprar tempo para rituais ou fuga"
+              ],
+              "interaction_allies": "Aliados designados podem ver o caminho verdadeiro",
+              "narrative": "Realidade visual fragmenta-se em prismas; caminhos multiplicam-se impossívelmente"
+            },
+            "passive_improvements": [
+              "Refração Direcional não requer mais concentração",
+              "Pode manter 4 miragens simultâneas",
+              "Invisibilidade por refração aumenta para 70% de erro inimigo",
+              "Luz Transversal pode ser usada como reação sem custo extra"
+            ]
+          },
+
+          "tier_81_90": {
+            "primary_ability": {
+              "name": "Portal Prisma",
+              "unlock_level": 81,
+              "description": "Viaja instantaneamente entre feixes de luz cósmica, atravessando distâncias planetárias.",
+              "cost": "100 EL + 60 RA por portal",
+              "mechanics": {
+                "range": "Ilimitado desde que luz conecte pontos",
+                "requirements": "Deve ter visitado destino antes OU ver destino claramente",
+                "activation_time": "1 turno para abrir portal",
+                "portal_duration": "Permanece aberto por 3 turnos",
+                "passenger_capacity": "Até 5 pessoas além do conjurador"
+              },
+              "advanced_uses": [
+                {
+                  "name": "Portal de Combate",
+                  "description": "Abre portais instantâneos em batalha para reposicionamento",
+                  "cost_reduced": "40 EL + 20 RA para portais de até 100m"
+                },
+                {
+                  "name": "Rede de Luz",
+                  "description": "Pode ter até 3 portais abertos simultaneamente, criando rede de viagem",
+                  "strategic_value": "Mobilidade de grupo sem precedentes"
+                },
+                {
+                  "name": "Portal Armadilha",
+                  "description": "Pode abrir portal 'reverso' que suga inimigos para localização distante",
+                  "save": "CD 23 Força para resistir à sucção"
+                }
+              ],
+              "limitations": [
+                "Não funciona em áreas de anti-magia",
+                "Trevas absolutas bloqueiam",
+                "Criaturas de pura sombra não podem atravessar"
+              ],
+              "narrative": "Rasga o tecido do espaço com luz prismática; distâncias tornam-se irrelevantes"
+            },
+            "passive_improvements": [
+              "Passagem Fotônica tem alcance ilimitado se puder ver luz destino",
+              "Pode se tornar intangível (forma de luz) por 3 turnos, 1x por combate",
+              "Labirinto de Luz pode ser movido e reestruturado dinamicamente",
+              "Reflexos sobrenaturais: +5 Iniciativa, vantagem em testes de Destreza"
+            ]
+          },
+
+          "tier_91_100": {
+            "primary_ability": {
+              "name": "Olho Estelar",
+              "unlock_level": 91,
+              "description": "Visão omnidirecional através de toda luz no cosmos; percebe tudo simultaneamente.",
+              "cost": "150 EL + 80 RA (ativação) + 20 EL/RA por minuto",
+              "duration": "Até 1 hora ou desativação",
+              "capabilities": {
+                "cosmic_sight": {
+                  "description": "Enxerga através de qualquer fóton em qualquer lugar",
+                  "practical_range": "Planeta inteiro se houver luz",
+                  "limitation": "Requer concentração para focar em locais específicos"
+                },
+                "omniscience_combat": {
+                  "description": "Em combate, vê todos ângulos simultaneamente",
+                  "effects": [
+                    "Impossível de surpreender",
+                    "Ataques furtivos não funcionam",
+                    "+10 CA contra ataques físicos",
+                    "Pode contra-atacar qualquer ataque corpo-a-corpo automaticamente"
+                  ]
+                },
+                "precognition_light": {
+                  "description": "Pode prever movimentos ao ver luz refletir antes de ações acontecerem",
+                  "effect": "Age primeiro em qualquer iniciativa, pode interromper ações inimigas"
+                },
+                "tactical_omniscience": {
+                  "description": "Vê posição exata de todos inimigos e aliados em campo de batalha",
+                  "effect": "Grupo recebe +5 em coordenação, emboscadas impossíveis"
+                }
+              },
+              "drawback": "Sobrecarga sensorial após desativar: -6 Sabedoria por 30 minutos",
+              "beatification_synergy": "Beatificação 10: Pode usar indefinidamente sem penalidade",
+              "narrative": "Olhos brilham com luz de mil estrelas; vê tudo através da tapeçaria luminosa da realidade"
+            },
+            "capstone_passive": {
+              "name": "Mestre da Refração",
+              "description": "Controle absoluto sobre luz, posição e percepção",
+              "effects": [
+                "Pode se teletransportar para qualquer ponto iluminado instantaneamente (30 EL)",
+                "Mantém 3 clones ilusórios perfeitos permanentemente sem custo",
+                "Imune a todos efeitos visuais hostis (cegueira, ilusões, etc)",
+                "Pode ver através dos olhos de aliados à distância",
+                "Todos aliados em 50m ganham benefícios de Olho Estelar reduzidos",
+                "Uma vez por dia: pode reescrever eventos dos últimos 6 segundos usando refração temporal"
+              ]
+            }
+          }
+        },
+
+        {
+          "id": "luminancia",
+          "name": "Caminho da Restauração - Luminância",
+          "focus": "Cura suprema, proteção divina e criação através da luz benevolente",
+          "philosophy": "A luz não destrói - purifica, restaura e cria. Cada fóton carrega potencial de vida renovada.",
+          "deeper_philosophy": {
+            "core_tenet": "A luz é o princípio criativo do universo. Cada fóton carrega não apenas energia, mas a semente da vida e da esperança.",
+            "healing_as_creation": "Curar não é apenas reparar - é recriar, melhorar, elevar. Cada ato de cura é um ato de criação divina.",
+            "light_as_love": "A luz luminosa é amor manifestado. Quanto mais puro o amor, mais poderosa a luz que se manifesta.",
+            "cosmic_motherhood": "A luz luminosa é a mãe cósmica que nutre, protege e cria. Estrelas são úteros onde novas possibilidades nascem.",
+            "redemption_through_healing": "Não há ser tão corrompido que não possa ser curado. A luz luminosa acredita na redenção de todas as coisas.",
+            "creation_as_sacred_duty": "Criar vida e beleza não é opcional - é o dever sagrado de quem carrega a luz. O universo espera que sejamos seus jardineiros."
+          },
+          "transformation_narrative": {
+            "level_71_awakening": "O primeiro uso de Cura Radiante marca uma mudança profunda. O usuário sente cada vida que toca como se fosse sua própria - a dor dos outros se torna sua dor, mas também sua alegria.",
+            "level_81_ascension": "Arquitetura Estelar revela a verdadeira natureza do caminho: não se trata de curar indivíduos, mas de criar santuários onde a vida pode florescer. O usuário torna-se um jardineiro cósmico.",
+            "level_91_transcendence": "Domínio Solar Total é o momento de maior vulnerabilidade e maior poder. O usuário não apenas usa luz - torna-se um canal puro através do qual a luz criativa do universo flui. A responsabilidade de nutrir toda vida se torna absoluta.",
+            "psychological_toll": "Cada ato de cura deixa uma marca de amor na alma. Usuários de Luminância desenvolvem uma sensibilidade extrema ao sofrimento, mas também uma alegria profunda ao ver outros florescerem. O peso de ser responsável pela vida de tantos pode ser esmagador.",
+            "social_impact": "Comunidades veem usuários de Luminância como santos vivos - fontes de esperança e renovação. Sua presença significa que nenhuma ferida é incurável, nenhuma vida é perdida. Mas também significa que todos esperam que sejam perfeitos.",
+            "beatification_challenges": "Manter Beatificação alta enquanto se especializa em cura requer compaixão infinita. Cada vida não salva pesa na consciência. A tentação de usar poder para benefício pessoal é constante, mas cada ato egoísta corrompe a pureza da luz."
+          },
+          "ultimate_techniques": {
+            "cosmic_garden": {
+              "name": "Jardim Cósmico",
+              "unlock_requirement": "Beatificação 9+, nível 95+",
+              "description": "Transforma uma área em um santuário vivo onde todas as formas de vida florescem",
+              "mechanics": "Área de 1km de raio; todas as plantas crescem 100x mais rápido, animais se tornam pacíficos, doenças são curadas automaticamente, e a área se torna imune a corrupção.",
+              "narrative": "O solo brilha com luz dourada, flores impossíveis desabrocham, e até as pedras ganham vida. O local se torna um pedaço do paraíso na Terra."
+            },
+            "stellar_incubator": {
+              "name": "Incubadora Estelar",
+              "unlock_requirement": "Beatificação 10, nível 100",
+              "description": "Cria uma estrela em miniatura que pode gerar vida inteligente",
+              "mechanics": "Cria uma estrela de 10m de diâmetro que pode gerar seres de luz semi-inteligentes. Estes seres são leais ao criador e podem ser programados para tarefas específicas. A estrela dura indefinidamente se mantida.",
+              "narrative": "Uma nova estrela nasce nas mãos do usuário, e dela emergem seres de luz pura que chamam o criador de 'mãe' ou 'pai'."
+            },
+            "resurrection_well": {
+              "name": "Poço da Ressurreição",
+              "unlock_requirement": "Beatificação 8+, nível 90+",
+              "description": "Cria uma fonte de luz que pode trazer mortos de volta à vida",
+              "mechanics": "Cria uma fonte de 3m de diâmetro que pode reviver até 10 mortos por dia. Os revividos retornam com 100% HP e sem condições negativas, mas devem passar em teste de Sabedoria ou ficam permanentemente ligados ao usuário.",
+              "narrative": "Águas douradas borbulham da fonte, e dela emergem os mortos como se estivessem apenas dormindo, renovados e purificados."
+            }
+          },
+          "path_specific_challenges": {
+            "burden_of_healing": "O usuário deve escolher entre salvar um aliado querido ou salvar muitos desconhecidos, sabendo que não pode salvar todos.",
+            "temptation_of_power": "A facilidade de curar pode levar à dependência dos outros. O usuário deve encontrar formas de ensinar em vez de apenas curar.",
+            "perfectionism_paralysis": "O medo de falhar pode paralisar. O usuário deve aprender que às vezes a cura vem através da aceitação, não da mudança.",
+            "isolation_of_purity": "A pureza necessária para manter Beatificação alta pode afastar outros. O usuário deve encontrar formas de se conectar sem se corromper."
+          },
+          "famous_users": {
+            "lumina_the_eternal": "Lendária curandeira que manteve uma cidade viva por mil anos, mas nunca conseguiu curar sua própria solidão.",
+            "stellar_gardener": "Místico que transformou um deserto em paraíso, mas pagou o preço de se tornar mais planta que humano.",
+            "resurrection_saint": "Santo que trouxe milhares de mortos de volta à vida, mas cada ressurreição o deixou mais distante da humanidade."
+          },
+          "aesthetic": "Luz dourada suave, auras reconfortantes, construções luminosas orgânicas",
+
+          "tier_71_80": {
+            "primary_ability": {
+              "name": "Cura Radiante",
+              "unlock_level": 71,
+              "description": "Cura instantânea de grupos e purificação espiritual profunda.",
+              "cost": "90 EL + 30 RA",
+              "area": "Raio de 20 metros centrado no conjurador",
+              "healing": "10d10 + (Beatificação × 15) para cada aliado",
+              "additional_effects": {
+                "purification": [
+                  "Remove todas condições: veneno, doença, cegueira, surdez, paralisia",
+                  "Purga maldições de até nível 70",
+                  "Limpa corrupção: reduz Corrupção em 10 pontos",
+                  "Restaura membros perdidos recentemente (até 24 horas)"
+                ],
+                "spiritual": [
+                  "Aumenta Beatificação de aliados em +1 temporariamente (1 hora)",
+                  "Remove traumas mentais menores",
+                  "Concede sensação de paz profunda: imunidade a medo por 1 hora"
+                ],
+                "tactical": [
+                  "Revive aliados inconscientes com 50% HP",
+                  "Concede regeneração: +3d8 por turno por 5 turnos",
+                  "Buff defensivo: +3 CA por 10 minutos"
+                ]
+              },
+              "mass_healing": "Afeta até 20 alvos simultâneos",
+              "narrative": "Luz dourada cálida envolve todos aliados; feridas fecham, doenças evaporam, esperança renasce"
+            },
+            "passive_improvements": [
+              "Campo Solar cura 4d10 por turno (dobrado)",
+              "Sopro Estelar (regenerador) tem alcance dobrado",
+              "Cura passiva: aliados em 10m regeneram 1d6 HP por turno",
+              "Aura permanente: +2 em salvaguardas de todos aliados em 15m"
+            ]
+          },
+
+          "tier_81_90": {
+            "primary_ability": {
+              "name": "Arquitetura Estelar",
+              "unlock_level": 81,
+              "description": "Cria corpos celestes em miniatura: estrelas, pulsares e construções astronômicas vivas.",
+              "cost": "Varia por criação (80-200 EL + 40-100 RA)",
+              "duration": "Permanente até destruição ou dissipação voluntária",
+              "creations": {
+                "estrela_curativa": {
+                  "cost": "100 EL + 50 RA",
+                  "size": "1 metro de diâmetro",
+                  "effects": [
+                    "Flutua e segue comandos do conjurador",
+                    "Emite aura de cura: 2d10 para todos em 10m por turno",
+                    "Fonte de luz que dissipa trevas mágicas",
+                    "Pode explodir em emergência: 8d10 radiante + cura 6d10 aliados"
+                  ],
+                  "duration": "Até 1 hora ou explosão"
+                },
+                "pulsar_protetor": {
+                  "cost": "120 EL + 60 RA",
+                  "size": "2 metros de diâmetro",
+                  "effects": [
+                    "Pulsa em ondas defensivas a cada 3 segundos",
+                    "Cada pulso: escudo de 30 HP em todos aliados em 15m",
+                    "Pulsos empurram inimigos para trás (5m)",
+                    "Desvia projéteis automaticamente"
+                  ],
+                  "duration": "Até 30 minutos"
+                },
+                "constelacao_guardia": {
+                  "cost": "200 EL + 100 RA",
+                  "composition": "3-7 pequenas estrelas conectadas",
+                  "effects": [
+                    "Forma padrão geométrico protetor ao redor de área",
+                    "Cria barreira impenetrável de luz entre estrelas",
+                    "Interior: santuário perfeito (cura contínua, sem magia hostil)",
+                    "Pode ser expandida ou contraída dinamicamente"
+                  ],
+                  "duration": "Até 1 hora",
+                  "tactical": "Transforma localização em fortaleza móvel"
+                }
+              },
+              "advanced_mechanic": "Pode ter múltiplas criações ativas; número limitado por Reserva Astral disponível",
+              "narrative": "Invoca fragmentos do cosmos; estrelas em miniatura nascem de luz concentrada"
+            },
+            "passive_improvements": [
+              "Cura Radiante pode ser usada 2x antes de cooldown",
+              "Todas curas aumentam em +50%",
+              "Espectro Prisional regenera HP de aliados dentro dele",
+              "Imunidade pessoal: não pode ser morto enquanto tiver RA (revive com 1 HP)"
+            ]
+          },
+
+          "tier_91_100": {
+            "primary_ability": {
+              "name": "Domínio Solar Total",
+              "unlock_level": 91,
+              "description": "Une-se à luz cósmica, manipulando energia de astros reais para milagres supremos.",
+              "cost": "300 EL + 150 RA (ativação) + variável por milagre",
+              "duration": "Até 10 minutos",
+              "transformation": {
+                "appearance": "Corpo brilha com luz de mil sóis; aura dourada celestial de 50m",
+                "nature": "Torna-se temporariamente entidade de luz pura com poder de criação"
+              },
+              "miracles_available": {
+                "ressurreicao_massiva": {
+                  "cost": "100 RA por alvo",
+                  "effect": "Revive mortos há até 7 dias com 100% HP",
+                  "limitation": "Máximo 10 alvos simultâneos",
+                  "requirement": "Almas devem estar dispostas a retornar"
+                },
+                "regeneracao_completa": {
+                  "cost": "50 RA",
+                  "effect": "Regenera completamente corpo de alvo, incluindo membros, órgãos, cura doenças incuráveis",
+                  "special": "Pode reverter envelhecimento em até 20 anos"
+                },
+                "criacao_de_vida": {
+                  "cost": "200 RA",
+                  "effect": "Cria ser de luz semi-inteligente permanente",
+                  "options": "Guardião protetor, mensageiro celestial, ou familiar luminoso",
+                  "loyalty": "Leal ao criador absolutamente"
+                },
+                "sanctuario_eterno": {
+                  "cost": "150 RA",
+                  "effect": "Transforma área de 100m em terreno sagrado permanente",
+                  "benefits": [
+                    "Mal não pode entrar sem convite",
+                    "Cura passiva 5d10 por hora para todos dentro",
+                    "Plantas crescem 10x mais rápido",
+                    "Água torna-se curativa",
+                    "Aumenta Beatificação de residentes em +1 por mês"
+                  ],
+                  "permanence": "Dura décadas ou até profanação ativa"
+                },
+                "eclipse_divino": {
+                  "cost": "250 RA",
+                  "effect": "Cria eclipse artificial que purifica continente inteiro",
+                  "mechanics": "Luz filtrada do eclipse remove corrupção, cura doenças em massa, revigora natureza",
+                  "duration": "Eclipse dura 1 hora; efeitos permanentes",
+                  "magnitude": "Evento que afeta milhões"
+                }
+              },
+              "drawback": "Após desativar, entra em coma por 24 horas (corpo regenera energia cósmica)",
+              "beatification_requirement": "Requer Beatificação 8+ para usar; 10 remove coma",
+              "narrative": "Ascende temporariamente a estado quasi-divino; torna-se avatar da própria Luz"
+            },
+            "capstone_passive": {
+              "name": "Vetor de Luz Universal",
+              "description": "Onde há luz, há sua presença e poder",
+              "effects": [
+                "Pode manifestar consciência em qualquer ponto iluminado no planeta",
+                "Cura qualquer aliado que esteja sob luz (alcance planetário, 50 EL)",
+                "Absorve luz constantemente: +10 EL e +5 RA por turno automático durante dia",
+                "Imunidade absoluta: não pode morrer permanentemente enquanto luz existir (ressurreição automática após 7 dias)",
+                "Pode criar até 5 Arquiteturas Estelares simultâneas sem custo de manutenção",
+                "Concede bênção permanente: 3 alvos escolhidos têm regeneração de 2d10 por turno eternamente",
+                "Uma vez por mês: pode realizar um Domínio Solar Total sem custo ou consequências"
+              ],
+              "transcendence": "Efetivamente se torna entidade celestial menor, guardião da luz"
+            }
+          }
+        }
+      ]
+    },
+
+    "expansao_cosmica": {
+      "unlock_level": 70,
+      "name": "Expansão Cósmica",
+      "description": "Após nível 70, usuário ganha capacidade de manipular luz de estrelas, sóis e luas, podendo gerar astros luminosos em miniatura e interferir em ciclos planetários.",
+      
+      "abilities_unlocked": {
+        "manipulacao_astral": {
+          "description": "Pode canalizar diretamente luz de corpos celestes reais",
+          "applications": [
+            "Absorver poder de estrelas distantes",
+            "Redirecionar luz lunar para efeitos específicos",
+            "Intensificar ou diminuir luz solar localmente",
+            "Criar conexões com constelações específicas"
+          ]
+        },
+        "ciclos_planetarios": {
+          "description": "Influência sobre ritmos naturais regidos por luz",
+          "effects": [
+            "Pode acelerar ou retardar crescimento de plantas em área",
+            "Influencia marés através de manipulação lunar",
+            "Altera percepção de tempo através de mudança em luz diurna",
+            "Pode forçar 'dia' ou 'noite' artificial em região limitada"
+          ],
+          "limitations": "Efeitos duram horas, não permanentes; requerem RA substancial"
+        },
+        "astros_miniaturizados": {
+          "description": "Criação de corpos celestes funcionais em escala reduzida",
+          "unlocked_by": "Arquitetura Estelar (nível 81+)",
+          "capabilities": "Ver seção Arquitetura Estelar para detalhes"
+        }
+      },
+
+      "culmination_level_100": {
+        "title": "Vetor de Luz Universal",
+        "description": "Onde há luz, há sua presença",
+        "manifestation": "Usuário transcende limitações físicas, tornando-se um com toda luz existente",
+        "practical_meaning": [
+          "Onipresença luminosa: consciência estende-se através de toda luz",
+          "Pode agir simultaneamente em múltiplas localizações iluminadas",
+          "Luz natural do mundo reconhece e obedece",
+          "Inimigos em qualquer área iluminada estão em seu domínio"
+        ]
+      }
+    },
+
+    "combat_mechanics": {
+      "action_economy": {
+        "standard_casting": "Maioria das habilidades: 1 ação padrão",
+        "quick_abilities": [
+          "Luz Manifestada (menor)",
+          "Raios Concentrados",
+          "Passagem Fotônica (reação após nível 33)"
+        ],
+        "concentration_spells": [
+          "Campo Solar",
+          "Espectro Prisional",
+          "Labirinto de Luz",
+          "Refração Direcional"
+        ],
+        "full_round": [
+          "Sopro Estelar",
+          "Chuva de Fótons",
+          "Domínio Solar Total (ativação)"
+        ]
+      },
+
+      "damage_types": {
+        "primary": "Radiante",
+        "secondary": "Calor/Fogo (de luz concentrada)",
+        "special": "Dano puro de luz (ignora resistências em Beatificação alta)"
+      },
+
+      "effectiveness_by_target": {
+        "highly_effective": {
+          "targets": ["Mortos-vivos", "Demônios", "Criaturas das trevas", "Vampiros"],
+          "bonus": "Dano dobrado, efeitos ampliados",
+          "special": "Mortos-vivos menores podem ser desintegrados instantaneamente"
+        },
+        "normally_effective": {
+          "targets": ["Maioria das criaturas vivas", "Constructos", "Elementais"],
+          "bonus": "Dano normal"
+        },
+        "reduced_effectiveness": {
+          "targets": ["Criaturas de luz pura", "Celestiais", "Certos anjos"],
+          "penalty": "Podem ter resistência ou imunidade",
+          "note": "Beatificação alta pode superar isto"
+        },
+        "ineffective": {
+          "targets": ["Sombras primordiais puras", "Vácuo absoluto"],
+          "note": "Mesmo assim, Beatificação 9+ pode afetar"
+        }
+      },
+
+      "tactical_considerations": {
+        "positioning": "Sempre considerar fontes de luz para Passagem Fotônica e Luz Transversal",
+        "resource_management": "Balancear EL e RA; RA é mais limitado mas mais poderoso",
+        "beatification_maintenance": "Ações em combate afetam Beatificação - evitar crueldade",
+        "combo_potential": [
+          "Luz Manifestada + Luz Transversal = mobilidade tática criada",
+          "Campo Solar + Espectro Prisional = prisão que mata inimigo dentro",
+          "Refração + Raios Concentrados = ataques de ângulos impossíveis",
+          "Labirinto de Luz + Chuva de Fótons = massacre de inimigos desorientados"
+        ]
+      }
+    },
+
+    "interaction_systems": {
+      "with_beatification": {
+        "description": "Beatificação é THE multiplicador desta magia",
+        "scaling_formula": "Todas habilidades: Poder Base × (1 + Beatificação/5)",
+        "threshold_bonuses": {
+          "5": "Cura e proteção +25%",
+          "7": "Luz Vivente ativa, Luz da Verdade",
+          "9": "Criação de astros, autonomia mágica",
+          "10": "Custo zero, poder infinito"
+        },
+        "synergy": "Quanto mais puro o usuário, mais poderosa cada habilidade se torna"
+      },
+
+      "with_corruption": {
+        "inverse_relationship": "Corrupção reduz poder de Luz drasticamente",
+        "penalties_by_corruption": {
+          "1-20": "Sem penalidade significativa",
+          "21-40": "-10% eficácia em habilidades de luz",
+          "41-60": "-30% eficácia, dor ao usar luz intensa",
+          "61-80": "-60% eficácia, vulnerabilidade +50% a luz própria",
+          "81-95": "-85% eficácia, risco de queimar-se com própria luz",
+          "96-100": "Luz rejeita completamente, não funciona"
+        },
+        "redemption_path": "Luz pode ser usada para purgar própria Corrupção (doloroso, difícil)"
+      },
+
+      "with_other_magics": {
+        "synergistic": {
+          "water": "Luz através de água cria efeitos prismáticos amplificados; cura melhorada",
+          "plants": "Luz acelera crescimento, pode criar plantas luminescentes",
+          "air": "Luz através de ar permite maior alcance e velocidade",
+          "sobrenatural": "Combinação cria efeitos celestiais/divinos poderosos"
+        },
+        "neutral": {
+          "earth": "Sem interação especial",
+          "metal": "Metais refletem/conduzem luz normalmente",
+          "thunder": "Podem ser combinados para relâmpagos luminosos"
+        },
+        "antagonistic": {
+          "shadows/darkness": "Cancelamento mútuo, batalha de supremacia",
+          "blood": "Luz pode purificar magia de sangue, mas é repelida por ela",
+          "fire_dark": "Fogo negro/profano resiste a luz"
+        }
+      },
+
+      "with_environment": {
+        "amplified_in": [
+          "Luz do dia direta: +25% poder, -30% custo",
+          "Locais sagrados: +30% eficácia",
+          "Áreas com cristais/prismas: efeitos visuais amplificados",
+          "Céu limpo estrelado: +15% regeneração RA"
+        ],
+        "normal_in": [
+          "Ambientes internos iluminados",
+          "Luz artificial/mágica",
+          "Áreas neutras"
+        ],
+        "hindered_in": [
+          "Escuridão natural: -15% poder",
+          "Trevas mágicas: -30% poder, dobro de custo",
+          "Locais profanos: -40% eficácia",
+          "Abismo/vácuo: -60% poder"
+        ],
+        "nullified_in": [
+          "Zonas de anti-magia absoluta",
+          "Escuridão primordial pura (raro)",
+          "Interior de divindades sombrias"
+        ]
+      }
+    },
+
+    "progression_guide": {
+      "early_game_1_20": {
+        "focus": "Dominar fundamentos e estabelecer Beatificação",
+        "key_abilities": ["Luz Manifestada", "Corpo Luminar", "Refração Direcional"],
+        "tactical_role": "Suporte utilitário, iluminação, controle leve",
+        "beatification_building": "Focar em ações heroicas pequenas mas consistentes",
+        "tips": [
+          "Use Luz Manifestada criativamente para resolver problemas",
+          "Refração é sua primeira ferramenta tática real",
+          "Mantenha Beatificação crescendo com boas ações",
+          "Economize EL; regeneração é lenta neste tier"
+        ]
+      },
+
+      "mid_game_21_50": {
+        "focus": "Tornar-se combatente efetivo e expandir utilidade",
+        "key_abilities": ["Raios Concentrados", "Luz Transversal", "Campo Solar"],
+        "tactical_role": "DPS secundário, mobilidade de grupo, cura moderada",
+        "beatification_goal": "Atingir 5-6 para bônus significativos",
+        "tips": [
+          "Raios Concentrados são seu DPS principal",
+          "Luz Transversal revoluciona mobilidade",
+          "Campo Solar em nível 42 transforma você em suporte vital",
+          "Comece a planejar especialização (nível 71)"
+        ]
+      },
+
+      "late_game_51_70": {
+        "focus": "Preparação para especialização e poder cósmico",
+        "key_abilities": ["Espectro Prisional", "Sopro Estelar", "Domínio Solar Parcial"],
+        "tactical_role": "Versátil - pode cobrir múltiplos papéis",
+        "beatification_goal": "7+ para Luz Vivente e benefícios avançados",
+        "tips": [
+          "Espectro Prisional controla campo de batalha",
+          "Sopro Estelar é sua primeira habilidade 'ultimate'",
+          "Nível 70: Expansão Cósmica muda paradigma de recursos",
+          "Considere cuidadosamente escolha de especialização nível 71"
+        ]
+      },
+
+      "endgame_71_100": {
+        "focus": "Domínio da especialização escolhida",
+        "key_abilities": "Dependem do caminho",
+        "paths": {
+          "fotolise": "Torne-se assassino de luz, destruidor supremo",
+          "refracao": "Controle absoluto de campo, onipresença tática",
+          "luminancia": "Curador definitivo, criador de vida"
+        },
+        "beatification_goal": "9-10 para transcendência",
+        "tips": [
+          "Especialização define seu papel endgame",
+          "Beatificação 9+ desbloqueia poder quasi-divino",
+          "Nível 100: você se torna força da natureza",
+          "Considere impacto narrativo - você pode alterar mundo"
+        ]
+      }
+    },
+
+    "rp_considerations": {
+      "moral_weight": {
+        "description": "Magia de Luz não é neutra - julga usuário constantemente",
+        "implications": [
+          "Cada ação afeta Beatificação",
+          "Usar luz para mal enfraquece poder",
+          "Pureza não é opcional para máximo poder",
+          "Cria dilemas morais constantes"
+        ],
+        "narrative_opportunities": [
+          "Jornada de redenção através da luz",
+          "Luta interna contra tentação/corrupção",
+          "Escolhas impossíveis: bem maior vs. pureza pessoal",
+          "Transformação gradual em entidade celestial"
+        ]
+      },
+
+      "visual_signature": {
+        "general": "Sempre luminosa, nunca sutil quando em poder",
+        "by_beatification": {
+          "0-2": "Luz pálida, instável",
+          "3-5": "Luz clara, firme",
+          "6-7": "Luz dourada, brilho constante",
+          "8-9": "Aura radiante, presença iluminada",
+          "10": "Luz viva, quase ofuscante mesmo em repouso"
+        },
+        "by_specialization": {
+          "fotolise": "Luz branca-azulada intensa, feixes perfurantes",
+          "refracao": "Arco-íris prismáticos, ilusões multi-coloridas",
+          "luminancia": "Dourado suave, auras reconfortantes"
+        }
+      },
+
+      "social_impact": {
+        "recognition": "Usuários de luz são facilmente identificáveis",
+        "reputation_effects": {
+          "high_beatification": [
+            "Reverenciado por facções bondosas",
+            "Temido por criaturas malignas",
+            "Visto como santo/a por populações",
+            "Pode atrair seguidores devotos"
+          ],
+          "low_beatification": [
+            "Desconfiança - 'luz falsa'",
+            "Pode ser confundido com charlatão",
+            "Dificuldade em ganhar confiança de bons"
+          ]
+        },
+        "story_hooks": [
+          "Pedidos de cura de aldeias",
+          "Convocação para combater pragas de mortos-vivos",
+          "Peregrinações a locais sagrados",
+          "Confrontos com usuários de trevas",
+          "Ofertas para se tornar líder religioso"
+        ]
+      },
+
+      "character_archetypes": {
+        "paladin_luminoso": {
+          "focus": "Combate e proteção",
+          "beatification_target": "7-8",
+          "recommended_path": "Fotólise ou Luminância",
+          "style": "Guerreiro sagrado, punindo mal com luz"
+        },
+        "curandeiro_dedicado": {
+          "focus": "Suporte e cura",
+          "beatification_target": "8-10",
+          "recommended_path": "Luminância",
+          "style": "Santo, médico milagroso"
+        },
+        "tacitco_ilusionista": {
+          "focus": "Controle e estratégia",
+          "beatification_target": "5-7",
+          "recommended_path": "Refração",
+          "style": "Mestre da manipulação luminosa"
+        },
+        "avatar_solar": {
+          "focus": "Poder bruto",
+          "beatification_target": "9-10",
+          "recommended_path": "Fotólise",
+          "style": "Destruidor divino, sol encarnado"
+        },
+        "redimido": {
+          "focus": "Redenção de passado sombrio",
+          "beatification_target": "Começa 0-2, busca 7+",
+          "recommended_path": "Qualquer",
+          "style": "Ex-corrupto lutando pela luz"
+        }
+      }
+    },
+
+    "advanced_techniques": {
+      "combos_avancados": [
+        {
+          "name": "Prisão Solar Mortal",
+          "components": ["Espectro Prisional", "Campo Solar"],
+          "execution": "Aprisiona inimigo em Espectro, ativa Campo Solar dentro",
+          "result": "Inimigo queima sem possibilidade de fuga",
+          "cost": "110 EL + 10/turno",
+          "counter": "Resistência a radiante ou força bruta para quebrar prisão"
+        },
+        {
+          "name": "Emboscada Impossível",
+          "components": ["Labirinto de Luz", "Múltiplas Refrações", "Raios Concentrados"],
+          "execution": "Cria labirinto, posiciona miragens, ataca de todos ângulos",
+          "result": "Inimigo não sabe de onde vêm ataques reais",
+          "requerimento": "Nível 71+ Caminho Refração"
+        },
+        {
+          "name": "Ressurreição em Combate",
+          "components": ["Cura Radiante", "Sopro Estelar (regenerador)"],
+          "execution": "Cura Radiante revive, Sopro dá regeneração imediata",
+          "result": "Aliado retorna com HP e regeneração ativa",
+          "cost": "170 EL + 50 RA",
+          "timing": "Requer 2 turnos completos"
+        },
+        {
+          "name": "Feixe Portal",
+          "components": ["Raios Concentrados", "Luz Transversal"],
+          "execution": "Dispara raio, usa-o como portal para aparecer atrás de inimigo",
+          "result": "Ataque surpresa de ângulo impossível + reposicionamento",
+          "cost": "45 EL",
+          "advantage": "Ataque tem vantagem por surpresa"
+        },
+        {
+          "name": "Bombardeio Coordenado",
+          "components": ["Arquitetura Estelar (múltiplas)", "Chuva de Fótons"],
+          "execution": "Posiciona estrelas em padrão, ativa bombardeio através delas",
+          "result": "Área inteira vira zona de morte luminosa",
+          "requerimento": "Nível 81+ Luminância",
+          "devastation": "Pode aniquilar exércitos"
+        }
+      ],
+
+      "tecnicas_maestria": {
+        "description": "Técnicas que só mestres verdadeiros (90+) podem executar",
+        "techniques": [
+          {
+            "name": "Luz Condensada",
+            "level": 90,
+            "description": "Comprime luz em singularidade que explode",
+            "execution": "Concentra toda energia em ponto minúsculo, depois libera",
+            "cost": "Todo EL e RA disponível",
+            "damage": "Proporcional a energia investida, pode exceder 50d12",
+            "drawback": "Fica sem recursos após uso"
+          },
+          {
+            "name": "Clone Luminoso Perfeito",
+            "level": 93,
+            "path": "Refração",
+            "description": "Cria clone com consciência e habilidades completas",
+            "duration": "Até 1 hora",
+            "capability": "Clone pode usar todas habilidades do original",
+            "cost": "200 EL + 100 RA",
+            "limitation": "Se clone morrer, original sofre 50% do dano"
+          },
+          {
+            "name": "Supernova Pessoal",
+            "level": 95,
+            "path": "Fotólise",
+            "description": "Auto-explosão controlada seguida de reconstituição",
+            "damage": "20d12 radiante em 30m de raio",
+            "survival": "Reconstitui-se de luz residual após 1 turno",
+            "cost": "250 EL + 150 RA",
+            "beatification_requirement": "9+ ou morre de verdade"
+          }
+        ]
+      }
+    },
+
+    "limitations_weaknesses": {
+      "hard_counters": [
+        {
+          "counter": "Anti-magia absoluta",
+          "effect": "Anula completamente poderes de luz",
+          "workaround": "Nenhum exceto Beatificação 10 (transcende magia normal)"
+        },
+        {
+          "counter": "Trevas Primordiais",
+          "effect": "Cancela luz, causa dano ao usuário",
+          "workaround": "Beatificação alta reduz dano; Fotólise nível 100 pode combater"
+        },
+        {
+          "counter": "Vácuo absoluto",
+          "effect": "Sem meio para luz se propagar eficientemente",
+          "workaround": "Expansão Cósmica permite manipulação astral direta"
+        },
+        {
+          "counter": "Corrupção massiva",
+          "effect": "Envenena conexão com luz",
+          "workaround": "Purificação dolorosa ou rejeição total"
+        }
+      ],
+
+      "soft_counters": [
+        {
+          "counter": "Ambientes escuros",
+          "effect": "Reduz eficácia e aumenta custo",
+          "mitigation": "Criar próprias fontes de luz"
+        },
+        {
+          "counter": "Resistência a radiante",
+          "effect": "Reduz dano",
+          "mitigation": "Beatificação alta ignora resistências; Fotólise ignora imunidades"
+        },
+        {
+          "counter": "Ataques mentais/ilusórios",
+          "effect": "Luz não protege mente diretamente",
+          "mitigation": "Luz da Verdade (Beatificação 7+) concede alguma proteção"
+        }
+      ],
+
+      "situational_weaknesses": [
+        "Necessita fontes de luz para máximo poder",
+        "Habilidades mais poderosas têm cooldowns",
+        "Dependência de Beatificação cria vulnerabilidade moral",
+        "Luz sempre é visível - furtividade impossível quando usando poder",
+        "RA é recurso limitado e recuperação é lenta",
+        "Transformações poderosas têm drawbacks severos"
+      ],
+
+      "strategic_vulnerabilities": [
+        "Pode ser manipulado através de dilemas morais (afetar Beatificação)",
+        "Inimigos podem apagar fontes de luz ambientais",
+        "Concentração pode ser quebrada interrompendo habilidades chave",
+        "Exaustão após habilidades supremas cria janela de vulnerabilidade"
+      ]
+    },
+
+    "itemization": {
+      "recommended_equipment": {
+        "weapons": [
+          {
+            "item": "Cetro Solar",
+            "bonus": "+3 em ataques de luz, +20% dano radiante",
+            "special": "Pode armazenar 50 EL adicional"
+          },
+          {
+            "item": "Lâmina Fotônica",
+            "bonus": "Espada que causa +2d8 radiante adicional",
+            "special": "Pode ser lançada como Raio Concentrado (retorna magicamente)"
+          }
+        ],
+        "armor": [
+          {
+            "item": "Manto Prismático",
+            "bonus": "+2 CA, vantagem contra ataques à distância",
+            "special": "Refrata luz automaticamente (como Corpo de Prisma melhorado)"
+          },
+          {
+            "item": "Armadura Luminescente",
+            "bonus": "+3 CA, imunidade a cegueira",
+            "special": "Emite luz própria, +30 EL máximo"
+          }
+        ],
+        "accessories": [
+          {
+            "item": "Coroa de Beatificação",
+            "bonus": "+1 Beatificação permanente",
+            "requirement": "Beatificação 7+ para usar",
+            "special": "Previne perda acidental de Beatificação 1x por dia"
+          },
+          {
+            "item": "Anel do Olho Solar",
+            "bonus": "Visão verdadeira permanente",
+            "special": "Pode ver através de ilusões e trevas mágicas"
+          },
+          {
+            "item": "Amuleto Astral",
+            "bonus": "+50 RA máximo",
+            "special": "Dobra velocidade de absorção de luz astral"
+          }
+        ],
+        "consumables": [
+          {
+            "item": "Frasco de Luz Solar",
+            "effect": "Restaura 100 EL instantaneamente",
+            "rarity": "Comum em templos sagrados"
+          },
+          {
+            "item": "Cristal de Estrela Cadente",
+            "effect": "Concede +50 RA por 1 hora",
+            "rarity": "Raro, obtido de meteoritos"
+          },
+          {
+            "item": "Pó de Prisma",
+            "effect": "Próxima magia de luz tem alcance e área dobrados",
+            "rarity": "Incomum, fabricável por alquimistas"
+          }
+        ]
+      }
+    },
+
+    "training_progression": {
+      "learning_curve": {
+        "1-20": "Moderada - fundamentos são intuitivos",
+        "21-50": "Íngreme - técnicas complexas requerem prática",
+        "51-70": "Moderada - consolidação de poder",
+        "71-100": "Variável - depende do caminho escolhido"
+      },
+
+      "training_methods": [
+        {
+          "method": "Meditação Solar",
+          "description": "Meditar sob sol direto para aumentar conexão",
+          "benefit": "+2% velocidade de progressão EL/RA",
+          "time": "1 hora diária"
+        },
+        {
+          "method": "Prática de Refração",
+          "description": "Manipular prismas e espelhos para entender luz",
+          "benefit": "Facilita aprendizado de Refração Direcional",
+          "requirement": "Materiais ópticos"
+        },
+        {
+          "method": "Atos de Virtude",
+          "description": "Realizar boas ações conscientemente",
+          "benefit": "Aumenta Beatificação naturalmente",
+          "frequency": "Constante"
+        },
+        {
+          "method": "Estudo Astronômico",
+          "description": "Aprender sobre estrelas e cosmos",
+          "benefit": "Prepara para Expansão Cósmica",
+          "requirement": "Acesso a biblioteca ou mentor"
+        }
+      ]
+    },
+
+    "beatification_journey": {
+      "overview": "A jornada de Beatificação é uma transformação espiritual profunda que afeta não apenas as habilidades mágicas, mas a própria essência do personagem. Cada nível representa uma mudança fundamental na relação com a luz e com o mundo.",
+      
+      "level_0": {
+        "name": "Início da Jornada",
+        "description": "O personagem ainda não começou sua jornada espiritual ou está profundamente corrompido",
+        "character_state": {
+          "appearance": "Luz parece fraca e instável, quase apagando",
+          "personality": "Egoísta, desconfiado, ou simplesmente indiferente ao bem",
+          "magic_manifestation": "Luz tremula como chama ao vento, cores pálidas",
+          "social_impact": "Outros sentem desconforto na presença do personagem"
+        },
+        "key_moments": [
+          "Primeiro ato genuinamente altruísta",
+          "Reconhecimento de que o poder deve servir a algo maior",
+          "Primeira vez que escolhe o bem sobre o benefício pessoal"
+        ],
+        "challenges": [
+          "Superar o egoísmo natural",
+          "Aprender a confiar em outros",
+          "Encontrar propósito além de si mesmo"
+        ],
+        "narrative_hooks": [
+          "Um mendigo pede ajuda - o personagem pode dar sua última moeda ou ignorar",
+          "Um aliado está em perigo - o personagem pode arriscar sua vida ou fugir",
+          "Uma oportunidade de poder surge - o personagem pode usá-la para si ou para outros"
+        ]
+      },
+
+      "level_1_2": {
+        "name": "Despertar da Consciência",
+        "description": "O personagem começa a entender que há algo maior que si mesmo",
+        "character_state": {
+          "appearance": "Luz ganha estabilidade, brilho mais constante",
+          "personality": "Começa a questionar motivações egoístas",
+          "magic_manifestation": "Luz responde melhor a intenções puras",
+          "social_impact": "Alguns começam a confiar no personagem"
+        },
+        "key_moments": [
+          "Primeira vez que salva alguém sem esperar recompensa",
+          "Reconhecimento de que suas ações afetam outros",
+          "Primeira vez que rejeita poder corrupto"
+        ],
+        "challenges": [
+          "Lutar contra impulsos egoístas",
+          "Aprender a perdoar",
+          "Encontrar equilíbrio entre auto-preservação e altruísmo"
+        ],
+        "narrative_hooks": [
+          "Um antigo inimigo pede perdão - o personagem pode vingar-se ou perdoar",
+          "Uma escolha entre segurança pessoal e ajudar outros",
+          "Descoberta de que um mentor estava errado sobre algo importante"
+        ]
+      },
+
+      "level_3_4": {
+        "name": "Crescimento da Virtude",
+        "description": "O personagem desenvolve hábitos consistentes de bondade",
+        "character_state": {
+          "appearance": "Luz ganha cores mais vibrantes, brilho mais intenso",
+          "personality": "Bondade se torna mais natural, menos forçada",
+          "magic_manifestation": "Luz responde mais rapidamente e com mais poder",
+          "social_impact": "Outros procuram o personagem para conselho e ajuda"
+        },
+        "key_moments": [
+          "Primeira vez que perdoa um inimigo que o traiu",
+          "Sacrifício pessoal significativo pelo bem de outros",
+          "Primeira vez que ensina virtude a outro"
+        ],
+        "challenges": [
+          "Manter virtude sob pressão extrema",
+          "Lidar com a responsabilidade de ser exemplo",
+          "Encontrar força para continuar quando outros falham"
+        ],
+        "narrative_hooks": [
+          "Um aliado comete um erro grave - o personagem deve escolher entre justiça e misericórdia",
+          "Uma oportunidade de poder surge através de meios questionáveis",
+          "Descoberta de que alguém querido está corrompido"
+        ]
+      },
+
+      "level_5_6": {
+        "name": "Maturidade Espiritual",
+        "description": "O personagem se torna um farol de virtude para outros",
+        "character_state": {
+          "appearance": "Luz irradia calor reconfortante, cores douradas",
+          "personality": "Virtude se torna segunda natureza",
+          "magic_manifestation": "Luz pode curar feridas emocionais de outros",
+          "social_impact": "Comunidades inteiras confiam no personagem"
+        },
+        "key_moments": [
+          "Primeira vez que inspira outros a mudarem para melhor",
+          "Sacrifício de algo muito querido pelo bem maior",
+          "Primeira vez que perdoa alguém que matou um ente querido"
+        ],
+        "challenges": [
+          "Manter humildade apesar do poder crescente",
+          "Lidar com a solidão de ser diferente",
+          "Encontrar equilíbrio entre liderança e serviço"
+        ],
+        "narrative_hooks": [
+          "Uma comunidade inteira depende das decisões do personagem",
+          "Descoberta de que um ato de bondade causou mal maior",
+          "Tentação de usar poder para forçar outros a serem bons"
+        ]
+      },
+
+      "level_7_8": {
+        "name": "Transcendência Parcial",
+        "description": "O personagem transcende limitações humanas comuns",
+        "character_state": {
+          "appearance": "Luz envolve o corpo como aura, brilho sobrenatural",
+          "personality": "Pensamentos egoístas são raros e facilmente superados",
+          "magic_manifestation": "Luz pode manifestar-se sem esforço consciente",
+          "social_impact": "Outros sentem paz e esperança na presença do personagem"
+        },
+        "key_moments": [
+          "Primeira vez que perdoa alguém que destruiu sua vida",
+          "Sacrifício de sua própria felicidade pelo bem de estranhos",
+          "Primeira vez que ama incondicionalmente alguém que o odeia"
+        ],
+        "challenges": [
+          "Manter conexão com humanidade comum",
+          "Lidar com expectativas impossíveis de outros",
+          "Encontrar propósito quando já se fez tanto bem"
+        ],
+        "narrative_hooks": [
+          "Descoberta de que o bem que fez causou sofrimento maior",
+          "Tentação de usar poder para eliminar todo mal do mundo",
+          "Escolha entre salvar muitos ou salvar alguém muito querido"
+        ]
+      },
+
+      "level_9": {
+        "name": "Quase Divino",
+        "description": "O personagem está no limiar da perfeição espiritual",
+        "character_state": {
+          "appearance": "Luz brilha como estrela, quase cegante de pureza",
+          "personality": "Virtude perfeita, mas ainda humana",
+          "magic_manifestation": "Luz responde a pensamentos, não precisa de gestos",
+          "social_impact": "Outros veem o personagem como santo vivo"
+        },
+        "key_moments": [
+          "Primeira vez que perdoa alguém que destruiu tudo que amava",
+          "Sacrifício de sua própria alma pelo bem de outros",
+          "Primeira vez que ama incondicionalmente todos os seres vivos"
+        ],
+        "challenges": [
+          "Manter humanidade apesar do poder divino",
+          "Lidar com a solidão absoluta da perfeição",
+          "Encontrar propósito quando se tornou mais que humano"
+        ],
+        "narrative_hooks": [
+          "Descoberta de que a perfeição é impossível para humanos",
+          "Tentação de se tornar deus e refazer o mundo",
+          "Escolha entre manter humanidade ou alcançar poder divino"
+        ]
+      },
+
+      "level_10": {
+        "name": "Perfeição Espiritual",
+        "description": "O personagem alcança perfeição espiritual absoluta",
+        "character_state": {
+          "appearance": "Luz pura e perfeita, como estrela de primeira magnitude",
+          "personality": "Virtude absoluta, além da compreensão humana",
+          "magic_manifestation": "Luz é extensão natural do ser, poder ilimitado",
+          "social_impact": "Outros veem o personagem como divindade encarnada"
+        },
+        "key_moments": [
+          "Transcendência completa do ego",
+          "Amor incondicional por toda existência",
+          "Sacrifício de si mesmo pelo bem universal"
+        ],
+        "challenges": [
+          "Manter conexão com mundo mortal",
+          "Lidar com responsabilidade cósmica",
+          "Encontrar propósito quando se tornou perfeito"
+        ],
+        "narrative_hooks": [
+          "Descoberta de que perfeição absoluta é impossível",
+          "Tentação de refazer toda realidade",
+          "Escolha entre manter perfeição ou voltar a ser humano"
+        ]
+      },
+
+      "falling_from_grace": {
+        "description": "Como a Beatificação pode ser perdida e como recuperá-la",
+        "ways_to_fall": [
+          "Ato egoísta consciente e premeditado",
+          "Uso de poder para causar mal desnecessário",
+          "Abandono de alguém em perigo por covardia",
+          "Vingança pessoal em vez de justiça",
+          "Uso de poder para dominar outros"
+        ],
+        "consequences": [
+          "Perda imediata de 1-2 níveis de Beatificação",
+          "Luz se torna instável e fraca",
+          "Outros perdem confiança no personagem",
+          "Poderes mágicos ficam menos eficazes"
+        ],
+        "redemption": [
+          "Ato genuinamente altruísta",
+          "Sacrifício pessoal significativo",
+          "Perdão de quem causou a queda",
+          "Aceitação de consequências de seus atos",
+          "Compromisso renovado com virtude"
+        ]
+      },
+
+      "roleplay_guidance": {
+        "character_voice": {
+          "level_0_2": "Cético, defensivo, focado em sobrevivência",
+          "level_3_4": "Esperançoso, mas ainda incerto",
+          "level_5_6": "Confidente, mas humilde",
+          "level_7_8": "Sábio, mas ainda humano",
+          "level_9_10": "Transcendente, mas compassivo"
+        },
+        "decision_making": {
+          "level_0_2": "Pergunta: 'O que é melhor para mim?'",
+          "level_3_4": "Pergunta: 'O que é melhor para nós?'",
+          "level_5_6": "Pergunta: 'O que é melhor para todos?'",
+          "level_7_8": "Pergunta: 'O que é melhor para o universo?'",
+          "level_9_10": "Pergunta: 'O que é melhor para a existência?'"
+        },
+        "relationships": {
+          "level_0_2": "Relacionamentos baseados em utilidade",
+          "level_3_4": "Relacionamentos baseados em confiança",
+          "level_5_6": "Relacionamentos baseados em amor",
+          "level_7_8": "Relacionamentos baseados em compaixão",
+          "level_9_10": "Relacionamentos baseados em unidade"
+        }
+      }
+    },
+
+    "lore_integration": {
+      "origin_light_magic": "Luz foi uma das primeiras magias descobertas, pois está presente desde o primeiro alvorecer",
+      
+      "historical_users": {
+        "saints": "Santos e santas através da história usaram Luz para milagres",
+        "paladins": "Ordem de Paladinos baseia poderes em Luz divina",
+        "celestials": "Anjos e arcanjos usam luz como extensão natural de si",
+        "first_prophets": "Profetas primordiais canalizaram luz antes de Santidade existir como conceito separado"
+      },
+
+      "philosophical_schools": {
+        "church_of_dawn": {
+          "belief": "Luz é presente divino, deve ser usada apenas para bem absoluto",
+          "stance_fotolise": "Aceitam destruição de mal",
+          "stance_refracao": "Desconfiam de ilusões",
+          "stance_luminancia": "Veneram como ideal"
+        },
+        "prismatic_academy": {
+          "belief": "Luz é fenômeno natural a ser estudado cientificamente",
+          "stance_fotolise": "Interessados em física da luz",
+          "stance_refracao": "Fascinados por possibilidades",
+          "stance_luminancia": "Estudam biologia da luz"
+        },
+        "solar_cult": {
+          "belief": "Sol é deus literal, luz é seu sangue",
+          "stance_fotolise": "Guerreiros sagrados preferidos",
+          "stance_refracao": "Visto como trapaça",
+          "stance_luminancia": "Sacerdotes curandeiros"
+        }
+      }
+    },
+
+    "ritual_magic": {
+      "overview": "Rituais de Luz são cerimônias poderosas que requerem múltiplos turnos, concentração e às vezes múltiplos conjuradores. Eles canalizam a energia cósmica da luz de forma mais profunda e duradoura que magias instantâneas.",
+      
+      "ritual_mechanics": {
+        "casting_time": "Rituais requerem 3-10 turnos de concentração contínua",
+        "interruption": "Se interrompido, ritual falha e recursos são perdidos",
+        "concentration": "Conjurador principal deve manter concentração total",
+        "movement": "Conjurador principal não pode se mover durante ritual",
+        "resources": "Custo de EL/RA é pago no início e a cada turno",
+        "environment": "Ambiente afeta sucesso - luz natural ajuda, trevas atrapalham"
+      },
+
+      "group_casting": {
+        "primary_caster": "Um conjurador principal conduz o ritual",
+        "supporting_casters": "Até 6 conjuradores auxiliares podem ajudar",
+        "coordination": "Todos devem conhecer o ritual e estar em sintonia",
+        "benefits": "Cada auxiliar reduz custo em 15% e tempo em 1 turno",
+        "risks": "Se qualquer auxiliar falhar, ritual inteiro falha",
+        "beatification_synergy": "Beatificação média do grupo afeta poder do ritual"
+      },
+
+      "ritual_categories": {
+        "purification_rituals": {
+          "description": "Rituais para limpar corrupção e maldições",
+          "examples": [
+            "Purificação de Área",
+            "Exorcismo Cósmico",
+            "Renovação Espiritual"
+          ]
+        },
+        "creation_rituals": {
+          "description": "Rituais para criar estruturas ou objetos permanentes",
+          "examples": [
+            "Forja de Luz Eterna",
+            "Construção de Santuário",
+            "Criação de Portal Permanente"
+          ]
+        },
+        "cosmic_rituals": {
+          "description": "Rituais que afetam o cosmos ou grandes áreas",
+          "examples": [
+            "Alinhamento Estelar",
+            "Renovação Planetária",
+            "Julgamento Cósmico"
+          ]
+        },
+        "healing_rituals": {
+          "description": "Rituais para curar em massa ou ressuscitar",
+          "examples": [
+            "Ressurreição em Massa",
+            "Cura de Plaga",
+            "Renovação de Vida"
+          ]
+        }
+      },
+
+      "example_rituals": {
+        "purification_of_area": {
+          "name": "Purificação de Área",
+          "level_requirement": 50,
+          "casting_time": "5 turnos",
+          "cost": "200 EL + 100 RA (total)",
+          "area": "Raio de 100 metros",
+          "effects": [
+            "Remove toda corrupção da área",
+            "Purifica água, solo e ar",
+            "Cura doenças não-mágicas",
+            "Remove maldições de nível 60 ou menor",
+            "Área permanece purificada por 1 ano"
+          ],
+          "group_benefits": "Com 3+ auxiliares: área dobra, duração triplica",
+          "narrative": "Luz dourada desce do céu como chuva, lavando toda impureza da terra"
+        },
+
+        "stellar_forge": {
+          "name": "Forja de Luz Eterna",
+          "level_requirement": 70,
+          "casting_time": "8 turnos",
+          "cost": "400 EL + 200 RA (total)",
+          "requirements": "Deve ser executado sob luz solar direta",
+          "effects": [
+            "Cria forja permanente que nunca se apaga",
+            "Permite criação de armas e armaduras de luz",
+            "Itens criados são indestrutíveis por trevas",
+            "Forja dura indefinidamente",
+            "Pode ser usada por qualquer conjurador de luz"
+          ],
+          "group_benefits": "Com 5+ auxiliares: forja pode criar itens lendários",
+          "narrative": "Raio de sol se concentra em um ponto, criando forja de fogo solar puro"
+        },
+
+        "cosmic_judgment": {
+          "name": "Julgamento Cósmico",
+          "level_requirement": 90,
+          "casting_time": "10 turnos",
+          "cost": "800 EL + 400 RA (total)",
+          "requirements": "Beatificação 8+ de todos os conjuradores",
+          "effects": [
+            "Revela verdade absoluta de todos na área",
+            "Julga moralidade de cada pessoa",
+            "Pune automaticamente os culpados",
+            "Recompensa os inocentes",
+            "Área de 1km de raio"
+          ],
+          "group_benefits": "Com 6 auxiliares: área cobre cidade inteira",
+          "narrative": "Céu se abre como olho gigante, e luz divina desce para julgar todos os mortais"
+        },
+
+        "resurrection_mass": {
+          "name": "Ressurreição em Massa",
+          "level_requirement": 80,
+          "casting_time": "7 turnos",
+          "cost": "600 EL + 300 RA (total)",
+          "requirements": "Deve ser executado em local sagrado",
+          "effects": [
+            "Ressuscita até 100 mortos",
+            "Mortos retornam com 100% HP",
+            "Remove todas condições negativas",
+            "Mortos devem ter morrido há menos de 1 ano",
+            "Cada conjurador pode escolher 1 pessoa específica"
+          ],
+          "group_benefits": "Com 4+ auxiliares: pode ressuscitar até 500 mortos",
+          "narrative": "Luz dourada envolve os mortos, e eles se levantam como se tivessem apenas dormido"
+        }
+      },
+
+      "ritual_failure": {
+        "consequences": [
+          "Perda de todos os recursos investidos",
+          "Conjurador principal fica exausto por 1 dia",
+          "Auxiliares ficam fatigados por 4 horas",
+          "Possível explosão de luz que danifica área",
+          "Corrupção pode se espalhar se ritual era de purificação"
+        ],
+        "recovery": "Conjuradores podem tentar novamente após descanso completo"
+      },
+
+      "ritual_discovery": {
+        "learning_methods": [
+          "Encontrado em textos antigos perdidos",
+          "Ensinado por mentor de alto nível",
+          "Descoberto através de meditação profunda",
+          "Revelado em sonhos divinos",
+          "Aprendido através de experiência de quase-morte"
+        ],
+        "requirements": "Cada ritual tem pré-requisitos específicos de nível, Beatificação e conhecimento"
+      },
+
+      "environmental_factors": {
+        "beneficial": [
+          "Luz solar direta: +20% eficácia",
+          "Local sagrado: +15% eficácia",
+          "Lua cheia: +10% eficácia",
+          "Equinócio/solstício: +25% eficácia",
+          "Presença de outros conjuradores de luz: +5% por pessoa"
+        ],
+        "detrimental": [
+          "Trevas absolutas: -50% eficácia",
+          "Área corrompida: -30% eficácia",
+          "Tempestade: -20% eficácia",
+          "Presença de criaturas das trevas: -15% por criatura",
+          "Interrupção de combate: -100% eficácia"
+        ]
+      },
+
+      "roleplay_considerations": {
+        "preparation": "Rituais requerem preparação mental e espiritual",
+        "sacrifice": "Alguns rituais podem requerer sacrifícios pessoais",
+        "consequences": "Rituais poderosos têm consequências duradouras",
+        "responsibility": "Conjuradores são responsáveis pelos efeitos de seus rituais",
+        "community_impact": "Rituais afetam comunidades inteiras, não apenas indivíduos"
+      }
+    },
+
+    "roleplay_systems": {
+      "overview": "Sistemas de roleplay para integrar a magia de luz com narrativa, desenvolvimento de personagem e interações sociais.",
+      
+      "decision_scenarios": {
+        "moral_dilemmas": {
+          "the_innocent_corrupted": {
+            "situation": "Uma criança foi possuída por um demônio. Você pode purificar a criança, mas isso matará o demônio que está usando o corpo dela como escudo.",
+            "choices": [
+              {
+                "choice": "Purificar mesmo assim - a criança é inocente e deve ser salva",
+                "beatification_impact": "+1 Beatificação",
+                "consequences": "A criança sobrevive, mas fica traumatizada. O demônio morre.",
+                "narrative": "Você canaliza luz pura através da criança, queimando o demônio de dentro para fora. A criança chora, mas sobrevive."
+              },
+              {
+                "choice": "Tentar exorcismo gentil - arriscar que ambos sobrevivam",
+                "beatification_impact": "+2 Beatificação",
+                "consequences": "Difícil - CD 25. Se falhar, ambos morrem. Se passar, ambos sobrevivem.",
+                "narrative": "Você envolve ambos em luz suave, tentando separar as almas sem danificar nenhuma."
+              },
+              {
+                "choice": "Deixar o demônio viver para salvar a criança",
+                "beatification_impact": "-1 Beatificação",
+                "consequences": "A criança fica possuída permanentemente, mas viva.",
+                "narrative": "Você recua, permitindo que o demônio mantenha controle sobre a criança."
+              }
+            ]
+          },
+          
+          "the_fallen_ally": {
+            "situation": "Seu melhor amigo foi corrompido por poder sombrio e agora serve o mal. Ele pede para você matá-lo antes que ele faça mais mal.",
+            "choices": [
+              {
+                "choice": "Atender ao pedido - matar o amigo para evitar mais sofrimento",
+                "beatification_impact": "0 (neutro)",
+                "consequences": "Amigo morre, mas você evita que ele cause mais mal.",
+                "narrative": "Você canaliza luz através do coração do amigo, libertando sua alma da corrupção na morte."
+              },
+              {
+                "choice": "Tentar purificação - arriscar tudo para salvá-lo",
+                "beatification_impact": "+3 Beatificação",
+                "consequences": "Muito difícil - CD 30. Se falhar, você também pode ser corrompido.",
+                "narrative": "Você envolve o amigo em luz dourada, tentando queimar a corrupção sem queimar a alma."
+              },
+              {
+                "choice": "Recusar - deixar o amigo viver com sua escolha",
+                "beatification_impact": "-2 Beatificação",
+                "consequences": "Amigo continua servindo o mal, causando sofrimento.",
+                "narrative": "Você se recusa a matar o amigo, permitindo que ele continue sua jornada sombria."
+              }
+            ]
+          },
+          
+          "the_greater_good": {
+            "situation": "Você pode salvar uma cidade inteira de uma praga, mas isso requer sacrificar uma pessoa inocente como catalisador.",
+            "choices": [
+              {
+                "choice": "Fazer o sacrifício - uma vida por milhares",
+                "beatification_impact": "-3 Beatificação",
+                "consequences": "Cidade é salva, mas você carrega o peso de ter matado um inocente.",
+                "narrative": "Você canaliza a vida da pessoa inocente através da luz, transformando-a em cura para toda a cidade."
+              },
+              {
+                "choice": "Recusar o sacrifício - tentar encontrar outra forma",
+                "beatification_impact": "+2 Beatificação",
+                "consequences": "Cidade pode morrer, mas você mantém sua integridade.",
+                "narrative": "Você se recusa a sacrificar o inocente, mesmo sabendo que isso pode custar a cidade."
+              },
+              {
+                "choice": "Se oferecer como sacrifício",
+                "beatification_impact": "+5 Beatificação",
+                "consequences": "Você morre, mas salva a cidade e mantém sua pureza.",
+                "narrative": "Você canaliza sua própria vida através da luz, sacrificando-se para salvar todos."
+              }
+            ]
+          }
+        },
+        
+        "power_temptations": {
+          "absolute_justice": {
+            "situation": "Você tem poder suficiente para julgar e punir todos os criminosos da cidade instantaneamente.",
+            "temptation": "Usar seu poder para eliminar todo crime de uma vez",
+            "beatification_cost": "-2 por uso",
+            "consequences": "Cidade fica livre de crime, mas você se torna um ditador da justiça",
+            "narrative": "Luz dourada envolve cada criminoso, revelando seus crimes e aplicando punição instantânea."
+          },
+          
+          "perfect_healing": {
+            "situation": "Você pode curar qualquer ferida ou doença, mas cada cura custa um pouco da sua própria vida.",
+            "temptation": "Curar todos os doentes da cidade",
+            "beatification_cost": "-1 por pessoa curada",
+            "consequences": "Todos ficam saudáveis, mas você envelhece rapidamente",
+            "narrative": "Sua luz dourada envolve cada doente, transferindo sua própria vitalidade para eles."
+          },
+          
+          "omniscience": {
+            "situation": "Você pode ver todas as verdades escondidas, mas isso inclui segredos que as pessoas querem manter privados.",
+            "temptation": "Usar seu poder para descobrir todos os segredos",
+            "beatification_cost": "-1 por segredo revelado",
+            "consequences": "Você conhece todas as verdades, mas perde a confiança de todos",
+            "narrative": "Sua luz revela todos os segredos escondidos, expondo verdades que deveriam permanecer privadas."
+          }
+        }
+      },
+      
+      "character_voice": {
+        "beatification_0_2": {
+          "speech_patterns": [
+            "Fala de forma defensiva e cética",
+            "Usa linguagem prática e direta",
+            "Evita compromissos emocionais",
+            "Foca em sobrevivência e benefício pessoal"
+          ],
+          "example_phrases": [
+            "\"Eu só faço o que preciso fazer para sobreviver.\"",
+            "\"Não confio em ninguém - todos têm agenda própria.\"",
+            "\"Por que eu deveria me importar com os problemas dos outros?\"",
+            "\"A luz é apenas uma ferramenta - nada mais.\""
+          ],
+          "emotional_range": "Limitado - evita emoções profundas",
+          "relationships": "Superficiais e baseadas em utilidade"
+        },
+        
+        "beatification_3_4": {
+          "speech_patterns": [
+            "Começa a questionar suas motivações",
+            "Usa linguagem mais esperançosa",
+            "Faz perguntas sobre propósito",
+            "Mostra interesse genuíno pelos outros"
+          ],
+          "example_phrases": [
+            "\"Talvez haja algo maior que eu mesmo...\"",
+            "\"Eu quero ajudar, mas não sei como.\"",
+            "\"A luz parece responder melhor quando eu penso nos outros.\"",
+            "\"Há algo diferente em mim quando faço o bem.\""
+          ],
+          "emotional_range": "Expandindo - permite mais vulnerabilidade",
+          "relationships": "Baseadas em confiança crescente"
+        },
+        
+        "beatification_5_6": {
+          "speech_patterns": [
+            "Fala com confiança mas humildade",
+            "Usa linguagem inspiradora",
+            "Foca no bem maior",
+            "Aceita responsabilidade pelos outros"
+          ],
+          "example_phrases": [
+            "\"A luz me escolheu para servir a algo maior.\"",
+            "\"Cada vida que salvo me torna mais forte.\"",
+            "\"Eu sou responsável pelo bem que posso fazer.\"",
+            "\"A luz flui através de mim quando penso nos outros.\""
+          ],
+          "emotional_range": "Rico - conecta profundamente com outros",
+          "relationships": "Baseadas em amor e serviço"
+        },
+        
+        "beatification_7_8": {
+          "speech_patterns": [
+            "Fala com sabedoria transcendente",
+            "Usa linguagem poética e metafórica",
+            "Foca na unidade de todas as coisas",
+            "Aceita responsabilidade cósmica"
+          ],
+          "example_phrases": [
+            "\"A luz é o fio que conecta todas as almas.\"",
+            "\"Eu sou apenas um canal através do qual a luz flui.\"",
+            "\"Cada ato de bondade ecoa através do universo.\"",
+            "\"A luz me ensina que todos somos um.\""
+          ],
+          "emotional_range": "Transcendente - conecta com o divino",
+          "relationships": "Baseadas em compaixão universal"
+        },
+        
+        "beatification_9_10": {
+          "speech_patterns": [
+            "Fala como se fosse luz encarnada",
+            "Usa linguagem que transcende palavras",
+            "Foca na perfeição espiritual",
+            "Aceita responsabilidade pela existência"
+          ],
+          "example_phrases": [
+            "\"Eu sou luz, e a luz é eu.\"",
+            "\"Cada fóton carrega o amor do universo.\"",
+            "\"A luz me ensina que a perfeição é possível.\"",
+            "\"Eu sou responsável por toda a existência.\""
+          ],
+          "emotional_range": "Divino - além da compreensão humana",
+          "relationships": "Baseadas na unidade de todas as coisas"
+        }
+      },
+      
+      "relationship_dynamics": {
+        "with_other_light_users": {
+          "same_beatification": {
+            "interaction": "Reconhecimento mútuo e respeito profundo",
+            "dynamics": "Podem trabalhar em perfeita harmonia",
+            "challenges": "Podem competir por quem é mais puro",
+            "narrative": "Suas luzes se fundem, criando uma aura ainda mais brilhante"
+          },
+          "different_beatification": {
+            "higher_beats_lower": "O mais alto serve como mentor e exemplo",
+            "lower_beats_higher": "O mais baixo busca orientação e inspiração",
+            "dynamics": "Relacionamento de professor-aluno",
+            "challenges": "O mais baixo pode se sentir inadequado"
+          }
+        },
+        
+        "with_dark_magic_users": {
+          "beatification_0_2": {
+            "interaction": "Desconfiança mútua e possível hostilidade",
+            "dynamics": "Podem trabalhar juntos por conveniência",
+            "challenges": "Tentação constante de corrupção",
+            "narrative": "Suas energias se repelem, criando tensão constante"
+          },
+          "beatification_3_4": {
+            "interaction": "Tentativa de redenção e conversão",
+            "dynamics": "O usuário de luz tenta salvar o usuário de trevas",
+            "challenges": "O usuário de trevas pode resistir ou corromper",
+            "narrative": "Sua luz tenta penetrar as trevas, oferecendo esperança"
+          },
+          "beatification_5_6": {
+            "interaction": "Compaixão incondicional e amor",
+            "dynamics": "O usuário de luz ama o usuário de trevas incondicionalmente",
+            "challenges": "O usuário de trevas pode não aceitar o amor",
+            "narrative": "Sua luz envolve as trevas com amor, oferecendo redenção"
+          },
+          "beatification_7_8": {
+            "interaction": "Reconhecimento da unidade fundamental",
+            "dynamics": "Ambos reconhecem que luz e trevas são partes do todo",
+            "challenges": "Podem trabalhar juntos para equilíbrio",
+            "narrative": "Sua luz e suas trevas se complementam, criando harmonia"
+          }
+        },
+        
+        "with_non_magical_people": {
+          "beatification_0_2": {
+            "interaction": "Indiferença ou desconfiança",
+            "dynamics": "Pessoas comuns não confiam no usuário",
+            "challenges": "Dificuldade em se conectar com outros",
+            "narrative": "Sua luz fraca não inspira confiança"
+          },
+          "beatification_3_4": {
+            "interaction": "Curiosidade e interesse crescente",
+            "dynamics": "Pessoas começam a confiar no usuário",
+            "challenges": "Expectativas crescentes de bondade",
+            "narrative": "Sua luz estável inspira confiança crescente"
+          },
+          "beatification_5_6": {
+            "interaction": "Admiração e busca por orientação",
+            "dynamics": "Pessoas procuram o usuário para conselho",
+            "challenges": "Responsabilidade de ser exemplo",
+            "narrative": "Sua luz brilhante inspira outros a serem melhores"
+          },
+          "beatification_7_8": {
+            "interaction": "Reverência e devoção",
+            "dynamics": "Pessoas veem o usuário como santo",
+            "challenges": "Expectativas impossíveis de perfeição",
+            "narrative": "Sua luz transcendente inspira devoção profunda"
+          },
+          "beatification_9_10": {
+            "interaction": "Adoração e culto",
+            "dynamics": "Pessoas veem o usuário como divindade",
+            "challenges": "Perda de humanidade comum",
+            "narrative": "Sua luz perfeita inspira adoração divina"
+          }
+        }
+      },
+      
+      "world_reactions": {
+        "npc_responses": {
+          "beatification_0_2": {
+            "common_people": "Desconfiança e evitação",
+            "authorities": "Suspeita e monitoramento",
+            "criminals": "Tentativa de recrutamento ou eliminação",
+            "religious": "Desaprovação e condenação"
+          },
+          "beatification_3_4": {
+            "common_people": "Curiosidade e interesse cauteloso",
+            "authorities": "Observação neutra",
+            "criminals": "Respeito cauteloso",
+            "religious": "Aprovação condicional"
+          },
+          "beatification_5_6": {
+            "common_people": "Confiança e busca por ajuda",
+            "authorities": "Respeito e cooperação",
+            "criminals": "Evitação ou tentativa de redenção",
+            "religious": "Aprovação e apoio"
+          },
+          "beatification_7_8": {
+            "common_people": "Reverência e devoção",
+            "authorities": "Deferência e consulta",
+            "criminals": "Medo ou busca por perdão",
+            "religious": "Veneração e culto"
+          },
+          "beatification_9_10": {
+            "common_people": "Adoração e culto",
+            "authorities": "Submissão e obediência",
+            "criminals": "Arrependimento e conversão",
+            "religious": "Reconhecimento como divindade"
+          }
+        },
+        
+        "environmental_effects": {
+          "beatification_0_2": {
+            "light_sources": "Resistem ao usuário",
+            "plants": "Murcham na presença",
+            "animals": "Fogem ou atacam",
+            "weather": "Tende ao sombrio"
+          },
+          "beatification_3_4": {
+            "light_sources": "Respostam normalmente",
+            "plants": "Crescem normalmente",
+            "animals": "Aproximam-se cautelosamente",
+            "weather": "Neutro"
+          },
+          "beatification_5_6": {
+            "light_sources": "Brillham mais intensamente",
+            "plants": "Florescem na presença",
+            "animals": "Aproximam-se para proteção",
+            "weather": "Tende ao claro"
+          },
+          "beatification_7_8": {
+            "light_sources": "Brillham como estrelas",
+            "plants": "Florescem instantaneamente",
+            "animals": "Seguem como discípulos",
+            "weather": "Sempre claro e agradável"
+          },
+          "beatification_9_10": {
+            "light_sources": "Brillham como sóis",
+            "plants": "Crescem em formas impossíveis",
+            "animals": "Ganham inteligência",
+            "weather": "Perfeito e divino"
+          }
+        }
+      },
+      
+      "personal_cost_narratives": {
+        "isolation": {
+          "description": "Manter Beatificação alta pode levar ao isolamento",
+          "symptoms": [
+            "Dificuldade em se conectar com pessoas comuns",
+            "Expectativas impossíveis de perfeição",
+            "Responsabilidade esmagadora pelo bem de todos",
+            "Medo de corromper outros com suas falhas"
+          ],
+          "narrative_examples": [
+            "Você se afasta de amigos que não conseguem entender seu compromisso com a pureza",
+            "Pessoas comuns não conseguem se relacionar com alguém tão diferente",
+            "Você se sente responsável por toda a dor do mundo",
+            "Cada falha sua parece uma traição ao bem maior"
+          ]
+        },
+        
+        "perfectionism": {
+          "description": "A busca pela perfeição pode se tornar obsessão",
+          "symptoms": [
+            "Medo constante de falhar",
+            "Padrões impossíveis para si mesmo e outros",
+            "Culpa por não conseguir salvar todos",
+            "Paralisia por medo de fazer a escolha errada"
+          ],
+          "narrative_examples": [
+            "Você passa noites sem dormir pensando em como poderia ter feito melhor",
+            "Cada decisão se torna uma tortura de possibilidades",
+            "Você se culpa por sofrimento que não consegue prevenir",
+            "A perfeição se torna uma prisão que você construiu para si mesmo"
+          ]
+        },
+        
+        "burden_of_knowledge": {
+          "description": "Saber a verdade pode ser um fardo insuportável",
+          "symptoms": [
+            "Conhecimento de sofrimento que não pode aliviar",
+            "Visão clara da corrupção em todos",
+            "Responsabilidade de agir com conhecimento perfeito",
+            "Solidão de ser o único que vê a verdade"
+          ],
+          "narrative_examples": [
+            "Você vê a dor escondida em cada pessoa que encontra",
+            "Sabe exatamente como ajudar todos, mas não tem recursos para isso",
+            "A verdade se torna um peso que você carrega sozinho",
+            "Outros não conseguem entender o que você vê"
+          ]
+        }
+      }
+    },
+
+    "legendary_techniques": {
+      "overview": "Técnicas lendárias são habilidades perdidas ou secretas que transcendem os caminhos normais da magia de luz. Elas requerem descoberta, estudo profundo e às vezes sacrifícios pessoais para dominar.",
+      
+      "discovery_methods": {
+        "ancient_texts": {
+          "description": "Técnicas registradas em textos antigos perdidos",
+          "requirements": [
+            "Acesso a biblioteca ou coleção antiga",
+            "Conhecimento de línguas antigas",
+            "Beatificação 6+ para compreender textos sagrados",
+            "Nível 60+ para praticar técnicas avançadas"
+          ],
+          "examples": [
+            "Manuscritos do Primeiro Profeta",
+            "Tábuas de pedra em ruínas antigas",
+            "Livros proibidos em bibliotecas secretas",
+            "Inscrições em templos abandonados"
+          ]
+        },
+        
+        "spiritual_visions": {
+          "description": "Técnicas reveladas através de experiências transcendentais",
+          "requirements": [
+            "Beatificação 7+ para ter visões claras",
+            "Meditação profunda ou experiência de quase-morte",
+            "Conexão espiritual com ancestrais de luz",
+            "Nível 70+ para canalizar visões em poder"
+          ],
+          "examples": [
+            "Sonhos divinos durante meditação solar",
+            "Visões durante experiência de quase-morte",
+            "Comunicação com espíritos de mestres antigos",
+            "Revelações durante rituais de purificação"
+          ]
+        },
+        
+        "master_apprenticeship": {
+          "description": "Técnicas ensinadas por mestres lendários",
+          "requirements": [
+            "Encontrar um mestre de nível 90+",
+            "Provar dignidade através de testes morais",
+            "Beatificação 8+ para ser considerado digno",
+            "Anos de estudo e prática dedicada"
+          ],
+          "examples": [
+            "Aprendizado com santo recluso",
+            "Treinamento com anjo encarnado",
+            "Estudo com fantasma de mestre antigo",
+            "Mentoria de usuário de luz transcendente"
+          ]
+        },
+        
+        "trial_by_fire": {
+          "description": "Técnicas descobertas através de provações extremas",
+          "requirements": [
+            "Sobreviver a situação de vida ou morte",
+            "Manter Beatificação alta sob pressão extrema",
+            "Demonstrar coragem e sacrifício",
+            "Nível 80+ para canalizar experiência em poder"
+          ],
+          "examples": [
+            "Sobreviver a batalha contra demônio maior",
+            "Proteger inocentes durante catástrofe",
+            "Resistir a tentação de poder absoluto",
+            "Sacrificar-se e retornar da morte"
+          ]
+        }
+      },
+      
+      "legendary_techniques": {
+        "stellar_communion": {
+          "name": "Comunhão Estelar",
+          "discovery_method": "ancient_texts",
+          "requirements": {
+            "level": 75,
+            "beatification": 8,
+            "prerequisites": ["Domínio Solar Parcial", "Conhecimento Astronômico Avançado"]
+          },
+          "description": "Permite comunicação direta com consciências estelares",
+          "mechanics": {
+            "cost": "300 EL + 150 RA",
+            "duration": "Concentração, até 1 hora",
+            "range": "Comunicação com qualquer estrela visível",
+            "effects": [
+              "Pode perguntar sobre eventos cósmicos",
+              "Acesso a conhecimento astronômico antigo",
+              "Previsão de eventos celestiais",
+              "Orientação para navegação cósmica"
+            ]
+          },
+          "narrative": "Sua luz se estende até as estrelas, e você sente suas consciências antigas respondendo. Cada estrela tem uma personalidade única, e algumas são muito antigas.",
+          "lore": "Técnica perdida dos Primeiros Astrônomos, que usavam as estrelas como biblioteca cósmica.",
+          "risks": "Comunicação com estrelas mortas pode causar loucura temporária"
+        },
+        
+        "light_weaving": {
+          "name": "Tecelagem de Luz",
+          "discovery_method": "spiritual_visions",
+          "requirements": {
+            "level": 80,
+            "beatification": 9,
+            "prerequisites": ["Domínio Solar Parcial", "Experiência de Quase-Morte"]
+          },
+          "description": "Cria tecidos e materiais permanentes de luz pura",
+          "mechanics": {
+            "cost": "200 EL + 100 RA por metro quadrado",
+            "duration": "Permanente",
+            "area": "Até 10m² por uso",
+            "effects": [
+              "Cria tecidos indestrutíveis por trevas",
+              "Materiais podem ser moldados em qualquer forma",
+              "Propriedades podem ser programadas",
+              "Objetos criados são imunes a corrupção"
+            ]
+          },
+          "narrative": "Sua luz se entrelaça como fios dourados, criando tecidos que brilham com vida própria. Cada fio carrega uma intenção específica.",
+          "lore": "Técnica dos Tecelões Celestiais, que criavam as vestes dos anjos.",
+          "risks": "Criar objetos muito complexos pode drenar permanentemente sua energia"
+        },
+        
+        "temporal_light": {
+          "name": "Luz Temporal",
+          "discovery_method": "master_apprenticeship",
+          "requirements": {
+            "level": 85,
+            "beatification": 9,
+            "prerequisites": ["Domínio Solar Parcial", "Mentoria de Mestre Lendário"]
+          },
+          "description": "Manipula o fluxo do tempo através da luz",
+          "mechanics": {
+            "cost": "400 EL + 200 RA",
+            "duration": "Concentração, até 10 minutos",
+            "area": "Raio de 20 metros",
+            "effects": [
+              "Pode acelerar ou desacelerar tempo localmente",
+              "Cria bolhas de tempo isolado",
+              "Pode reverter pequenos eventos recentes",
+              "Permite visão de eventos passados na área"
+            ]
+          },
+          "narrative": "Sua luz se dobra através do tempo, criando ondulações que afetam o fluxo temporal. O passado e futuro se tornam maleáveis.",
+          "lore": "Técnica dos Crononautas de Luz, que viajavam através do tempo para corrigir erros históricos.",
+          "risks": "Manipulação temporal pode criar paradoxos que corrompem a realidade"
+        },
+        
+        "soul_forge": {
+          "name": "Forja de Alma",
+          "discovery_method": "trial_by_fire",
+          "requirements": {
+            "level": 90,
+            "beatification": 10,
+            "prerequisites": ["Domínio Solar Total", "Experiência de Morte e Ressurreição"]
+          },
+          "description": "Cria almas novas ou restaura almas perdidas",
+          "mechanics": {
+            "cost": "500 EL + 250 RA",
+            "duration": "Ritual de 24 horas",
+            "area": "Santuário sagrado",
+            "effects": [
+              "Pode criar almas para corpos sem alma",
+              "Restaura almas fragmentadas",
+              "Purifica almas corrompidas",
+              "Cria laços espirituais permanentes"
+            ]
+          },
+          "narrative": "Sua luz se torna um cadinho divino, onde a essência da vida é forjada. Almas emergem como cristais de luz pura.",
+          "lore": "Técnica dos Criadores Primordiais, que deram vida aos primeiros seres.",
+          "risks": "Criar almas incorretamente pode resultar em aberrações espirituais"
+        },
+        
+        "cosmic_mirror": {
+          "name": "Espelho Cósmico",
+          "discovery_method": "ancient_texts",
+          "requirements": {
+            "level": 95,
+            "beatification": 10,
+            "prerequisites": ["Domínio Solar Total", "Conhecimento de Realidades Paralelas"]
+          },
+          "description": "Cria reflexões perfeitas de qualquer coisa, incluindo conceitos abstratos",
+          "mechanics": {
+            "cost": "600 EL + 300 RA",
+            "duration": "Permanente",
+            "area": "Até 1km de raio",
+            "effects": [
+              "Cria cópia perfeita de qualquer objeto",
+              "Pode refletir conceitos abstratos",
+              "Reflexões podem ser manipuladas independentemente",
+              "Pode criar versões 'melhoradas' de coisas"
+            ]
+          },
+          "narrative": "Sua luz cria um espelho perfeito que reflete não apenas a aparência, mas a essência de tudo. O reflexo é mais real que o original.",
+          "lore": "Técnica dos Espelhistas Cósmicos, que criavam versões perfeitas de tudo que existia.",
+          "risks": "Reflexões podem se tornar mais reais que os originais, causando confusão existencial"
+        },
+        
+        "light_ascension": {
+          "name": "Ascensão de Luz",
+          "discovery_method": "spiritual_visions",
+          "requirements": {
+            "level": 100,
+            "beatification": 10,
+            "prerequisites": ["Domínio Solar Total", "Transcendência Espiritual Completa"]
+          },
+          "description": "Transcende limitações físicas e se torna luz pura",
+          "mechanics": {
+            "cost": "Todo EL e RA disponível",
+            "duration": "Permanente",
+            "area": "Universal",
+            "effects": [
+              "Torna-se incorpóreo e imortal",
+              "Pode existir em múltiplos lugares simultaneamente",
+              "Acesso a conhecimento cósmico absoluto",
+              "Capacidade de criar e destruir realidades"
+            ]
+          },
+          "narrative": "Sua forma física se dissolve em luz pura, e você se torna um com o universo. Limitações humanas desaparecem.",
+          "lore": "Técnica final dos Iluminados, que transcendiam completamente a existência física.",
+          "risks": "Pode perder conexão com humanidade e se tornar indiferente ao sofrimento mortal"
+        }
+      },
+      
+      "learning_process": {
+        "initial_discovery": {
+          "description": "Primeiro contato com a técnica",
+          "requirements": "Atender aos requisitos de descoberta",
+          "process": [
+            "Encontrar fonte da técnica",
+            "Passar em teste de Sabedoria (CD 25)",
+            "Demonstrar dignidade moral",
+            "Aceitar responsabilidades da técnica"
+          ],
+          "narrative": "Você sente uma conexão profunda com algo maior que você mesmo. A técnica se revela como se sempre tivesse estado lá, esperando."
+        },
+        
+        "study_phase": {
+          "description": "Período de estudo e compreensão",
+          "duration": "1-6 meses de estudo intensivo",
+          "requirements": [
+            "Manter Beatificação alta durante estudo",
+            "Praticar técnicas relacionadas",
+            "Meditar sobre significado da técnica",
+            "Evitar uso prematuro"
+          ],
+          "narrative": "Cada dia de estudo revela novas camadas de significado. A técnica não é apenas poder - é sabedoria."
+        },
+        
+        "practice_phase": {
+          "description": "Período de prática controlada",
+          "duration": "3-12 meses de prática gradual",
+          "requirements": [
+            "Começar com versões simplificadas",
+            "Aumentar complexidade gradualmente",
+            "Manter integridade moral",
+            "Aceitar limitações iniciais"
+          ],
+          "narrative": "Cada tentativa ensina algo novo. O poder cresce junto com sua compreensão."
+        },
+        
+        "mastery_phase": {
+          "description": "Domínio completo da técnica",
+          "duration": "Indefinido - pode levar anos",
+          "requirements": [
+            "Usar técnica em situações críticas",
+            "Ensinar técnica a outros dignos",
+            "Integrar técnica com filosofia pessoal",
+            "Aceitar responsabilidade cósmica"
+          ],
+          "narrative": "A técnica se torna extensão natural de seu ser. Você não a usa - você a é."
+        }
+      },
+      
+      "consequences_and_responsibilities": {
+        "cosmic_responsibility": {
+          "description": "Técnicas lendárias trazem responsabilidades cósmicas",
+          "implications": [
+            "Responsabilidade pelo bem-estar de outros",
+            "Obrigação de usar poder sabiamente",
+            "Consequências de ações afetam o cosmos",
+            "Exemplo para outros usuários de luz"
+          ],
+          "narrative": "Com grande poder vem grande responsabilidade. Cada uso de uma técnica lendária ecoa através do universo."
+        },
+        
+        "isolation": {
+          "description": "Domínio de técnicas lendárias pode levar ao isolamento",
+          "implications": [
+            "Dificuldade em se relacionar com mortais",
+            "Expectativas impossíveis de perfeição",
+            "Responsabilidade esmagadora",
+            "Medo de corromper outros"
+          ],
+          "narrative": "Quanto mais poderoso você se torna, mais distante fica da humanidade comum."
+        },
+        
+        "temptation": {
+          "description": "Poder absoluto traz tentação de abuso",
+          "implications": [
+            "Facilidade de resolver problemas com força",
+            "Tentação de controlar outros",
+            "Arrogância e senso de superioridade",
+            "Perda de empatia humana"
+          ],
+          "narrative": "O poder corrompe, mesmo quando vem da luz. A tentação de usar força em vez de sabedoria é constante."
+        }
+      },
+      
+      "teaching_others": {
+        "requirements": {
+          "teacher": [
+            "Domínio completo da técnica",
+            "Beatificação 9+",
+            "Experiência de ensino",
+            "Aprovação de mentores espirituais"
+          ],
+          "student": [
+            "Beatificação 7+",
+            "Nível 70+",
+            "Demonstração de dignidade",
+            "Compromisso com responsabilidade"
+          ]
+        },
+        "process": [
+          "Período de observação e teste",
+          "Ensino gradual e supervisionado",
+          "Provações morais e espirituais",
+          "Aceitação de responsabilidades"
+        ],
+        "narrative": "Ensinar uma técnica lendária é como passar uma tocha sagrada. O professor não apenas ensina poder - ensina sabedoria."
+      }
+    },
+
+    "advanced_combat_systems": {
+      "overview": "Sistemas avançados de combate que expandem as possibilidades táticas da magia de luz através de combos, otimização de recursos e modificadores ambientais.",
+      
+      "combo_systems": {
+        "basic_combos": {
+          "luz_refracao": {
+            "name": "Combo Luz-Refração",
+            "requirements": ["Luz Manifestada", "Refração Direcional"],
+            "execution": "Use Luz Manifestada para criar fonte de luz, depois Refração Direcional para redirecionar",
+            "effects": [
+              "Aumenta alcance de Refração Direcional em 50%",
+              "Reduz custo de EL em 25%",
+              "Permite múltiplas refrações da mesma fonte"
+            ],
+            "narrative": "Sua luz se torna um prisma vivo, dobrando e redobrando através do ar como um arco-íris tático."
+          },
+          
+          "campo_raio": {
+            "name": "Combo Campo-Raio",
+            "requirements": ["Campo Solar", "Raios Concentrados"],
+            "execution": "Ative Campo Solar primeiro, depois use Raios Concentrados dentro do campo",
+            "effects": [
+              "Raios Concentrados ganham +2d6 de dano",
+              "Alcance aumenta em 10 metros",
+              "Pode atingir múltiplos alvos simultaneamente"
+            ],
+            "narrative": "O campo solar se torna um amplificador natural, concentrando cada raio em um feixe devastador."
+          },
+          
+          "prisma_estelar": {
+            "name": "Combo Prisma Estelar",
+            "requirements": ["Espectro Prisional", "Sopro Estelar"],
+            "execution": "Crie prisão de luz, depois use Sopro Estelar para energizar",
+            "effects": [
+              "Prisão se torna indestrutível por 1d4+1 turnos",
+              "Dano de Sopro Estelar aumenta em 50%",
+              "Prisão explode causando dano em área"
+            ],
+            "narrative": "A prisão de luz se torna um cristal estelar, pulsando com energia cósmica antes de explodir em fragmentos de luz."
+          }
+        },
+        
+        "advanced_combos": {
+          "cascata_luminosa": {
+            "name": "Cascata Luminosa",
+            "requirements": ["Luz Transversal", "Refração Direcional", "Raios Concentrados"],
+            "execution": "Use Luz Transversal para se mover, Refração Direcional para redirecionar, Raios Concentrados para atacar",
+            "effects": [
+              "Movimento não gasta ação de movimento",
+              "Ataque tem vantagem",
+              "Pode atacar múltiplos alvos em sequência"
+            ],
+            "narrative": "Você se torna um relâmpago dourado, saltando entre feixes de luz enquanto dispara raios em sequência perfeita."
+          },
+          
+          "forja_solar": {
+            "name": "Forja Solar",
+            "requirements": ["Campo Solar", "Forja Luminosa", "Domínio Solar Parcial"],
+            "execution": "Ative Campo Solar, use Forja Luminosa em arma, mantenha Domínio Solar Parcial",
+            "effects": [
+              "Arma ganha propriedades solares permanentes",
+              "Dano aumenta em 1d8 por nível",
+              "Arma pode cortar através de trevas"
+            ],
+            "narrative": "Sua arma se torna uma extensão do sol, brilhando com calor divino e cortando através de qualquer escuridão."
+          },
+          
+          "portal_prismático": {
+            "name": "Portal Prismático",
+            "requirements": ["Portal Prisma", "Labirinto de Luz", "Olho Estelar"],
+            "execution": "Crie Labirinto de Luz, use Portal Prisma para se mover dentro, Olho Estelar para localizar",
+            "effects": [
+              "Pode se teletransportar dentro do labirinto",
+              "Visão através de todo o labirinto",
+              "Pode redesenhar labirinto em tempo real"
+            ],
+            "narrative": "O labirinto se torna seu reino pessoal, onde você é onisciente e onipresente."
+          }
+        },
+        
+        "ultimate_combos": {
+          "ascensão_solar": {
+            "name": "Ascensão Solar",
+            "requirements": ["Coração do Sol", "Domínio Solar Total", "Beatificação 10"],
+            "execution": "Ative Coração do Sol, mantenha Domínio Solar Total, canalize Beatificação máxima",
+            "effects": [
+              "Torna-se incorpóreo de luz pura",
+              "Pode existir em múltiplos lugares",
+              "Todos os ataques de luz têm vantagem automática",
+              "Imune a dano físico"
+            ],
+            "narrative": "Você se dissolve em luz solar pura, tornando-se um ser de energia divina que transcende limitações físicas."
+          },
+          
+          "julgamento_cósmico": {
+            "name": "Julgamento Cósmico",
+            "requirements": ["Arquitetura Estelar", "Cura Radiante", "Domínio Solar Total"],
+            "execution": "Crie estrela com Arquitetura Estelar, use Cura Radiante para energizar, Domínio Solar Total para controlar",
+            "effects": [
+              "Cria estrela real que pode curar ou destruir",
+              "Área de efeito de 1km de raio",
+              "Pode escolher entre cura massiva ou destruição total",
+              "Efeito é permanente na área"
+            ],
+            "narrative": "Uma nova estrela nasce em suas mãos, e dela emana poder divino que pode criar paraíso ou inferno na Terra."
+          }
+        },
+        
+        "combo_mechanics": {
+          "execution_order": "Combos devem ser executados em ordem específica",
+          "timing": "Todas as habilidades do combo devem ser usadas no mesmo turno",
+          "resource_cost": "Custo total é reduzido em 25% quando executado como combo",
+          "failure": "Se qualquer habilidade falhar, combo inteiro falha",
+          "mastery": "Combos podem ser 'masterizados' para reduzir custo em 50%"
+        }
+      },
+      
+      "resource_optimization": {
+        "energia_luminar_optimization": {
+          "efficiency_tips": [
+            "Use Luz Manifestada como base para outros poderes",
+            "Refração Direcional pode redirecionar luz existente",
+            "Campo Solar fornece energia para outras habilidades",
+            "Domínio Solar Parcial reduz custos em 25%"
+          ],
+          "conservation_strategies": [
+            "Mantenha fontes de luz natural por perto",
+            "Use passivas para reduzir custos ativos",
+            "Combine habilidades para maximizar eficiência",
+            "Planeje sequências de habilidades com antecedência"
+          ],
+          "recovery_methods": [
+            "Meditação sob luz solar restaura 1d4+1 EL por hora",
+            "Beatificação alta acelera recuperação",
+            "Rituais de purificação podem restaurar EL instantaneamente",
+            "Fontes de luz mágica podem ser 'bebidas' para energia"
+          ]
+        },
+        
+        "reserva_astral_optimization": {
+          "efficiency_tips": [
+            "Use RA para habilidades que não podem falhar",
+            "Habilidades de nível alto são mais eficientes com RA",
+            "Combos reduzem custo total de RA",
+            "Beatificação alta aumenta eficiência de RA"
+          ],
+          "conservation_strategies": [
+            "Reserve RA para situações críticas",
+            "Use EL para habilidades básicas, RA para avançadas",
+            "Planeje uso de RA com antecedência",
+            "Evite desperdiçar RA em situações não críticas"
+          ],
+          "recovery_methods": [
+            "Meditação profunda restaura 1 RA por 8 horas",
+            "Rituais de purificação podem restaurar RA",
+            "Experiências transcendentais podem restaurar RA",
+            "Beatificação 10+ permite recuperação automática"
+          ]
+        },
+        
+        "resource_synergy": {
+          "el_ra_balance": "Ideal é usar 70% EL e 30% RA em combate normal",
+          "emergency_ratio": "Em emergências, use 50% EL e 50% RA",
+          "sustained_combat": "Para combates longos, use 80% EL e 20% RA",
+          "ritual_preparation": "Para rituais, use 90% EL e 10% RA"
+        }
+      },
+      
+      "environmental_modifiers": {
+        "light_conditions": {
+          "full_sunlight": {
+            "modifier": "+2 para todas as habilidades de luz",
+            "el_cost_reduction": "25% menos custo de EL",
+            "ra_efficiency": "+1 RA disponível por turno",
+            "narrative": "A luz solar natural amplifica seus poderes, fazendo cada habilidade brilhar mais intensamente."
+          },
+          
+          "partial_sunlight": {
+            "modifier": "+1 para habilidades de luz",
+            "el_cost_reduction": "10% menos custo de EL",
+            "ra_efficiency": "Normal",
+            "narrative": "A luz filtrada ainda fortalece seus poderes, mas não tanto quanto a luz direta."
+          },
+          
+          "overcast": {
+            "modifier": "Normal",
+            "el_cost_reduction": "Nenhuma",
+            "ra_efficiency": "Normal",
+            "narrative": "O céu nublado não ajuda nem atrapalha seus poderes."
+          },
+          
+          "dusk_dawn": {
+            "modifier": "-1 para habilidades de luz",
+            "el_cost_reduction": "Nenhuma",
+            "ra_efficiency": "Normal",
+            "narrative": "A luz crepuscular é instável, tornando seus poderes menos confiáveis."
+          },
+          
+          "night": {
+            "modifier": "-2 para habilidades de luz",
+            "el_cost_reduction": "Nenhuma",
+            "ra_efficiency": "-1 RA disponível por turno",
+            "narrative": "A escuridão da noite enfraquece seus poderes, exigindo mais esforço para cada habilidade."
+          },
+          
+          "artificial_light": {
+            "modifier": "+1 para habilidades de luz",
+            "el_cost_reduction": "5% menos custo de EL",
+            "ra_efficiency": "Normal",
+            "narrative": "A luz artificial ajuda, mas não tanto quanto a luz natural do sol."
+          }
+        },
+        
+        "weather_conditions": {
+          "clear_sky": {
+            "modifier": "+1 para todas as habilidades",
+            "special_effects": "Habilidades solares são 25% mais eficazes",
+            "narrative": "O céu limpo permite que a luz solar flua livremente, fortalecendo todos os seus poderes."
+          },
+          
+          "cloudy": {
+            "modifier": "Normal",
+            "special_effects": "Nenhuma",
+            "narrative": "As nuvens filtram a luz solar, mas não a bloqueiam completamente."
+          },
+          
+          "stormy": {
+            "modifier": "-1 para habilidades de luz",
+            "special_effects": "Habilidades elétricas são 25% mais eficazes",
+            "narrative": "A tempestade interfere com a luz solar, mas a eletricidade no ar pode ser canalizada."
+          },
+          
+          "foggy": {
+            "modifier": "-2 para habilidades de luz",
+            "special_effects": "Habilidades de refração são 50% mais eficazes",
+            "narrative": "O nevoeiro dispersa a luz, mas também cria oportunidades para refração criativa."
+          },
+          
+          "snowy": {
+            "modifier": "+1 para habilidades de luz",
+            "special_effects": "Habilidades de luz refletem e se multiplicam",
+            "narrative": "A neve reflete a luz solar, criando múltiplas fontes de luz que amplificam seus poderes."
+          }
+        },
+        
+        "terrain_conditions": {
+          "open_field": {
+            "modifier": "+2 para habilidades de alcance",
+            "special_effects": "Habilidades solares têm alcance dobrado",
+            "narrative": "O campo aberto permite que a luz solar flua livremente, estendendo o alcance de seus poderes."
+          },
+          
+          "forest": {
+            "modifier": "-1 para habilidades de alcance",
+            "special_effects": "Habilidades de refração são 25% mais eficazes",
+            "narrative": "As árvores filtram a luz solar, mas criam oportunidades para refração através das folhas."
+          },
+          
+          "mountains": {
+            "modifier": "+1 para habilidades de alcance",
+            "special_effects": "Habilidades solares são 25% mais eficazes",
+            "narrative": "A altitude aproxima você do sol, fortalecendo seus poderes solares."
+          },
+          
+          "underground": {
+            "modifier": "-3 para todas as habilidades",
+            "special_effects": "Habilidades de luz criada são 50% mais eficazes",
+            "narrative": "A escuridão subterrânea enfraquece seus poderes, mas torna cada fonte de luz que você cria mais poderosa."
+          },
+          
+          "water": {
+            "modifier": "+1 para habilidades de refração",
+            "special_effects": "Habilidades de luz se refletem na água",
+            "narrative": "A água reflete e amplifica a luz, criando oportunidades para refração criativa."
+          }
+        },
+        
+        "time_of_day": {
+          "dawn": {
+            "modifier": "+1 para habilidades de cura",
+            "special_effects": "Habilidades de purificação são 25% mais eficazes",
+            "narrative": "O amanhecer representa renovação, fortalecendo suas habilidades de cura e purificação."
+          },
+          
+          "midday": {
+            "modifier": "+2 para habilidades solares",
+            "special_effects": "Habilidades de destruição são 25% mais eficazes",
+            "narrative": "O sol do meio-dia está no auge, fortalecendo suas habilidades mais poderosas."
+          },
+          
+          "dusk": {
+            "modifier": "+1 para habilidades de refração",
+            "special_effects": "Habilidades de ilusão são 25% mais eficazes",
+            "narrative": "O crepúsculo cria luz instável que favorece habilidades de refração e ilusão."
+          },
+          
+          "midnight": {
+            "modifier": "-2 para todas as habilidades",
+            "special_effects": "Habilidades de luz criada são 50% mais eficazes",
+            "narrative": "A meia-noite é o momento mais escuro, enfraquecendo seus poderes mas tornando cada luz que você cria mais poderosa."
+          }
+        },
+        
+        "magical_environment": {
+          "ley_lines": {
+            "modifier": "+3 para todas as habilidades",
+            "special_effects": "Custos de EL e RA são reduzidos em 50%",
+            "narrative": "As linhas de força mágica amplificam seus poderes, tornando cada habilidade mais eficiente."
+          },
+          
+          "holy_ground": {
+            "modifier": "+2 para habilidades de cura",
+            "special_effects": "Habilidades de purificação são 50% mais eficazes",
+            "narrative": "O solo sagrado amplifica suas habilidades de cura e purificação, tornando-as mais poderosas."
+          },
+          
+          "corrupted_ground": {
+            "modifier": "-2 para todas as habilidades",
+            "special_effects": "Habilidades de purificação são 100% mais eficazes",
+            "narrative": "A corrupção enfraquece seus poderes, mas torna suas habilidades de purificação mais necessárias e eficazes."
+          },
+          
+          "astral_confluence": {
+            "modifier": "+1 para habilidades astrais",
+            "special_effects": "Habilidades de nível alto são 25% mais eficazes",
+            "narrative": "A convergência astral amplifica suas habilidades mais avançadas, tornando-as mais poderosas."
+          }
+        }
+      },
+      
+      "tactical_considerations": {
+        "positioning": {
+          "high_ground": "Aumenta alcance de habilidades em 25%",
+          "cover": "Reduz dano recebido em 25%, mas reduz alcance de habilidades em 25%",
+          "flanking": "Habilidades de luz têm vantagem contra alvos flanqueados",
+          "center_of_room": "Habilidades de área têm 25% mais alcance"
+        },
+        
+        "timing": {
+          "surprise_round": "Primeira habilidade do combate tem vantagem",
+          "end_of_turn": "Habilidades de duração têm 25% mais duração",
+          "beginning_of_turn": "Habilidades instantâneas são 25% mais eficazes",
+          "reaction": "Habilidades de reação são 50% mais eficazes"
+        },
+        
+        "target_selection": {
+          "weakest_enemy": "Habilidades de destruição são 25% mais eficazes",
+          "strongest_enemy": "Habilidades de controle são 25% mais eficazes",
+          "grouped_enemies": "Habilidades de área são 50% mais eficazes",
+          "isolated_enemy": "Habilidades de alcance são 25% mais eficazes"
+        }
+      }
+    },
+
+    "gm_guidance": {
+      "overview": "Guia completo para mestres de jogo sobre como criar encontros desafiadores e narrativas envolventes para usuários de magia de luz.",
+      
+      "encounter_design": {
+        "understanding_light_users": {
+          "strengths": [
+            "Poderes de cura e purificação excepcionais",
+            "Capacidade de criar luz em situações escuras",
+            "Habilidades de refração para controle tático",
+            "Poderes solares devastadores em luz natural",
+            "Resistência a corrupção através de Beatificação"
+          ],
+          "weaknesses": [
+            "Dependentes de luz natural para eficiência máxima",
+            "Vulneráveis a ataques que reduzem Beatificação",
+            "Recursos limitados (EL e RA) em combates longos",
+            "Habilidades de cura podem ser sobrecarregadas",
+            "Poderes de refração dependem de fontes de luz"
+          ],
+          "behavioral_patterns": [
+            "Tendem a proteger aliados feridos",
+            "Buscam posições com luz natural",
+            "Priorizam purificação de corrupção",
+            "Evitam dano colateral a inocentes",
+            "Usam poder defensivamente quando possível"
+          ]
+        },
+        
+        "encounter_types": {
+          "darkness_encounters": {
+            "description": "Encontros em ambientes escuros que desafiam usuários de luz",
+            "examples": [
+              "Dungeons subterrâneos sem luz natural",
+              "Florestas densas que bloqueiam o sol",
+              "Ruínas antigas cobertas de trevas mágicas",
+              "Batalhas noturnas contra criaturas das sombras"
+            ],
+            "challenges": [
+              "Custos de EL aumentados em 50%",
+              "Habilidades solares reduzidas em 25%",
+              "Dificuldade para usar refração efetivamente",
+              "Pressão para usar recursos rapidamente"
+            ],
+            "narrative_hooks": [
+              "A escuridão parece viva e hostil",
+              "Sombras se movem independentemente",
+              "Fontes de luz se apagam misteriosamente",
+              "Criaturas das trevas são mais agressivas"
+            ]
+          },
+          
+          "corruption_encounters": {
+            "description": "Encontros com corrupção que testam a Beatificação",
+            "examples": [
+              "Áreas contaminadas por magia negra",
+              "Criaturas corrompidas que espalham maldições",
+              "Objetos amaldiçoados que tentam o usuário",
+              "NPCs corrompidos que precisam ser purificados"
+            ],
+            "challenges": [
+              "Testes de Beatificação constantes",
+              "Tentação de usar poder para benefício pessoal",
+              "Dilemas morais sobre purificação vs destruição",
+              "Risco de perder Beatificação permanentemente"
+            ],
+            "narrative_hooks": [
+              "A corrupção sussurra promessas de poder",
+              "Aliados podem ser corrompidos se não purificados",
+              "A área corrompida se expande se não contida",
+              "Purificação pode revelar segredos dolorosos"
+            ]
+          },
+          
+          "resource_drain_encounters": {
+            "description": "Encontros que esgotam recursos de EL e RA",
+            "examples": [
+              "Combates longos contra hordas de inimigos",
+              "Situações que requerem cura constante",
+              "Desafios que forçam uso de habilidades caras",
+              "Ambientes que impedem recuperação de recursos"
+            ],
+            "challenges": [
+              "EL e RA se esgotam rapidamente",
+              "Pressão para escolher entre cura e ataque",
+              "Dificuldade para manter habilidades ativas",
+              "Necessidade de estratégias de conservação"
+            ],
+            "narrative_hooks": [
+              "Inimigos parecem infinitos",
+              "Aliados continuam se ferindo",
+              "O ambiente drena energia mágica",
+              "Cada uso de poder tem consequências"
+            ]
+          },
+          
+          "moral_dilemma_encounters": {
+            "description": "Encontros que testam a moralidade e Beatificação",
+            "examples": [
+              "Escolher entre salvar poucos ou muitos",
+              "Decidir se deve purificar ou destruir",
+              "Confrontar aliados que se corromperam",
+              "Usar poder para benefício pessoal vs outros"
+            ],
+            "challenges": [
+              "Todas as opções têm consequências negativas",
+              "Beatificação pode ser perdida por escolhas",
+              "Aliados podem discordar das decisões",
+              "Consequências a longo prazo das escolhas"
+            ],
+            "narrative_hooks": [
+              "Crianças inocentes estão em perigo",
+              "Aliados querem vingança",
+              "Poder absoluto está disponível",
+              "A escolha "certa" não é óbvia"
+            ]
+          }
+        },
+        
+        "environmental_challenges": {
+          "light_manipulation": {
+            "description": "Ambientes que manipulam ou bloqueiam luz",
+            "examples": [
+              "Nevoeiro mágico que dispersa luz",
+              "Espelhos que redirecionam feixes de luz",
+              "Cristais que amplificam ou absorvem luz",
+              "Sombras mágicas que se movem independentemente"
+            ],
+            "mechanics": [
+              "Habilidades de refração são imprevisíveis",
+              "Fontes de luz podem ser redirecionadas",
+              "Luz pode ser absorvida por cristais",
+              "Sombras podem atacar independentemente"
+            ]
+          },
+          
+          "corruption_sources": {
+            "description": "Fontes de corrupção que afetam a área",
+            "examples": [
+              "Altar de sacrifício que corrompe a área",
+              "Necromante que espalha maldições",
+              "Artefato amaldiçoado que corrompe tudo",
+              "Portal para dimensão de corrupção"
+            ],
+            "mechanics": [
+              "Beatificação diminui automaticamente",
+              "Habilidades de purificação são mais necessárias",
+              "Aliados podem ser corrompidos",
+              "Área se torna mais hostil com o tempo"
+            ]
+          },
+          
+          "resource_drain": {
+            "description": "Ambientes que drenam recursos mágicos",
+            "examples": [
+              "Campo de força que absorve energia",
+              "Cristais que drenam EL e RA",
+              "Ritual que impede recuperação de recursos",
+              "Criaturas que se alimentam de energia mágica"
+            ],
+            "mechanics": [
+              "EL e RA se recuperam mais lentamente",
+              "Habilidades custam mais recursos",
+              "Recursos podem ser drenados passivamente",
+              "Necessidade de encontrar fontes alternativas"
+            ]
+          }
+        },
+        
+        "enemy_types": {
+          "shadow_creatures": {
+            "description": "Criaturas que se alimentam de escuridão",
+            "abilities": [
+              "Imunidade a dano de luz em áreas escuras",
+              "Criam escuridão ao redor delas",
+              "Drenam energia de fontes de luz",
+              "Ficam mais fortes na ausência de luz"
+            ],
+            "tactics": [
+              "Atacam fontes de luz primeiro",
+              "Criam áreas de escuridão",
+              "Focam em usuários de luz isolados",
+              "Usam escuridão para se mover furtivamente"
+            ],
+            "narrative": "Sombras vivas que sussurram promessas de poder e se alimentam da luz que você cria."
+          },
+          
+          "corruption_spreaders": {
+            "description": "Criaturas que espalham corrupção",
+            "abilities": [
+              "Corrompem aliados com toque",
+              "Criam áreas de corrupção",
+              "Reduzem Beatificação de oponentes",
+              "Se tornam mais fortes com corrupção"
+            ],
+            "tactics": [
+              "Focam em aliados mais fracos",
+              "Criam corrupção em áreas estratégicas",
+              "Forçam escolhas morais difíceis",
+              "Usam corrupção para se curar"
+            ],
+            "narrative": "Entidades que transformam pureza em corrupção, testando sua determinação moral."
+          },
+          
+          "light_absorbers": {
+            "description": "Criaturas que absorvem energia luminosa",
+            "abilities": [
+              "Absorvem ataques de luz",
+              "Convertem luz em poder próprio",
+              "Drenam EL e RA de oponentes",
+              "Ficam mais fortes com luz absorvida"
+            ],
+            "tactics": [
+              "Procuram fontes de luz para absorver",
+              "Forçam uso de recursos caros",
+              "Criam dilemas sobre usar luz",
+              "Se tornam imunes a ataques de luz"
+            ],
+            "narrative": "Parasitas cósmicos que transformam sua luz em escuridão, forçando você a repensar suas táticas."
+          },
+          
+          "moral_corrupters": {
+            "description": "Criaturas que testam a moralidade",
+            "abilities": [
+              "Criam ilusões que testam moralidade",
+              "Oferecem poder em troca de corrupção",
+              "Forçam escolhas impossíveis",
+              "Manipulam percepção da realidade"
+            ],
+            "tactics": [
+              "Criam situações moralmente ambíguas",
+              "Oferecem soluções fáceis com custo moral",
+              "Manipulam aliados contra o usuário",
+              "Forçam escolhas entre poder e pureza"
+            ],
+            "narrative": "Tentadores que conhecem seus desejos mais profundos e os usam contra você."
+          }
+        }
+      },
+      
+      "narrative_techniques": {
+        "beatification_storytelling": {
+          "rising_tension": {
+            "description": "Como criar tensão narrativa através de Beatificação",
+            "techniques": [
+              "Mostrar consequências de Beatificação baixa",
+              "Criar situações que testam moralidade",
+              "Mostrar o custo de manter pureza",
+              "Revelar o poder de Beatificação alta"
+            ],
+            "examples": [
+              "Usuário de luz corrompido que perdeu tudo",
+              "Situação onde poder fácil está disponível",
+              "Aliado que precisa ser purificado",
+              "Momento de transcendência através de pureza"
+            ]
+          },
+          
+          "character_development": {
+            "description": "Como usar magia de luz para desenvolvimento de personagem",
+            "techniques": [
+              "Cada habilidade revela algo sobre o personagem",
+              "Escolhas morais afetam poderes disponíveis",
+              "Relacionamentos influenciam Beatificação",
+              "Crescimento espiritual se reflete em poder"
+            ],
+            "examples": [
+              "Personagem aprende compaixão através de cura",
+              "Escolha difícil revela verdadeira natureza",
+              "Sacrifício pessoal aumenta Beatificação",
+              "Perdão de inimigo desbloqueia nova habilidade"
+            ]
+          },
+          
+          "world_building": {
+            "description": "Como integrar magia de luz no mundo",
+            "techniques": [
+              "Mostrar como luz afeta o ambiente",
+              "Criar locais sagrados de luz",
+              "Mostrar consequências de corrupção",
+              "Revelar história através de luz"
+            ],
+            "examples": [
+              "Templo antigo que responde à luz pura",
+              "Cidade corrompida que precisa de purificação",
+              "Artefato que só funciona com Beatificação alta",
+              "Profecia que se revela através de luz"
+            ]
+          }
+        },
+        
+        "encounter_pacing": {
+          "opening": {
+            "description": "Como começar encontros de forma envolvente",
+            "techniques": [
+              "Descrever ambiente e atmosfera",
+              "Mostrar como luz afeta a cena",
+              "Introduzir dilemas morais gradualmente",
+              "Estabelecer tensão através de descrições"
+            ],
+            "examples": [
+              "A escuridão parece viva e hostil",
+              "Luz solar filtra através das nuvens",
+              "Sombras sussurram promessas de poder",
+              "Aliados feridos precisam de ajuda imediata"
+            ]
+          },
+          
+          "escalation": {
+            "description": "Como aumentar tensão durante encontros",
+            "techniques": [
+              "Introduzir novos desafios gradualmente",
+              "Mostrar consequências de escolhas",
+              "Aumentar pressão moral",
+              "Revelar informações importantes"
+            ],
+            "examples": [
+              "Mais aliados são corrompidos",
+              "Área de corrupção se expande",
+              "Inimigos se tornam mais agressivos",
+              "Recursos se esgotam rapidamente"
+            ]
+          },
+          
+          "climax": {
+            "description": "Como criar momentos de clímax emocionantes",
+            "techniques": [
+              "Forçar escolhas difíceis",
+              "Mostrar poder de Beatificação alta",
+              "Revelar consequências de ações",
+              "Criar momentos de transcendência"
+            ],
+            "examples": [
+              "Escolha entre salvar muitos ou poucos",
+              "Momento de poder divino através de pureza",
+              "Revelação de verdade sobre corrupção",
+              "Transcendência através de sacrifício"
+            ]
+          },
+          
+          "resolution": {
+            "description": "Como resolver encontros de forma satisfatória",
+            "techniques": [
+              "Mostrar consequências de escolhas",
+              "Revelar crescimento do personagem",
+              "Estabelecer novas tensões",
+              "Preparar para próximos desafios"
+            ],
+            "examples": [
+              "Aliados agradecem pela purificação",
+              "Personagem aprende lição importante",
+              "Nova ameaça se revela",
+              "Beatificação aumenta ou diminui"
+            ]
+          }
+        }
+      },
+      
+      "balancing_guidelines": {
+        "difficulty_scaling": {
+          "beginner": {
+            "description": "Encontros para usuários de luz iniciantes",
+            "characteristics": [
+              "Focam em habilidades básicas",
+              "Testam Beatificação gradualmente",
+              "Oferecem escolhas morais simples",
+              "Permitem recuperação de recursos"
+            ],
+            "examples": [
+              "Combate contra criaturas das sombras básicas",
+              "Dilema moral simples sobre ajudar NPC",
+              "Ambiente com luz natural disponível",
+              "Aliados que podem ajudar na cura"
+            ]
+          },
+          
+          "intermediate": {
+            "description": "Encontros para usuários de luz experientes",
+            "characteristics": [
+              "Requerem uso de combos",
+              "Testam Beatificação regularmente",
+              "Oferecem escolhas morais complexas",
+              "Limitam recuperação de recursos"
+            ],
+            "examples": [
+              "Combate em ambiente parcialmente escuro",
+              "Dilema sobre purificar vs destruir",
+              "Inimigos que absorvem luz",
+              "Recursos limitados por tempo"
+            ]
+          },
+          
+          "advanced": {
+            "description": "Encontros para usuários de luz avançados",
+            "characteristics": [
+              "Requerem uso de técnicas lendárias",
+              "Testam Beatificação constantemente",
+              "Oferecem escolhas morais impossíveis",
+              "Drenam recursos rapidamente"
+            ],
+            "examples": [
+              "Combate em escuridão total",
+              "Escolha entre salvar muitos ou poucos",
+              "Inimigos que corrompem aliados",
+              "Ambiente que drena energia mágica"
+            ]
+          }
+        },
+        
+        "resource_management": {
+          "el_balance": {
+            "description": "Como balancear uso de Energia Luminar",
+            "techniques": [
+              "Forçar escolhas entre cura e ataque",
+              "Limitar fontes de luz natural",
+              "Criar situações que drenam EL",
+              "Oferecer fontes alternativas de energia"
+            ],
+            "examples": [
+              "Aliados feridos vs atacar inimigos",
+              "Ambiente escuro que aumenta custos",
+              "Criaturas que drenam EL",
+              "Cristais que podem ser energizados"
+            ]
+          },
+          
+          "ra_balance": {
+            "description": "Como balancear uso de Reserva Astral",
+            "techniques": [
+              "Forçar uso de RA para habilidades críticas",
+              "Criar situações que requerem RA",
+              "Limitar recuperação de RA",
+              "Oferecer fontes alternativas de RA"
+            ],
+            "examples": [
+              "Habilidade que só funciona com RA",
+              "Situação que requer purificação imediata",
+              "Ambiente que impede meditação",
+              "Ritual que pode restaurar RA"
+            ]
+          }
+        },
+        
+        "beatification_balance": {
+          "description": "Como balancear sistema de Beatificação",
+          "techniques": [
+            "Oferecer escolhas morais significativas",
+            "Mostrar consequências de corrupção",
+            "Recompensar pureza com poder",
+            "Criar tensão entre poder e moralidade"
+          ],
+          "examples": [
+            "Escolha entre poder fácil e pureza",
+            "Mostrar usuário corrompido poderoso",
+            "Recompensar sacrifício pessoal",
+            "Criar dilema sobre usar poder para benefício próprio"
+          ]
+        }
+      },
+      
+      "campaign_integration": {
+        "long_term_storytelling": {
+          "description": "Como integrar magia de luz em campanhas longas",
+          "techniques": [
+            "Criar arcos de história baseados em Beatificação",
+            "Mostrar evolução do personagem através de poder",
+            "Integrar luz vs escuridão como tema central",
+            "Criar momentos de transcendência"
+          ],
+          "examples": [
+            "Arco sobre purificação de reino corrompido",
+            "Evolução de iniciante a mestre de luz",
+            "Confronto final entre luz e escuridão",
+            "Momento de transcendência divina"
+          ]
+        },
+        
+        "party_dynamics": {
+          "description": "Como integrar usuários de luz com outros personagens",
+          "techniques": [
+            "Criar tensão entre luz e outras magias",
+            "Mostrar como luz afeta outros personagens",
+            "Criar momentos de cooperação",
+            "Explorar conflitos de filosofia"
+          ],
+          "examples": [
+            "Usuário de luz vs usuário de magia negra",
+            "Luz cura aliados feridos",
+            "Cooperação para purificar área",
+            "Debate sobre uso de poder"
+          ]
+        },
+        
+        "world_consequences": {
+          "description": "Como mostrar consequências de ações de luz",
+          "techniques": [
+            "Mostrar como purificação afeta o mundo",
+            "Revelar consequências de corrupção",
+            "Criar locais que respondem à luz",
+            "Mostrar evolução do mundo ao longo do tempo"
+          ],
+          "examples": [
+            "Cidade se torna mais próspera após purificação",
+            "Área corrompida se expande se não contida",
+            "Templo antigo se reativa com luz pura",
+            "Mundo muda baseado em escolhas do grupo"
+          ]
+        }
+      },
+      
+      "troubleshooting": {
+        "common_problems": {
+          "overpowered_light_users": {
+            "description": "Quando usuários de luz são muito poderosos",
+            "solutions": [
+              "Criar inimigos que absorvem luz",
+              "Limitar fontes de luz natural",
+              "Forçar escolhas morais difíceis",
+              "Criar situações que drenam recursos"
+            ],
+            "examples": [
+              "Criaturas que ficam mais fortes com luz",
+              "Ambiente escuro que aumenta custos",
+              "Dilema moral que testa Beatificação",
+              "Situação que requer uso constante de recursos"
+            ]
+          },
+          
+          "underpowered_light_users": {
+            "description": "Quando usuários de luz são muito fracos",
+            "solutions": [
+              "Oferecer fontes de luz natural",
+              "Criar situações que favorecem luz",
+              "Permitir recuperação de recursos",
+              "Oferecer aliados que podem ajudar"
+            ],
+            "examples": [
+              "Ambiente com luz solar abundante",
+              "Situação onde cura é necessária",
+              "Tempo para meditação e recuperação",
+              "NPCs que podem auxiliar na purificação"
+            ]
+          },
+          
+          "boring_encounters": {
+            "description": "Quando encontros são monótonos",
+            "solutions": [
+              "Adicionar elementos morais",
+              "Criar situações que requerem criatividade",
+              "Introduzir inimigos únicos",
+              "Adicionar elementos ambientais interessantes"
+            ],
+            "examples": [
+              "Dilema moral sobre purificação",
+              "Situação que requer uso criativo de refração",
+              "Inimigo que testa Beatificação",
+              "Ambiente que muda durante o combate"
+            ]
+          }
+        },
+        
+        "player_feedback": {
+          "description": "Como obter e usar feedback dos jogadores",
+          "techniques": [
+            "Perguntar sobre momentos favoritos",
+            "Identificar situações frustrantes",
+            "Ajustar dificuldade baseado em feedback",
+            "Criar situações baseadas em interesses dos jogadores"
+          ],
+          "examples": [
+            "Qual foi o momento mais emocionante?",
+            "O que foi mais frustrante?",
+            "Que tipo de desafio você gostaria de ver?",
+            "Como podemos tornar isso mais interessante?"
+          ]
+        }
+      }
+    },
+
+    "meta_information": {
+      "design_philosophy": "Magia de Luz é desenhada para recompensar jogo heroico e punir ações malignas através de Beatificação. É intencionalmente forte para jogadores bons.",
+      
+      "balancing_notes": [
+        "Beatificação cria balanceamento moral automático",
+        "Recursos duplos (EL e RA) limitam spam de habilidades",
+        "Cooldowns em habilidades supremas previnem dominação",
+        "Fraqueza a trevas cria contraponto natural",
+        "Dependência de luz ambiental incentiva jogo estratégico"
+      ],
+
+      "dm_guidance": {
+        "tracking_beatification": "Mestre deve julgar ações e ajustar Beatificação apropriadamente",
+        "challenging_light_users": "Use ambientes escuros, inimigos com resistência, dilemas morais",
+        "rewarding_good_play": "Permita momentos heroicos brilharem, literalmente",
+        "narrative_weight": "Luz é visível - crie consequências sociais e narrativas",
+        "epic_moments": "Habilidades nível 90+ devem ter impacto duradouro no mundo"
+      },
+
+      "player_tips": [
+        "Beatificação é tudo - proteja-a zelosamente",
+        "Planeje uso de RA cuidadosamente - é limitado",
+        "Crie fontes de luz proativamente para mobilidade",
+        "Considere impacto moral de cada ação",
+        "Escolha de caminho nível 71 define jogo inteiro - pense bem",
+        "Trabalhe com grupo - luz beneficia todos",
+        "Não tema brilhar - você É um farol"
+      ]
+    },
+
+    "version_control": {
+      "current_version": "1.0.0",
+      "last_updated": "2025",
+      "changelog": [
+        {
+          "version": "1.0.0",
+          "date": "2025",
+          "changes": [
+            "Sistema completo implementado",
+            "Três caminhos de especialização definidos",
+            "Beatificação integrada como atributo paralelo",
+            "70 níveis de progressão + 3 caminhos até 100",
+            "Mecânicas de combate e RP detalhadas"
+          ]
+        }
+      ],
+      "future_considerations": [
+        "Possível quarto caminho: Luz Sombria (para Beatificação negativa?)",
+        "Interações com Santidade de Profeta",
+        "Formas híbridas com outras magias",
+        "Rituais coletivos de luz",
+        "Artefatos lendários específicos"
+      ]
+    }
+  }
+}

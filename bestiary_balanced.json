@@ -1,0 +1,333 @@
+{
+  "_schema": "2.0",
+  "_description": "Bestiário balanceado para níveis 1-100, sem valores 666",
+  "_balancing": "HP = nível×25 base, Dano proporcional, XP alinhado com progressão, Loot realista",
+  
+  "TIER_1_Levels_1to10": {
+    "_xp_range": "50-300",
+    "_hp_range": "25-250",
+    "_damage_range": "5-20",
+    
+    "Lobo_Selvagem": {
+      "level": 3,
+      "type": "Fera",
+      "hp": 75,
+      "ac": 12,
+      "damage": "1d6+2 (8 avg)",
+      "abilities": ["Mordida Feroz", "Matilha (+2 dmg por aliado)"],
+      "weaknesses": ["Fogo"],
+      "xp": 150,
+      "loot": ["Pele de lobo (30 po)", "Presa (10 po)"]
+    },
+    
+    "Goblin_Ladrão": {
+      "level": 5,
+      "type": "Humanoide",
+      "hp": 125,
+      "ac": 13,
+      "damage": "1d6+3 (9 avg)",
+      "abilities": ["Furtividade", "Ataque Surpresa (+1d6)"],
+      "weaknesses": ["Luz Forte (-2 ataque)"],
+      "magic": ["Nenhuma"],
+      "xp": 200,
+      "loot": ["Adaga enferrujada", "15 po"]
+    },
+    
+    "Esqueleto_Guardião": {
+      "level": 7,
+      "type": "Morto-vivo",
+      "hp": 175,
+      "ac": 14,
+      "damage": "1d8+3 (10 avg)",
+      "abilities": ["Resistência perfurante 50%", "Imune a veneno"],
+      "weaknesses": ["Luz Sagrada (dano triplo)", "Contundente"],
+      "magic": ["Nenhuma"],
+      "xp": 280,
+      "loot": ["Ossos antigos (20 po)", "Espada velha (50 po)"]
+    },
+    
+    "Imp_Menor": {
+      "level": 10,
+      "type": "Demônio",
+      "hp": 220,
+      "ac": 15,
+      "damage": "2d4+4 (13 avg)",
+      "abilities": ["Invisibilidade (1x por dia)", "Veneno fraco (1d4/turno)"],
+      "weaknesses": ["Luz Sagrada"],
+      "magic": ["Fogo - Bola de Fogo Menor 2d6"],
+      "xp": 300,
+      "loot": ["Chifre de imp (100 po)", "Essência demoníaca (80 po)"]
+    }
+  },
+
+  "TIER_2_Levels_11to20": {
+    "_xp_range": "400-1200",
+    "_hp_range": "275-500",
+    "_damage_range": "15-35",
+    
+    "Ogro_Guerreiro": {
+      "level": 15,
+      "type": "Gigante",
+      "hp": 375,
+      "ac": 15,
+      "damage": "2d8+6 (21 avg)",
+      "abilities": ["Golpe Poderoso (×2 dmg, 1x por combate)", "Regeneração 5 HP/turno"],
+      "weaknesses": ["Fogo (impede regeneração)"],
+      "xp": 750,
+      "loot": ["Clava grande (200 po)", "Couro grosso (150 po)"]
+    },
+    
+    "Elemental_Fogo_Menor": {
+      "level": 18,
+      "type": "Elemental",
+      "hp": 420,
+      "ac": 16,
+      "damage": "3d6+5 (24 avg)",
+      "abilities": ["Aura de Fogo (1d6 em 2m)", "Imune a fogo"],
+      "weaknesses": ["Água (vulnerável)"],
+      "magic": ["Fogo - Explosão Flamejante 4d8"],
+      "xp": 1100,
+      "loot": ["Núcleo de fogo (500 po)", "Cinzas elementais (300 po)"]
+    },
+    
+    "Espectro_Sombrio": {
+      "level": 20,
+      "type": "Morto-vivo",
+      "hp": 450,
+      "ac": 17,
+      "damage": "2d10+6 (27 avg) necrótico",
+      "abilities": ["Drenar Vida (50% dmg vira HP)", "Intangível (50% evitar físico)"],
+      "weaknesses": ["Luz Sagrada", "Magia de Luz"],
+      "magic": ["Sobrenatural - Terror 3d8"],
+      "xp": 1200,
+      "loot": ["Essência espectral (700 po)", "Fragmento sombrio (400 po)"]
+    }
+  },
+
+  "TIER_3_Levels_21to30": {
+    "_xp_range": "1500-4000",
+    "_hp_range": "525-750",
+    "_damage_range": "35-60",
+    
+    "Troll_Regenerador": {
+      "level": 25,
+      "type": "Troll",
+      "hp": 625,
+      "ac": 16,
+      "damage": "3d8+8 (38 avg)",
+      "abilities": ["Regeneração 15 HP/turno", "Fúria <50% HP (+10 dmg)"],
+      "weaknesses": ["Fogo e Ácido (param regeneração)"],
+      "xp": 2500,
+      "loot": ["Sangue de troll (1200 po)", "Couro regenerativo (1500 po)"]
+    },
+    
+    "Demônio_Sangue": {
+      "level": 28,
+      "type": "Demônio",
+      "hp": 700,
+      "ac": 18,
+      "damage": "4d6+10 (50 avg) + drenar",
+      "abilities": ["Absorção de Sangue (recupera HP = dmg)", "Hemorragia (2d6/turno)"],
+      "weaknesses": ["Luz Sagrada (vulnerável)"],
+      "magic": ["Sangue - Explosão Sanguínea 6d10"],
+      "corrupcao": 5,
+      "xp": 3500,
+      "loot": ["Coração demoníaco (2500 po)", "Essência corrupta (1800 po)"]
+    },
+    
+    "Dragão_Jovem_Fogo": {
+      "level": 30,
+      "type": "Dragão",
+      "hp": 750,
+      "ac": 19,
+      "damage": "4d8+12 (55 avg)",
+      "abilities": ["Sopro de Fogo 8d10 (cone 10m)", "Voo", "Escamas (resistência física 30%)"],
+      "weaknesses": ["Gelo"],
+      "magic": ["Fogo - Inferno 7d12"],
+      "xp": 4000,
+      "loot": ["Escama de dragão jovem (3000 po)", "Garra dracônica (2000 po)", "Tesouro: 5000 po"]
+    }
+  },
+
+  "TIER_4_Levels_31to50": {
+    "_xp_range": "5000-15000",
+    "_hp_range": "775-1250",
+    "_damage_range": "60-120",
+    
+    "Golem_Metais": {
+      "level": 40,
+      "type": "Constructo",
+      "hp": 1000,
+      "ac": 21,
+      "damage": "5d10+15 (90 avg)",
+      "abilities": ["Pele Metálica (imune perfurante/cortante)", "Contra-ataque (reflete 2d10)"],
+      "weaknesses": ["Trovão (atordoa)", "Ferrugem mágica"],
+      "xp": 10000,
+      "loot": ["Núcleo metálico (8000 po)", "Placas de adamantina (12000 po)"]
+    },
+    
+    "Anjo_Caído": {
+      "level": 45,
+      "type": "Celestial_Corrompido",
+      "hp": 1125,
+      "ac": 22,
+      "damage": "6d8+18 (105 avg) misto",
+      "abilities": ["Aura Profana (-3 salvaguardas 10m)", "Voo", "Resistência mágica 50%"],
+      "weaknesses": ["Luz Pura (não corrompida)"],
+      "magic": ["Luz Negra - Raio Profano 10d10", "Sobrenatural - Maldição 8d8"],
+      "corrupcao": 8,
+      "xp": 13000,
+      "loot": ["Pena corrompida (15000 po)", "Halo partido (artefato menor)"]
+    },
+    
+    "Hidra_Cinco_Cabeças": {
+      "level": 50,
+      "type": "Monstruosidade",
+      "hp": 1250,
+      "ac": 20,
+      "damage": "5×(2d8+10) = 115 avg total",
+      "abilities": ["5 ataques/turno", "Regenerar cabeça (precisa fogo para prevenir)", "Veneno mortal"],
+      "weaknesses": ["Fogo (previne regeneração)", "Decapitação com fogo"],
+      "xp": 15000,
+      "loot": ["5 Cabeças de hidra (3000 po cada)", "Sangue venenoso (8000 po)", "Couro resistente (10000 po)"]
+    }
+  },
+
+  "TIER_5_Levels_51to70": {
+    "_xp_range": "18000-40000",
+    "_hp_range": "1275-1750",
+    "_damage_range": "120-200",
+    
+    "Dragão_Ancião_Gelo": {
+      "level": 60,
+      "type": "Dragão",
+      "hp": 1500,
+      "ac": 24,
+      "damage": "8d10+25 (175 avg)",
+      "abilities": ["Sopro Glacial 15d12 (cone 20m)", "Aura Congelante (5d6 em 5m)", "Presença Aterradora"],
+      "weaknesses": ["Fogo"],
+      "magic": ["Gelo - Tempestade de Gelo 12d12", "Ar - Ventania 10d10"],
+      "xp": 35000,
+      "loot": ["Escama de dragão ancião (25000 po)", "Coração glacial (40000 po)", "Tesouro: 80000 po"]
+    },
+    
+    "Lich_Necromante": {
+      "level": 65,
+      "type": "Morto-vivo_Supremo",
+      "hp": 1625,
+      "ac": 23,
+      "damage": "7d12+22 (167 avg) necrótico",
+      "abilities": ["Phylactery (ressurreição após 7 dias)", "Controlar mortos-vivos", "Drenar Vida massivo"],
+      "weaknesses": ["Luz Sagrada", "Destruir Phylactery"],
+      "magic": ["Sobrenatural - Onda da Morte 15d10", "Sangue - Hemorragia Massiva 12d12", "Gelo - Prisão Eterna"],
+      "xp": 38000,
+      "loot": ["Phylactery (artefato lendário)", "Grimório negro (30000 po)", "Joia da alma (50000 po)"]
+    },
+    
+    "Arcanjo_Miguel_NPC": {
+      "level": 70,
+      "type": "Celestial_BOSS",
+      "hp": 1750,
+      "ac": 26,
+      "damage": "10d10+30 (195 avg) radiante",
+      "abilities": ["Julgamento Divino 20d12", "Aura Sagrada (cura aliados 5d10/turno)", "Voo superior", "Ressurreição (1x)"],
+      "weaknesses": ["Nenhuma"],
+      "magic": ["Luz - Pilar Divino 18d12", "Fogo - Espada Flamejante sempre ativa"],
+      "xp": 40000,
+      "loot": ["Pena de Miguel (100000 po - artefato)", "Fragmento de Halo (80000 po)"]
+    }
+  },
+
+  "TIER_6_Levels_71to90": {
+    "_xp_range": "45000-80000",
+    "_hp_range": "1775-2250",
+    "_damage_range": "200-350",
+    
+    "Principado_Asmodeus_NPC": {
+      "level": 80,
+      "type": "Demônio_BOSS",
+      "hp": 2000,
+      "ac": 27,
+      "damage": "12d12+40 (315 avg) ígneo",
+      "abilities": ["Fogo Infernal permanente", "Regeneração demoníaca 50 HP/turno", "Aura de Luxúria (charm DC 30)"],
+      "weaknesses": ["Luz Sagrada extrema"],
+      "magic": ["Fogo - Apocalipse Flamejante 25d12", "Sangue - Sacrifício 20d10"],
+      "corrupcao": 10,
+      "xp": 70000,
+      "loot": ["Chicote das Chamas (artefato supremo)", "Essência de Asmodeus (200000 po)", "Coração demoníaco (150000 po)"]
+    },
+    
+    "Titã_Terra": {
+      "level": 85,
+      "type": "Primordial",
+      "hp": 2125,
+      "ac": 25,
+      "damage": "10d12+35 (295 avg)",
+      "abilities": ["Terremoto (15d12 em 50m)", "Pele Rochosa (imune físico não-mágico)", "Regeneração terrestre"],
+      "weaknesses": ["Ar (levitação neutraliza)", "Água (enfraquece)"],
+      "magic": ["Terra - Cataclismo 22d12", "Metais - Chuva Metálica 18d12"],
+      "xp": 75000,
+      "loot": ["Núcleo Primordial (300000 po)", "Fragmento de titã (180000 po)"]
+    },
+    
+    "Kraken_Abissal": {
+      "level": 90,
+      "type": "Monstruosidade_Lendária",
+      "hp": 2250,
+      "ac": 24,
+      "damage": "8×(3d10+20) = 440 avg total (8 tentáculos)",
+      "abilities": ["Pressão Abissal 18d12", "8 ataques/turno", "Regeneração aquática", "Invocar maremoto"],
+      "weaknesses": ["Fogo", "Eletricidade (atordoa)"],
+      "magic": ["Água - Tsunami 20d12", "Gelo - Era Glacial"],
+      "xp": 80000,
+      "loot": ["Tinta de kraken (250000 po)", "8 Tentáculos (20000 po cada)", "Pérola abissal (400000 po)"]
+    }
+  },
+
+  "TIER_7_BOSSES_Levels_91to100": {
+    "_xp_range": "100000-200000",
+    "_hp_range": "2500-4000",
+    "_damage_range": "350-600",
+    "_note": "Desafios finais, entidades primordiais e deuses menores",
+    
+    "Zeus_Deus_Trovão": {
+      "level": 95,
+      "type": "Deus_Grego_BOSS",
+      "hp": 3500,
+      "ac": 30,
+      "damage": "15d12+50 (555 avg) elétrico",
+      "abilities": ["Raio Mestre 30d12", "Forma Divina (imune mortal)", "Tempestade Eterna", "Ressurreição Divina"],
+      "weaknesses": ["Nenhuma (requer arma divina)"],
+      "magic": ["Trovão - Julgamento Celestial 35d12", "Ar - Furacão do Fim 28d12", "Luz - Fulgor Olímpico 30d12"],
+      "xp": 150000,
+      "loot": ["Raio-Mestre de Zeus (artefato SUPREMO único)", "Coroa Olímpica (500000 po)", "Essência Divina (1000000 po)"]
+    },
+    
+    "Hades_Senhor_Submundo": {
+      "level": 98,
+      "type": "Deus_Grego_BOSS",
+      "hp": 3800,
+      "ac": 31,
+      "damage": "18d12+60 (585 avg) necrótico",
+      "abilities": ["Invocar Exército Morto", "Controle Total Almas", "Maldição Eterna", "Reino dos Mortos (campo de batalha)"],
+      "weaknesses": ["Luz Divina suprema"],
+      "magic": ["Sangue - Hemorragia Mundial 40d12", "Sobrenatural - Ruptura de Almas 35d12", "Gelo - Frio Eterno 30d12"],
+      "xp": 180000,
+      "loot": ["Elmo da Invisibilidade (artefato SUPREMO)", "Bidente de Hades (artefato único)", "Joia das Almas (1500000 po)"]
+    },
+    
+    "Metatron_Escriba_Divino": {
+      "level": 100,
+      "type": "Arcanjo_SUPREMO_BOSS",
+      "hp": 4000,
+      "ac": 32,
+      "damage": "20d12+70 (620 avg) radiante",
+      "abilities": ["Reescrever Realidade", "Livro dos Destinos", "Onisciência Limitada", "Forma Angelical Suprema", "Ressurreição Infinita (precisa destruir o Livro)"],
+      "weaknesses": ["Trevas Primordiais", "Apagar do Livro"],
+      "magic": ["Sobrenatural - Criação/Destruição 50d12", "Luz - Gênesis 45d12", "Todas as outras magias em forma suprema"],
+      "xp": 200000,
+      "loot": ["Livro dos Destinos (artefato ÚNICO - pode reescrever 1 evento)", "Pena de Metatron (2000000 po)", "Halo Supremo (artefato)", "Essência Angelical Pura (3000000 po)"]
+    }
+  }
+}
+

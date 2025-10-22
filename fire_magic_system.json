@@ -1,0 +1,1626 @@
+{
+  "magic_system": {
+    "id": "fire_magic",
+    "name": "Magia de Fogo",
+    "version": "1.0.0",
+    "category": "Elemental/Destrutiva",
+    "rarity": "Comum",
+    
+    "essence": {
+      "description": "A Magia de Fogo governa a combustão, o calor, a transformação através da destruição e a fúria elemental pura. É a magia da aniquilação absoluta, onde o mago não apenas cria chamas, mas se torna o próprio inferno vivo.",
+      "core_principles": [
+        "Fogo como força destrutiva pura",
+        "Controle de área através de chamas persistentes",
+        "Transformação através da queima e purificação violenta",
+        "Intensidade crescente e poder cada vez mais incontrolável",
+        "Destruição em massa - o fogo não conhece limites de área"
+      ],
+      "philosophical_basis": "O Fogo é a força mais destrutiva da natureza. Não pede permissão, não julga, apenas consome. O usuário de fogo abraça essa natureza primordial, tornando-se um avatar da destruição."
+    },
+
+    "resource_system": {
+      "primary_resource": {
+        "name": "Energia Flamejante",
+        "abbreviation": "EF",
+        "base_pool": "100 + (Nível × 20)",
+        "regeneration": {
+          "passive": "3% por turno",
+          "rest": "100% após descanso completo",
+          "combat_kill": "+5 EF por inimigo morto com fogo",
+          "environmental": "+10% em ambientes quentes ou em chamas"
+        },
+        "cost_reduction": "Reduz 5% a cada 10 níveis devido ao domínio crescente"
+      },
+      
+      "secondary_resource": {
+        "name": "Fúria Ígnea",
+        "abbreviation": "FI",
+        "unlock_level": 70,
+        "base_pool": "50 + ((Nível - 70) × 10)",
+        "description": "Fúria acumulada através de combate sustentado e destruição massiva. Quanto mais você destrói, mais poder você acumula.",
+        "regeneration": {
+          "aoe_hit": "+2 FI por inimigo atingido com habilidades de área",
+          "kill": "+5 FI por inimigo morto",
+          "passive_drain": "-1 FI por minuto fora de combate",
+          "max_fury": "Fúria acumula até máximo do pool e não pode exceder"
+        }
+      }
+    },
+
+    "passive_abilities": {
+      "initial_passive": {
+        "name": "Fogo Protetor",
+        "unlock_level": 1,
+        "description": "Uma chama inconsciente surge instintivamente para interceptar projéteis ou ataques iminentes, criando barreiras de fogo reflexivas.",
+        "effects": [
+          {
+            "type": "defensive",
+            "value": "+2 CA contra ataques à distância"
+          },
+          {
+            "type": "reactive",
+            "description": "10% de chance de bloquear completamente projéteis com explosão de chamas"
+          },
+          {
+            "type": "counter",
+            "description": "Projéteis bloqueados causam 1d4 de dano de fogo ao atacante"
+          }
+        ],
+        "scaling": "Intensidade e chance de bloqueio aumentam com o nível",
+        "narrative_description": "Chamas dançam ao redor do usuário, reagindo instintivamente a ameaças antes mesmo da consciência registrá-las."
+      },
+
+      "level_10": {
+        "name": "Fogo Protetor Aprimorado",
+        "unlock_level": 10,
+        "type": "upgrade",
+        "description": "A defesa flamejante se torna mais poderosa e confiável.",
+        "new_effects": [
+          {
+            "type": "defensive",
+            "value": "+4 CA contra ataques à distância (aumentado)"
+          },
+          {
+            "type": "reactive",
+            "description": "25% de chance de bloquear projéteis"
+          },
+          {
+            "type": "counter",
+            "value": "Dano de contra-ataque aumenta para 2d6"
+          },
+          {
+            "type": "area",
+            "description": "Bloqueios criam pequena explosão de 2m de raio"
+          }
+        ]
+      },
+
+      "level_20": {
+        "name": "Calor Reativo",
+        "unlock_level": 20,
+        "description": "Ao receber dano de ataque corpo a corpo, pequenas explosões de fogo irrompem do corpo do usuário, causando dano ao atacante.",
+        "effects": [
+          {
+            "type": "counter_damage",
+            "value": "2d8 de dano de fogo ao atacante corpo a corpo"
+          },
+          {
+            "type": "area_effect",
+            "description": "Explosão atinge inimigos em 1,5m ao redor"
+          },
+          {
+            "type": "trigger",
+            "description": "Ativa automaticamente ao receber dano corpo a corpo"
+          },
+          {
+            "type": "no_cost",
+            "description": "Não consome EF, é puramente reativo"
+          }
+        ],
+        "narrative_description": "O corpo do usuário se torna tão quente que tocá-lo é como tocar ferro em brasa"
+      },
+
+      "level_30": {
+        "name": "Resistência Flamejante",
+        "unlock_level": 30,
+        "description": "O corpo desenvolve resistência natural ao fogo e emite calor constante.",
+        "effects": [
+          {
+            "type": "resistance",
+            "value": "Resistência a 50% de dano de fogo"
+          },
+          {
+            "type": "immunity_own",
+            "description": "Imune ao próprio fogo e calor"
+          },
+          {
+            "type": "aura",
+            "description": "Aura de calor de 3m reduz velocidade de inimigos em 10%"
+          },
+          {
+            "type": "environmental",
+            "description": "Não sofre efeitos negativos de ambientes quentes"
+          }
+        ]
+      },
+
+      "level_40": {
+        "name": "Corpo Incandescente",
+        "unlock_level": 40,
+        "description": "A transformação parcial em fogo vivo começa. O corpo emite luz e calor intensos.",
+        "mechanics": {
+          "activation": "Ativa automaticamente quando EF está acima de 70%",
+          "effects": [
+            "Corpo emite luz intensa em 10m de raio",
+            "Redução de 20% em dano físico recebido",
+            "+2d6 dano de fogo em ataques corpo a corpo",
+            "Inimigos a menos de 2m sofrem 1d6 de dano por turno"
+          ]
+        },
+        "narrative_description": "A pele brilha como metal aquecido, e o ar ao redor distorce com o calor"
+      },
+
+      "level_50": {
+        "name": "Aura Flamejante",
+        "unlock_level": 50,
+        "description": "Uma aura de calor constante envolve o usuário, causando dano contínuo a inimigos próximos e concedendo resistência a aliados.",
+        "mechanics": {
+          "radius": "5 metros centrado no usuário",
+          "enemy_effects": [
+            "2d10 de dano de fogo por turno",
+            "-2 em testes de ataque devido ao calor",
+            "Objetos inflamáveis pegam fogo automaticamente"
+          ],
+          "ally_effects": [
+            "+3 em resistência contra frio",
+            "Aquecimento em climas frios",
+            "Imunidade a hipotermia"
+          ]
+        },
+        "toggle": "Pode ser ativada/desativada à vontade sem custo"
+      },
+
+      "level_60": {
+        "name": "Forja Viva",
+        "unlock_level": 60,
+        "description": "Armas e projéteis criados ou imbuídos com fogo aumentam seu dano a cada golpe consecutivo no mesmo alvo.",
+        "mechanics": {
+          "stacking": "Cada golpe adiciona +1d6 de dano",
+          "max_stacks": "Até 5 acúmulos (5d6 adicional)",
+          "duration": "Acúmulos duram 3 turnos sem atingir o alvo",
+          "reset": "Trocar de alvo reseta o acúmulo",
+          "applies_to": [
+            "Lâmina Flamejante",
+            "Lança Incandescente",
+            "Qualquer arma imbuída com fogo"
+          ]
+        }
+      },
+
+      "level_70": {
+        "name": "Reação Vital",
+        "unlock_level": 70,
+        "description": "O fogo adapta-se instantaneamente às defesas do inimigo. Se um inimigo resiste ao fogo, as chamas se tornam mais intensas para superar essa resistência.",
+        "mechanics": {
+          "adaptation": "Detecta resistência/imunidade a fogo automaticamente",
+          "counter_resistance": "Reduz resistência efetiva do inimigo em 50%",
+          "counter_immunity": "Imunidade a fogo torna-se apenas resistência de 75%",
+          "escalation": "Cada ataque subsequente reduz mais 10% a resistência",
+          "visual": "Fogo muda de cor quando se adapta - de laranja para azul, depois branco"
+        },
+        "narrative_description": "O fogo queima mais quente, mais brilhante, mais intenso - nada pode resistir indefinidamente"
+      }
+    },
+
+    "active_abilities": {
+      "tier_1_10": [
+        {
+          "level": 1,
+          "name": "Aprimoramento Geral",
+          "type": "passive_boost",
+          "description": "Ativação completa da passiva Fogo Protetor e estabelecimento dos fundamentos da magia de fogo.",
+          "effects": ["Fogo Protetor ativo", "Base de Energia Flamejante estabelecida"]
+        },
+        {
+          "level": 2,
+          "name": "Chama Básica",
+          "type": "active_projectile",
+          "description": "Dispara um pequeno projétil de fogo em um alvo, causando dano e potencialmente incendiando materiais inflamáveis.",
+          "cost": "10 EF por disparo",
+          "damage": "2d6 + (Nível/2) fogo",
+          "range": "20 metros",
+          "properties": [
+            "Projétil de fogo básico",
+            "10% de chance de incendiar alvo",
+            "Acende objetos inflamáveis",
+            "Velocidade de conjuração: instantâneo"
+          ],
+          "narrative_examples": [
+            "Uma bola de fogo do tamanho de um punho dispara dos dedos",
+            "Chamas dançam brevemente antes de voar em direção ao alvo",
+            "O ar sibila com o calor do projétil"
+          ]
+        },
+        {
+          "level": 3,
+          "type": "improvement",
+          "description": "Chama Básica se torna mais poderosa",
+          "new_capability": "Dano aumenta para 2d8 + (Nível/2)"
+        },
+        {
+          "level": 4,
+          "name": "Lâmina Flamejante",
+          "type": "active_enhancement",
+          "description": "Envolve uma arma corpo a corpo em chamas vivas, adicionando dano de fogo aos ataques e permitindo cauterização.",
+          "cost": "15 EF para ativar",
+          "duration": "1 minuto ou até dissipar",
+          "damage_bonus": "+2d6 dano de fogo por ataque",
+          "properties": [
+            "Arma brilha intensamente",
+            "Ignora armadura inflamável",
+            "Cauteriza feridas (impede regeneração)",
+            "Pode incendiar inimigos (15% de chance)"
+          ],
+          "scaling": "Dano aumenta com o nível"
+        },
+        {
+          "level": 5,
+          "name": "Explosão de Calor",
+          "type": "active_aoe",
+          "description": "Gera uma onda de calor explosiva em área ao redor do usuário, repelindo e causando dano a inimigos próximos.",
+          "cost": "20 EF",
+          "area": "Raio de 4 metros centrado no usuário",
+          "damage": "3d6 fogo",
+          "properties": [
+            "Empurra inimigos 3 metros para trás",
+            "Pode ser usado como reação a ataques corpo a corpo",
+            "Não afeta aliados",
+            "Cria zona de calor persistente (1 turno)"
+          ]
+        },
+        {
+          "level": 6,
+          "type": "improvement",
+          "description": "Todas as habilidades ganham aumento de dano",
+          "new_capability": "+5% de dano em todas as habilidades de fogo"
+        },
+        {
+          "level": 7,
+          "type": "improvement",
+          "description": "Alcance de projéteis aumentado",
+          "new_capability": "Alcance de Chama Básica aumenta para 30 metros"
+        },
+        {
+          "level": 8,
+          "type": "improvement",
+          "description": "Eficiência energética melhorada",
+          "new_capability": "Redução de 5% no custo de todas as habilidades"
+        },
+        {
+          "level": 9,
+          "type": "improvement",
+          "description": "Duração de efeitos contínuos aumentada",
+          "new_capability": "Lâmina Flamejante dura 2 minutos; efeitos de queimadura duram +1 turno"
+        },
+        {
+          "level": 10,
+          "type": "improvement",
+          "description": "Aprimoramento geral massivo",
+          "new_capability": "+10% de dano e alcance em todas as habilidades"
+        }
+      ],
+
+      "tier_11_20": [
+        {
+          "level": 11,
+          "type": "improvement",
+          "description": "Intensificação de todas as habilidades iniciais",
+          "new_capability": "Chama Básica, Lâmina Flamejante e Explosão de Calor têm potência aumentada"
+        },
+        {
+          "level": 12,
+          "type": "improvement",
+          "description": "Aumento de dano geral",
+          "new_capability": "+15% de dano em todas as habilidades de fogo"
+        },
+        {
+          "level": 13,
+          "type": "improvement",
+          "description": "Eficiência energética aprimorada",
+          "new_capability": "-10% no custo de EF de todas as habilidades"
+        },
+        {
+          "level": 14,
+          "type": "improvement",
+          "description": "Área de efeito expandida",
+          "new_capability": "Explosão de Calor agora atinge raio de 6 metros"
+        },
+        {
+          "level": 15,
+          "name": "Escolha de Caminho",
+          "type": "path_selection",
+          "description": "O usuário escolhe um dos três caminhos especializados, desbloqueando uma habilidade poderosa que define seu estilo.",
+          "paths": {
+            "destruicao": {
+              "name": "Rajada Devastadora",
+              "type": "active_channel",
+              "description": "Canaliza uma torrente contínua de fogo em linha reta, causando dano massivo e destruindo tudo no caminho.",
+              "cost": "30 EF para ativar + 10 EF por turno mantido",
+              "range": "Linha de 20 metros, largura de 2 metros",
+              "damage": "4d10 + (Nível/2) fogo por turno",
+              "properties": [
+                "Ataque contínuo - requer concentração",
+                "Ignora cobertura leve e média",
+                "Derrete materiais com ponto de fusão baixo",
+                "Pode ser mantido até 5 turnos",
+                "Deixa linha de fogo no chão (dura 2 turnos)"
+              ]
+            },
+            "estrategia": {
+              "name": "Chamas Manipuladas",
+              "type": "active_tactical",
+              "description": "Cria até três orbes de fogo que podem ser posicionadas e detonadas remotamente, criando armadilhas e controle de zona.",
+              "cost": "25 EF por orbe",
+              "duration": "Até 5 minutos ou detonação",
+              "damage": "3d8 fogo por orbe (raio de 3m)",
+              "properties": [
+                "Até 3 orbes ativos simultaneamente",
+                "Podem ser movidos mentalmente (velocidade lenta)",
+                "Detonação é instantânea e à distância",
+                "Orbes emitem luz (revelam posição)",
+                "Podem ser programados para detonar por proximidade"
+              ]
+            },
+            "restauracao": {
+              "name": "Chama Curativa",
+              "type": "active_healing",
+              "description": "Canaliza fogo purificador em um aliado para cauterizar feridas e restaurar vitalidade através de queima controlada.",
+              "cost": "20 EF por uso",
+              "healing": "3d10 + (Nível/2)",
+              "properties": [
+                "Cauteriza feridas (impede sangramento)",
+                "Remove venenos fracos (CD 15 ou menos)",
+                "Funciona em si mesmo ou aliado tocado",
+                "Doloroso mas efetivo",
+                "Deixa cicatrizes de queimadura"
+              ]
+            }
+          }
+        },
+        {
+          "level": 16,
+          "type": "improvement",
+          "description": "Habilidade de caminho aprimorada",
+          "new_capability": "A habilidade escolhida no nível 15 ganha +20% de eficácia"
+        },
+        {
+          "level": 17,
+          "type": "improvement",
+          "description": "Dano geral aumentado",
+          "new_capability": "+20% de dano em todas as habilidades"
+        },
+        {
+          "level": 18,
+          "type": "improvement",
+          "description": "Resistência pessoal aprimorada",
+          "new_capability": "Resistência a fogo aumenta para 75%"
+        },
+        {
+          "level": 19,
+          "type": "improvement",
+          "description": "Redução de cooldown",
+          "new_capability": "Tempo de recarga de todas as habilidades ativas reduzido em 25%"
+        },
+        {
+          "level": 20,
+          "name": "Calor Reativo",
+          "type": "passive_unlock",
+          "description": "Desbloqueia a passiva Calor Reativo (descrita na seção de passivas)"
+        }
+      ],
+
+      "tier_21_30": [
+        {
+          "level": 21,
+          "type": "improvement",
+          "description": "Controle refinado aumenta precisão",
+          "new_capability": "+3 em testes de ataque com magias de fogo"
+        },
+        {
+          "level": 22,
+          "type": "improvement",
+          "description": "Poder crescente",
+          "new_capability": "+25% de dano em todas as habilidades"
+        },
+        {
+          "level": 23,
+          "type": "improvement",
+          "description": "Alcance expandido",
+          "new_capability": "+50% de alcance em todas as habilidades de projétil"
+        },
+        {
+          "level": 24,
+          "type": "improvement",
+          "description": "Eficiência máxima",
+          "new_capability": "-15% no custo de EF de todas as habilidades"
+        },
+        {
+          "level": 25,
+          "name": "Segunda Habilidade de Especialização",
+          "type": "path_advancement",
+          "description": "Desbloqueia segunda habilidade poderosa baseada no caminho escolhido.",
+          "paths": {
+            "destruicao": {
+              "name": "Lança Incandescente",
+              "type": "active_projectile",
+              "description": "Forja e arremessa uma lança de fogo sólido que perfura alvos múltiplos e explode no impacto final.",
+              "cost": "40 EF",
+              "range": "40 metros",
+              "damage": "5d10 fogo (perfuração) + 4d8 fogo (explosão)",
+              "properties": [
+                "Perfura até 3 alvos em linha",
+                "Cada alvo perfurado sofre dano total",
+                "Explosão final tem raio de 5 metros",
+                "Deixa lança de fogo cravada (continua queimando por 2 turnos)",
+                "Pode derreter portas e barreiras metálicas"
+              ]
+            },
+            "estrategia": {
+              "name": "Fogo Enganoso",
+              "type": "active_illusion",
+              "description": "Cria um clone de fogo que atrai atenção dos inimigos e explode ao ser atacado ou destruído.",
+              "cost": "35 EF por clone",
+              "duration": "Até 3 minutos ou destruição",
+              "damage": "4d10 fogo em raio de 4 metros",
+              "properties": [
+                "Clone parece idêntico ao usuário",
+                "Movimenta-se de forma convincente",
+                "Atrai ataques automaticamente",
+                "Explosão ao ser atingido ou comando mental",
+                "Pode criar até 2 clones simultaneamente"
+              ]
+            },
+            "restauracao": {
+              "name": "Fogo Revitalizante",
+              "type": "active_zone",
+              "description": "Cria área de chamas serenas no chão que cura aliados e causa dano a inimigos.",
+              "cost": "45 EF",
+              "area": "Círculo de 6 metros de raio",
+              "duration": "5 turnos",
+              "effects": {
+                "allies": "2d10 cura por turno",
+                "enemies": "3d8 dano de fogo por turno",
+                "additional": [
+                  "Remove condições de frio",
+                  "Concede resistência temporária a frio (+5)",
+                  "Zona move-se com o conjurador se desejado"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "level": 26,
+          "type": "improvement",
+          "description": "Custo energético reduzido",
+          "new_capability": "-20% no custo de EF"
+        },
+        {
+          "level": 27,
+          "type": "improvement",
+          "description": "Áreas de efeito ampliadas",
+          "new_capability": "+3 metros em todas as áreas de efeito"
+        },
+        {
+          "level": 28,
+          "type": "improvement",
+          "description": "Duração estendida",
+          "new_capability": "Todas as habilidades com duração duram +50% mais tempo"
+        },
+        {
+          "level": 29,
+          "type": "improvement",
+          "description": "Dano massivo",
+          "new_capability": "+30% de dano em todas as habilidades"
+        },
+        {
+          "level": 30,
+          "name": "Fluxo Incandescente",
+          "type": "passive_unlock",
+          "description": "Projéteis de Chama Básica agora desviam levemente sua trajetória para seguir alvos em movimento, garantindo acertos mais consistentes.",
+          "mechanics": {
+            "homing": "Projéteis ajustam trajetória até 30 graus",
+            "bonus": "+4 em testes de ataque com Chama Básica",
+            "limitation": "Não funciona contra alvos com cobertura total"
+          }
+        }
+      ],
+
+      "tier_31_40": [
+        {
+          "level": 31,
+          "type": "improvement",
+          "description": "Maximização de poder - Fase 1",
+          "new_capability": "Todas as habilidades de caminho recebem +25% de poder"
+        },
+        {
+          "level": 32,
+          "type": "improvement",
+          "description": "Maximização de eficiência",
+          "new_capability": "-25% no custo de EF de todas as habilidades"
+        },
+        {
+          "level": 33,
+          "type": "improvement",
+          "description": "Maximização de área",
+          "new_capability": "Todas as áreas de efeito aumentam em +50%"
+        },
+        {
+          "level": 34,
+          "type": "improvement",
+          "description": "Maximização de funcionalidade",
+          "new_capability": "Habilidades ganham efeitos secundários baseados no caminho"
+        },
+        {
+          "level": 35,
+          "name": "Auge Intermediário",
+          "type": "ultimate_mid",
+          "description": "Desbloqueia habilidade suprema intermediária baseada no caminho.",
+          "paths": {
+            "destruicao": {
+              "name": "Explosão Infernal",
+              "type": "active_ultimate",
+              "description": "Causa uma detonação massiva em grande área, deixando o terreno em chamas por tempo prolongado.",
+              "cost": "80 EF",
+              "cooldown": "5 turnos",
+              "area": "Raio de 15 metros",
+              "damage": "8d12 + (Nível) fogo",
+              "properties": [
+                "Explosão principal + ondas de choque",
+                "Terreno fica em chamas por 5 turnos (3d8/turno)",
+                "Destrói estruturas frágeis",
+                "Cega inimigos temporariamente (1d3 turnos)",
+                "Cria crateras e marca permanente no terreno"
+              ]
+            },
+            "estrategia": {
+              "name": "Fluxo Inteligente",
+              "type": "active_enhancement",
+              "description": "As Chamas Manipuladas ou Fogo Enganoso movem-se autonomamente para interceptar ou flanquear inimigos.",
+              "cost": "50 EF para ativar modo",
+              "duration": "3 minutos",
+              "effects": [
+                "Orbes/clones movem-se inteligentemente",
+                "Antecipam movimento de inimigos",
+                "Coordenam ataques múltiplos",
+                "Respondem a ameaças automaticamente",
+                "Não requerem controle mental ativo"
+              ]
+            },
+            "restauracao": {
+              "name": "Fogo da Vida",
+              "type": "active_resurrection",
+              "description": "Libera onda de energia que cura massivamente aliados e pode ressuscitar um aliado caído.",
+              "cost": "100 EF",
+              "cooldown": "1 uso por combate",
+              "area": "Raio de 10 metros",
+              "effects": {
+                "healing": "8d10 para todos aliados",
+                "resurrection": "Revive 1 aliado com 50% HP",
+                "conditions": "Remove queimaduras, venenos e doenças",
+                "time_limit": "Aliado deve ter morrido há menos de 3 turnos"
+              }
+            }
+          }
+        },
+        {
+          "level": 36,
+          "type": "improvement",
+          "description": "Fortalecimento de passivas",
+          "new_capability": "Todas as habilidades passivas ganham +30% de eficácia"
+        },
+        {
+          "level": 37,
+          "type": "improvement",
+          "description": "Resistência suprema",
+          "new_capability": "Imunidade completa a dano de fogo"
+        },
+        {
+          "level": 38,
+          "type": "improvement",
+          "description": "Dano devastador",
+          "new_capability": "+40% de dano em todas as habilidades"
+        },
+        {
+          "level": 39,
+          "type": "improvement",
+          "description": "Alcance massivo",
+          "new_capability": "Dobra o alcance de todas as habilidades de projétil"
+        },
+        {
+          "level": 40,
+          "name": "Núcleo Flamejante",
+          "type": "passive_unlock",
+          "description": "O fogo reage instantaneamente a ataques, formando escudos ou contra-atacando antes da consciência perceber a ameaça.",
+          "mechanics": {
+            "auto_shield": "Forma barreira de fogo contra ataques (bloqueia até 50 de dano)",
+            "auto_counter": "Contra-ataca automaticamente com 3d10 de fogo",
+            "precognition": "Detecta ataques 1 segundo antes de acontecerem",
+            "cost": "5 EF por ativação automática"
+          }
+        }
+      ],
+
+      "tier_41_50": [
+        {
+          "level": 41,
+          "type": "improvement",
+          "description": "Sinergia - Combo Iniciante",
+          "new_capability": "Lâmina Flamejante pode aplicar efeito de Lança Incandescente em golpe carregado"
+        },
+        {
+          "level": 42,
+          "type": "improvement",
+          "description": "Sinergia - Área Combinada",
+          "new_capability": "Explosão de Calor + Chamas Manipuladas = detonação em cadeia"
+        },
+        {
+          "level": 43,
+          "type": "improvement",
+          "description": "Sinergia - Potência Dupla",
+          "new_capability": "Rajada Devastadora pode ser combinada com Lança para ataque perfurante massivo"
+        },
+        {
+          "level": 44,
+          "type": "improvement",
+          "description": "Sinergia - Controle Total",
+          "new_capability": "Pode manter 2 habilidades canalizadas simultaneamente"
+        },
+        {
+          "level": 45,
+          "type": "improvement",
+          "description": "Sinergia - Explosão Encadeada",
+          "new_capability": "Explosões podem acionar outras explosões em raio expandido"
+        },
+        {
+          "level": 46,
+          "type": "improvement",
+          "description": "Sinergia - Zona Mortal",
+          "new_capability": "Áreas de fogo persistente se fundem e amplificam mutuamente"
+        },
+        {
+          "level": 47,
+          "type": "improvement",
+          "description": "Sinergia - Cura Agressiva",
+          "new_capability": "Habilidades de cura também causam dano a inimigos próximos"
+        },
+        {
+          "level": 48,
+          "type": "improvement",
+          "description": "Sinergia - Transformação Ativa",
+          "new_capability": "Pode ativar modo Corpo Incandescente manualmente sem custo"
+        },
+        {
+          "level": 49,
+          "type": "improvement",
+          "description": "Sinergia - Domínio Completo",
+          "new_capability": "Todas as habilidades podem ser combinadas fluidamente em uma ação"
+        },
+        {
+          "level": 50,
+          "name": "Aura Flamejante",
+          "type": "passive_unlock",
+          "description": "Desbloqueia Aura Flamejante permanente (descrita na seção de passivas)"
+        }
+      ],
+
+      "tier_51_60": [
+        {
+          "level": 51,
+          "type": "improvement",
+          "description": "Masterização - Poder Extremo",
+          "new_capability": "+50% de dano em todas as habilidades"
+        },
+        {
+          "level": 52,
+          "type": "improvement",
+          "description": "Masterização - Área Colossal",
+          "new_capability": "Áreas de efeito triplicam de tamanho"
+        },
+        {
+          "level": 53,
+          "type": "improvement",
+          "description": "Masterização - Cooldown Mínimo",
+          "new_capability": "Todos os cooldowns reduzidos em 50%"
+        },
+        {
+          "level": 54,
+          "type": "improvement",
+          "description": "Masterização - Eficiência Máxima",
+          "new_capability": "-40% no custo de EF de todas as habilidades"
+        },
+        {
+          "level": 55,
+          "type": "improvement",
+          "description": "Masterização - Duração Prolongada",
+          "new_capability": "Efeitos persistentes duram o dobro do tempo"
+        },
+        {
+          "level": 56,
+          "type": "improvement",
+          "description": "Masterização - Multi-Alvo",
+          "new_capability": "Habilidades de alvo único afetam até 3 alvos"
+        },
+        {
+          "level": 57,
+          "type": "improvement",
+          "description": "Masterização - Perfuração Total",
+          "new_capability": "Ataques de fogo ignoram 50% de resistências"
+        },
+        {
+          "level": 58,
+          "type": "improvement",
+          "description": "Masterização - Velocidade Suprema",
+          "new_capability": "Todas as conjurações são instantâneas"
+        },
+        {
+          "level": 59,
+          "type": "improvement",
+          "description": "Masterização - Destruição Absoluta",
+          "new_capability": "+75% de dano contra estruturas e objetos"
+        },
+        {
+          "level": 60,
+          "name": "Forja Viva",
+          "type": "passive_unlock",
+          "description": "Desbloqueia Forja Viva (descrita na seção de passivas)"
+        }
+      ],
+
+      "tier_61_70": [
+        {
+          "level": 61,
+          "type": "improvement",
+          "description": "Transformação - Resistência Física",
+          "new_capability": "+30% de redução em dano físico devido à transformação parcial"
+        },
+        {
+          "level": 62,
+          "type": "improvement",
+          "description": "Transformação - Forma Volátil",
+          "new_capability": "Pode se tornar parcialmente intangível (chamas) por 1 turno, 3x/combate"
+        },
+        {
+          "level": 63,
+          "type": "improvement",
+          "description": "Transformação - Regeneração Ígnea",
+          "new_capability": "Regenera 5% HP por turno quando cercado por fogo"
+        },
+        {
+          "level": 64,
+          "type": "improvement",
+          "description": "Transformação - Aura Intensificada",
+          "new_capability": "Aura Flamejante causa o dobro de dano e tem raio dobrado"
+        },
+        {
+          "level": 65,
+          "name": "Fusão Elemental",
+          "type": "transformation_ultimate",
+          "description": "Desbloqueia transformação suprema baseada no caminho escolhido.",
+          "paths": {
+            "destruicao": {
+              "name": "Inferno Vivo",
+              "type": "active_transformation",
+              "description": "Transforma-se temporariamente em forma de fogo puro, tornando-se imune a dano e queimando tudo ao redor.",
+              "cost": "150 EF para ativar",
+              "duration": "Até 5 turnos",
+              "effects": [
+                "Imune a todo dano físico",
+                "Resistência de 75% a dano mágico",
+                "Aura de 10m causa 5d12 por turno",
+                "Voa a 15m por turno",
+                "Todas as habilidades custam 0 EF",
+                "Corpo é feito de chamas vivas"
+              ],
+              "drawback": "Após desativar, -4 em todos atributos por 10 minutos"
+            },
+            "estrategia": {
+              "name": "Chamas Táticas",
+              "type": "active_summoning",
+              "description": "Invoca múltiplos elementais de fogo que atacam e defendem autonomamente com base na situação.",
+              "cost": "100 EF para invocar",
+              "duration": "Até 10 minutos",
+              "summons": "3-5 elementais de fogo",
+              "elemental_stats": {
+                "hp": "50 cada",
+                "damage": "3d8 por ataque",
+                "abilities": ["Explodem ao morrer (4d10)", "Protegem conjurador", "Executam táticas complexas"]
+              }
+            },
+            "restauracao": {
+              "name": "Fusão Vital",
+              "type": "active_merge",
+              "description": "Funde-se temporariamente com aliado, tornando-o invulnerável e curando rapidamente.",
+              "cost": "80 EF",
+              "duration": "3 turnos",
+              "effects": [
+                "Aliado ganha invulnerabilidade",
+                "Cura 4d10 por turno",
+                "Conjurador pode lançar magias da posição do aliado",
+                "Compartilham pool de HP temporariamente",
+                "Ambos ganham +4 em todos atributos"
+              ]
+            }
+          }
+        },
+        {
+          "level": 66,
+          "type": "improvement",
+          "description": "Transformação aprimorada - Duração",
+          "new_capability": "Habilidades de transformação duram +3 turnos"
+        },
+        {
+          "level": 67,
+          "type": "improvement",
+          "description": "Transformação aprimorada - Potência",
+          "new_capability": "Todas as transformações ganham +50% de poder"
+        },
+        {
+          "level": 68,
+          "type": "improvement",
+          "description": "Transformação aprimorada - Recuperação",
+          "new_capability": "Drawbacks de transformação reduzidos em 50%"
+        },
+        {
+          "level": 69,
+          "type": "improvement",
+          "description": "Transformação aprimorada - Controle",
+          "new_capability": "Pode alternar entre forma normal e transformada instantaneamente"
+        },
+        {
+          "level": 70,
+          "name": "Reação Vital",
+          "type": "passive_unlock",
+          "description": "Desbloqueia Reação Vital + acesso a Fúria Ígnea (descritos anteriormente)"
+        }
+      ]
+    },
+
+    "specialization_paths": {
+      "unlock_level": 71,
+      "description": "No nível 71, o usuário consolida sua especialização e avança para domínio absoluto. Esta escolha define o estilo final de combate.",
+      "selection_rules": {
+        "permanent": true,
+        "exclusive": "Apenas um caminho pode ser desenvolvido além do nível 70",
+        "prerequisite": "Deve ter escolhido caminho no nível 15"
+      },
+
+      "paths": [
+        {
+          "id": "destruicao",
+          "name": "Caminho da Destruição - Apocalipse Flamejante",
+          "focus": "Dano massivo em área, aniquilação de exércitos, destruição de paisagens",
+          "philosophy": "O fogo existe para destruir. Abrace essa verdade e torne-se a destruição encarnada.",
+          "aesthetic": "Chamas branco-azuladas intensas, explosões massivas, crateras fumegantes",
+
+          "tier_71_80": {
+            "primary_ability": {
+              "name": "Tempestade de Fogo",
+              "unlock_level": 71,
+              "description": "Invoca tempestade massiva de fogo que devasta área gigantesca.",
+              "cost": "150 EF + 40 FI",
+              "cooldown": "4 turnos",
+              "area": "Cilindro de 40m de raio, 30m de altura",
+              "duration": "5 turnos",
+              "damage": "10d12 + (Nível × 2) por turno",
+              "properties": [
+                "Chuva de meteoros em área massiva",
+                "Terreno permanece em chamas após tempestade",
+                "Destrói fortificações e estruturas",
+                "Vento quente empurra inimigos",
+                "Impossível de apagar por meios mundanos"
+              ]
+            },
+            "passive_improvements": [
+              "Todas as áreas de efeito ganham +100% de tamanho",
+              "Dano em área aumenta em +50%",
+              "Críticos causam explosões secundárias",
+              "Mortes causam propagação de fogo para inimigos próximos"
+            ],
+            "level_80_capstone": {
+              "name": "Fluxo Absoluto",
+              "description": "Controle e lançamento simultâneo de múltiplos ataques massivos.",
+              "effects": [
+                "Pode lançar 3 habilidades diferentes simultaneamente",
+                "Defesa inconsciente cria barreira quase impenetrável",
+                "Ataques de área podem se sobrepor para dano multiplicado",
+                "Toda área em 50m é zona de perigo constante"
+              ]
+            }
+          },
+
+          "tier_81_90": {
+            "primary_ability": {
+              "name": "Meteoro Flamejante",
+              "unlock_level": 81,
+              "description": "Invoca meteoro gigante de fogo que causa devastação apocalíptica.",
+              "cost": "200 EF + 60 FI",
+              "cooldown": "1 uso por combate",
+              "range": "Até 500 metros",
+              "impact_area": "Raio de 50 metros",
+              "damage": {
+                "impact_zone": "20d12 + (Nível × 3)",
+                "shockwave_zone": "10d12 (até 100m)",
+                "residual": "Cratera fica em chamas por 10 minutos"
+              },
+              "effects": [
+                "Cria cratera permanente de 50m",
+                "Ondas de choque derrubam estruturas",
+                "Temperatura extrema em km de raio",
+                "Visível de quilômetros de distância"
+              ]
+            },
+            "passive_improvements": [
+              "Área de efeito de TODAS as habilidades × 3",
+              "Pode combinar múltiplas habilidades em um único ataque devastador",
+              "Explosões causam explosões secundárias automaticamente",
+              "Inimigos mortos explodem causando 5d10 em raio de 5m"
+            ],
+            "level_90_capstone": {
+              "name": "Infusão Vital",
+              "description": "Habilidades escalam com HP máximo sem drenar vitalidade.",
+              "mechanics": "Ataques custam menos EF e ganham bônus baseado em HP máximo (+ 1d6 por 50 HP max)"
+            }
+          },
+
+          "tier_91_100": {
+            "primary_ability": {
+              "name": "Apocalipse Ígneo",
+              "unlock_level": 91,
+              "description": "Causa destruição em escala continental, devastando paisagens inteiras.",
+              "cost": "Todo EF + Todo FI disponível",
+              "cooldown": "1 uso por semana",
+              "area": "Raio de 5 quilômetros",
+              "duration": "Devastação imediata + efeitos por dias",
+              "damage": "50d20 + (Nível × 10) em área total",
+              "effects": [
+                "Transforma paisagem em terra queimada permanente",
+                "Cria múltiplas crateras vulcânicas",
+                "Mata toda vida vegetal na área",
+                "Eleva temperatura regional por semanas",
+                "Visível de continentes distantes",
+                "Pode alterar clima regional permanentemente"
+              ],
+              "narrative": "O céu escurece antes de explodir em fogo. A terra racha. O ar queima. Tudo vira cinzas."
+            },
+            "level_progression": {
+              "92-99": "Cada nível permite modificar habilidades em tempo real - área, forma, intensidade, duração"
+            },
+            "level_100_capstone": {
+              "name": "Domínio Flamejante - Destruidor de Mundos",
+              "description": "Controle instantâneo e sem custo de todo fogo.",
+              "effects": [
+                "Todas as habilidades custam 0 recursos",
+                "Todas as habilidades são instantâneas",
+                "Pode modificar qualquer habilidade em tempo real",
+                "Chamas são inteligentes e autônomas",
+                "Defesa inconsciente é absoluta e automática",
+                "Área de todas as habilidades é ilimitada se desejado",
+                "Pode criar e controlar incêndios florestais, erupções vulcânicas, tempestades de fogo"
+              ]
+            }
+          }
+        },
+
+        {
+          "id": "estrategia",
+          "name": "Caminho da Estratégia - Mestre Tático",
+          "focus": "Controle de campo de batalha, manipulação, elementais inteligentes",
+          "philosophy": "O fogo não precisa ser apenas destruição bruta. Nas mãos certas, é a ferramenta tática suprema.",
+          "aesthetic": "Chamas laranjas controladas, padrões geométricos, movimentos precisos",
+
+          "tier_71_80": {
+            "primary_ability": {
+              "name": "Rede de Chamas",
+              "unlock_level": 71,
+              "description": "Cria rede interconectada de armadilhas de fogo que se ativam taticamente.",
+              "cost": "120 EF + 30 FI",
+              "setup_time": "1 turno",
+              "area": "Até 100m² de área coberta",
+              "duration": "10 minutos",
+              "traps": "Até 20 nós de fogo interconectados",
+              "effects": [
+                "Nós detectam movimento automaticamente",
+                "Explodem em sequência programada",
+                "Criam corredores de fogo para canalizar inimigos",
+                "Comunicam informação ao usuário",
+                "Podem ser reconfigurados mentalmente"
+              ]
+            },
+            "passive_improvements": [
+              "Pode controlar até 10 habilidades/efeitos simultaneamente",
+              "Todas as invocações ganham +50% de inteligência",
+              "Habilidades táticas não requerem concentração",
+              "Orbes e clones compartilham visão com usuário"
+            ],
+            "level_80_capstone": {
+              "name": "Comando Múltiplo",
+              "description": "Controle simultâneo de múltiplos alvos e efeitos.",
+              "effects": "Pode ter 15 orbes, 5 clones, 3 elementais ativos ao mesmo tempo"
+            }
+          },
+
+          "tier_81_90": {
+            "primary_ability": {
+              "name": "Legião Elemental",
+              "unlock_level": 81,
+              "description": "Invoca exército de elementais de fogo inteligentes e autônomos.",
+              "cost": "180 EF + 50 FI",
+              "duration": "Até serem destruídos ou dispensados",
+              "summons": "10 elementais inteligentes",
+              "elemental_capabilities": {
+                "tactics": "Executam táticas militares complexas",
+                "coordination": "Coordenam ataques perfeitamente",
+                "adaptation": "Adaptam-se a situação de batalha",
+                "communication": "Comunicam-se entre si e com invocador",
+                "specialization": "Cada um pode ter papel diferente (ataque/defesa/suporte)"
+              }
+            },
+            "passive_improvements": [
+              "Elementais nunca morrem - reconstituem-se após 3 turnos",
+              "Todas as invocações ganham habilidades do usuário",
+              "Rede de Chamas cobre até 500m²",
+              "Fogo responde a condições de batalha automaticamente"
+            ],
+            "level_90_capstone": {
+              "name": "Consciência Coletiva",
+              "description": "Todo fogo no campo de batalha age como extensão da mente do usuário.",
+              "effects": "Controle mental de qualquer fogo em 1km, informações em tempo real de toda área"
+            }
+          },
+
+          "tier_91_100": {
+            "primary_ability": {
+              "name": "Comando Absoluto",
+              "unlock_level": 91,
+              "description": "Domínio total sobre todo fogo na região, controlando tudo simultaneamente.",
+              "cost": "250 EF + 100 FI para estabelecer domínio",
+              "area": "Raio de 2 quilômetros",
+              "duration": "Enquanto mantiver concentração",
+              "effects": [
+                "Controla TODO fogo na área - natural ou mágico",
+                "Pode extinguir ou intensificar qualquer chama",
+                "Cria exército de 100+ elementais simultaneamente",
+                "Transforma campo de batalha em tabuleiro tático perfeito",
+                "Vê através de qualquer chama na área",
+                "Pode teletransportar entre chamas instantaneamente"
+              ]
+            },
+            "level_progression": {
+              "92-99": "Cada nível expande área de comando em +500m e capacidades táticas"
+            },
+            "level_100_capstone": {
+              "name": "Domínio Flamejante - Estrategista Supremo",
+              "description": "Todo fogo existente torna-se extensão perfeita da vontade.",
+              "effects": [
+                "Comando mental instantâneo de qualquer fogo no planeta",
+                "Pode criar e controlar 1000+ elementais simultaneamente",
+                "Cada elemental age com inteligência estratégica perfeita",
+                "Visão e controle através de qualquer chama",
+                "Pode reescrever propriedades do fogo (cor, temperatura, comportamento)",
+                "Elementais podem se fundir e dividir dinamicamente",
+                "Campo de batalha inteiro responde à vontade como organismo vivo"
+              ]
+            }
+          }
+        },
+
+        {
+          "id": "restauracao",
+          "name": "Caminho da Restauração - Chama Vital",
+          "focus": "Cura através do fogo, ressurreição, transformação regenerativa",
+          "philosophy": "O fogo não apenas destrói - purifica e renova. Da morte, nasce vida mais forte.",
+          "aesthetic": "Chamas douradas suaves, calor reconfortante, renovação através das cinzas",
+
+          "tier_71_80": {
+            "primary_ability": {
+              "name": "Renascimento Flamejante",
+              "unlock_level": 71,
+              "description": "Ressuscita múltiplos aliados através de fogo purificador.",
+              "cost": "140 EF + 35 FI",
+              "cooldown": "1 uso por encontro",
+              "targets": "Até 5 aliados mortos",
+              "time_limit": "Mortos há menos de 10 minutos",
+              "effects": {
+                "resurrection": "Alvos retornam com 75% HP",
+                "purification": "Remove todas condições negativas",
+                "empowerment": "+4 em todos atributos por 5 turnos",
+                "fire_blessing": "Imunidade temporária a fogo (1 hora)"
+              }
+            },
+            "passive_improvements": [
+              "Todas as curas ganham +100%",
+              "Curas também removem maldições e doenças",
+              "Aliados próximos regeneram 2d10 HP por turno",
+              "Morrer com Fogo da Vida ativo = ressurreição automática (1x/dia)"
+            ],
+            "level_80_capstone": {
+              "name": "Ciclo de Fênix",
+              "description": "Cura escala com dano causado.",
+              "mechanics": "50% do dano de fogo causado é convertido em cura distribuída para aliados"
+            }
+          },
+
+          "tier_81_90": {
+            "primary_ability": {
+              "name": "Fênix Interior",
+              "unlock_level": 81,
+              "description": "Ao morrer, explode em chamas e renasce das próprias cinzas.",
+              "cost": "Ativa automaticamente ao morrer",
+              "cooldown": "1 uso por semana",
+              "effects": {
+                "death_explosion": "15d12 fogo em raio de 20m",
+                "healing_wave": "8d10 cura para todos aliados no raio",
+                "rebirth": "Renasce após 2 turnos com 100% HP",
+                "empowerment": "Retorna com +6 em todos atributos por 10 turnos",
+                "wings": "Ganha asas de fogo e voo por 1 hora"
+              }
+            },
+            "passive_improvements": [
+              "Aliados ganham regeneração de fogo (3d8/turno)",
+              "Curas podem exceder HP máximo (HP temporário)",
+              "Ressurreições não têm limite de tempo",
+              "Fogo purificador remove corrupção e transformações forçadas"
+            ],
+            "level_90_capstone": {
+              "name": "Chama Eterna",
+              "description": "Usuário não pode morrer permanentemente.",
+              "mechanics": "Ressurreição automática após 7 dias, sempre. Corpo reconstitui-se de qualquer chama no mundo."
+            }
+          },
+
+          "tier_91_100": {
+            "primary_ability": {
+              "name": "Ciclo Eterno",
+              "unlock_level": 91,
+              "description": "Cria campo de regeneração massiva que ressuscita continuamente.",
+              "cost": "300 EF + 80 FI para estabelecer",
+              "area": "Raio de 100 metros",
+              "duration": "10 minutos",
+              "effects": {
+                "massive_healing": "Todos aliados regeneram 10d10 HP/turno",
+                "continuous_resurrection": "Aliados mortos ressuscitam automaticamente após 1 turno",
+                "immortality_field": "Aliados não podem ter HP reduzido abaixo de 1",
+                "age_reversal": "Reverte envelhecimento e restaura membros perdidos",
+                "purification": "Remove absolutamente qualquer condição negativa",
+                "transformation": "Pode transformar mortos-vivos em vivos novamente"
+              },
+              "narrative": "Campo dourado de chamas suaves envolve tudo. Morte torna-se impossível. Feridas fecham. Vida flui eternamente."
+            },
+            "level_progression": {
+              "92-99": "Cada nível permite ressuscitar mortos mais antigos e em condições piores"
+            },
+            "level_100_capstone": {
+              "name": "Domínio Flamejante - Fonte da Vida Eterna",
+              "description": "Controle absoluto sobre vida, morte e ressurreição através do fogo.",
+              "effects": [
+                "Pode ressuscitar qualquer pessoa que já morreu queimada",
+                "Ressurreições são perfeitas - sem deterioração ou perda",
+                "Pode criar vida nova a partir de fogo puro",
+                "Aliados marcados com sua chama nunca morrem - reconstituem-se automaticamente",
+                "Pode curar absolutamente qualquer ferida, doença ou maldição",
+                "Imortalidade verdadeira para si e até 10 escolhidos",
+                "Pode reverter morte até 100 anos no passado",
+                "Cria ciclo perpétuo de morte e renascimento em área massiva"
+              ]
+            }
+          }
+        }
+      ]
+    },
+
+    "combat_mechanics": {
+      "action_economy": {
+        "standard_casting": "Maioria das habilidades: 1 ação padrão",
+        "quick_abilities": [
+          "Chama Básica",
+          "Explosão de Calor (como reação)",
+          "Lâmina Flamejante (ativar)"
+        ],
+        "concentration_spells": [
+          "Rajada Devastadora",
+          "Fogo Revitalizante",
+          "Inferno Vivo"
+        ],
+        "full_round": [
+          "Explosão Infernal",
+          "Tempestade de Fogo",
+          "Meteoro Flamejante",
+          "Apocalipse Ígneo"
+        ]
+      },
+
+      "damage_types": {
+        "primary": "Fogo",
+        "secondary": "Concussivo (de explosões)",
+        "special": "Incineração (ignora regeneração)"
+      },
+
+      "effectiveness_by_target": {
+        "highly_effective": {
+          "targets": ["Criaturas de gelo", "Plantas", "Mortos-vivos não-ígneos", "Construtos de madeira"],
+          "bonus": "Dano dobrado ou mais",
+          "special": "Plantas e gelo derretem/queimam instantaneamente"
+        },
+        "normally_effective": {
+          "targets": ["Maioria das criaturas vivas", "Constructos de metal", "Mortos-vivos"],
+          "bonus": "Dano normal"
+        },
+        "reduced_effectiveness": {
+          "targets": ["Criaturas de fogo", "Diabos", "Salamandras"],
+          "penalty": "Resistência ou imunidade natural",
+          "note": "Reação Vital (nível 70) reduz essas resistências"
+        },
+        "ineffective": {
+          "targets": ["Elementais de fogo puros", "Criaturas imunes a fogo"],
+          "note": "Mesmo assim, nível 90+ pode afetar com Infusão Vital"
+        }
+      },
+
+      "tactical_considerations": {
+        "positioning": "Evitar aliados em áreas de explosão; criar zonas de negação",
+        "resource_management": "Balancear EF para combates longos; FI acumula através de destruição",
+        "environmental_effects": "Usar fogo ambiental para amplificar poder; criar terreno em chamas",
+        "combo_potential": [
+          "Chamas Manipuladas + Lança Incandescente = armadilhas explosivas",
+          "Explosão de Calor + Aura Flamejante = zona mortal de 10m",
+          "Rajada Devastadora + Tempestade de Fogo = corredor de destruição total"
+        ]
+      },
+
+      "aoe_scaling": {
+        "base_areas": "2-3x maiores que magias comparáveis de outras escolas",
+        "level_50_scaling": "Áreas triplicam novamente",
+        "level_80_destruction": "Áreas podem cobrir quilômetros",
+        "level_100": "Sem limite de área - apenas por escolha do usuário"
+      }
+    },
+
+    "interaction_systems": {
+      "with_environment": {
+        "amplified_in": [
+          "Ambientes quentes: +25% de poder",
+          "Áreas secas/áridas: +15% de eficácia",
+          "Durante verão/dia: +10% de regeneração",
+          "Perto de vulcões/lava: +50% de poder",
+          "Em incêndios existentes: Controle grátis de chamas"
+        ],
+        "normal_in": [
+          "Ambientes temperados",
+          "Interiores normais",
+          "Áreas neutras"
+        ],
+        "hindered_in": [
+          "Chuva: -15% de poder",
+          "Neve/gelo: -25% de eficácia",
+          "Água: -40% de poder",
+          "Vácuo: -30% (sem oxigênio)",
+          "Anti-magia: Nulifica completamente (exceto nível 100)"
+        ]
+      },
+
+      "with_other_magics": {
+        "synergistic": {
+          "wind": "Vento amplifica chamas - +30% área e dano",
+          "earth": "Terra pode canalizar fogo - túneis de lava",
+          "lightning": "Cria plasma super-aquecido - dano extremo",
+          "darkness": "Contraste luz/sombra - explosões intensas"
+        },
+        "neutral": {
+          "metal": "Pode derreter metal para moldagem",
+          "plants": "Queima plantas facilmente",
+          "sound": "Explosões criam ondas sonoras"
+        },
+        "antagonistic": {
+          "water": "Cancelamento mútuo - batalha de supremacia",
+          "ice": "Fogo vence, mas consome mais energia",
+          "light": "Luz pode dissipar calor"
+        }
+      },
+
+      "environmental_persistence": {
+        "burning_terrain": "Áreas queimadas continuam causando dano",
+        "duration": "Fogo persiste por 1d4 turnos após conjuração",
+        "spread": "Fogo pode se espalhar para materiais inflamáveis próximos",
+        "control": "Usuário pode apagar próprio fogo mentalmente",
+        "tactical_use": "Criar labirintos de fogo, bloquear rotas, controlar movimento"
+      }
+    },
+
+    "progression_guide": {
+      "early_game_1_20": {
+        "focus": "Dominar fundamentos e desenvolver controle básico",
+        "key_abilities": ["Chama Básica", "Lâmina Flamejante", "Explosão de Calor"],
+        "tactical_role": "DPS de área, controle de multidões",
+        "tips": [
+          "Use Chama Básica para ataques consistentes",
+          "Explosão de Calor é ótima para criar espaço",
+          "Escolha caminho no nível 15 cuidadosamente",
+          "Gerencie EF - regeneração é lenta"
+        ]
+      },
+
+      "mid_game_21_50": {
+        "focus": "Especialização e desenvolvimento de estilo único",
+        "key_abilities": ["Lança Incandescente", "Fogo Enganoso/Rajada", "Explosão Infernal"],
+        "tactical_role": "Destruidor de área massiva, controle de campo",
+        "tips": [
+          "Habilidades de caminho definem seu estilo",
+          "Combine habilidades para combos devastadores",
+          "Aura Flamejante (nível 50) muda combate corpo a corpo",
+          "Comece a acumular recursos para habilidades supremas"
+        ]
+      },
+
+      "late_game_51_70": {
+        "focus": "Masterização e preparação para transformação",
+        "key_abilities": ["Inferno Vivo", "Forja Viva", "Reação Vital"],
+        "tactical_role": "Devastador de exércitos, modificador de paisagem",
+        "tips": [
+          "Áreas triplicadas permitem controle massivo",
+          "Transformação (nível 65) é game-changer",
+          "Nível 70: FI desbloqueia habilidades supremas",
+          "Prepare-se para especialização avançada"
+        ]
+      },
+
+      "endgame_71_100": {
+        "focus": "Domínio absoluto e poder apocalíptico",
+        "key_abilities": "Dependem do caminho escolhido",
+        "paths": {
+          "destruicao": "Aniquilador de exércitos e paisagens",
+          "estrategia": "Comandante de legiões elementais",
+          "restauracao": "Fonte de vida eterna"
+        },
+        "tips": [
+          "Nível 91+: Seu poder afeta continentes",
+          "Nível 100: Você é força da natureza",
+          "Use poder responsavelmente - pode alterar clima mundial",
+          "Considere impacto narrativo - você pode destruir reinos"
+        ]
+      }
+    },
+
+    "gm_guidance": {
+      "encounter_design": {
+        "understanding_fire_users": {
+          "strengths": [
+            "Dano em área massivo - maior que qualquer outra magia",
+            "Controle de terreno através de fogo persistente",
+            "Escalada de poder através de Fúria Ígnea",
+            "Versatilidade (destruição, tática ou cura)",
+            "Modificação de paisagem permanente"
+          ],
+          "weaknesses": [
+            "Vulnerável a água e gelo",
+            "Dano colateral massivo (pode atingir aliados)",
+            "Dependente de gerenciamento de recursos",
+            "Menos eficaz contra criaturas de fogo",
+            "Dificuldade em combates furtivos"
+          ]
+        },
+
+        "balancing_encounters": {
+          "use_water_environments": "Rios, oceanos, chuva pesada reduzem poder",
+          "fire_resistant_enemies": "Diabos, elementais de fogo, dragões vermelhos",
+          "confined_spaces": "Limita áreas massivas, força escolhas difíceis",
+          "civilian_presence": "Força usuário a moderar destruição",
+          "resource_drain": "Combates múltiplos antes de descanso"
+        },
+
+        "scaling_difficulty": {
+          "level_1_30": "Inimigos resistentes a fogo, ambientes molhados",
+          "level_31_60": "Múltiplas ondas, controle de área necessário",
+          "level_61_80": "Exércitos inteiros, combate em escala épica",
+          "level_81_100": "Ameaças planetárias, batalhas que alteram geografia"
+        }
+      },
+
+      "narrative_considerations": {
+        "collateral_damage": "Fogo destrói indiscriminadamente - crie consequências",
+        "environmental_impact": "Incêndios florestais, destruição de ecossistemas",
+        "political_consequences": "Destruir propriedade traz atenção indesejada",
+        "reputation": "Usuários de fogo são temidos e respeitados",
+        "world_changing_power": "Níveis 90+ podem alterar clima e geografia"
+      }
+    },
+
+    "itemization": {
+      "recommended_equipment": {
+        "weapons": [
+          {
+            "item": "Cajado Vulcânico",
+            "bonus": "+4 em ataques de fogo, +25% dano",
+            "special": "Armazena 100 EF adicional"
+          },
+          {
+            "item": "Lâmina de Obsidiana Flamejante",
+            "bonus": "Espada que causa +3d8 fogo adicional",
+            "special": "Nunca derrete, corta através de metal"
+          }
+        ],
+        "armor": [
+          {
+            "item": "Armadura de Escamas de Dragão",
+            "bonus": "+4 CA, imunidade a fogo",
+            "special": "Reflete 25% de dano de fogo recebido"
+          },
+          {
+            "item": "Manto do Vulcão",
+            "bonus": "+3 CA, +50 EF máximo",
+            "special": "Aura de calor passiva (1d6 em 2m)"
+          }
+        ],
+        "accessories": [
+          {
+            "item": "Anel da Fênix",
+            "bonus": "Ressurreição automática 1x/semana",
+            "special": "Explode em 10d10 ao ressuscitar"
+          },
+          {
+            "item": "Amuleto de Fúria",
+            "bonus": "+50 FI máximo",
+            "special": "Dobra ganho de FI de mortes"
+          },
+          {
+            "item": "Gema do Inferno",
+            "bonus": "+30% dano em área",
+            "special": "Áreas de fogo persistem +2 turnos"
+          }
+        ]
+      }
+    },
+
+    "advanced_combos": {
+      "destruction_path": [
+        {
+          "name": "Tempestade de Meteoros",
+          "components": ["Tempestade de Fogo", "Meteoro Flamejante"],
+          "execution": "Ative Tempestade, depois lance Meteoro no centro",
+          "result": "Devastação apocalíptica em 100m+ de raio",
+          "cost": "350 EF + 100 FI",
+          "cooldown": "1x por batalha importante"
+        },
+        {
+          "name": "Inferno Explosivo",
+          "components": ["Inferno Vivo", "Explosão Infernal"],
+          "execution": "Transform e-se, depois detone explosões massivas",
+          "result": "Múltiplas explosões sem custo de EF",
+          "duration": "Até 5 turnos de devastação"
+        }
+      ],
+      "strategy_path": [
+        {
+          "name": "Cerco Elemental",
+          "components": ["Legião Elemental", "Rede de Chamas"],
+          "execution": "Invoque legião, depois prenda com rede",
+          "result": "Campo de batalha controlado por elementais e armadilhas",
+          "tactical_value": "Inimigos não podem manobrar"
+        }
+      ],
+      "restoration_path": [
+        {
+          "name": "Ciclo de Batalha Perpétuo",
+          "components": ["Ciclo Eterno", "Fênix Interior"],
+          "execution": "Ative Ciclo, lute até morrer, ressuscite e continue",
+          "result": "Imortalidade de combate + cura massiva para grupo",
+          "narrative": "Você não pode perder enquanto o ciclo está ativo"
+        }
+      ]
+    },
+
+    "limitations_weaknesses": {
+      "hard_counters": [
+        {
+          "counter": "Água em massa",
+          "effect": "Apaga fogo, reduz poder em 70%",
+          "workaround": "Evaporar água primeiro ou usar calor extremo"
+        },
+        {
+          "counter": "Anti-magia absoluta",
+          "effect": "Nulifica completamente",
+          "workaround": "Apenas nível 100 transcende isso"
+        },
+        {
+          "counter": "Vácuo total",
+          "effect": "Sem oxigênio, fogo não funciona",
+          "workaround": "Fogo mágico pode ignorar parcialmente"
+        }
+      ],
+
+      "soft_counters": [
+        {
+          "counter": "Chuva/neve",
+          "effect": "Reduz eficácia em 15-25%",
+          "mitigation": "Usar calor mais intenso"
+        },
+        {
+          "counter": "Resistência a fogo",
+          "effect": "Reduz dano",
+          "mitigation": "Reação Vital (nível 70) reduz resistências"
+        },
+        {
+          "counter": "Ambientes confinados",
+          "effect": "Limita áreas de efeito massivas",
+          "mitigation": "Usar habilidades de alvo único"
+        }
+      ],
+
+      "situational_weaknesses": [
+        "Dano colateral pode atingir aliados e civis",
+        "Fogo chama atenção - impossível ser furtivo",
+        "Destruição de ambiente pode ter consequências",
+        "EF se esgota rápido em uso intensivo",
+        "FI só acumula em combate ativo"
+      ]
+    },
+
+    "meta_information": {
+      "design_philosophy": "Magia de Fogo é a mais destrutiva do sistema, focada em dano massivo em área sem multiplicadores. Poder bruto escala puramente com nível.",
+      
+      "balancing_notes": [
+        "Áreas são 2-3x maiores que outras magias intencionalmente",
+        "Sem multiplicador de atributo - poder vem de nível puro",
+        "FI incentiva agressão e destruição contínua",
+        "Dano colateral cria escolhas narrativas difíceis",
+        "Níveis 90+ podem literalmente alterar geografia mundial"
+      ],
+
+      "dm_guidance": {
+        "managing_power": "Use ambientes, resistências e consequências narrativas para balancear",
+        "epic_scale": "Permita que usuários de fogo brilhem em combates massivos",
+        "consequences": "Destruição deve ter impacto político e ambiental",
+        "narrative_weight": "Fogo é visível de longe - crie consequências sociais",
+        "endgame": "Níveis 90+ são ameaças planetárias - ajuste campanhas"
+      },
+
+      "player_tips": [
+        "Gerencie EF cuidadosamente - você não tem multiplicadores",
+        "Use FI agressivamente - quanto mais você destrói, mais forte fica",
+        "Considere dano colateral - você pode matar aliados",
+        "Escolha de caminho nível 15 define todo seu jogo",
+        "Trabalhe com grupo para maximizar áreas sem atingi-los",
+        "Crie terreno tático com fogo persistente",
+        "Não tema destruir - é para isso que você existe"
+      ]
+    },
+
+    "version_control": {
+      "current_version": "1.0.0",
+      "last_updated": "2025",
+      "changelog": [
+        {
+          "version": "1.0.0",
+          "date": "2025",
+          "changes": [
+            "Sistema completo implementado",
+            "Três caminhos de especialização definidos (Destruição, Estratégia, Restauração)",
+            "100 níveis de progressão detalhados",
+            "Foco em dano massivo em área - maior que qualquer outra magia",
+            "Sistema de Fúria Ígnea para recompensar agressão",
+            "Sem multiplicadores - poder puro baseado em nível",
+            "Áreas 2-3x maiores que magias comparáveis"
+          ]
+        }
+      ],
+      "design_notes": [
+        "Fogo é intencionalmente a magia mais destrutiva",
+        "Foco em área sobre precisão",
+        "Dano colateral é feature, não bug",
+        "Consequências narrativas são esperadas",
+        "Níveis altos podem remodelar paisagens"
+      ]
+    }
+  }
+}
+
