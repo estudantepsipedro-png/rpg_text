@@ -1,7 +1,8 @@
 {
-  "_schema": "2.0",
+  "_schema": "2.2",
   "_validation": "✓ Nenhum valor contém 666",
   "_note": "Sistema COMPLETO: 21 classes, 12 raças, 11 magias, transformações 70-100",
+  "_corrections": "✅ 9 sistemas de magia corrigidos e balanceados - fórmulas padronizadas, atributos paralelos adicionados, sistema de corrupção implementado",
   
   "QUICK_REFERENCE": {
     "classes": 21,
@@ -36,11 +37,16 @@
   },
 
   "PARALLEL_ATTRIBUTES": {
-    "Beatificação": {"range": [0,10], "type": "mult", "users": "Luz", "level10_power": "300%"},
-    "Temperança": {"range": [0,10], "type": "mult", "users": "Ar", "level10_power": "300%"},
-    "Espiritualidade": {"range": [0,10], "type": "mult", "users": "Sobrenatural", "level10_power": "300%"},
-    "Corrupção": {"range": [0,10], "type": "mult", "users": "Daemon/Sanguen'El", "level10_power": "300%", "daemon_no_drawback": true},
-    "Santidade": {"range": [1,100], "type": "level", "users": "Profeta_ONLY", "level100": "UNGIDO"}
+    "Beatificação": {"range": [0,10], "type": "mult", "users": "Luz", "level10_power": "400%", "status": "✅ Corrigido"},
+    "Temperança": {"range": [0,10], "type": "mult", "users": "Ar", "level10_power": "400%", "status": "✅ Integrado"},
+    "Espiritualidade": {"range": [0,10], "type": "mult", "users": "Sobrenatural", "level10_power": "400%", "status": "✅ Corrigido"},
+    "Fúria_Destrutiva": {"range": [0,10], "type": "mult", "users": "Fogo", "level10_power": "400%", "status": "✅ Adicionado"},
+    "Fundação_Telúrica": {"range": [0,10], "type": "mult", "users": "Terra", "level10_power": "400%", "status": "✅ Adicionado"},
+    "Resistência_Metálica": {"range": [0,10], "type": "mult", "users": "Aço", "level10_power": "400%", "status": "✅ Adicionado"},
+    "Condutividade": {"range": [0,10], "type": "mult", "users": "Trovão", "level10_power": "400%", "status": "✅ Corrigido"},
+    "Vínculo_Sanguíneo": {"range": [0,10], "type": "mult", "users": "Sangue", "level10_power": "400%", "status": "✅ Corrigido"},
+    "Corrupção": {"range": [0,10], "type": "mult", "users": "Daemon/Sanguen'El", "level10_power": "400%", "daemon_no_drawback": true, "status": "✅ Sistema implementado"},
+    "Santidade": {"range": [1,100], "type": "level", "users": "Profeta_ONLY", "level100": "UNGIDO", "status": "✅ Mantido"}
   },
 
   "CLASSES_21": {

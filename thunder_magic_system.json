@@ -1,0 +1,1633 @@
+{
+  "magic_system": {
+    "id": "thunder_magic",
+    "name": "Magia do Trovão",
+    "version": "1.0.0",
+    "category": "Elemental/Energético",
+    "rarity": "Raro",
+    
+    "essence": {
+      "description": "A Magia do Trovão governa a manipulação de energia elétrica, descargas atmosféricas e impacto sônico-eletricidade. É uma magia de poder bruto e velocidade extrema, onde o usuário canaliza a fúria das tempestades através de seu corpo, criando descargas devastadoras que combinam eletricidade pura com impacto físico devastador.",
+      "core_principles": [
+        "Canalização de energia elétrica através do corpo",
+        "Manipulação de descargas atmosféricas",
+        "Combinação de eletricidade e impacto sônico",
+        "Velocidade extrema e poder bruto",
+        "Controle sobre campos eletromagnéticos"
+      ],
+      "philosophical_basis": "A tempestade é poder puro e incontrolável. O usuário não domina o trovão, mas se torna um canal para sua fúria, transformando energia elétrica em devastação absoluta."
+    },
+
+    "parallel_attribute": {
+      "name": "Condutividade",
+      "short_name": "O(A) Condutor(a)",
+      "type": "Atributo Eletromagnético",
+      "range": [0, 10],
+      "description": "Mede a eficiência na canalização de energia elétrica, a precisão do controle eletromagnético e a harmonia com campos elétricos. Atua como multiplicador universal para todas as habilidades de Trovão.",
+      
+      "scaling": {
+        "calculation": "Condutividade aumenta com prática constante, exposição a tempestades e uso harmonioso da energia elétrica. Diminui com uso bruto, sobrecarga ou resistência à eletricidade.",
+        "multiplier_formula": "Poder Base × (1 + Condutividade/2.5)",
+        "efficiency_formula": "(20 + Condutividade×15)% de eficiência total"
+      },
+
+      "tiers": [
+        {
+          "grade": 0,
+          "title": "O Isolado",
+          "description": "A energia elétrica mal responde aos comandos. Manipulação é bruta e ineficiente.",
+          "effects": {
+            "power_bonus": "+10%",
+            "restrictions": ["Sem canalização", "Controle básico apenas", "Alto custo energético"],
+            "narrative_impact": "Descargas são fracas, lentas e pouco responsivas"
+          }
+        },
+        {
+          "grade_range": [1, 2],
+          "title": "O Conectado",
+          "description": "Primeiro contato com a energia elétrica; canalização básica estabelecida.",
+          "effects": {
+            "power_bonus": "+20%",
+            "control_bonus": "+2 em testes de canalização",
+            "narrative_impact": "Energia elétrica responde aos comandos básicos com hesitação"
+          }
+        },
+        {
+          "grade_range": [3, 4],
+          "title": "O Canalizador",
+          "description": "Energia elétrica flui com mais precisão e velocidade.",
+          "effects": {
+            "power_bonus": "+40%",
+            "precision_bonus": "Canalização mais precisa (+3 acerto)",
+            "narrative_impact": "Energia elétrica flui naturalmente conforme a vontade"
+          }
+        },
+        {
+          "grade_range": [5, 6],
+          "title": "O Condutor",
+          "description": "Energia elétrica age como extensão natural do corpo.",
+          "effects": {
+            "power_bonus": "+80%",
+            "abilities_improved": ["Canalização avançada", "Campos eletromagnéticos"],
+            "passive_aura": "Energia elétrica reage instintivamente a ameaças",
+            "narrative_impact": "Energia elétrica parece ter vida própria, protegendo o usuário"
+          }
+        },
+        {
+          "grade_range": [7, 8],
+          "title": "O Canalizador Supremo",
+          "description": "Canalização quase instantânea; energia elétrica age autonomamente.",
+          "effects": {
+            "power_bonus": "+150%",
+            "special_abilities": ["Canalização completa", "Manipulação de tempestades"],
+            "defensive": "Energia elétrica forma barreiras automáticas",
+            "narrative_impact": "Corpo e energia elétrica são indistinguíveis; canalização é instantânea"
+          }
+        },
+        {
+          "grade": 9,
+          "title": "O Mestre das Tempestades",
+          "description": "Energia elétrica age com inteligência própria; canalização perfeita.",
+          "effects": {
+            "power_bonus": "+250%",
+            "creation": "Pode criar tempestades independentes",
+            "autonomy": "Energia elétrica continua agindo após comandos",
+            "narrative_impact": "Energia elétrica cria formas complexas e age estrategicamente"
+          }
+        },
+        {
+          "grade": 10,
+          "title": "A Tempestade Encarnada",
+          "description": "Canalização perfeita; energia elétrica e usuário são um só.",
+          "effects": {
+            "power_bonus": "+300%",
+            "transcendence": "Pode canalizar múltiplas tempestades simultaneamente",
+            "omniscience": "Sente através de qualquer energia elétrica no mundo",
+            "narrative_impact": "Energia elétrica é consciência distribuída; canalização é pensamento"
+          }
+        }
+      ]
+    },
+
+    "resource_system": {
+      "primary_resource": {
+        "name": "Energia Elétrica",
+        "abbreviation": "EE",
+        "base_pool": "85 + (Nível × 15) + (Destreza × 4)",
+        "regeneration": {
+          "passive": "2.5% por turno",
+          "rest": "100% após descanso completo",
+          "storm_proximity": "+10% em tempestades naturais",
+          "metal_contact": "+5% tocando metal condutor",
+          "condutividade_bonus": "+1% por ponto de Condutividade"
+        },
+        "cost_reduction": "Reduz 3% por nível devido ao controle crescente"
+      },
+      
+      "secondary_resource": {
+        "name": "Essência Atmosférica",
+        "abbreviation": "EA",
+        "unlock_level": 70,
+        "base_pool": "40 + ((Nível - 70) × 8)",
+        "description": "Essência primordial extraída das tempestades e da atmosfera, energia que transcende a eletricidade física. Usada para habilidades de grande escala e manipulação climática.",
+        "regeneration": {
+          "storm_absorption": "Absorver energia de tempestades: +5 EA por tempestade",
+          "atmospheric_meditation": "Meditar em locais altos: +3 EA por hora",
+          "lightning_strike": "Ser atingido por raio: +10 EA",
+          "condutividade_peak": "Condutividade 10: regeneração automática de EA"
+        }
+      }
+    },
+
+    "passive_abilities": {
+      "initial_passive": {
+        "name": "Canalização Elétrica",
+        "unlock_level": 1,
+        "description": "O corpo desenvolve capacidade básica de canalizar energia elétrica, permitindo manipulação de campos eletromagnéticos.",
+        "effects": [
+          {
+            "type": "conductive",
+            "value": "+2 CA contra ataques elétricos"
+          },
+          {
+            "type": "reactive",
+            "description": "15% de chance de refletir ataques elétricos"
+          },
+          {
+            "type": "utility",
+            "description": "Pode detectar campos elétricos por proximidade"
+          },
+          {
+            "type": "resistance",
+            "value": "+3 em salvaguardas contra eletricidade"
+          }
+        ],
+        "scaling": "Benefícios aumentam com Condutividade",
+        "narrative_description": "Corpo conduz energia elétrica naturalmente, criando campos eletromagnéticos protetores"
+      },
+
+      "level_10": {
+        "name": "Campo Eletromagnético",
+        "unlock_level": 10,
+        "description": "Controle sobre energia elétrica se torna mais refinado e responsivo.",
+        "mechanics": {
+          "activation": "Automático",
+          "effects": [
+            "Reflexão aumenta para 25%",
+            "Energia elétrica endurece automaticamente contra ataques",
+            "Manipulação básica de campos eletromagnéticos",
+            "Controle de intensidade básica"
+          ]
+        }
+      },
+
+      "level_20": {
+        "name": "Intensidade Variável",
+        "unlock_level": 20,
+        "description": "Pode alterar completamente a intensidade da energia elétrica manipulada.",
+        "effects": [
+          {
+            "type": "low_voltage",
+            "description": "Energia elétrica sutil, para controle preciso"
+          },
+          {
+            "type": "high_voltage",
+            "description": "Energia elétrica intensa, para devastação"
+          },
+          {
+            "type": "pulse",
+            "description": "Energia elétrica pulsante, para impacto"
+          },
+          {
+            "type": "adaptive",
+            "description": "Muda intensidade automaticamente conforme necessidade"
+          }
+        ]
+      },
+
+      "level_30": {
+        "name": "Transporte Elétrico",
+        "unlock_level": 30,
+        "description": "Pode se teleportar através de campos elétricos.",
+        "mechanics": {
+          "cost": "20 EE por uso",
+          "range": "Até 50 metros",
+          "requirements": "Deve haver campo elétrico no destino",
+          "speed": "Instantâneo",
+          "limitations": "Máximo 3 usos por combate"
+        }
+      },
+
+      "level_40": {
+        "name": "Materialização Elétrica",
+        "unlock_level": 40,
+        "description": "Pode criar estruturas sólidas de energia elétrica condensada.",
+        "mechanics": {
+          "cost": "30 EE por estrutura",
+          "duration": "Instantâneo",
+          "capabilities": [
+            "Criar escudos elétricos",
+            "Formar armas de energia",
+            "Construir plataformas",
+            "Fazer pontes elétricas"
+          ],
+          "limitations": "Estruturas duram até 10 minutos"
+        }
+      },
+
+      "level_50": {
+        "name": "Controle Múltiplo",
+        "unlock_level": 50,
+        "description": "Pode manipular energia elétrica em múltiplos locais simultaneamente.",
+        "mechanics": {
+          "simultaneous_points": "Até 5 pontos de controle",
+          "coordination": "Todos pontos agem coordenadamente",
+          "range": "Até 100 metros de distância",
+          "complexity": "Pode criar campos diferentes em cada ponto"
+        }
+      },
+
+      "level_60": {
+        "name": "Simbiose Eletromagnética",
+        "unlock_level": 60,
+        "description": "Energia elétrica desenvolve consciência própria e reage independentemente.",
+        "mechanics": {
+          "autonomous_defense": "Energia elétrica forma barreiras automaticamente",
+          "threat_detection": "Energia elétrica detecta perigos antes do usuário",
+          "adaptive_fields": "Energia elétrica muda forma conforme situação",
+          "communication": "Pode comunicar-se através de campos elétricos"
+        }
+      },
+
+      "level_70": {
+        "name": "Essência Atmosférica",
+        "unlock_level": 70,
+        "description": "Desbloqueia Essência Atmosférica e permite manipulação completa do clima.",
+        "mechanics": {
+          "full_manipulation": "Pode criar tempestades completas",
+          "essence_unlock": "Acesso a Essência Atmosférica",
+          "transcendence": "Energia elétrica pode existir independentemente",
+          "weather_control": "Controle básico sobre clima local"
+        }
+      }
+    },
+
+    "active_abilities": {
+      "tier_1_10": [
+        {
+          "level": 1,
+          "name": "Aprimoramento Geral",
+          "type": "passive_boost",
+          "description": "Ativação da passiva Canalização Elétrica e estabelecimento da base de Energia Elétrica."
+        },
+        {
+          "level": 2,
+          "name": "Faísca",
+          "type": "active_discharge",
+          "description": "Cria uma pequena descarga elétrica rápida.",
+          "cost": "10 EE",
+          "damage": "1d6 + (Nível/2) elétrico",
+          "range": "15 metros",
+          "properties": [
+            "Descarga rápida",
+            "Dano instantâneo",
+            "Pode causar atordoamento leve",
+            "Não deixa rastro"
+          ],
+          "tactical_uses": [
+            "Ataque rápido",
+            "Interrupção de concentração",
+            "Ativação de mecanismos elétricos"
+          ]
+        },
+        {
+          "level": 3,
+          "type": "improvement",
+          "description": "Faísca se torna mais poderosa",
+          "new_capability": "Dano aumenta para 1d8 + (Nível/2)"
+        },
+        {
+          "level": 4,
+          "type": "improvement",
+          "description": "Controle refinado",
+          "new_capability": "Pode criar até 2 faíscas simultâneas"
+        },
+        {
+          "level": 5,
+          "name": "Choque Rápido",
+          "type": "active_strike",
+          "description": "Golpe elétrico curto e preciso.",
+          "cost": "15 EE",
+          "damage": "2d6 + (Nível/2) elétrico",
+          "range": "Toque",
+          "properties": [
+            "Golpe instantâneo",
+            "Alta precisão",
+            "Pode causar paralisia temporária",
+            "Ignora armadura leve"
+          ]
+        },
+        {
+          "level": 6,
+          "type": "improvement",
+          "description": "Choque mais eficaz",
+          "new_capability": "Choque causa atordoamento (1 turno)"
+        },
+        {
+          "level": 7,
+          "type": "improvement",
+          "description": "Alcance aumentado",
+          "new_capability": "Alcance aumenta para 3 metros"
+        },
+        {
+          "level": 8,
+          "type": "improvement",
+          "description": "Eficiência melhorada",
+          "new_capability": "Custo reduzido para 12 EE"
+        },
+        {
+          "level": 9,
+          "type": "improvement",
+          "description": "Duração estendida",
+          "new_capability": "Efeitos duram +1 turno"
+        },
+        {
+          "level": 10,
+          "name": "Passive (10): Carga Estática",
+          "type": "passive_unlock",
+          "description": "Aumento de dano elétrico passivo (+15% em todas as habilidades)"
+        }
+      ],
+
+      "tier_11_20": [
+        {
+          "level": 11,
+          "type": "improvement",
+          "description": "Controle aprimorado",
+          "new_capability": "Faísca e Choque ganham +20% de eficácia"
+        },
+        {
+          "level": 12,
+          "name": "Arco Simples",
+          "type": "active_arc",
+          "description": "Cria raio elétrico entre dois pontos.",
+          "cost": "25 EE",
+          "damage": "3d6 + (Nível/2) elétrico",
+          "range": "30 metros",
+          "properties": [
+            "Conecta dois pontos",
+            "Pode saltar entre alvos",
+            "Ignora cobertura",
+            "Deixa rastro elétrico"
+          ]
+        },
+        {
+          "level": 13,
+          "type": "improvement",
+          "description": "Arco mais eficaz",
+          "new_capability": "Arco pode saltar até 3 alvos"
+        },
+        {
+          "level": 14,
+          "type": "improvement",
+          "description": "Alcance expandido",
+          "new_capability": "Alcance aumenta para 40 metros"
+        },
+        {
+          "level": 15,
+          "name": "Pulsar",
+          "type": "active_area",
+          "description": "Impacto sônico-eletricidade leve em área.",
+          "cost": "30 EE",
+          "area": "Raio de 5 metros",
+          "damage": "2d8 + (Nível/2) elétrico + 1d6 sônico",
+          "properties": [
+            "Ataque em área",
+            "Combina eletricidade e impacto",
+            "Pode derrubar inimigos",
+            "Cria terreno difícil temporário"
+          ]
+        },
+        {
+          "level": 16,
+          "type": "improvement",
+          "description": "Área expandida",
+          "new_capability": "Raio aumenta para 7 metros"
+        },
+        {
+          "level": 17,
+          "type": "improvement",
+          "description": "Dano aumentado",
+          "new_capability": "Dano aumenta para 3d8 + 2d6"
+        },
+        {
+          "level": 18,
+          "type": "improvement",
+          "description": "Eficiência máxima",
+          "new_capability": "Custo reduzido para 25 EE"
+        },
+        {
+          "level": 19,
+          "type": "improvement",
+          "description": "Versatilidade",
+          "new_capability": "Pode criar múltiplos pulsos simultâneos"
+        },
+        {
+          "level": 20,
+          "name": "Campo Eletromagnético",
+          "type": "passive_unlock",
+          "description": "Desbloqueia Campo Eletromagnético (descrita na seção de passivas)"
+        }
+      ],
+
+      "tier_21_30": [
+        {
+          "level": 21,
+          "type": "improvement",
+          "description": "Precisão aumentada",
+          "new_capability": "+3 em testes de ataque com energia elétrica"
+        },
+        {
+          "level": 22,
+          "name": "Lança Relâmpago",
+          "type": "active_projectile",
+          "description": "Projétil perfurante elétrico de alta velocidade.",
+          "cost": "35 EE",
+          "damage": "4d8 + (Nível/2) elétrico",
+          "range": "60 metros",
+          "properties": [
+            "Velocidade extrema",
+            "Perfura armadura",
+            "Pode atravessar múltiplos alvos",
+            "Deixa rastro ionizado"
+          ]
+        },
+        {
+          "level": 23,
+          "type": "improvement",
+          "description": "Duração estendida",
+          "new_capability": "Pode manter por 2 turnos"
+        },
+        {
+          "level": 24,
+          "type": "improvement",
+          "description": "Versatilidade",
+          "new_capability": "Pode criar múltiplas lanças"
+        },
+        {
+          "level": 25,
+          "type": "improvement",
+          "description": "Eficiência",
+          "new_capability": "Custo reduzido para 30 EE"
+        },
+        {
+          "level": 26,
+          "type": "improvement",
+          "description": "Controle refinado",
+          "new_capability": "Pode curvar trajetória"
+        },
+        {
+          "level": 27,
+          "type": "improvement",
+          "description": "Alcance",
+          "new_capability": "Alcance aumenta para 80 metros"
+        },
+        {
+          "level": 28,
+          "name": "Cadência de Raios",
+          "type": "active_sequence",
+          "description": "3 descargas sequenciais coordenadas.",
+          "cost": "40 EE",
+          "damage": "3d10 + (Nível/2) elétrico total",
+          "properties": [
+            "3 ataques coordenados",
+            "Cada ataque mais poderoso que o anterior",
+            "Pode focar em alvo único ou múltiplos",
+            "Cria campo elétrico residual"
+          ]
+        },
+        {
+          "level": 29,
+          "type": "improvement",
+          "description": "Alcance expandido",
+          "new_capability": "Alcance aumenta para 100 metros"
+        },
+        {
+          "level": 30,
+          "name": "Intensidade Variável",
+          "type": "passive_unlock",
+          "description": "Desbloqueia Intensidade Variável (descrita na seção de passivas)"
+        }
+      ],
+
+      "tier_31_40": [
+        {
+          "level": 31,
+          "type": "improvement",
+          "description": "Masterização inicial",
+          "new_capability": "+25% de dano em todas as habilidades"
+        },
+        {
+          "level": 32,
+          "name": "Impacto Ionizante",
+          "type": "active_ionization",
+          "description": "Dano elétrico com chance de atordoar.",
+          "cost": "45 EE",
+          "damage": "5d8 + (Nível/2) elétrico",
+          "effects": [
+            "Chance de atordoamento (CD 15)",
+            "Ioniza área por 3 turnos",
+            "Reduz resistência elétrica",
+            "Pode causar paralisia temporária"
+          ]
+        },
+        {
+          "level": 33,
+          "type": "improvement",
+          "description": "Controle múltiplo",
+          "new_capability": "Pode ionizar múltiplas áreas"
+        },
+        {
+          "level": 34,
+          "type": "improvement",
+          "description": "Área expandida",
+          "new_capability": "Área de ionização aumenta"
+        },
+        {
+          "level": 35,
+          "type": "improvement",
+          "description": "Eficiência",
+          "new_capability": "Custo reduzido para 40 EE"
+        },
+        {
+          "level": 36,
+          "type": "improvement",
+          "description": "Versatilidade",
+          "new_capability": "Pode criar campos de ionização persistentes"
+        },
+        {
+          "level": 37,
+          "type": "improvement",
+          "description": "Duração",
+          "new_capability": "Efeitos persistem por 1 turno após concentração"
+        },
+        {
+          "level": 38,
+          "name": "Raio Perfurante",
+          "type": "active_piercing",
+          "description": "Atravessa armaduras médias com precisão.",
+          "cost": "50 EE",
+          "damage": "6d10 + (Nível) elétrico",
+          "properties": [
+            "Ignora armadura média",
+            "Perfura múltiplos alvos",
+            "Precisão extrema",
+            "Cria feridas que não cicatrizam facilmente"
+          ]
+        },
+        {
+          "level": 39,
+          "type": "improvement",
+          "description": "Dano aumentado",
+          "new_capability": "Dano aumenta para 7d10"
+        },
+        {
+          "level": 40,
+          "name": "Materialização Elétrica",
+          "type": "passive_unlock",
+          "description": "Desbloqueia Materialização Elétrica (descrita na seção de passivas)"
+        }
+      ],
+
+      "tier_41_50": [
+        {
+          "level": 41,
+          "type": "improvement",
+          "description": "Sinergia inicial",
+          "new_capability": "Habilidades podem ser combinadas fluidamente"
+        },
+        {
+          "level": 42,
+          "name": "Crescente Elétrica",
+          "type": "active_crescent",
+          "description": "Arco elétrico em meia-lua devastador.",
+          "cost": "60 EE",
+          "damage": "8d8 + (Nível/2) elétrico",
+          "area": "Arco de 15 metros",
+          "properties": [
+            "Ataque em arco",
+            "Alto dano",
+            "Pode cortar através de obstáculos",
+            "Deixa rastro elétrico persistente"
+          ]
+        },
+        {
+          "level": 43,
+          "type": "improvement",
+          "description": "Mais alcance",
+          "new_capability": "Arco aumenta para 20 metros"
+        },
+        {
+          "level": 44,
+          "type": "improvement",
+          "description": "Alcance",
+          "new_capability": "Alcance aumenta para 100 metros"
+        },
+        {
+          "level": 45,
+          "type": "improvement",
+          "description": "Eficiência",
+          "new_capability": "Custo reduzido para 50 EE"
+        },
+        {
+          "level": 46,
+          "type": "improvement",
+          "description": "Duração",
+          "new_capability": "Duração aumenta para 2 turnos"
+        },
+        {
+          "level": 47,
+          "type": "improvement",
+          "description": "Versatilidade",
+          "new_capability": "Pode criar múltiplos arcos simultâneos"
+        },
+        {
+          "level": 48,
+          "name": "Vínculo Eletromagnético",
+          "type": "active_bond",
+          "description": "Cria vínculo elétrico com aliados para coordenação.",
+          "cost": "70 EE",
+          "duration": "Concentração ou até 30 minutos",
+          "targets": "Até 4 aliados",
+          "effects": [
+            "Comunicação elétrica instantânea",
+            "Compartilhamento de energia",
+            "Transferência de poder",
+            "Coordenação perfeita"
+          ]
+        },
+        {
+          "level": 49,
+          "type": "improvement",
+          "description": "Mais alvos",
+          "new_capability": "Pode vincular até 6 aliados"
+        },
+        {
+          "level": 50,
+          "name": "Controle Múltiplo",
+          "type": "passive_unlock",
+          "description": "Desbloqueia Controle Múltiplo (descrita na seção de passivas)"
+        }
+      ],
+
+      "tier_51_60": [
+        {
+          "level": 51,
+          "type": "improvement",
+          "description": "Masterização avançada",
+          "new_capability": "+40% de dano em todas as habilidades"
+        },
+        {
+          "level": 52,
+          "name": "Construto Elétrico",
+          "type": "active_summoning",
+          "description": "Cria criaturas de energia elétrica com inteligência básica.",
+          "cost": "80 EE",
+          "duration": "Concentração ou até 30 minutos",
+          "summons": "Até 3 construtos",
+          "stats_per_construct": {
+            "hp": "30 + (Nível × 2)",
+            "ac": "14",
+            "attack": "+Nível para acerto",
+            "damage": "2d8 + 5 elétrico",
+            "speed": "Voo 15 metros por turno"
+          },
+          "properties": [
+            "Obedecem comandos mentais",
+            "Regeneram danos",
+            "Podem mudar forma",
+            "Explodem ao morrer (2d8 dano)"
+          ]
+        },
+        {
+          "level": 53,
+          "type": "improvement",
+          "description": "Mais construtos",
+          "new_capability": "Pode criar até 5 construtos"
+        },
+        {
+          "level": 54,
+          "type": "improvement",
+          "description": "Inteligência",
+          "new_capability": "Construtos ganham inteligência tática"
+        },
+        {
+          "level": 55,
+          "type": "improvement",
+          "description": "Duração",
+          "new_capability": "Duração aumenta para 45 minutos"
+        },
+        {
+          "level": 56,
+          "type": "improvement",
+          "description": "Versatilidade",
+          "new_capability": "Construtos podem se fundir e dividir"
+        },
+        {
+          "level": 57,
+          "type": "improvement",
+          "description": "Eficiência",
+          "new_capability": "Custo reduzido para 70 EE"
+        },
+        {
+          "level": 58,
+          "name": "Rede Eletromagnética",
+          "type": "active_area_control",
+          "description": "Cria rede de energia elétrica que cobre área extensa.",
+          "cost": "90 EE",
+          "area": "Raio de 25 metros",
+          "duration": "Concentração",
+          "effects": [
+            "Detecta movimento na área",
+            "Pode agarrar inimigos",
+            "Bloqueia passagem",
+            "Comunica informações ao usuário"
+          ]
+        },
+        {
+          "level": 59,
+          "type": "improvement",
+          "description": "Área expandida",
+          "new_capability": "Raio aumenta para 35 metros"
+        },
+        {
+          "level": 60,
+          "name": "Simbiose Eletromagnética",
+          "type": "passive_unlock",
+          "description": "Desbloqueia Simbiose Eletromagnética (descrita na seção de passivas)"
+        }
+      ],
+
+      "tier_61_70": [
+        {
+          "level": 61,
+          "type": "improvement",
+          "description": "Transformação inicial",
+          "new_capability": "Pode manter forma parcialmente elétrica"
+        },
+        {
+          "level": 62,
+          "name": "Exército Inicial",
+          "type": "active_army",
+          "description": "Cria exército de construtos elétricos coordenados.",
+          "cost": "100 EE + 20 EA",
+          "duration": "Concentração ou até 1 hora",
+          "army_size": "10 construtos",
+          "coordination": "Ataques coordenados perfeitos",
+          "effects": [
+            "Formações táticas",
+            "Comunicação instantânea",
+            "Adaptação a situações",
+            "Proteção mútua"
+          ]
+        },
+        {
+          "level": 63,
+          "type": "improvement",
+          "description": "Exército maior",
+          "new_capability": "Pode criar até 15 construtos"
+        },
+        {
+          "level": 64,
+          "type": "improvement",
+          "description": "Inteligência superior",
+          "new_capability": "Exército executa estratégias complexas"
+        },
+        {
+          "level": 65,
+          "type": "improvement",
+          "description": "Duração",
+          "new_capability": "Duração aumenta para 2 horas"
+        },
+        {
+          "level": 66,
+          "type": "improvement",
+          "description": "Eficiência",
+          "new_capability": "Custo reduzido para 90 EE + 15 EA"
+        },
+        {
+          "level": 67,
+          "type": "improvement",
+          "description": "Versatilidade",
+          "new_capability": "Exército pode se dividir em grupos menores"
+        },
+        {
+          "level": 68,
+          "name": "Corpo Elétrico Supremo",
+          "type": "active_transformation",
+          "description": "Transformação quase completa em energia elétrica.",
+          "cost": "120 EE + 30 EA",
+          "duration": "Concentração ou até 10 minutos",
+          "effects": [
+            "Imune a dano físico",
+            "Pode fluir através de campos elétricos",
+            "Velocidade triplicada",
+            "Pode dividir-se em múltiplas formas"
+          ]
+        },
+        {
+          "level": 69,
+          "type": "improvement",
+          "description": "Duração",
+          "new_capability": "Duração aumenta para 15 minutos"
+        },
+        {
+          "level": 70,
+          "name": "Essência Atmosférica",
+          "type": "passive_unlock",
+          "description": "Desbloqueia Essência Atmosférica + manipulação climática (descrita na seção de passivas)"
+        }
+      ]
+    },
+
+    "specialization_paths": {
+      "unlock_level": 71,
+      "description": "No nível 71, o usuário escolhe um dos três caminhos de especialização. Esta escolha é permanente e define o estilo final de combate.",
+      "selection_rules": {
+        "permanent": true,
+        "exclusive": "Apenas um caminho pode ser escolhido"
+      },
+
+      "paths": [
+        {
+          "id": "destruicao",
+          "name": "Caminho da Destruição - Devastação Absoluta",
+          "focus": "Dano bruto, impacto devastador, tempestades destrutivas",
+          "philosophy": "O trovão é poder puro e incontrolável. Canalizado corretamente, devasta tudo em seu caminho.",
+          "aesthetic": "Raios brilhantes, tempestades furiosas, devastação total",
+
+          "tier_71_80": {
+            "primary_ability": {
+              "name": "Tempestade de Raios",
+              "unlock_level": 71,
+              "description": "Invoca tempestade massiva de raios coordenados.",
+              "cost": "150 EE + 40 EA",
+              "cooldown": "4 turnos",
+              "area": "Cilindro de 40m de raio, 30m de altura",
+              "duration": "5 turnos",
+              "damage": "10d12 + (Nível × 2) elétrico por turno",
+              "properties": [
+                "Milhares de raios voando",
+                "Corta através de qualquer coisa",
+                "Destrói estruturas",
+                "Raios se regeneram continuamente",
+                "Impossível de bloquear completamente"
+              ]
+            },
+            "passive_improvements": [
+              "Todas as habilidades de destruição ganham +100% de dano",
+              "Raios cortam através de qualquer material",
+              "Críticos causam explosões de raios",
+              "Mortes criam novos raios automaticamente"
+            ],
+            "level_80_capstone": {
+              "name": "Corte Absoluto",
+              "description": "Raios cortam através de qualquer coisa.",
+              "effects": [
+                "Ignora todas as resistências",
+                "Corta através de dimensões",
+                "Raios persistem indefinidamente",
+                "Pode cortar conceitos abstratos"
+              ]
+            }
+          },
+
+          "tier_81_90": {
+            "primary_ability": {
+              "name": "Apocalipse Elétrico",
+              "unlock_level": 81,
+              "description": "Cria tempestade que devasta paisagens inteiras.",
+              "cost": "200 EE + 60 EA",
+              "cooldown": "1 uso por combate",
+              "area": "Tempestade de 200 metros de raio",
+              "range": "Até 1 quilômetro",
+              "damage": {
+                "storm_impact": "20d12 + (Nível × 3)",
+                "lightning_strikes": "10d10 por turno na área",
+                "residual": "Área fica ionizada por 10 minutos"
+              },
+              "effects": [
+                "Destrói estruturas",
+                "Eletrocuta inimigos",
+                "Cria terreno difícil permanente",
+                "Energia elétrica persiste e causa dano contínuo"
+              ]
+            },
+            "passive_improvements": [
+              "Área de todas as habilidades × 3",
+              "Pode combinar múltiplas habilidades em devastação",
+              "Raios se multiplicam automaticamente",
+              "Inimigos mortos explodem em raios (5d10 em 15m)"
+            ],
+            "level_90_capstone": {
+              "name": "Expansão Infinita",
+              "description": "Tempestades podem se expandir indefinidamente.",
+              "mechanics": "Áreas de efeito não têm limite se desejado"
+            }
+          },
+
+          "tier_91_100": {
+            "primary_ability": {
+              "name": "Devastação Planetária",
+              "unlock_level": 91,
+              "description": "Devastação em escala continental através de tempestades.",
+              "cost": "Todo EE + Todo EA disponível",
+              "cooldown": "1 uso por semana",
+              "area": "Raio de 5 quilômetros",
+              "duration": "Devastação imediata + efeitos por dias",
+              "damage": "50d20 + (Nível × 10) em área total",
+              "effects": [
+                "Transforma paisagem em campo de raios",
+                "Cria múltiplas tempestades simultâneas",
+                "Mata toda vida na área",
+                "Energia elétrica persiste por semanas",
+                "Visível de continentes distantes",
+                "Pode alterar clima regional"
+              ],
+              "narrative": "O céu se abre em tempestade. A terra treme com raios. Tudo vira energia pura."
+            },
+            "level_progression": {
+              "92-99": "Cada nível permite modificar habilidades em tempo real"
+            },
+            "level_100_capstone": {
+              "name": "Domínio Atmosférico - Destruidor de Mundos",
+              "description": "Controle absoluto sobre tempestades e devastação.",
+              "effects": [
+                "Todas as habilidades custam 0 recursos",
+                "Raios são infinitos e instantâneos",
+                "Pode criar tempestades globalmente",
+                "Raios cortam através de dimensões",
+                "Pode destruir conceitos abstratos",
+                "Área de todas as habilidades é ilimitada",
+                "Pode criar tempestades planetárias"
+              ]
+            }
+          }
+        },
+
+        {
+          "id": "estrategia",
+          "name": "Caminho da Estratégia - Mestre Tático",
+          "focus": "Controle preciso, exército elétrico, infiltração, manipulação múltipla",
+          "philosophy": "A energia elétrica é a ferramenta tática suprema. Controlada com precisão, coordena exércitos e infiltra qualquer lugar.",
+          "aesthetic": "Energia elétrica fluindo em padrões precisos, coordenação perfeita, controle absoluto",
+
+          "tier_71_80": {
+            "primary_ability": {
+              "name": "Legião Elétrica",
+              "unlock_level": 71,
+              "description": "Cria exército inteligente de construtos elétricos coordenados.",
+              "cost": "120 EE + 30 EA",
+              "duration": "Concentração ou até serem destruídos",
+              "army_size": "50 construtos inteligentes",
+              "coordination": "Executam estratégias militares complexas",
+              "capabilities": [
+                "Formações táticas avançadas",
+                "Comunicação instantânea",
+                "Adaptação a situações de batalha",
+                "Especialização por função",
+                "Proteção mútua automática"
+              ]
+            },
+            "passive_improvements": [
+              "Pode controlar até 20 habilidades simultaneamente",
+              "Todos os construtos ganham +50% de inteligência",
+              "Habilidades táticas não requerem concentração",
+              "Energia elétrica compartilha visão com usuário"
+            ],
+            "level_80_capstone": {
+              "name": "Comando Múltiplo",
+              "description": "Controle simultâneo de múltiplos exércitos.",
+              "effects": "Pode ter 5 legiões ativas simultaneamente"
+            }
+          },
+
+          "tier_81_90": {
+            "primary_ability": {
+              "name": "Controle Absoluto",
+              "unlock_level": 81,
+              "description": "Manipula energia elétrica em centenas de entidades simultaneamente.",
+              "cost": "180 EE + 50 EA",
+              "duration": "Concentração",
+              "control_points": "Até 200 pontos de controle",
+              "range": "Até 2 quilômetros",
+              "effects": [
+                "Controle preciso de cada ponto",
+                "Coordenação perfeita entre todos",
+                "Informação em tempo real de toda área",
+                "Pode criar redes complexas",
+                "Manipulação simultânea de formas diferentes"
+              ]
+            },
+            "passive_improvements": [
+              "Legiões nunca morrem - reconstituem-se após 2 turnos",
+              "Todos os construtos ganham habilidades do usuário",
+              "Rede de controle cobre até 1km²",
+              "Energia elétrica responde a condições automaticamente"
+            ],
+            "level_90_capstone": {
+              "name": "Consciência Distribuída",
+              "description": "Consciência se espalha através de toda energia elétrica controlada.",
+              "effects": "Visão e controle através de qualquer energia elétrica em 5km"
+            }
+          },
+
+          "tier_91_100": {
+            "primary_ability": {
+              "name": "Consciência Distribuída",
+              "unlock_level": 91,
+              "description": "Controle total sobre toda energia elétrica na região.",
+              "cost": "250 EE + 100 EA para estabelecer domínio",
+              "area": "Raio de 5 quilômetros",
+              "duration": "Enquanto mantiver concentração",
+              "effects": [
+                "Controla TODA energia elétrica na área",
+                "Pode ver através de qualquer energia elétrica",
+                "Cria exército de 1000+ construtos",
+                "Transforma área em tabuleiro tático",
+                "Pode teletransportar entre energia elétrica instantaneamente",
+                "Coordenação perfeita de milhares de pontos"
+              ]
+            },
+            "level_progression": {
+              "92-99": "Cada nível expande área de controle em +1km"
+            },
+            "level_100_capstone": {
+              "name": "Domínio Atmosférico - Estrategista Supremo",
+              "description": "Controle perfeito sobre toda energia elétrica existente.",
+              "effects": [
+                "Comando mental instantâneo de qualquer energia elétrica",
+                "Pode criar e controlar 10000+ construtos",
+                "Cada construto age com inteligência estratégica perfeita",
+                "Visão e controle através de qualquer energia elétrica",
+                "Pode reescrever propriedades da energia elétrica",
+                "Construtos podem se fundir e dividir dinamicamente",
+                "Campo de batalha responde à vontade como organismo"
+              ]
+            }
+          }
+        },
+
+        {
+          "id": "restauracao",
+          "name": "Caminho da Restauração - Ciclo Energético",
+          "focus": "Regeneração, suporte de aliados, estruturas defensivas, compartilhamento de energia",
+          "philosophy": "A energia elétrica é vida. Compartilhada, cura todas as feridas. Circulando, mantém a energia eterna.",
+          "aesthetic": "Energia elétrica dourada curativa, estruturas protetoras, renovação constante",
+
+          "tier_71_80": {
+            "primary_ability": {
+              "name": "Transfusão Energética",
+              "unlock_level": 71,
+              "description": "Cura massiva através de compartilhamento de energia elétrica.",
+              "cost": "140 EE + 35 EA",
+              "cooldown": "1 uso por encontro",
+              "area": "Raio de 30 metros",
+              "healing": "12d10 + (Nível × 2) para todos aliados",
+              "additional_effects": {
+                "purification": [
+                  "Remove venenos, doenças e maldições",
+                  "Regenera energia vital",
+                  "Limpa corrupção física"
+                ],
+                "buffs": [
+                  "Regeneração: +4d8 por turno por 5 turnos",
+                  "+4 Destreza por 1 hora",
+                  "Resistência a energia elétrica"
+                ],
+                "environment": [
+                  "Energia elétrica curativa persiste (dura 1 hora)",
+                  "Área se torna zona de cura",
+                  "Aliados mortos podem ser curados"
+                ]
+              }
+            },
+            "passive_improvements": [
+              "Todas as curas aumentam em +100%",
+              "Energia elétrica cria aura de cura em 20m",
+              "Regeneração passiva para todos em 20m: +3d8 por turno",
+              "Aura permanente: +4 em salvaguardas para aliados"
+            ],
+            "level_80_capstone": {
+              "name": "Ciclo de Energia",
+              "description": "Cura escala com energia elétrica disponível.",
+              "mechanics": "50% da energia elétrica disponível é convertida em cura distribuída"
+            }
+          },
+
+          "tier_81_90": {
+            "primary_ability": {
+              "name": "Renascimento Elétrico",
+              "unlock_level": 81,
+              "description": "Ressuscita aliados através de qualquer campo elétrico.",
+              "cost": "Ativa automaticamente quando aliado morre",
+              "cooldown": "1 uso por semana",
+              "effects": {
+                "resurrection": "Aliado retorna com 100% HP",
+                "energy_requirement": "Qualquer campo elétrico",
+                "empowerment": "Retorna com +5 em todos atributos por 10 turnos",
+                "protection": "Imunidade temporária a morte (1 hora)",
+                "bond": "Vínculo elétrico permanente com usuário"
+              }
+            },
+            "passive_improvements": [
+              "Aliados ganham regeneração de energia (4d10/turno)",
+              "Curas podem exceder HP máximo",
+              "Ressurreições não têm limite de tempo",
+              "Energia elétrica purificadora remove corrupção"
+            ],
+            "level_90_capstone": {
+              "name": "Energia Eterna",
+              "description": "Aliados não podem morrer permanentemente.",
+              "mechanics": "Ressurreição automática após 3 dias, sempre"
+            }
+          },
+
+          "tier_91_100": {
+            "primary_ability": {
+              "name": "Ciclo Perpétuo",
+              "unlock_level": 91,
+              "description": "Cria campo de regeneração eterna que mantém energia indefinidamente.",
+              "cost": "300 EE + 80 EA para estabelecer",
+              "area": "Raio de 200 metros",
+              "duration": "Permanente",
+              "effects": {
+                "massive_healing": "Todos aliados regeneram 15d10 HP/turno",
+                "continuous_resurrection": "Aliados mortos ressuscitam após 1 turno",
+                "immortality_field": "Aliados não podem ter HP reduzido abaixo de 1",
+                "age_reversal": "Reverte envelhecimento e restaura juventude",
+                "purification": "Remove absolutamente qualquer condição",
+                "transformation": "Pode transformar inimigos em aliados"
+              },
+              "narrative": "Campo dourado de energia elétrica envolve tudo. Morte torna-se impossível. Energia flui eternamente."
+            },
+            "level_progression": {
+              "92-99": "Cada nível permite ressuscitar mortos mais antigos"
+            },
+            "level_100_capstone": {
+              "name": "Domínio Atmosférico - Fonte da Energia Eterna",
+              "description": "Controle absoluto sobre vida, morte e regeneração energética.",
+              "effects": [
+                "Pode ressuscitar qualquer pessoa que já morreu",
+                "Ressurreições são perfeitas - sem deterioração",
+                "Pode criar vida nova a partir de energia elétrica pura",
+                "Aliados marcados nunca morrem",
+                "Pode curar qualquer ferida ou doença",
+                "Imortalidade verdadeira para si e aliados",
+                "Pode reverter morte até 100 anos no passado",
+                "Cria ciclo perpétuo de energia em área massiva"
+              ]
+            }
+          }
+        }
+      ]
+    },
+
+    "combat_mechanics": {
+      "action_economy": {
+        "standard_casting": "Maioria das habilidades: 1 ação padrão",
+        "quick_abilities": [
+          "Faísca",
+          "Choque Rápido",
+          "Transporte Elétrico"
+        ],
+        "concentration_spells": [
+          "Pulsar",
+          "Rede Eletromagnética",
+          "Exército Inicial"
+        ],
+        "full_round": [
+          "Tempestade de Raios",
+          "Apocalipse Elétrico",
+          "Devastação Planetária"
+        ]
+      },
+
+      "damage_types": {
+        "primary": "Elétrico (descargas, raios)",
+        "secondary": "Sônico (impacto), Ionização (dano contínuo)",
+        "special": "Eletromagnético (controle), Atmosférico (manipulação climática)"
+      },
+
+      "effectiveness_by_target": {
+        "highly_effective": {
+          "targets": ["Criaturas aquáticas", "Construtos de metal", "Criaturas em armadura"],
+          "bonus": "Eletricidade conduz facilmente, causa dano dobrado",
+          "special": "Metal amplifica dano elétrico"
+        },
+        "normally_effective": {
+          "targets": ["Maioria das criaturas vivas", "Humanoides"],
+          "bonus": "Dano normal"
+        },
+        "reduced_effectiveness": {
+          "targets": ["Elementais de terra", "Criaturas isoladas"],
+          "penalty": "Terra absorve eletricidade, isolamento reduz condução",
+          "note": "Condutividade alto reduz essas resistências"
+        },
+        "ineffective": {
+          "targets": ["Criaturas sem condutividade", "Elementais de ar puro"],
+          "note": "Sem material para conduzir eletricidade"
+        }
+      },
+
+      "tactical_considerations": {
+        "positioning": "Usar campos elétricos para vantagem tática",
+        "resource_management": "Balancear EE para combates longos; EA acumula através de tempestades",
+        "environmental_effects": "Usar tempestades para amplificar poder",
+        "combo_potential": [
+          "Rede Eletromagnética + Transporte = movimento instantâneo",
+          "Exército + Vínculo Eletromagnético = coordenação perfeita",
+          "Tempestade de Raios + Apocalipse = devastação total"
+        ]
+      }
+    },
+
+    "interaction_systems": {
+      "with_environment": {
+        "amplified_in": [
+          "Tempestades: +30% poder, energia abundante",
+          "Locais altos: +20% eficácia, melhor condução",
+          "Áreas com metal: +25% poder",
+          "Durante tempestades: +15% controle"
+        ],
+        "normal_in": [
+          "Ambientes temperados",
+          "Áreas com condutividade moderada",
+          "Interiores normais"
+        ],
+        "hindered_in": [
+          "Desertos: -40% poder, sem umidade",
+          "Áreas isoladas: -30% eficácia",
+          "Ambientes sem condutividade: -50% poder",
+          "Anti-magia: Nulifica completamente"
+        ]
+      },
+
+      "with_other_magics": {
+        "synergistic": {
+          "air": "Ar amplifica condução elétrica +30%",
+          "water": "Água conduz eletricidade - dano aumentado",
+          "steel": "Metal amplifica campos elétricos +50%",
+          "fire": "Fogo cria tempestades elétricas - poder combinado"
+        },
+        "neutral": {
+          "earth": "Terra pode absorver eletricidade",
+          "light": "Luz não interfere diretamente",
+          "blood": "Sangue conduz eletricidade moderadamente",
+          "soul": "Alma não interfere com energia elétrica"
+        },
+        "antagonistic": {
+          "ice": "Gelo isola e reduz condução",
+          "earth": "Terra absorve eletricidade",
+          "plant": "Plantas podem dissipar energia elétrica"
+        }
+      },
+
+      "electromagnetic_persistence": {
+        "duration": "Campos elétricos persistem por 1d6 turnos após conjuração",
+        "reclamation": "Usuário pode reabsorver energia elétrica própria",
+        "environmental": "Energia elétrica pode ionizar área",
+        "tactical_use": "Criar redes elétricas, marcar território, controle de área"
+      }
+    },
+
+    "progression_guide": {
+      "early_game_1_20": {
+        "focus": "Aprender manipulação básica de energia elétrica",
+        "key_abilities": ["Faísca", "Choque Rápido", "Arco Simples"],
+        "tactical_role": "DPS à distância, controle básico",
+        "tips": [
+          "Use Faísca para ataques rápidos",
+          "Choque Rápido é ótimo para interrupção",
+          "Arco Simples oferece alcance",
+          "Mantenha energia elétrica para emergências"
+        ]
+      },
+
+      "mid_game_21_50": {
+        "focus": "Masterização de impacto e controle de área",
+        "key_abilities": ["Pulsar", "Lança Relâmpago", "Vínculo Eletromagnético"],
+        "tactical_role": "Controle de área, suporte tático",
+        "tips": [
+          "Pulsar muda completamente o combate",
+          "Lança Relâmpago oferece precisão",
+          "Vínculo Eletromagnético coordena grupo",
+          "Comece a planejar especialização"
+        ]
+      },
+
+      "late_game_51_70": {
+        "focus": "Construção de exército e controle de área",
+        "key_abilities": ["Construto Elétrico", "Rede Eletromagnética", "Exército Inicial"],
+        "tactical_role": "Comandante de exército, controle total",
+        "tips": [
+          "Construtos oferecem números",
+          "Rede Eletromagnética controla área",
+          "Exército muda escala de combate",
+          "Prepare-se para especialização"
+        ]
+      },
+
+      "endgame_71_100": {
+        "focus": "Especialização e domínio absoluto",
+        "key_abilities": "Dependem do caminho escolhido",
+        "paths": {
+          "destruicao": "Devastador de exércitos e paisagens",
+          "estrategia": "Comandante de legiões elétricas",
+          "restauracao": "Fonte de energia eterna"
+        },
+        "tips": [
+          "Nível 91+: Seu poder afeta regiões inteiras",
+          "Nível 100: Você é força da natureza",
+          "Use poder responsavelmente",
+          "Considere impacto narrativo"
+        ]
+      }
+    },
+
+    "limitations_weaknesses": {
+      "hard_counters": [
+        {
+          "counter": "Ambientes isolados",
+          "effect": "Reduz condução elétrica em 70%",
+          "workaround": "Usar energia elétrica própria ou criar campos"
+        },
+        {
+          "counter": "Anti-magia absoluta",
+          "effect": "Nulifica completamente",
+          "workaround": "Apenas nível 100 transcende isso"
+        },
+        {
+          "counter": "Criaturas sem condutividade",
+          "effect": "Sem material para conduzir eletricidade",
+          "workaround": "Usar energia elétrica própria como arma"
+        }
+      ],
+
+      "soft_counters": [
+        {
+          "counter": "Terra excessiva",
+          "effect": "Absorve eletricidade - dano reduzido",
+          "mitigation": "Usar campos elétricos mais intensos"
+        },
+        {
+          "counter": "Resistência a elétrico",
+          "effect": "Reduz dano de descargas",
+          "mitigation": "Condutividade alto reduz resistências"
+        },
+        {
+          "counter": "Ambientes secos",
+          "effect": "Reduz condução atmosférica",
+          "mitigation": "Usar energia elétrica própria"
+        }
+      ],
+
+      "situational_weaknesses": [
+        "Energia elétrica visível chama atenção",
+        "Dependência de condutividade ambiental",
+        "EE se esgota rápido em uso intensivo",
+        "EA só acumula através de tempestades",
+        "Consequências sociais de uso visível"
+      ]
+    },
+
+    "itemization": {
+      "recommended_equipment": {
+        "weapons": [
+          {
+            "item": "Cajado Atmosférico",
+            "bonus": "+3 em ataques elétricos, +20% dano",
+            "special": "Armazena 80 EE adicional"
+          },
+          {
+            "item": "Lâmina de Raio",
+            "bonus": "Espada que causa +2d8 elétrico adicional",
+            "special": "Auto-regenera, nunca quebra"
+          }
+        ],
+        "armor": [
+          {
+            "item": "Armadura de Energia Elétrica",
+            "bonus": "+4 CA, resistência a elétrico",
+            "special": "Auto-repara com energia elétrica"
+          },
+          {
+            "item": "Manto Atmosférico",
+            "bonus": "+3 CA, +40 EE máximo",
+            "special": "Aura elétrica passiva (1d6 em 3m)"
+          }
+        ],
+        "accessories": [
+          {
+            "item": "Anel da Transfusão",
+            "bonus": "Cura automática 1x/dia",
+            "special": "Compartilha energia com aliados"
+          },
+          {
+            "item": "Amuleto de Essência",
+            "bonus": "+30 EA máximo",
+            "special": "Dobra ganho de EA"
+          },
+          {
+            "item": "Gema Elétrica",
+            "bonus": "+25% controle elétrico",
+            "special": "Campos elétricos persistem +2 turnos"
+          }
+        ]
+      }
+    },
+
+    "advanced_combos": {
+      "destruction_path": [
+        {
+          "name": "Tempestade de Devastação",
+          "components": ["Tempestade de Raios", "Apocalipse Elétrico"],
+          "execution": "Ative Tempestade, depois lance Apocalipse",
+          "result": "Devastação apocalíptica em 300m+ de raio",
+          "cost": "350 EE + 100 EA",
+          "cooldown": "1x por batalha épica"
+        }
+      ],
+      "strategy_path": [
+        {
+          "name": "Cerco Elétrico",
+          "components": ["Legião Elétrica", "Controle Absoluto"],
+          "execution": "Invoque legião, depois controle área",
+          "result": "Campo de batalha controlado por exército",
+          "tactical_value": "Inimigos não podem manobrar"
+        }
+      ],
+      "restoration_path": [
+        {
+          "name": "Ciclo de Batalha Eterno",
+          "components": ["Ciclo Perpétuo", "Renascimento Elétrico"],
+          "execution": "Ative Ciclo, lute até morrer, ressuscite",
+          "result": "Imortalidade de combate + cura massiva",
+          "narrative": "Você não pode perder enquanto o ciclo está ativo"
+        }
+      ]
+    },
+
+    "ritual_magic": {
+      "electromagnetic_circle_consecration": {
+        "name": "Consagração do Círculo Eletromagnético",
+        "level_requirement": 60,
+        "casting_time": "6 horas",
+        "cost": "250 EE + 100 EA",
+        "area": "500m²",
+        "effects": [
+          "Transforma área em zona elétrica permanente",
+          "Cura passiva para todos dentro: 3d10 por hora",
+          "Energia elétrica flui naturalmente na área",
+          "Proteção contra corrupção"
+        ]
+      },
+
+      "atmospheric_nexus_creation": {
+        "name": "Criação do Nexus Atmosférico",
+        "level_requirement": 75,
+        "casting_time": "12 horas",
+        "cost": "400 EE + 200 EA",
+        "requirements": "Local de grande atividade elétrica",
+        "effects": [
+          "Cria ponto de poder elétrico permanente",
+          "Amplifica todas as habilidades em 50%",
+          "Permite transporte instantâneo",
+          "Energia elétrica se regenera automaticamente"
+        ]
+      }
+    },
+
+    "legendary_techniques": {
+      "world_electrical_connection": {
+        "name": "Conexão com a Energia do Mundo",
+        "requirements": {
+          "level": 85,
+          "prerequisites": ["Essência Atmosférica", "Experiência com Ritual de Nexus"]
+        },
+        "description": "Conecta-se à energia elétrica que flui através de toda atmosfera",
+        "mechanics": {
+          "cost": "400 EE + 200 EA",
+          "duration": "1 hora",
+          "effects": [
+            "Consciência se expande através de toda energia elétrica",
+            "Pode manifestar poder em qualquer campo elétrico",
+            "Acesso a conhecimento ancestral da energia",
+            "Todas as habilidades custam 0 EE durante conexão"
+          ]
+        }
+      }
+    },
+
+    "gm_guidance": {
+      "encounter_design": {
+        "understanding_thunder_users": {
+          "strengths": [
+            "Mobilidade extrema através de campos elétricos",
+            "Controle de área através de energia elétrica persistente",
+            "Exército de construtos coordenados",
+            "Versatilidade (destruição, tática ou cura)",
+            "Regeneração e suporte de grupo"
+          ],
+          "weaknesses": [
+            "Vulnerável a ambientes isolados",
+            "Dependência de condutividade ambiental",
+            "Uso visível chama atenção",
+            "Menos eficaz contra criaturas sem condutividade",
+            "Recursos limitados em ambientes secos"
+          ]
+        },
+
+        "balancing_encounters": {
+          "use_isolated_environments": "Ambientes isolados reduzem poder",
+          "earth_enemies": "Elementais de terra, criaturas isoladas",
+          "confined_spaces": "Limita áreas de expansão",
+          "social_consequences": "Uso visível traz atenção indesejada",
+          "resource_drain": "Combates múltiplos antes de descanso"
+        },
+
+        "scaling_difficulty": {
+          "level_1_30": "Inimigos resistentes a elétrico, ambientes secos",
+          "level_31_60": "Múltiplas ondas, controle de área necessário",
+          "level_61_80": "Exércitos inteiros, combate em escala épica",
+          "level_81_100": "Ameaças regionais, batalhas que alteram clima"
+        }
+      },
+
+      "narrative_considerations": {
+        "electrical_visibility": "Energia elétrica é sempre visível - crie consequências sociais",
+        "environmental_impact": "Energia elétrica pode ionizar áreas",
+        "political_consequences": "Uso de energia elétrica pode ser visto como ameaça",
+        "reputation": "Usuários de energia elétrica são temidos e respeitados",
+        "world_changing_power": "Níveis 90+ podem alterar clima regional"
+      }
+    },
+
+    "meta_information": {
+      "design_philosophy": "Magia do Trovão recompensa canalização, controle preciso e versatilidade tática. Forte em mobilidade, controle de área e suporte.",
+      
+      "balancing_notes": [
+        "Recursos duplos (EE e EA) limitam spam",
+        "Dependência de condutividade cria desafios naturais",
+        "Condutividade incentiva uso harmonioso",
+        "Ambientes isolados são fraquezas intencionais",
+        "Níveis 90+ podem literalmente alterar clima"
+      ],
+
+      "dm_guidance": {
+        "managing_power": "Use ambientes, resistências e consequências sociais",
+        "epic_scale": "Permita que usuários brilhem em combates táticos",
+        "consequences": "Energia elétrica visível deve ter impacto social",
+        "narrative_weight": "Energia elétrica é sempre visível - crie consequências",
+        "endgame": "Níveis 90+ são ameaças regionais"
+      },
+
+      "player_tips": [
+        "Gerencie EE cuidadosamente - regeneração é moderada",
+        "Use EA estrategicamente - acumula através de tempestades",
+        "Considere consequências sociais do uso visível",
+        "Escolha de caminho nível 71 define todo seu jogo",
+        "Trabalhe com grupo para maximizar vínculos",
+        "Crie redes elétricas para controle tático",
+        "Abrace a canalização - energia elétrica é extensão sua"
+      ]
+    },
+
+    "version_control": {
+      "current_version": "1.0.0",
+      "last_updated": "2025",
+      "changelog": [
+        {
+          "version": "1.0.0",
+          "date": "2025",
+          "changes": [
+            "Sistema completo implementado",
+            "Três caminhos de especialização definidos (Destruição, Estratégia, Restauração)",
+            "100 níveis de progressão detalhados",
+            "Foco em canalização, mobilidade e controle tático",
+            "Sistema de Condutividade para recompensar harmonia",
+            "Recursos: Energia Elétrica e Essência Atmosférica",
+            "70 níveis base + 30 níveis especializados"
+          ]
+        }
+      ],
+      "design_notes": [
+        "Energia elétrica é intencionalmente versátil e tática",
+        "Foco em canalização sobre dominação",
+        "Mobilidade é feature principal",
+        "Consequências sociais são esperadas",
+        "Níveis altos podem remodelar clima"
+      ]
+    }
+  }
+}

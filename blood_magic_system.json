@@ -1,0 +1,1680 @@
+{
+  "magic_system": {
+    "id": "blood_magic",
+    "name": "Magia de Sangue",
+    "version": "1.0.0",
+    "category": "Elemental/Corporal",
+    "rarity": "Comum",
+    
+    "essence": {
+      "description": "A Magia de Sangue governa a manipulação, materialização e controle do sangue — próprio ou criado. É uma magia de simbiose profunda, onde o usuário não apenas controla sangue, mas se torna simbiótico com ele, podendo materializar seu corpo inteiro a partir de uma única gota. O sangue não é apenas ferramenta, mas extensão viva da própria existência.",
+      "core_principles": [
+        "Simbiose total com sangue próprio ou criado",
+        "Materialização completa a partir de uma gota",
+        "Manipulação de densidade e consistência",
+        "Abertura de espaços internos para evasão",
+        "Transporte instantâneo através de sangue"
+      ],
+      "philosophical_basis": "O sangue é vida concentrada e maleável. O usuário não domina o sangue, mas se une a ele em simbiose perfeita, tornando-se fluido e sólido simultaneamente."
+    },
+
+    "parallel_attribute": {
+      "name": "Vínculo Sanguíneo",
+      "short_name": "O(A) Vinculado(a)",
+      "type": "Atributo Simbiótico",
+      "range": [0, 10],
+      "description": "Mede a profundidade da simbiose entre usuário e sangue, a precisão do controle e a harmonia da manipulação. Atua como multiplicador universal para todas as habilidades de Sangue.",
+      
+      "scaling": {
+        "calculation": "Vínculo aumenta com prática constante, controle preciso e uso harmonioso do sangue. Diminui com uso bruto, desperdício ou perda de sangue excessiva.",
+        "multiplier_formula": "Poder Base × (1 + Vínculo/2.5)",
+        "efficiency_formula": "(20 + Vínculo×15)% de eficiência total"
+      },
+
+      "tiers": [
+        {
+          "grade": 0,
+          "title": "O Desvinculado",
+          "description": "O sangue mal responde aos comandos. Manipulação é bruta e ineficiente.",
+          "effects": {
+            "power_bonus": "+10%",
+            "restrictions": ["Sem materialização", "Controle básico apenas", "Alto custo energético"],
+            "narrative_impact": "Sangue criado é grosso, lento e pouco responsivo"
+          }
+        },
+        {
+          "grade_range": [1, 2],
+          "title": "O Iniciado",
+          "description": "Primeiro contato com a simbiose sanguínea; controle básico estabelecido.",
+          "effects": {
+            "power_bonus": "+20%",
+            "control_bonus": "+2 em testes de manipulação",
+            "narrative_impact": "Sangue responde aos comandos básicos com hesitação"
+          }
+        },
+        {
+          "grade_range": [3, 4],
+          "title": "O Conectado",
+          "description": "Sangue reage com mais precisão e velocidade.",
+          "effects": {
+            "power_bonus": "+40%",
+            "precision_bonus": "Manipulação mais precisa (+3 acerto)",
+            "narrative_impact": "Sangue flui naturalmente conforme a vontade"
+          }
+        },
+        {
+          "grade_range": [5, 6],
+          "title": "O Simbiótico",
+          "description": "Sangue age como extensão natural do corpo.",
+          "effects": {
+            "power_bonus": "+80%",
+            "abilities_improved": ["Materialização parcial", "Evasão automática"],
+            "passive_aura": "Sangue reage instintivamente a ameaças",
+            "narrative_impact": "Sangue parece ter vida própria, protegendo o usuário"
+          }
+        },
+        {
+          "grade_range": [7, 8],
+          "title": "O Unificado",
+          "description": "Materialização quase instantânea; sangue age autonomamente.",
+          "effects": {
+            "power_bonus": "+150%",
+            "special_abilities": ["Materialização completa", "Transporte instantâneo"],
+            "defensive": "Sangue forma barreiras automáticas",
+            "narrative_impact": "Corpo e sangue são indistinguíveis; materialização é instantânea"
+          }
+        },
+        {
+          "grade": 9,
+          "title": "O Transcendente",
+          "description": "Sangue age com inteligência própria; simbiose perfeita.",
+          "effects": {
+            "power_bonus": "+250%",
+            "creation": "Pode criar sangue vivo independente",
+            "autonomy": "Sangue continua agindo após comandos",
+            "narrative_impact": "Sangue cria formas complexas e age estrategicamente"
+          }
+        },
+        {
+          "grade": 10,
+          "title": "A Essência Absoluta",
+          "description": "Simbiose perfeita; sangue e usuário são um só.",
+          "effects": {
+            "power_bonus": "+300%",
+            "transcendence": "Pode materializar múltiplos corpos simultaneamente",
+            "omniscience": "Sente através de qualquer sangue no mundo",
+            "narrative_impact": "Sangue é consciência distribuída; materialização é pensamento"
+          }
+        }
+      ]
+    },
+
+    "resource_system": {
+      "primary_resource": {
+        "name": "Sangue Vital",
+        "abbreviation": "SV",
+        "base_pool": "80 + (Nível × 15) + (Constituição × 4)",
+        "regeneration": {
+          "passive": "2.5% por turno",
+          "rest": "100% após descanso completo",
+          "combat_kill": "+10% por inimigo morto com sangue",
+          "blood_contact": "+5% se tocando sangue próprio",
+          "vínculo_bonus": "+1% por ponto de Vínculo Sanguíneo"
+        },
+        "cost_reduction": "Reduz 3% por nível devido ao controle crescente"
+      },
+      
+      "secondary_resource": {
+        "name": "Essência Carmesim",
+        "abbreviation": "EC",
+        "unlock_level": 70,
+        "base_pool": "40 + ((Nível - 70) × 8)",
+        "description": "Essência primordial extraída da vida e da morte, energia que transcende o sangue físico. Usada para habilidades de grande escala e materialização completa.",
+        "regeneration": {
+          "life_absorption": "Absorver vida de inimigos derrotados: +5 EC por morte",
+          "blood_meditation": "Meditar com sangue: +3 EC por hora",
+          "death_proximity": "Perto de morte: +2 EC por turno",
+          "vínculo_peak": "Vínculo 10: regeneração automática de EC"
+        }
+      },
+
+      "corruption_system": {
+        "name": "Corrupção Sanguínea",
+        "abbreviation": "CS",
+        "description": "Sistema único para Sanguen'El: quanto mais matam, mais fortes ficam, mas mais corruptos se tornam. Daemons não sofrem corrupção.",
+        "race_specific": {
+          "sanguen_el": {
+            "corruption_mechanics": {
+              "xp_multiplier": "1 + (Corrupção Sanguínea × 0.5)",
+              "max_multiplier": "6x XP (Corrupção 10)",
+              "sanity_cost": "Perde 1d4 Sanidade por ponto de Corrupção ao subir de nível",
+              "scaling_impact": "Corrupção aumenta automaticamente com mortes e uso de magia de sangue",
+              "death_threshold": "Corrupção 8+: risco de morte por perda total de Sanidade",
+              "narrative_consequences": "Aparência física se deteriora, comportamento se torna mais agressivo e imprevisível"
+            },
+            "corruption_gain": {
+              "kill_enemy": "+1 Corrupção por inimigo morto",
+              "blood_magic_use": "+0.5 Corrupção por uso intensivo de magia",
+              "level_up": "+1 Corrupção automática ao subir de nível",
+              "ritual_blood": "+2 Corrupção por ritual sanguíneo"
+            },
+            "corruption_effects": {
+              "level_1_3": "Aparência levemente alterada, comportamento mais agressivo",
+              "level_4_6": "Transformações físicas visíveis, dificuldade de controle emocional",
+              "level_7_9": "Aparência quase demoníaca, risco de perder controle",
+              "level_10": "Transformação completa em criatura sanguinária, morte iminente"
+            }
+          },
+          "daemons": {
+            "corruption_immunity": "Imunes completamente à Corrupção Sanguínea",
+            "power_scaling": "Maior power scaling geral (+50% em todas as habilidades)",
+            "power_spike": "Menor power spike inicial (começam mais fracos)",
+            "corruption_feeding": "Se alimentam da corrupção de outros, ganhando poder",
+            "narrative": "Daemons são naturalmente corruptos e se beneficiam da corrupção alheia",
+            "scaling_mechanics": {
+              "base_power_reduction": "Começam com -30% de poder em todas as habilidades",
+              "scaling_rate": "Ganham +10% de poder por nível (vs +5% de outras raças)",
+              "corruption_absorption": "Absorvem corrupção de inimigos mortos, ganhando +5% poder por ponto absorvido",
+              "max_power_bonus": "Podem atingir +200% de poder através de absorção de corrupção",
+              "no_sanity_cost": "Não sofrem custos de Sanidade por uso de magia",
+              "corruption_synergy": "Poder aumenta proporcionalmente à corrupção presente no ambiente"
+            },
+            "daemon_specific_abilities": {
+              "corruption_sense": "Detectam corrupção em raio de 100m",
+              "corruption_drain": "Drenam corrupção de inimigos, enfraquecendo-os",
+              "corruption_aura": "Criam aura de corrupção que afeta inimigos",
+              "corruption_immunity": "Imunes a efeitos baseados em corrupção"
+            }
+          }
+        }
+      }
+    },
+
+    "passive_abilities": {
+      "initial_passive": {
+        "name": "Essência Sanguínea",
+        "unlock_level": 1,
+        "description": "O corpo desenvolve simbiose básica com sangue, permitindo evasão automática através de abertura de espaços internos.",
+        "effects": [
+          {
+            "type": "evasive",
+            "value": "+2 CA contra ataques corpo a corpo"
+          },
+          {
+            "type": "reactive",
+            "description": "15% de chance de evitar completamente ataques físicos"
+          },
+          {
+            "type": "utility",
+            "description": "Pode identificar sangue por proximidade"
+          },
+          {
+            "type": "resistance",
+            "value": "+3 em salvaguardas contra sangramento"
+          }
+        ],
+        "scaling": "Benefícios aumentam com Vínculo Sanguíneo",
+        "narrative_description": "Corpo responde instintivamente, abrindo espaços internos para desviar golpes"
+      },
+
+      "level_10": {
+        "name": "Fluxo Adaptativo",
+        "unlock_level": 10,
+        "description": "Controle sobre sangue se torna mais refinado e responsivo.",
+        "mechanics": {
+          "activation": "Automático",
+          "effects": [
+            "Evasão aumenta para 25%",
+            "Sangue endurece automaticamente contra ataques",
+            "Materialização básica de membros (dedos, pequenas partes)",
+            "Controle de densidade básica"
+          ]
+        }
+      },
+
+      "level_20": {
+        "name": "Densidade Variável",
+        "unlock_level": 20,
+        "description": "Pode alterar completamente a consistência do sangue manipulado.",
+        "effects": [
+          {
+            "type": "liquid",
+            "description": "Sangue flui como água, penetra fendas"
+          },
+          {
+            "type": "solid",
+            "description": "Sangue endurece como metal, forma armas"
+          },
+          {
+            "type": "gas",
+            "description": "Sangue se vaporiza, cria nuvens"
+          },
+          {
+            "type": "adaptive",
+            "description": "Muda consistência automaticamente conforme necessidade"
+          }
+        ]
+      },
+
+      "level_30": {
+        "name": "Transporte Limitado",
+        "unlock_level": 30,
+        "description": "Pode se teleportar para qualquer local com sangue próprio.",
+        "mechanics": {
+          "cost": "20 SV por uso",
+          "range": "Até 50 metros",
+          "requirements": "Deve haver sangue próprio no destino",
+          "speed": "Instantâneo",
+          "limitations": "Máximo 3 usos por combate"
+        }
+      },
+
+      "level_40": {
+        "name": "Materialização Parcial",
+        "unlock_level": 40,
+        "description": "Pode reformar membros perdidos ou feridos usando sangue.",
+        "mechanics": {
+          "cost": "30 SV por membro",
+          "duration": "Instantâneo",
+          "capabilities": [
+            "Reformar braços, pernas, dedos",
+            "Reparar ferimentos internos",
+            "Criar membros extras temporários",
+            "Substituir órgãos danificados"
+          ],
+          "limitations": "Não pode reformar cabeça ou coração"
+        }
+      },
+
+      "level_50": {
+        "name": "Controle Múltiplo",
+        "unlock_level": 50,
+        "description": "Pode manipular sangue em múltiplos locais simultaneamente.",
+        "mechanics": {
+          "simultaneous_points": "Até 5 pontos de controle",
+          "coordination": "Todos pontos agem coordenadamente",
+          "range": "Até 100 metros de distância",
+          "complexity": "Pode criar formas diferentes em cada ponto"
+        }
+      },
+
+      "level_60": {
+        "name": "Simbiose Profunda",
+        "unlock_level": 60,
+        "description": "Sangue desenvolve consciência própria e reage independentemente.",
+        "mechanics": {
+          "autonomous_defense": "Sangue forma barreiras automaticamente",
+          "threat_detection": "Sangue detecta perigos antes do usuário",
+          "adaptive_shapes": "Sangue muda forma conforme situação",
+          "communication": "Pode comunicar-se através de sangue"
+        }
+      },
+
+      "level_70": {
+        "name": "Essência Carmesim",
+        "unlock_level": 70,
+        "description": "Desbloqueia Essência Carmesim e permite materialização completa do corpo.",
+        "mechanics": {
+          "full_materialization": "Pode reformar corpo inteiro a partir de uma gota",
+          "essence_unlock": "Acesso a Essência Carmesim",
+          "transcendence": "Sangue pode existir independentemente",
+          "immortality": "Morte física não é mais permanente"
+        }
+      }
+    },
+
+    "active_abilities": {
+      "tier_1_10": [
+        {
+          "level": 1,
+          "name": "Aprimoramento Geral",
+          "type": "passive_boost",
+          "description": "Ativação da passiva Essência Sanguínea e estabelecimento da base de Sangue Vital."
+        },
+        {
+          "level": 2,
+          "name": "Lâmina de Sangue",
+          "type": "active_creation",
+          "description": "Cria uma lâmina afiada de sangue endurecido.",
+          "cost": "10 SV",
+          "duration": "Concentração ou até 5 minutos",
+          "damage": "1d8 + (Nível/2) cortante",
+          "properties": [
+            "Lâmina é auto-afiada",
+            "Não pode ser desarmada",
+            "Regenera danos automaticamente",
+            "Pode mudar forma (espada, adaga, lança)"
+          ],
+          "tactical_uses": [
+            "Combate corpo a corpo",
+            "Corte de cordas/obstáculos",
+            "Escalada usando lâmina como gancho"
+          ]
+        },
+        {
+          "level": 3,
+          "type": "improvement",
+          "description": "Lâmina de Sangue se torna mais afiada",
+          "new_capability": "Dano aumenta para 1d10 + (Nível/2)"
+        },
+        {
+          "level": 4,
+          "type": "improvement",
+          "description": "Controle refinado",
+          "new_capability": "Pode criar até 2 lâminas simultâneas"
+        },
+        {
+          "level": 5,
+          "name": "Projétil Sanguíneo",
+          "type": "active_projectile",
+          "description": "Dispara projéteis de sangue endurecido.",
+          "cost": "15 SV por disparo",
+          "damage": "2d6 + (Nível/2) perfurante",
+          "range": "30 metros",
+          "properties": [
+            "Projétil perfura armadura leve",
+            "Pode criar múltiplos projéteis",
+            "Trajetória curva possível",
+            "Deixa rastro de sangue"
+          ]
+        },
+        {
+          "level": 6,
+          "type": "improvement",
+          "description": "Projéteis mais eficazes",
+          "new_capability": "Projéteis causam sangramento (1d4 por turno)"
+        },
+        {
+          "level": 7,
+          "type": "improvement",
+          "description": "Alcance aumentado",
+          "new_capability": "Alcance aumenta para 40 metros"
+        },
+        {
+          "level": 8,
+          "type": "improvement",
+          "description": "Eficiência melhorada",
+          "new_capability": "Custo reduzido para 12 SV"
+        },
+        {
+          "level": 9,
+          "type": "improvement",
+          "description": "Duração estendida",
+          "new_capability": "Lâmina dura 10 minutos"
+        },
+        {
+          "level": 10,
+          "type": "improvement",
+          "description": "Aprimoramento geral",
+          "new_capability": "+15% de dano em todas as habilidades"
+        }
+      ],
+
+      "tier_11_20": [
+        {
+          "level": 11,
+          "type": "improvement",
+          "description": "Controle aprimorado",
+          "new_capability": "Lâmina e Projétil ganham +20% de eficácia"
+        },
+        {
+          "level": 12,
+          "name": "Sangue Endurecido",
+          "type": "active_defense",
+          "description": "Cria armadura ou escudo de sangue solidificado.",
+          "cost": "25 SV",
+          "duration": "Concentração ou até 10 minutos",
+          "effects": [
+            "+4 CA",
+            "Resistência a cortante",
+            "Escudo pode bloquear projéteis",
+            "Armadura se auto-repara"
+          ]
+        },
+        {
+          "level": 13,
+          "type": "improvement",
+          "description": "Armadura mais resistente",
+          "new_capability": "CA aumenta para +5"
+        },
+        {
+          "level": 14,
+          "type": "improvement",
+          "description": "Duração estendida",
+          "new_capability": "Duração aumenta para 15 minutos"
+        },
+        {
+          "level": 15,
+          "name": "Expansão Menor",
+          "type": "active_area",
+          "description": "Expande sangue em área para controle tático.",
+          "cost": "30 SV",
+          "area": "Raio de 5 metros",
+          "duration": "Concentração",
+          "effects": [
+            "Sangue forma terreno difícil",
+            "Pode agarrar inimigos (CD 15)",
+            "Bloqueia movimento",
+            "Pode ser moldado conforme necessário"
+          ]
+        },
+        {
+          "level": 16,
+          "type": "improvement",
+          "description": "Área expandida",
+          "new_capability": "Raio aumenta para 7 metros"
+        },
+        {
+          "level": 17,
+          "type": "improvement",
+          "description": "Controle melhorado",
+          "new_capability": "CD aumenta para 17"
+        },
+        {
+          "level": 18,
+          "type": "improvement",
+          "description": "Eficiência máxima",
+          "new_capability": "Custo reduzido para 25 SV"
+        },
+        {
+          "level": 19,
+          "type": "improvement",
+          "description": "Versatilidade",
+          "new_capability": "Pode criar múltiplas áreas simultâneas"
+        },
+        {
+          "level": 20,
+          "name": "Fluxo Adaptativo",
+          "type": "passive_unlock",
+          "description": "Desbloqueia a passiva Fluxo Adaptativo (descrita na seção de passivas)"
+        }
+      ],
+
+      "tier_21_30": [
+        {
+          "level": 21,
+          "type": "improvement",
+          "description": "Precisão aumentada",
+          "new_capability": "+3 em testes de ataque com sangue"
+        },
+        {
+          "level": 22,
+          "name": "Abertura Interna Avançada",
+          "type": "active_evasion",
+          "description": "Evasão avançada através de manipulação de espaços internos.",
+          "cost": "35 SV",
+          "duration": "Concentração",
+          "effects": [
+            "Imunidade a ataques corpo a corpo",
+            "Pode atravessar obstáculos",
+            "Movimento através de fendas",
+            "Evasão automática de projéteis"
+          ]
+        },
+        {
+          "level": 23,
+          "type": "improvement",
+          "description": "Duração estendida",
+          "new_capability": "Pode manter por 2 turnos"
+        },
+        {
+          "level": 24,
+          "type": "improvement",
+          "description": "Versatilidade",
+          "new_capability": "Pode usar em aliados próximos"
+        },
+        {
+          "level": 25,
+          "type": "improvement",
+          "description": "Eficiência",
+          "new_capability": "Custo reduzido para 30 SV"
+        },
+        {
+          "level": 26,
+          "type": "improvement",
+          "description": "Controle refinado",
+          "new_capability": "Pode manter forma parcialmente sólida"
+        },
+        {
+          "level": 27,
+          "type": "improvement",
+          "description": "Alcance",
+          "new_capability": "Pode atravessar paredes finas"
+        },
+        {
+          "level": 28,
+          "name": "Transporte Sanguíneo",
+          "type": "active_teleportation",
+          "description": "Teleporta para qualquer local com sangue próprio.",
+          "cost": "40 SV",
+          "range": "Até 100 metros",
+          "properties": [
+            "Instantâneo",
+            "Não deixa rastro",
+            "Pode levar aliados",
+            "Funciona através de obstáculos"
+          ]
+        },
+        {
+          "level": 29,
+          "type": "improvement",
+          "description": "Alcance expandido",
+          "new_capability": "Alcance aumenta para 150 metros"
+        },
+        {
+          "level": 30,
+          "name": "Densidade Variável",
+          "type": "passive_unlock",
+          "description": "Desbloqueia Densidade Variável (descrita na seção de passivas)"
+        }
+      ],
+
+      "tier_31_40": [
+        {
+          "level": 31,
+          "type": "improvement",
+          "description": "Masterização inicial",
+          "new_capability": "+25% de dano em todas as habilidades"
+        },
+        {
+          "level": 32,
+          "name": "Manipulação de Densidade",
+          "type": "active_tactical",
+          "description": "Controle tático avançado da densidade sanguínea.",
+          "cost": "45 SV",
+          "duration": "Concentração",
+          "capabilities": [
+            "Sangue líquido: penetra qualquer fenda",
+            "Sangue sólido: resistência de metal",
+            "Sangue gasoso: nuvem de controle",
+            "Mudança instantânea entre estados"
+          ]
+        },
+        {
+          "level": 33,
+          "type": "improvement",
+          "description": "Controle múltiplo",
+          "new_capability": "Pode ter diferentes densidades simultaneamente"
+        },
+        {
+          "level": 34,
+          "type": "improvement",
+          "description": "Área expandida",
+          "new_capability": "Controle em raio de 15 metros"
+        },
+        {
+          "level": 35,
+          "type": "improvement",
+          "description": "Eficiência",
+          "new_capability": "Custo reduzido para 40 SV"
+        },
+        {
+          "level": 36,
+          "type": "improvement",
+          "description": "Versatilidade",
+          "new_capability": "Pode criar armadilhas de densidade variável"
+        },
+        {
+          "level": 37,
+          "type": "improvement",
+          "description": "Duração",
+          "new_capability": "Efeitos persistem por 1 turno após concentração"
+        },
+        {
+          "level": 38,
+          "name": "Corte Concentrado",
+          "type": "active_precision",
+          "description": "Ataque de precisão extrema com sangue ultra-afiado.",
+          "cost": "50 SV",
+          "damage": "4d10 + (Nível) cortante",
+          "properties": [
+            "Ignora armadura",
+            "Corta através de metal",
+            "Precisão perfeita",
+            "Pode cortar projéteis no ar"
+          ]
+        },
+        {
+          "level": 39,
+          "type": "improvement",
+          "description": "Dano aumentado",
+          "new_capability": "Dano aumenta para 5d10"
+        },
+        {
+          "level": 40,
+          "name": "Materialização Parcial",
+          "type": "passive_unlock",
+          "description": "Desbloqueia Materialização Parcial (descrita na seção de passivas)"
+        }
+      ],
+
+      "tier_41_50": [
+        {
+          "level": 41,
+          "type": "improvement",
+          "description": "Sinergia inicial",
+          "new_capability": "Habilidades podem ser combinadas fluidamente"
+        },
+        {
+          "level": 42,
+          "name": "Vínculo de Batalha",
+          "type": "active_support",
+          "description": "Cria vínculo sanguíneo com aliados para suporte tático.",
+          "cost": "60 SV",
+          "duration": "Concentração ou até 20 minutos",
+          "targets": "Até 3 aliados",
+          "effects": [
+            "Comunicação telepática",
+            "Compartilhamento de sentidos",
+            "Transferência de vida",
+            "Coordenação perfeita"
+          ]
+        },
+        {
+          "level": 43,
+          "type": "improvement",
+          "description": "Mais alvos",
+          "new_capability": "Pode vincular até 5 aliados"
+        },
+        {
+          "level": 44,
+          "type": "improvement",
+          "description": "Alcance",
+          "new_capability": "Vínculo funciona em 200 metros"
+        },
+        {
+          "level": 45,
+          "type": "improvement",
+          "description": "Eficiência",
+          "new_capability": "Custo reduzido para 50 SV"
+        },
+        {
+          "level": 46,
+          "type": "improvement",
+          "description": "Duração",
+          "new_capability": "Duração aumenta para 30 minutos"
+        },
+        {
+          "level": 47,
+          "type": "improvement",
+          "description": "Versatilidade",
+          "new_capability": "Pode transferir habilidades temporariamente"
+        },
+        {
+          "level": 48,
+          "name": "Escudo Carmesim",
+          "type": "active_protection",
+          "description": "Cria estruturas defensivas massivas de sangue.",
+          "cost": "70 SV",
+          "duration": "Concentração ou até 1 hora",
+          "effects": [
+            "Barreira de 10 metros de altura",
+            "HP: 200 + (Nível × 5)",
+            "Auto-reparação",
+            "Pode mover-se lentamente"
+          ]
+        },
+        {
+          "level": 49,
+          "type": "improvement",
+          "description": "Resistência",
+          "new_capability": "HP aumenta para 300 + (Nível × 8)"
+        },
+        {
+          "level": 50,
+          "name": "Controle Múltiplo",
+          "type": "passive_unlock",
+          "description": "Desbloqueia Controle Múltiplo (descrita na seção de passivas)"
+        }
+      ],
+
+      "tier_51_60": [
+        {
+          "level": 51,
+          "type": "improvement",
+          "description": "Masterização avançada",
+          "new_capability": "+40% de dano em todas as habilidades"
+        },
+        {
+          "level": 52,
+          "name": "Construto Sanguíneo",
+          "type": "active_summoning",
+          "description": "Cria criaturas de sangue com inteligência básica.",
+          "cost": "80 SV",
+          "duration": "Concentração ou até 30 minutos",
+          "summons": "Até 3 construtos",
+          "stats_per_construct": {
+            "hp": "30 + (Nível × 2)",
+            "ac": "14",
+            "attack": "+Nível para acerto",
+            "damage": "2d8 + 5 cortante",
+            "speed": "12 metros por turno"
+          },
+          "properties": [
+            "Obedecem comandos mentais",
+            "Regeneram danos",
+            "Podem mudar forma",
+            "Explodem ao morrer (2d8 dano)"
+          ]
+        },
+        {
+          "level": 53,
+          "type": "improvement",
+          "description": "Mais construtos",
+          "new_capability": "Pode criar até 5 construtos"
+        },
+        {
+          "level": 54,
+          "type": "improvement",
+          "description": "Inteligência",
+          "new_capability": "Construtos ganham inteligência tática"
+        },
+        {
+          "level": 55,
+          "type": "improvement",
+          "description": "Duração",
+          "new_capability": "Duração aumenta para 45 minutos"
+        },
+        {
+          "level": 56,
+          "type": "improvement",
+          "description": "Versatilidade",
+          "new_capability": "Construtos podem se fundir e dividir"
+        },
+        {
+          "level": 57,
+          "type": "improvement",
+          "description": "Eficiência",
+          "new_capability": "Custo reduzido para 70 SV"
+        },
+        {
+          "level": 58,
+          "name": "Rede de Sangue",
+          "type": "active_area_control",
+          "description": "Cria rede de sangue que cobre área extensa.",
+          "cost": "90 SV",
+          "area": "Raio de 20 metros",
+          "duration": "Concentração",
+          "effects": [
+            "Detecta movimento na área",
+            "Pode agarrar inimigos",
+            "Bloqueia passagem",
+            "Comunica informações ao usuário"
+          ]
+        },
+        {
+          "level": 59,
+          "type": "improvement",
+          "description": "Área expandida",
+          "new_capability": "Raio aumenta para 30 metros"
+        },
+        {
+          "level": 60,
+          "name": "Simbiose Profunda",
+          "type": "passive_unlock",
+          "description": "Desbloqueia Simbiose Profunda (descrita na seção de passivas)"
+        }
+      ],
+
+      "tier_61_70": [
+        {
+          "level": 61,
+          "type": "improvement",
+          "description": "Transformação inicial",
+          "new_capability": "Pode manter forma parcialmente líquida"
+        },
+        {
+          "level": 62,
+          "name": "Exército Inicial",
+          "type": "active_army",
+          "description": "Cria exército de construtos sanguíneos coordenados.",
+          "cost": "100 SV + 20 EC",
+          "duration": "Concentração ou até 1 hora",
+          "army_size": "10 construtos",
+          "coordination": "Ataques coordenados perfeitos",
+          "effects": [
+            "Formações táticas",
+            "Comunicação instantânea",
+            "Adaptação a situações",
+            "Proteção mútua"
+          ]
+        },
+        {
+          "level": 63,
+          "type": "improvement",
+          "description": "Exército maior",
+          "new_capability": "Pode criar até 15 construtos"
+        },
+        {
+          "level": 64,
+          "type": "improvement",
+          "description": "Inteligência superior",
+          "new_capability": "Exército executa estratégias complexas"
+        },
+        {
+          "level": 65,
+          "type": "improvement",
+          "description": "Duração",
+          "new_capability": "Duração aumenta para 2 horas"
+        },
+        {
+          "level": 66,
+          "type": "improvement",
+          "description": "Eficiência",
+          "new_capability": "Custo reduzido para 90 SV + 15 EC"
+        },
+        {
+          "level": 67,
+          "type": "improvement",
+          "description": "Versatilidade",
+          "new_capability": "Exército pode se dividir em grupos menores"
+        },
+        {
+          "level": 68,
+          "name": "Corpo Fluido Supremo",
+          "type": "active_transformation",
+          "description": "Transformação quase completa em sangue líquido.",
+          "cost": "120 SV + 30 EC",
+          "duration": "Concentração ou até 10 minutos",
+          "effects": [
+            "Imune a dano físico",
+            "Pode fluir através de qualquer abertura",
+            "Velocidade triplicada",
+            "Pode dividir-se em múltiplas formas"
+          ]
+        },
+        {
+          "level": 69,
+          "type": "improvement",
+          "description": "Duração",
+          "new_capability": "Duração aumenta para 15 minutos"
+        },
+        {
+          "level": 70,
+          "name": "Essência Carmesim",
+          "type": "passive_unlock",
+          "description": "Desbloqueia Essência Carmesim + materialização completa (descrita na seção de passivas)"
+        }
+      ]
+    },
+
+    "specialization_paths": {
+      "unlock_level": 71,
+      "description": "No nível 71, o usuário escolhe um dos três caminhos de especialização. Esta escolha é permanente e define o estilo final de combate.",
+      "selection_rules": {
+        "permanent": true,
+        "exclusive": "Apenas um caminho pode ser escolhido"
+      },
+
+      "paths": [
+        {
+          "id": "destruicao",
+          "name": "Caminho da Destruição - Carnificina Absoluta",
+          "focus": "Armas endurecidas, destruição massiva, expansão ofensiva",
+          "philosophy": "O sangue é a arma suprema. Endurecido, corta através de tudo. Expandido, devora exércitos.",
+          "aesthetic": "Lâminas carmesim brilhantes, tsunamis de sangue, devastação total",
+
+          "tier_71_80": {
+            "primary_ability": {
+              "name": "Tempestade de Lâminas",
+              "unlock_level": 71,
+              "description": "Invoca tempestade massiva de lâminas de sangue endurecido.",
+              "cost": "150 SV + 40 EC",
+              "cooldown": "4 turnos",
+              "area": "Cilindro de 30m de raio, 20m de altura",
+              "duration": "5 turnos",
+              "damage": "8d12 + (Nível × 2) cortante por turno",
+              "properties": [
+                "Milhares de lâminas voando",
+                "Corta através de armadura",
+                "Destrói estruturas",
+                "Lâminas se regeneram continuamente",
+                "Impossível de bloquear completamente"
+              ]
+            },
+            "passive_improvements": [
+              "Todas as armas de sangue ganham +100% de dano",
+              "Lâminas cortam através de metal",
+              "Críticos causam explosões de lâminas",
+              "Mortes criam novas lâminas automaticamente"
+            ],
+            "level_80_capstone": {
+              "name": "Corte Absoluto",
+              "description": "Lâminas cortam através de qualquer coisa.",
+              "effects": [
+                "Ignora todas as resistências",
+                "Corta através de dimensões",
+                "Lâminas persistem indefinidamente",
+                "Pode cortar conceitos abstratos"
+              ]
+            }
+          },
+
+          "tier_81_90": {
+            "primary_ability": {
+              "name": "Aniquilação Carmesim",
+              "unlock_level": 81,
+              "description": "Cria tsunami de sangue que devasta paisagens inteiras.",
+              "cost": "200 SV + 60 EC",
+              "cooldown": "1 uso por combate",
+              "area": "Onda de 100 metros de largura",
+              "range": "Até 500 metros",
+              "damage": {
+                "wave_impact": "15d12 + (Nível × 3)",
+                "drowning": "5d10 por turno na área",
+                "residual": "Área fica coberta de sangue por 10 minutos"
+              },
+              "effects": [
+                "Destrói estruturas",
+                "Afoga inimigos",
+                "Cria terreno difícil permanente",
+                "Sangue persiste e causa dano contínuo"
+              ]
+            },
+            "passive_improvements": [
+              "Área de todas as habilidades × 3",
+              "Pode combinar múltiplas habilidades em devastação",
+              "Lâminas se multiplicam automaticamente",
+              "Inimigos mortos explodem em lâminas (5d10 em 10m)"
+            ],
+            "level_90_capstone": {
+              "name": "Expansão Infinita",
+              "description": "Sangue pode se expandir indefinidamente.",
+              "mechanics": "Áreas de efeito não têm limite se desejado"
+            }
+          },
+
+          "tier_91_100": {
+            "primary_ability": {
+              "name": "Apocalipse Sanguíneo",
+              "unlock_level": 91,
+              "description": "Devastação em escala continental através de sangue.",
+              "cost": "Todo SV + Todo EC disponível",
+              "cooldown": "1 uso por semana",
+              "area": "Raio de 3 quilômetros",
+              "duration": "Devastação imediata + efeitos por dias",
+              "damage": "40d20 + (Nível × 10) em área total",
+              "effects": [
+                "Transforma paisagem em mar de sangue",
+                "Cria múltiplas tempestades de lâminas",
+                "Mata toda vida na área",
+                "Sangue persiste por semanas",
+                "Visível de continentes distantes",
+                "Pode alterar geografia regional"
+              ],
+              "narrative": "O céu chove sangue. A terra sangra. Tudo vira carmesim."
+            },
+            "level_progression": {
+              "92-99": "Cada nível permite modificar habilidades em tempo real"
+            },
+            "level_100_capstone": {
+              "name": "Domínio Carmesim - Destruidor de Mundos",
+              "description": "Controle absoluto sobre sangue e destruição.",
+              "effects": [
+                "Todas as habilidades custam 0 recursos",
+                "Lâminas são infinitas e instantâneas",
+                "Pode criar tsunamis de sangue globalmente",
+                "Sangue corta através de dimensões",
+                "Pode destruir conceitos abstratos",
+                "Área de todas as habilidades é ilimitada",
+                "Pode criar tempestades de lâminas planetárias"
+              ]
+            }
+          }
+        },
+
+        {
+          "id": "estrategia",
+          "name": "Caminho da Estratégia - Mestre Tático",
+          "focus": "Controle preciso, exército sanguíneo, infiltração, manipulação múltipla",
+          "philosophy": "O sangue é a ferramenta tática suprema. Controlado com precisão, coordena exércitos e infiltra qualquer lugar.",
+          "aesthetic": "Sangue fluindo em padrões precisos, coordenação perfeita, controle absoluto",
+
+          "tier_71_80": {
+            "primary_ability": {
+              "name": "Legião de Sangue",
+              "unlock_level": 71,
+              "description": "Cria exército inteligente de construtos sanguíneos coordenados.",
+              "cost": "120 SV + 30 EC",
+              "duration": "Concentração ou até serem destruídos",
+              "army_size": "50 construtos inteligentes",
+              "coordination": "Executam estratégias militares complexas",
+              "capabilities": [
+                "Formações táticas avançadas",
+                "Comunicação instantânea",
+                "Adaptação a situações de batalha",
+                "Especialização por função",
+                "Proteção mútua automática"
+              ]
+            },
+            "passive_improvements": [
+              "Pode controlar até 20 habilidades simultaneamente",
+              "Todos os construtos ganham +50% de inteligência",
+              "Habilidades táticas não requerem concentração",
+              "Sangue compartilha visão com usuário"
+            ],
+            "level_80_capstone": {
+              "name": "Comando Múltiplo",
+              "description": "Controle simultâneo de múltiplos exércitos.",
+              "effects": "Pode ter 5 legiões ativas simultaneamente"
+            }
+          },
+
+          "tier_81_90": {
+            "primary_ability": {
+              "name": "Controle Absoluto",
+              "unlock_level": 81,
+              "description": "Manipula sangue em centenas de entidades simultaneamente.",
+              "cost": "180 SV + 50 EC",
+              "duration": "Concentração",
+              "control_points": "Até 200 pontos de controle",
+              "range": "Até 2 quilômetros",
+              "effects": [
+                "Controle preciso de cada ponto",
+                "Coordenação perfeita entre todos",
+                "Informação em tempo real de toda área",
+                "Pode criar redes complexas",
+                "Manipulação simultânea de formas diferentes"
+              ]
+            },
+            "passive_improvements": [
+              "Legiões nunca morrem - reconstituem-se após 2 turnos",
+              "Todos os construtos ganham habilidades do usuário",
+              "Rede de controle cobre até 1km²",
+              "Sangue responde a condições automaticamente"
+            ],
+            "level_90_capstone": {
+              "name": "Consciência Distribuída",
+              "description": "Consciência se espalha através de todo sangue controlado.",
+              "effects": "Visão e controle através de qualquer sangue em 5km"
+            }
+          },
+
+          "tier_91_100": {
+            "primary_ability": {
+              "name": "Consciência Distribuída",
+              "unlock_level": 91,
+              "description": "Controle total sobre todo sangue na região.",
+              "cost": "250 SV + 100 EC para estabelecer domínio",
+              "area": "Raio de 5 quilômetros",
+              "duration": "Enquanto mantiver concentração",
+              "effects": [
+                "Controla TODO sangue na área",
+                "Pode ver através de qualquer sangue",
+                "Cria exército de 1000+ construtos",
+                "Transforma área em tabuleiro tático",
+                "Pode teletransportar entre sangue instantaneamente",
+                "Coordenação perfeita de milhares de pontos"
+              ]
+            },
+            "level_progression": {
+              "92-99": "Cada nível expande área de controle em +1km"
+            },
+            "level_100_capstone": {
+              "name": "Domínio Carmesim - Estrategista Supremo",
+              "description": "Controle perfeito sobre todo sangue existente.",
+              "effects": [
+                "Comando mental instantâneo de qualquer sangue",
+                "Pode criar e controlar 10000+ construtos",
+                "Cada construto age com inteligência estratégica perfeita",
+                "Visão e controle através de qualquer sangue",
+                "Pode reescrever propriedades do sangue",
+                "Construtos podem se fundir e dividir dinamicamente",
+                "Campo de batalha responde à vontade como organismo"
+              ]
+            }
+          }
+        },
+
+        {
+          "id": "restauracao",
+          "name": "Caminho da Restauração - Ciclo Vital",
+          "focus": "Regeneração, suporte de aliados, estruturas defensivas, compartilhamento de vida",
+          "philosophy": "O sangue é vida. Compartilhado, cura todas as feridas. Circulando, mantém a vida eterna.",
+          "aesthetic": "Sangue dourado curativo, estruturas protetoras, renovação constante",
+
+          "tier_71_80": {
+            "primary_ability": {
+              "name": "Transfusão Vital",
+              "unlock_level": 71,
+              "description": "Cura massiva através de compartilhamento de sangue vital.",
+              "cost": "140 SV + 35 EC",
+              "cooldown": "1 uso por encontro",
+              "area": "Raio de 30 metros",
+              "healing": "12d10 + (Nível × 2) para todos aliados",
+              "additional_effects": {
+                "purification": [
+                  "Remove venenos, doenças e maldições",
+                  "Regenera membros perdidos",
+                  "Limpa corrupção física"
+                ],
+                "buffs": [
+                  "Regeneração: +4d8 por turno por 5 turnos",
+                  "+4 Constituição por 1 hora",
+                  "Resistência a necromancia"
+                ],
+                "environment": [
+                  "Sangue curativo persiste (dura 1 hora)",
+                  "Área se torna zona de cura",
+                  "Aliados mortos podem ser curados"
+                ]
+              }
+            },
+            "passive_improvements": [
+              "Todas as curas aumentam em +100%",
+              "Sangue cria aura de cura em 20m",
+              "Regeneração passiva para todos em 20m: +3d8 por turno",
+              "Aura permanente: +4 em salvaguardas para aliados"
+            ],
+            "level_80_capstone": {
+              "name": "Ciclo de Vida",
+              "description": "Cura escala com sangue disponível.",
+              "mechanics": "50% do sangue disponível é convertido em cura distribuída"
+            }
+          },
+
+          "tier_81_90": {
+            "primary_ability": {
+              "name": "Renascimento Sanguíneo",
+              "unlock_level": 81,
+              "description": "Ressuscita aliados através de qualquer gota de sangue.",
+              "cost": "Ativa automaticamente quando aliado morre",
+              "cooldown": "1 uso por semana",
+              "effects": {
+                "resurrection": "Aliado retorna com 100% HP",
+                "blood_requirement": "Qualquer sangue do aliado",
+                "empowerment": "Retorna com +5 em todos atributos por 10 turnos",
+                "protection": "Imunidade temporária a morte (1 hora)",
+                "bond": "Vínculo sanguíneo permanente com usuário"
+              }
+            },
+            "passive_improvements": [
+              "Aliados ganham regeneração de sangue (4d10/turno)",
+              "Curas podem exceder HP máximo",
+              "Ressurreições não têm limite de tempo",
+              "Sangue purificador remove corrupção"
+            ],
+            "level_90_capstone": {
+              "name": "Sangue Eterno",
+              "description": "Aliados não podem morrer permanentemente.",
+              "mechanics": "Ressurreição automática após 3 dias, sempre"
+            }
+          },
+
+          "tier_91_100": {
+            "primary_ability": {
+              "name": "Ciclo Perpétuo",
+              "unlock_level": 91,
+              "description": "Cria campo de regeneração eterna que mantém vida indefinidamente.",
+              "cost": "300 SV + 80 EC para estabelecer",
+              "area": "Raio de 200 metros",
+              "duration": "Permanente",
+              "effects": {
+                "massive_healing": "Todos aliados regeneram 15d10 HP/turno",
+                "continuous_resurrection": "Aliados mortos ressuscitam após 1 turno",
+                "immortality_field": "Aliados não podem ter HP reduzido abaixo de 1",
+                "age_reversal": "Reverte envelhecimento e restaura juventude",
+                "purification": "Remove absolutamente qualquer condição",
+                "transformation": "Pode transformar inimigos em aliados"
+              },
+              "narrative": "Campo dourado de sangue vital envolve tudo. Morte torna-se impossível. Vida flui eternamente."
+            },
+            "level_progression": {
+              "92-99": "Cada nível permite ressuscitar mortos mais antigos"
+            },
+            "level_100_capstone": {
+              "name": "Domínio Carmesim - Fonte da Vida Eterna",
+              "description": "Controle absoluto sobre vida, morte e regeneração.",
+              "effects": [
+                "Pode ressuscitar qualquer pessoa que já morreu",
+                "Ressurreições são perfeitas - sem deterioração",
+                "Pode criar vida nova a partir de sangue puro",
+                "Aliados marcados nunca morrem",
+                "Pode curar qualquer ferida ou doença",
+                "Imortalidade verdadeira para si e aliados",
+                "Pode reverter morte até 100 anos no passado",
+                "Cria ciclo perpétuo de vida em área massiva"
+              ]
+            }
+          }
+        }
+      ]
+    },
+
+    "combat_mechanics": {
+      "action_economy": {
+        "standard_casting": "Maioria das habilidades: 1 ação padrão",
+        "quick_abilities": [
+          "Lâmina de Sangue",
+          "Projétil Sanguíneo",
+          "Transporte Sanguíneo"
+        ],
+        "concentration_spells": [
+          "Expansão Menor",
+          "Rede de Sangue",
+          "Exército Inicial"
+        ],
+        "full_round": [
+          "Tempestade de Lâminas",
+          "Aniquilação Carmesim",
+          "Apocalipse Sanguíneo"
+        ]
+      },
+
+      "damage_types": {
+        "primary": "Cortante (lâminas, espinhos)",
+        "secondary": "Perfurante (projéteis), Necrótico (drenagem de vida)",
+        "special": "Sangramento (dano contínuo), Afogamento (sangue líquido)"
+      },
+
+      "effectiveness_by_target": {
+        "highly_effective": {
+          "targets": ["Criaturas aquáticas", "Plantas", "Construtos de madeira"],
+          "bonus": "Sangue penetra facilmente, causa afogamento",
+          "special": "Plantas absorvem sangue e crescem descontroladamente"
+        },
+        "normally_effective": {
+          "targets": ["Maioria das criaturas vivas", "Humanoides"],
+          "bonus": "Dano normal"
+        },
+        "reduced_effectiveness": {
+          "targets": ["Elementais de fogo", "Criaturas imunes a necrótico"],
+          "penalty": "Fogo cauteriza sangue, resistência a necrótico",
+          "note": "Vínculo alto reduz essas resistências"
+        },
+        "ineffective": {
+          "targets": ["Criaturas sem sangue", "Construtos de metal puro"],
+          "note": "Sem sangue para manipular ou material para cortar"
+        }
+      },
+
+      "tactical_considerations": {
+        "positioning": "Colocar sangue estrategicamente para transporte e controle",
+        "resource_management": "Balancear SV para combates longos; EC acumula através de vida",
+        "environmental_effects": "Usar sangue ambiental para amplificar poder",
+        "combo_potential": [
+          "Rede de Sangue + Transporte = movimento instantâneo",
+          "Exército + Vínculo de Batalha = coordenação perfeita",
+          "Tempestade de Lâminas + Aniquilação = devastação total"
+        ]
+      }
+    },
+
+    "interaction_systems": {
+      "with_environment": {
+        "amplified_in": [
+          "Campos de batalha: +30% poder, sangue abundante",
+          "Áreas úmidas: +20% eficácia, sangue flui melhor",
+          "Locais de morte: +25% regeneração",
+          "Durante chuva: +15% controle de fluxo"
+        ],
+        "normal_in": [
+          "Ambientes temperados",
+          "Áreas com vida moderada",
+          "Interiores normais"
+        ],
+        "hindered_in": [
+          "Desertos: -40% poder, sem sangue ambiental",
+          "Áreas congeladas: -30% eficácia",
+          "Ambientes estéreis: -50% poder",
+          "Anti-magia: Nulifica completamente"
+        ]
+      },
+
+      "with_other_magics": {
+        "synergistic": {
+          "water": "Água amplifica fluxo de sangue +30%",
+          "earth": "Terra pode canalizar sangue - túneis sanguíneos",
+          "darkness": "Sombra esconde sangue - infiltração perfeita",
+          "necromancy": "Morte fortalece sangue +50%"
+        },
+        "neutral": {
+          "air": "Vento pode espalhar sangue",
+          "metal": "Pode cortar através de metal",
+          "light": "Luz revela sangue mas não interfere"
+        },
+        "antagonistic": {
+          "fire": "Fogo cauteriza sangue - dano reduzido",
+          "ice": "Gelo congela sangue - controle limitado",
+          "light": "Luz purificadora pode enfraquecer sangue"
+        }
+      },
+
+      "blood_persistence": {
+        "duration": "Sangue persiste por 1d6 turnos após conjuração",
+        "reclamation": "Usuário pode reabsorver sangue próprio",
+        "environmental": "Sangue pode se espalhar e contaminar área",
+        "tactical_use": "Criar redes de sangue, marcar território, controle de área"
+      }
+    },
+
+    "progression_guide": {
+      "early_game_1_20": {
+        "focus": "Aprender manipulação básica de sangue",
+        "key_abilities": ["Lâmina de Sangue", "Projétil Sanguíneo", "Sangue Endurecido"],
+        "tactical_role": "DPS corpo a corpo, controle básico",
+        "tips": [
+          "Use Lâmina de Sangue para combate consistente",
+          "Projéteis são ótimos para alcance",
+          "Sangue Endurecido oferece proteção",
+          "Mantenha sangue próprio para transporte"
+        ]
+      },
+
+      "mid_game_21_50": {
+        "focus": "Masterização de evasão e transporte",
+        "key_abilities": ["Transporte Sanguíneo", "Manipulação de Densidade", "Vínculo de Batalha"],
+        "tactical_role": "Mobilidade extrema, suporte tático",
+        "tips": [
+          "Transporte muda completamente o combate",
+          "Densidade variável oferece versatilidade",
+          "Vínculo de Batalha coordena grupo",
+          "Comece a planejar especialização"
+        ]
+      },
+
+      "late_game_51_70": {
+        "focus": "Construção de exército e controle de área",
+        "key_abilities": ["Construto Sanguíneo", "Rede de Sangue", "Exército Inicial"],
+        "tactical_role": "Comandante de exército, controle total",
+        "tips": [
+          "Construtos oferecem números",
+          "Rede de Sangue controla área",
+          "Exército muda escala de combate",
+          "Prepare-se para especialização"
+        ]
+      },
+
+      "endgame_71_100": {
+        "focus": "Especialização e domínio absoluto",
+        "key_abilities": "Dependem do caminho escolhido",
+        "paths": {
+          "destruicao": "Devastador de exércitos e paisagens",
+          "estrategia": "Comandante de legiões sanguíneas",
+          "restauracao": "Fonte de vida eterna"
+        },
+        "tips": [
+          "Nível 91+: Seu poder afeta regiões inteiras",
+          "Nível 100: Você é força da natureza",
+          "Use poder responsavelmente",
+          "Considere impacto narrativo"
+        ]
+      }
+    },
+
+    "limitations_weaknesses": {
+      "hard_counters": [
+        {
+          "counter": "Fogo intenso",
+          "effect": "Cauteriza sangue, reduz poder em 70%",
+          "workaround": "Usar sangue endurecido ou evitar fogo"
+        },
+        {
+          "counter": "Anti-magia absoluta",
+          "effect": "Nulifica completamente",
+          "workaround": "Apenas nível 100 transcende isso"
+        },
+        {
+          "counter": "Ambientes sem vida",
+          "effect": "Sem sangue para manipular",
+          "workaround": "Usar sangue próprio ou criar"
+        }
+      ],
+
+      "soft_counters": [
+        {
+          "counter": "Gelo extremo",
+          "effect": "Congela sangue - controle limitado",
+          "mitigation": "Usar sangue endurecido"
+        },
+        {
+          "counter": "Resistência a necrótico",
+          "effect": "Reduz dano de drenagem",
+          "mitigation": "Vínculo alto reduz resistências"
+        },
+        {
+          "counter": "Criaturas sem sangue",
+          "effect": "Sem material para manipular",
+          "mitigation": "Usar sangue próprio como arma"
+        }
+      ],
+
+      "situational_weaknesses": [
+        "Sangue visível chama atenção",
+        "Dependência de sangue disponível",
+        "SV se esgota rápido em uso intensivo",
+        "EC só acumula através de vida/morte",
+        "Consequências sociais de uso visível"
+      ]
+    },
+
+    "itemization": {
+      "recommended_equipment": {
+        "weapons": [
+          {
+            "item": "Cajado Carmesim",
+            "bonus": "+3 em ataques de sangue, +20% dano",
+            "special": "Armazena 80 SV adicional"
+          },
+          {
+            "item": "Lâmina de Sangue Vivo",
+            "bonus": "Espada que causa +2d8 sangue adicional",
+            "special": "Auto-regenera, nunca quebra"
+          }
+        ],
+        "armor": [
+          {
+            "item": "Armadura de Sangue Solidificado",
+            "bonus": "+4 CA, resistência a cortante",
+            "special": "Auto-repara com sangue"
+          },
+          {
+            "item": "Manto Carmesim",
+            "bonus": "+3 CA, +40 SV máximo",
+            "special": "Aura de sangue passiva (1d6 em 3m)"
+          }
+        ],
+        "accessories": [
+          {
+            "item": "Anel da Transfusão",
+            "bonus": "Cura automática 1x/dia",
+            "special": "Compartilha vida com aliados"
+          },
+          {
+            "item": "Amuleto de Essência",
+            "bonus": "+30 EC máximo",
+            "special": "Dobra ganho de EC"
+          },
+          {
+            "item": "Gema Sanguínea",
+            "bonus": "+25% controle de sangue",
+            "special": "Sangue persiste +2 turnos"
+          }
+        ]
+      }
+    },
+
+    "advanced_combos": {
+      "destruction_path": [
+        {
+          "name": "Tempestade de Aniquilação",
+          "components": ["Tempestade de Lâminas", "Aniquilação Carmesim"],
+          "execution": "Ative Tempestade, depois lance Tsunami",
+          "result": "Devastação apocalíptica em 200m+ de raio",
+          "cost": "350 SV + 100 EC",
+          "cooldown": "1x por batalha épica"
+        }
+      ],
+      "strategy_path": [
+        {
+          "name": "Cerco Sanguíneo",
+          "components": ["Legião de Sangue", "Controle Absoluto"],
+          "execution": "Invoque legião, depois controle área",
+          "result": "Campo de batalha controlado por exército",
+          "tactical_value": "Inimigos não podem manobrar"
+        }
+      ],
+      "restoration_path": [
+        {
+          "name": "Ciclo de Batalha Eterno",
+          "components": ["Ciclo Perpétuo", "Renascimento Sanguíneo"],
+          "execution": "Ative Ciclo, lute até morrer, ressuscite",
+          "result": "Imortalidade de combate + cura massiva",
+          "narrative": "Você não pode perder enquanto o ciclo está ativo"
+        }
+      ]
+    },
+
+    "ritual_magic": {
+      "blood_circle_consecration": {
+        "name": "Consagração do Círculo Sanguíneo",
+        "level_requirement": 60,
+        "casting_time": "6 horas",
+        "cost": "250 SV + 100 EC",
+        "area": "500m²",
+        "effects": [
+          "Transforma área em zona sanguínea permanente",
+          "Cura passiva para todos dentro: 3d10 por hora",
+          "Sangue flui naturalmente na área",
+          "Proteção contra corrupção"
+        ]
+      },
+
+      "blood_nexus_creation": {
+        "name": "Criação do Nexus Sanguíneo",
+        "level_requirement": 75,
+        "casting_time": "12 horas",
+        "cost": "400 SV + 200 EC",
+        "requirements": "Local de grande derramamento de sangue",
+        "effects": [
+          "Cria ponto de poder sanguíneo permanente",
+          "Amplifica todas as habilidades em 50%",
+          "Permite transporte instantâneo",
+          "Sangue se regenera automaticamente"
+        ]
+      }
+    },
+
+    "legendary_techniques": {
+      "world_blood_connection": {
+        "name": "Conexão com o Sangue do Mundo",
+        "requirements": {
+          "level": 85,
+          "prerequisites": ["Essência Carmesim", "Experiência com Ritual de Nexus"]
+        },
+        "description": "Conecta-se ao sangue que flui através de toda vida",
+        "mechanics": {
+          "cost": "400 SV + 200 EC",
+          "duration": "1 hora",
+          "effects": [
+            "Consciência se expande através de todo sangue",
+            "Pode manifestar poder em qualquer ser vivo",
+            "Acesso a conhecimento ancestral do sangue",
+            "Todas as habilidades custam 0 SV durante conexão"
+          ]
+        }
+      }
+    },
+
+    "gm_guidance": {
+      "encounter_design": {
+        "understanding_blood_users": {
+          "strengths": [
+            "Mobilidade extrema através de sangue",
+            "Controle de área através de sangue persistente",
+            "Exército de construtos coordenados",
+            "Versatilidade (destruição, tática ou cura)",
+            "Regeneração e suporte de grupo"
+          ],
+          "weaknesses": [
+            "Vulnerável a fogo e gelo",
+            "Dependência de sangue disponível",
+            "Uso visível chama atenção",
+            "Menos eficaz contra criaturas sem sangue",
+            "Recursos limitados em ambientes estéreis"
+          ]
+        },
+
+        "balancing_encounters": {
+          "use_fire_environments": "Fogo cauteriza sangue, reduz poder",
+          "fire_enemies": "Elementais de fogo, dragões vermelhos",
+          "confined_spaces": "Limita áreas de expansão",
+          "social_consequences": "Uso visível traz atenção indesejada",
+          "resource_drain": "Combates múltiplos antes de descanso"
+        },
+
+        "scaling_difficulty": {
+          "level_1_30": "Inimigos resistentes a sangue, ambientes secos",
+          "level_31_60": "Múltiplas ondas, controle de área necessário",
+          "level_61_80": "Exércitos inteiros, combate em escala épica",
+          "level_81_100": "Ameaças regionais, batalhas que alteram geografia"
+        }
+      },
+
+      "narrative_considerations": {
+        "blood_visibility": "Sangue é sempre visível - crie consequências sociais",
+        "environmental_impact": "Sangue pode contaminar áreas",
+        "political_consequences": "Uso de sangue pode ser visto como ameaça",
+        "reputation": "Usuários de sangue são temidos e respeitados",
+        "world_changing_power": "Níveis 90+ podem alterar ecossistemas"
+      }
+    },
+
+    "meta_information": {
+      "design_philosophy": "Magia de Sangue recompensa simbiose, controle preciso e versatilidade tática. Forte em mobilidade, controle de área e suporte.",
+      
+      "balancing_notes": [
+        "Recursos duplos (SV e EC) limitam spam",
+        "Dependência de sangue cria desafios naturais",
+        "Vínculo Sanguíneo incentiva uso harmonioso",
+        "Fogo e gelo são fraquezas intencionais",
+        "Níveis 90+ podem literalmente alterar ecossistemas"
+      ],
+
+      "dm_guidance": {
+        "managing_power": "Use ambientes, resistências e consequências sociais",
+        "epic_scale": "Permita que usuários brilhem em combates táticos",
+        "consequences": "Sangue visível deve ter impacto social",
+        "narrative_weight": "Sangue é sempre visível - crie consequências",
+        "endgame": "Níveis 90+ são ameaças regionais"
+      },
+
+      "player_tips": [
+        "Gerencie SV cuidadosamente - regeneração é moderada",
+        "Use EC estrategicamente - acumula através de vida",
+        "Considere consequências sociais do uso visível",
+        "Escolha de caminho nível 71 define todo seu jogo",
+        "Trabalhe com grupo para maximizar vínculos",
+        "Crie redes de sangue para controle tático",
+        "Abrace a simbiose - sangue é extensão sua"
+      ]
+    },
+
+    "version_control": {
+      "current_version": "1.0.0",
+      "last_updated": "2025",
+      "changelog": [
+        {
+          "version": "1.0.0",
+          "date": "2025",
+          "changes": [
+            "Sistema completo implementado",
+            "Três caminhos de especialização definidos (Destruição, Estratégia, Restauração)",
+            "100 níveis de progressão detalhados",
+            "Foco em simbiose, mobilidade e controle tático",
+            "Sistema de Vínculo Sanguíneo para recompensar harmonia",
+            "Recursos: Sangue Vital e Essência Carmesim",
+            "70 níveis base + 30 níveis especializados"
+          ]
+        }
+      ],
+      "design_notes": [
+        "Sangue é intencionalmente versátil e tático",
+        "Foco em simbiose sobre dominação",
+        "Mobilidade é feature principal",
+        "Consequências sociais são esperadas",
+        "Níveis altos podem remodelar ecossistemas"
+      ]
+    }
+  }
+}
