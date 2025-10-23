@@ -1,0 +1,1641 @@
+{
+  "magic_system": {
+    "id": "soul_magic",
+    "name": "Magia Sobrenatural",
+    "version": "1.0.0",
+    "category": "Sobrenatural/Espiritual",
+    "rarity": "Muito Raro",
+    
+    "essence": {
+      "description": "A Magia Sobrenatural governa a manipulação de almas, energia vital e o mundo espiritual. É uma magia de percepção transcendente, onde o usuário não apenas vê o plano etéreo, mas se torna um canal entre os mundos físico e espiritual. A realidade é maleável diante da sua percepção espiritual.",
+      "core_principles": [
+        "Visão plena do plano etéreo e percepção espiritual constante",
+        "Manipulação direta de almas e energia vital",
+        "Interação com entidades, ecos e rastros espirituais",
+        "Realidade maleável através da percepção espiritual",
+        "Canalização entre mundos físico e espiritual"
+      ],
+      "philosophical_basis": "A realidade é uma ilusão que se dissolve diante da verdade espiritual. O usuário não domina as almas, mas se torna um mediador entre os planos, percebendo a verdade fundamental que conecta toda existência."
+    },
+
+    "parallel_attribute": {
+      "name": "Espiritualidade",
+      "short_name": "O(A) Iluminado(a)",
+      "type": "Atributo Espiritual",
+      "range": [0, 10],
+      "description": "Mede a profundidade da conexão entre usuário e plano etéreo, a pureza da percepção espiritual e a harmonia com o mundo espiritual. Atua como multiplicador universal para todas as habilidades de Magia Sobrenatural.",
+      
+      "scaling": {
+        "calculation": "Espiritualidade aumenta através de epifanias, revelações, descobertas, estudos e superações interiores. Diminui com uso profano de almas, corrupção espiritual ou negação da consciência espiritual.",
+        "multiplier_formula": "Poder Base × (1 + Espiritualidade/2.5)",
+        "efficiency_formula": "(20 + Espiritualidade×15)% de eficiência total"
+      },
+
+      "tiers": [
+        {
+          "grade": 0,
+          "title": "O Cego",
+          "description": "Não consegue perceber o plano espiritual adequadamente. Manipulação é bruta e ineficiente.",
+          "effects": {
+            "power_bonus": "+10%",
+            "restrictions": ["Sem percepção etérea", "Controle básico apenas", "Alto custo energético"],
+            "narrative_impact": "Almas manipuladas são grosseiras, lentas e pouco responsivas"
+          }
+        },
+        {
+          "grade_range": [1, 2],
+          "title": "Desperto",
+          "description": "Primeiro contato com a sensibilidade espiritual; percepção básica estabelecida.",
+          "effects": {
+            "power_bonus": "+20%",
+            "perception_bonus": "+2 metros de alcance sensorial espiritual",
+            "narrative_impact": "Almas respondem aos comandos básicos com hesitação"
+          }
+        },
+        {
+          "grade_range": [3, 4],
+          "title": "Sintonizado",
+          "description": "Consegue interagir com entidades e energias do plano etéreo.",
+          "effects": {
+            "power_bonus": "+40%",
+            "interaction_bonus": "Pode comunicar-se com espíritos menores",
+            "narrative_impact": "Almas fluem naturalmente conforme a vontade espiritual"
+          }
+        },
+        {
+          "grade_range": [5, 6],
+          "title": "Vidente",
+          "description": "Percebe realidades sobrepostas e distorções sutis.",
+          "effects": {
+            "power_bonus": "+80%",
+            "perception_enhanced": "Vê através de ilusões e mentiras",
+            "passive_aura": "Almas reagem instintivamente a ameaças espirituais",
+            "narrative_impact": "Almas parecem ter consciência própria, protegendo o usuário"
+          }
+        },
+        {
+          "grade_range": [7, 8],
+          "title": "Condutor",
+          "description": "Ataques e curas espirituais são mais eficientes; fluxo espiritual livre.",
+          "effects": {
+            "power_bonus": "+150%",
+            "special_abilities": ["Materialização espiritual", "Transporte etéreo"],
+            "defensive": "Almas formam barreiras automáticas",
+            "narrative_impact": "Corpo e alma são indistinguíveis; materialização é instantânea"
+          }
+        },
+        {
+          "grade": 9,
+          "title": "Ascendente",
+          "description": "Controla entidades menores e flui entre planos espirituais.",
+          "effects": {
+            "power_bonus": "+250%",
+            "creation": "Pode criar almas vivas independentes",
+            "autonomy": "Almas continuam agindo após comandos",
+            "narrative_impact": "Almas criam formas complexas e agem estrategicamente"
+          }
+        },
+        {
+          "grade": 10,
+          "title": "Divinizado",
+          "description": "Simbiose perfeita; quase onipresente no plano etéreo.",
+          "effects": {
+            "power_bonus": "+400%",
+            "transcendence": "Pode materializar múltiplas formas espirituais simultaneamente",
+            "omniscience": "Sente através de qualquer alma no mundo",
+            "narrative_impact": "Alma é consciência distribuída; materialização é pensamento"
+          }
+        }
+      ],
+
+      "gain_mechanics": {
+        "narrative_events": {
+          "epiphany": "+0.5-2.0 ESP (visão ou revelação espiritual intensa)",
+          "ancestral_study": "+0.05-0.25 ESP (leitura de pergaminhos ancestrais)",
+          "entity_communion": "+0.3-0.8 ESP (comunhão com entidades benevolentes)",
+          "ruins_exploration": "+0.1-0.5 ESP (exploração de ruínas espirituais)",
+          "inner_overcoming": "+1.0 ESP (superação interior - única por arco narrativo)",
+          "proper_use": "+0.01-0.05 ESP (uso correto e constante das habilidades espirituais)"
+        },
+        "mechanical_fallback": {
+          "base_gain": "0.1 ESP por 10 níveis",
+          "quest_completion": "0.2-0.5 ESP para missões espirituais",
+          "boss_defeats": "0.1-0.3 ESP se espiritualmente significativo"
+        }
+      },
+
+      "loss_mechanics": {
+        "profane_abuse": "-0.1 ESP por uso profano de almas",
+        "soul_corruption": "-25% do total de ESP até purificação",
+        "consciousness_denial": "-0.01 ESP/dia por negação da consciência espiritual"
+      }
+    },
+
+    "resource_system": {
+      "primary_resource": {
+        "name": "Energia Espiritual",
+        "abbreviation": "EE",
+        "base_pool": "90 + (Nível × 15) + (Sabedoria × 5)",
+        "regeneration": {
+          "passive": "2.5% por turno",
+          "rest": "100% após descanso completo",
+          "meditation": "+5% em meditação ativa",
+          "spiritual_contact": "+3% por turno em locais espirituais",
+          "esp_bonus": "+1% por ponto de ESP"
+        },
+        "cost_reduction": "Reduz 3% por nível + 1% por 100 ESP absoluto"
+      },
+      
+      "secondary_resource": {
+        "name": "Essência Anímica",
+        "abbreviation": "EA",
+        "unlock_level": 70,
+        "base_pool": "40 + ((Nível - 70) × 8)",
+        "description": "Essência primordial extraída de almas e do plano etéreo. Energia que transcende a manipulação espiritual básica.",
+        "regeneration": {
+          "soul_absorption": "+5 EA por entidade espiritual derrotada",
+          "ethereal_meditation": "+3 EA por hora em locais espirituais",
+          "death_proximity": "+2 EA por turno próximo à morte",
+          "esp_10": "ESP 10: regeneração automática de EA"
+        }
+      }
+    },
+
+    "passive_abilities": {
+      "initial_passive": {
+        "name": "Sensum Aeternum",
+        "unlock_level": 1,
+        "description": "Permite ver e sentir o mundo espiritual constantemente. Mesmo em combate, o usuário percebe a presença de entidades, emoções e intenções.",
+        "effects": [
+          {
+            "type": "perception",
+            "value": "+5 metros de alcance sensorial espiritual"
+          },
+          {
+            "type": "detection",
+            "description": "Detecta emoções e intenções automaticamente"
+          },
+          {
+            "type": "ethereal_vision",
+            "description": "Vê entidades invisíveis e ecos espirituais"
+          },
+          {
+            "type": "intuition",
+            "value": "+2 em testes de Intuição"
+          }
+        ],
+        "scaling": "Benefícios aumentam com Espiritualidade",
+        "narrative_description": "O mundo espiritual se revela constantemente, mostrando camadas de realidade invisíveis aos outros"
+      },
+
+      "level_10": {
+        "name": "Essência da Percepção",
+        "unlock_level": 10,
+        "description": "Percepção espiritual se torna mais refinada e responsiva.",
+        "mechanics": {
+          "activation": "Automático",
+          "effects": [
+            "Alcance sensorial aumenta para +10 metros",
+            "Almas endurecem automaticamente contra ataques espirituais",
+            "Materialização básica de formas espirituais",
+            "Controle de densidade espiritual básica"
+          ]
+        }
+      },
+
+      "level_20": {
+        "name": "Olho Anímico",
+        "unlock_level": 20,
+        "description": "Pode ver através de ilusões, mentiras e distorções da realidade.",
+        "effects": [
+          {
+            "type": "true_sight",
+            "description": "Vê através de ilusões e transformações"
+          },
+          {
+            "type": "lie_detection",
+            "description": "Detecta mentiras automaticamente"
+          },
+          {
+            "type": "reality_perception",
+            "description": "Percebe distorções na realidade"
+          },
+          {
+            "type": "spiritual_aura",
+            "description": "Vê auras espirituais de todos os seres"
+          }
+        ]
+      },
+
+      "level_30": {
+        "name": "Drenagem Sutil",
+        "unlock_level": 30,
+        "description": "Drena passivamente energia vital de inimigos próximos.",
+        "mechanics": {
+          "cost": "Automático",
+          "range": "5 metros",
+          "effects": [
+            "1d4 de dano necrótico por turno a inimigos",
+            "Cura equivalente ao dano causado",
+            "Não afeta aliados",
+            "Intensidade aumenta com ESP"
+          ]
+        }
+      },
+
+      "level_40": {
+        "name": "Fluxo Duplo",
+        "unlock_level": 40,
+        "description": "Pode canalizar duas habilidades espirituais simultaneamente.",
+        "mechanics": {
+          "simultaneous_casting": "Até 2 habilidades ativas",
+          "coordination": "Ambas habilidades agem coordenadamente",
+          "efficiency": "Custo reduzido em 25% para segunda habilidade",
+          "limitations": "Não pode usar habilidades de caminhos diferentes"
+        }
+      },
+
+      "level_50": {
+        "name": "Presença Fixa",
+        "unlock_level": 50,
+        "description": "Não pode ser espiritualmente ocultado ou enganado.",
+        "mechanics": {
+          "immunity": "Imune a efeitos de ocultação espiritual",
+          "detection": "Sempre detecta presenças espirituais",
+          "truth": "Não pode ser enganado por ilusões",
+          "aura": "Presença espiritual é sempre visível"
+        }
+      },
+
+      "level_60": {
+        "name": "Domínio Etéreo",
+        "unlock_level": 60,
+        "description": "Pode mover-se parcialmente no plano etéreo.",
+        "mechanics": {
+          "ethereal_movement": "Pode atravessar obstáculos físicos",
+          "partial_phase": "50% de redução em dano físico",
+          "spiritual_immunity": "Imune a efeitos que afetam apenas o físico",
+          "duration": "Até 3 turnos por uso"
+        }
+      },
+
+      "level_70": {
+        "name": "Alma Condensada",
+        "unlock_level": 70,
+        "description": "Desbloqueia Essência Anímica e permite materialização completa de formas espirituais.",
+        "mechanics": {
+          "essence_unlock": "Acesso a Essência Anímica",
+          "full_materialization": "Pode criar formas espirituais completas",
+          "spiritual_armor": "Armadura espiritual permanente (+3 CA)",
+          "transcendence": "Almas podem existir independentemente"
+        }
+      }
+    },
+
+    "active_abilities": {
+      "tier_1_10": [
+        {
+          "level": 1,
+          "name": "Aprimoramento Geral",
+          "type": "passive_boost",
+          "description": "Ativação da passiva Sensum Aeternum e estabelecimento da base de Energia Espiritual."
+        },
+        {
+          "level": 2,
+          "name": "Toque Etéreo",
+          "type": "active_touch",
+          "description": "Drena energia vital através do contato espiritual direto.",
+          "cost": "10 EE",
+          "damage": "2d6 + (Nível/2) necrótico",
+          "healing": "50% do dano causado",
+          "range": "Toque",
+          "properties": [
+            "Drena energia vital",
+            "Cura o usuário",
+            "Pode ser usado em aliados para cura",
+            "Ignora armadura física"
+          ],
+          "narrative_examples": [
+            "Mão brilha com luz etérea ao tocar o alvo",
+            "Energia vital flui visivelmente entre os corpos",
+            "O toque causa arrepios espirituais"
+          ]
+        },
+        {
+          "level": 3,
+          "type": "improvement",
+          "description": "Toque Etéreo se torna mais eficaz",
+          "new_capability": "Dano aumenta para 2d8 + (Nível/2)"
+        },
+        {
+          "level": 4,
+          "type": "improvement",
+          "description": "Alcance aumentado",
+          "new_capability": "Alcance aumenta para 3 metros"
+        },
+        {
+          "level": 5,
+          "name": "Projétil Espiritual",
+          "type": "active_projectile",
+          "description": "Dispara projétil de energia espiritual concentrada.",
+          "cost": "15 EE",
+          "damage": "3d6 + (Nível/2) psíquico",
+          "range": "30 metros",
+          "properties": [
+            "Projétil espiritual",
+            "Ignora cobertura física",
+            "Pode curvar trajetória",
+            "Deixa rastro espiritual"
+          ]
+        },
+        {
+          "level": 6,
+          "type": "improvement",
+          "description": "Projéteis mais eficazes",
+          "new_capability": "Projéteis causam confusão (1 turno)"
+        },
+        {
+          "level": 7,
+          "type": "improvement",
+          "description": "Alcance expandido",
+          "new_capability": "Alcance aumenta para 40 metros"
+        },
+        {
+          "level": 8,
+          "type": "improvement",
+          "description": "Eficiência melhorada",
+          "new_capability": "Custo reduzido para 12 EE"
+        },
+        {
+          "level": 9,
+          "type": "improvement",
+          "description": "Duração estendida",
+          "new_capability": "Efeitos duram +1 turno"
+        },
+        {
+          "level": 10,
+          "type": "improvement",
+          "description": "Aprimoramento geral",
+          "new_capability": "+15% de dano em todas as habilidades"
+        }
+      ],
+
+      "tier_11_20": [
+        {
+          "level": 11,
+          "type": "improvement",
+          "description": "Controle aprimorado",
+          "new_capability": "Toque Etéreo e Projétil ganham +20% de eficácia"
+        },
+        {
+          "level": 12,
+          "name": "Rajada Anímica",
+          "type": "active_area",
+          "description": "Libera energia concentrada de almas aprisionadas em área.",
+          "cost": "25 EE",
+          "area": "Raio de 6 metros",
+          "damage": "4d8 + (Nível/2) necrótico",
+          "properties": [
+            "Ataque em área",
+            "Drena energia vital",
+            "Cura usuário por 50% do dano",
+            "Pode ser canalizada"
+          ]
+        },
+        {
+          "level": 13,
+          "type": "improvement",
+          "description": "Área expandida",
+          "new_capability": "Raio aumenta para 8 metros"
+        },
+        {
+          "level": 14,
+          "type": "improvement",
+          "description": "Dano aumentado",
+          "new_capability": "Dano aumenta para 5d8"
+        },
+        {
+          "level": 15,
+          "name": "Escudo Espiritual",
+          "type": "active_defense",
+          "description": "Cria barreira espiritual que absorve dano.",
+          "cost": "30 EE",
+          "duration": "Concentração ou até 10 minutos",
+          "effects": [
+            "Absorve até 50 + (Nível × 3) de dano",
+            "Resistência a necrótico",
+            "Bloqueia ataques espirituais",
+            "Auto-repara com EE"
+          ]
+        },
+        {
+          "level": 16,
+          "type": "improvement",
+          "description": "Absorção aumentada",
+          "new_capability": "Absorve até 75 + (Nível × 5) de dano"
+        },
+        {
+          "level": 17,
+          "type": "improvement",
+          "description": "Duração estendida",
+          "new_capability": "Duração aumenta para 15 minutos"
+        },
+        {
+          "level": 18,
+          "type": "improvement",
+          "description": "Eficiência máxima",
+          "new_capability": "Custo reduzido para 25 EE"
+        },
+        {
+          "level": 19,
+          "type": "improvement",
+          "description": "Versatilidade",
+          "new_capability": "Pode criar múltiplos escudos simultaneamente"
+        },
+        {
+          "level": 20,
+          "name": "Olho Anímico",
+          "type": "passive_unlock",
+          "description": "Desbloqueia a passiva Olho Anímico (descrita na seção de passivas)"
+        }
+      ],
+
+      "tier_21_30": [
+        {
+          "level": 21,
+          "type": "improvement",
+          "description": "Precisão aumentada",
+          "new_capability": "+3 em testes de ataque com habilidades espirituais"
+        },
+        {
+          "level": 22,
+          "name": "Ruptura Espiritual",
+          "type": "active_separation",
+          "description": "Quebra temporariamente a conexão entre corpo e alma.",
+          "cost": "35 EE",
+          "duration": "Concentração",
+          "effects": [
+            "Alvo fica inconsciente",
+            "Alma fica separada do corpo",
+            "Corpo fica vulnerável",
+            "Alma pode ser manipulada"
+          ]
+        },
+        {
+          "level": 23,
+          "type": "improvement",
+          "description": "Duração estendida",
+          "new_capability": "Pode manter por 2 turnos"
+        },
+        {
+          "level": 24,
+          "type": "improvement",
+          "description": "Versatilidade",
+          "new_capability": "Pode usar em múltiplos alvos"
+        },
+        {
+          "level": 25,
+          "type": "improvement",
+          "description": "Eficiência",
+          "new_capability": "Custo reduzido para 30 EE"
+        },
+        {
+          "level": 26,
+          "type": "improvement",
+          "description": "Controle refinado",
+          "new_capability": "Pode controlar alma separada"
+        },
+        {
+          "level": 27,
+          "type": "improvement",
+          "description": "Alcance",
+          "new_capability": "Funciona à distância (30 metros)"
+        },
+        {
+          "level": 28,
+          "name": "Comunhão Espiritual",
+          "type": "active_communication",
+          "description": "Comunica-se diretamente com espíritos e almas.",
+          "cost": "40 EE",
+          "range": "Até 100 metros",
+          "properties": [
+            "Comunicação telepática",
+            "Compreende qualquer idioma espiritual",
+            "Pode invocar espíritos",
+            "Não requer linguagem comum"
+          ]
+        },
+        {
+          "level": 29,
+          "type": "improvement",
+          "description": "Alcance expandido",
+          "new_capability": "Alcance aumenta para 150 metros"
+        },
+        {
+          "level": 30,
+          "name": "Drenagem Sutil",
+          "type": "passive_unlock",
+          "description": "Desbloqueia Drenagem Sutil (descrita na seção de passivas)"
+        }
+      ],
+
+      "tier_31_40": [
+        {
+          "level": 31,
+          "type": "improvement",
+          "description": "Masterização inicial",
+          "new_capability": "+25% de dano em todas as habilidades"
+        },
+        {
+          "level": 32,
+          "name": "Correntes da Ruína",
+          "type": "active_imprisonment",
+          "description": "Aprisiona espíritos em correntes espirituais.",
+          "cost": "45 EE",
+          "duration": "Concentração",
+          "effects": [
+            "Imobiliza espíritos",
+            "Previne fuga espiritual",
+            "Drena energia continuamente",
+            "Pode aprisionar múltiplos espíritos"
+          ]
+        },
+        {
+          "level": 33,
+          "type": "improvement",
+          "description": "Controle múltiplo",
+          "new_capability": "Pode aprisionar até 3 espíritos simultaneamente"
+        },
+        {
+          "level": 34,
+          "type": "improvement",
+          "description": "Duração",
+          "new_capability": "Efeitos persistem por 1 turno após concentração"
+        },
+        {
+          "level": 35,
+          "type": "improvement",
+          "description": "Eficiência",
+          "new_capability": "Custo reduzido para 40 EE"
+        },
+        {
+          "level": 36,
+          "type": "improvement",
+          "description": "Versatilidade",
+          "new_capability": "Pode criar armadilhas espirituais"
+        },
+        {
+          "level": 37,
+          "type": "improvement",
+          "description": "Alcance",
+          "new_capability": "Funciona em raio de 20 metros"
+        },
+        {
+          "level": 38,
+          "name": "Manipulação Etérea",
+          "type": "active_control",
+          "description": "Manipula diretamente energia espiritual em área.",
+          "cost": "50 EE",
+          "area": "Raio de 10 metros",
+          "duration": "Concentração",
+          "effects": [
+            "Controla fluxo de energia espiritual",
+            "Pode criar zonas de poder",
+            "Manipula densidade espiritual",
+            "Cria efeitos ambientais"
+          ]
+        },
+        {
+          "level": 39,
+          "type": "improvement",
+          "description": "Área expandida",
+          "new_capability": "Raio aumenta para 15 metros"
+        },
+        {
+          "level": 40,
+          "name": "Fluxo Duplo",
+          "type": "passive_unlock",
+          "description": "Desbloqueia Fluxo Duplo (descrita na seção de passivas)"
+        }
+      ],
+
+      "tier_41_50": [
+        {
+          "level": 41,
+          "type": "improvement",
+          "description": "Sinergia inicial",
+          "new_capability": "Habilidades podem ser combinadas fluidamente"
+        },
+        {
+          "level": 42,
+          "name": "Consumo de Essência",
+          "type": "active_absorption",
+          "description": "Absorve parte da alma de inimigos derrotados.",
+          "cost": "60 EE",
+          "targets": "Inimigos mortos",
+          "effects": [
+            "Absorve fragmentos de alma",
+            "Ganha conhecimento do inimigo",
+            "Aumenta poder temporariamente",
+            "Pode usar habilidades do inimigo"
+          ]
+        },
+        {
+          "level": 43,
+          "type": "improvement",
+          "description": "Mais fragmentos",
+          "new_capability": "Pode absorver até 3 fragmentos simultaneamente"
+        },
+        {
+          "level": 44,
+          "type": "improvement",
+          "description": "Duração",
+          "new_capability": "Efeitos duram +2 turnos"
+        },
+        {
+          "level": 45,
+          "type": "improvement",
+          "description": "Eficiência",
+          "new_capability": "Custo reduzido para 50 EE"
+        },
+        {
+          "level": 46,
+          "type": "improvement",
+          "description": "Versatilidade",
+          "new_capability": "Pode absorver fragmentos de aliados mortos"
+        },
+        {
+          "level": 47,
+          "type": "improvement",
+          "description": "Poder",
+          "new_capability": "Fragmentos aumentam poder em +30%"
+        },
+        {
+          "level": 48,
+          "name": "Vínculo Espiritual",
+          "type": "active_bond",
+          "description": "Cria vínculo espiritual com aliados para coordenação.",
+          "cost": "70 EE",
+          "duration": "Concentração ou até 30 minutos",
+          "targets": "Até 4 aliados",
+          "effects": [
+            "Comunicação telepática",
+            "Compartilhamento de sentidos",
+            "Transferência de energia",
+            "Coordenação perfeita"
+          ]
+        },
+        {
+          "level": 49,
+          "type": "improvement",
+          "description": "Mais alvos",
+          "new_capability": "Pode vincular até 6 aliados"
+        },
+        {
+          "level": 50,
+          "name": "Presença Fixa",
+          "type": "passive_unlock",
+          "description": "Desbloqueia Presença Fixa (descrita na seção de passivas)"
+        }
+      ],
+
+      "tier_51_60": [
+        {
+          "level": 51,
+          "type": "improvement",
+          "description": "Masterização avançada",
+          "new_capability": "+40% de dano em todas as habilidades"
+        },
+        {
+          "level": 52,
+          "name": "Rasgo Dimensional",
+          "type": "active_tear",
+          "description": "Fere corpo e alma simultaneamente através de dimensões.",
+          "cost": "80 EE",
+          "damage": "6d10 + (Nível) necrótico + 4d10 psíquico",
+          "properties": [
+            "Dano duplo (físico e espiritual)",
+            "Ignora resistências",
+            "Cria feridas que não cicatrizam",
+            "Pode afetar múltiplos alvos"
+          ]
+        },
+        {
+          "level": 53,
+          "type": "improvement",
+          "description": "Dano aumentado",
+          "new_capability": "Dano aumenta para 8d10 + 6d10"
+        },
+        {
+          "level": 54,
+          "type": "improvement",
+          "description": "Área",
+          "new_capability": "Pode afetar área de 5 metros"
+        },
+        {
+          "level": 55,
+          "type": "improvement",
+          "description": "Duração",
+          "new_capability": "Feridas persistem por 3 turnos"
+        },
+        {
+          "level": 56,
+          "type": "improvement",
+          "description": "Versatilidade",
+          "new_capability": "Pode criar rasgos permanentes"
+        },
+        {
+          "level": 57,
+          "type": "improvement",
+          "description": "Eficiência",
+          "new_capability": "Custo reduzido para 70 EE"
+        },
+        {
+          "level": 58,
+          "name": "Invocação Espiritual",
+          "type": "active_summoning",
+          "description": "Invoca espíritos para auxiliar em combate.",
+          "cost": "90 EE",
+          "duration": "Concentração ou até 20 minutos",
+          "summons": "Até 3 espíritos",
+          "spirit_stats": {
+            "hp": "25 + (Nível × 2)",
+            "ac": "15",
+            "attack": "+Nível para acerto",
+            "damage": "2d6 + 3 necrótico",
+            "speed": "Voo 12 metros por turno"
+          },
+          "properties": [
+            "Obedecem comandos mentais",
+            "Atravessam obstáculos físicos",
+            "Explodem ao morrer (3d6 dano)",
+            "Podem possuir inimigos"
+          ]
+        },
+        {
+          "level": 59,
+          "type": "improvement",
+          "description": "Mais espíritos",
+          "new_capability": "Pode invocar até 5 espíritos"
+        },
+        {
+          "level": 60,
+          "name": "Domínio Etéreo",
+          "type": "passive_unlock",
+          "description": "Desbloqueia Domínio Etéreo (descrita na seção de passivas)"
+        }
+      ],
+
+      "tier_61_70": [
+        {
+          "level": 61,
+          "type": "improvement",
+          "description": "Transformação inicial",
+          "new_capability": "Pode manter forma parcialmente etérea"
+        },
+        {
+          "level": 62,
+          "name": "Julgamento dos Mortos",
+          "type": "active_judgment",
+          "description": "Invoca ecos espirituais que atacam o alvo.",
+          "cost": "100 EE + 20 EA",
+          "cooldown": "3 turnos",
+          "damage": "8d12 + (Nível × 2) necrótico",
+          "properties": [
+            "Ecos de almas passadas",
+            "Ataque automático",
+            "Ignora defesas físicas",
+            "Pode julgar múltiplos alvos"
+          ]
+        },
+        {
+          "level": 63,
+          "type": "improvement",
+          "description": "Mais ecos",
+          "new_capability": "Invoca até 5 ecos simultaneamente"
+        },
+        {
+          "level": 64,
+          "type": "improvement",
+          "description": "Duração",
+          "new_capability": "Ecos persistem por 2 turnos"
+        },
+        {
+          "level": 65,
+          "type": "improvement",
+          "description": "Poder",
+          "new_capability": "Ecos ganham +50% de poder"
+        },
+        {
+          "level": 66,
+          "type": "improvement",
+          "description": "Eficiência",
+          "new_capability": "Custo reduzido para 90 EE + 15 EA"
+        },
+        {
+          "level": 67,
+          "type": "improvement",
+          "description": "Versatilidade",
+          "new_capability": "Ecos podem executar diferentes ações"
+        },
+        {
+          "level": 68,
+          "name": "Transcendência Parcial",
+          "type": "active_transformation",
+          "description": "Transformação parcial em forma espiritual.",
+          "cost": "120 EE + 30 EA",
+          "duration": "Concentração ou até 5 minutos",
+          "effects": [
+            "Imune a dano físico",
+            "Resistência de 75% a dano mágico",
+            "Voa a 15 metros por turno",
+            "Todas as habilidades custam 0 EE"
+          ]
+        },
+        {
+          "level": 69,
+          "type": "improvement",
+          "description": "Duração",
+          "new_capability": "Duração aumenta para 8 minutos"
+        },
+        {
+          "level": 70,
+          "name": "Alma Condensada",
+          "type": "passive_unlock",
+          "description": "Desbloqueia Alma Condensada + acesso a Essência Anímica (descritos anteriormente)"
+        }
+      ]
+    },
+
+    "specialization_paths": {
+      "unlock_level": 71,
+      "description": "No nível 71, o usuário escolhe um dos três caminhos de especialização. Esta escolha é permanente e define o estilo final de combate espiritual.",
+      "selection_rules": {
+        "permanent": true,
+        "exclusive": "Apenas um caminho pode ser escolhido"
+      },
+
+      "paths": [
+        {
+          "id": "destruicao",
+          "name": "Caminho da Destruição - Aniquilação Espiritual",
+          "focus": "Destruição de almas, aniquilação espiritual, ruptura dimensional",
+          "philosophy": "A alma existe para ser consumida. Abrace essa verdade e torne-se a destruição espiritual encarnada.",
+          "aesthetic": "Energia necrótica intensa, rasgos dimensionais, devastação espiritual",
+
+          "tier_71_80": {
+            "primary_ability": {
+              "name": "Silêncio da Existência",
+              "unlock_level": 71,
+              "description": "Apaga temporariamente a presença espiritual de um ser.",
+              "cost": "150 EE + 40 EA",
+              "cooldown": "4 turnos",
+              "duration": "5 turnos",
+              "effects": [
+                "Alvo fica invisível espiritualmente",
+                "Não pode usar habilidades espirituais",
+                "Outros não podem detectá-lo espiritualmente",
+                "Alma fica temporariamente separada"
+              ]
+            },
+            "passive_improvements": [
+              "Todas as habilidades de destruição ganham +100% de dano",
+              "Ataques espirituais ignoram resistências",
+              "Críticos causam fragmentação espiritual",
+              "Mortes criam explosões de energia necrótica"
+            ],
+            "level_80_capstone": {
+              "name": "Corte Dimensional",
+              "description": "Ataques cortam através de dimensões.",
+              "effects": [
+                "Ignora todas as resistências",
+                "Corta através de dimensões",
+                "Feridas persistem indefinidamente",
+                "Pode cortar conceitos abstratos"
+              ]
+            }
+          },
+
+          "tier_81_90": {
+            "primary_ability": {
+              "name": "Desintegração Etérea",
+              "unlock_level": 81,
+              "description": "Destrói qualquer projeção espiritual.",
+              "cost": "200 EE + 60 EA",
+              "cooldown": "1 uso por combate",
+              "area": "Raio de 20 metros",
+              "damage": "12d12 + (Nível × 3) necrótico",
+              "effects": [
+                "Destrói projeções espirituais",
+                "Fragmenta almas",
+                "Cria zonas de vazio espiritual",
+                "Efeitos persistem por 10 minutos"
+              ]
+            },
+            "passive_improvements": [
+              "Área de todas as habilidades × 3",
+              "Pode combinar múltiplas habilidades em devastação",
+              "Fragmentos se multiplicam automaticamente",
+              "Inimigos mortos explodem em energia necrótica"
+            ],
+            "level_90_capstone": {
+              "name": "Vazio Absoluto",
+              "description": "Cria zonas de aniquilação espiritual.",
+              "mechanics": "Áreas de efeito não têm limite se desejado"
+            }
+          },
+
+          "tier_91_100": {
+            "primary_ability": {
+              "name": "Aniquilação Total",
+              "unlock_level": 91,
+              "description": "Reduz alma e corpo à inexistência pura.",
+              "cost": "Todo EE + Todo EA disponível",
+              "cooldown": "1 uso por semana",
+              "area": "Raio de 2 quilômetros",
+              "duration": "Aniquilação imediata + efeitos por dias",
+              "damage": "30d20 + (Nível × 10) em área total",
+              "effects": [
+                "Transforma área em vazio espiritual",
+                "Cria múltiplas zonas de aniquilação",
+                "Mata toda vida espiritual na área",
+                "Efeitos persistem por semanas",
+                "Visível de continentes distantes",
+                "Pode alterar realidade regional"
+              ],
+              "narrative": "O céu escurece. A terra desaparece. Tudo vira inexistência."
+            },
+            "level_progression": {
+              "92-99": "Cada nível permite modificar habilidades em tempo real"
+            },
+            "level_100_capstone": {
+              "name": "Domínio Anímico - Ceifador de Almas",
+              "description": "Controle absoluto sobre destruição espiritual.",
+              "effects": [
+                "Todas as habilidades custam 0 recursos",
+                "Aniquilação é instantânea",
+                "Pode modificar qualquer habilidade em tempo real",
+                "Almas são fragmentadas automaticamente",
+                "Defesa espiritual é absoluta",
+                "Área de todas as habilidades é ilimitada",
+                "Pode criar zonas de vazio espiritual globalmente"
+              ]
+            }
+          }
+        },
+
+        {
+          "id": "estrategia",
+          "name": "Caminho da Estratégia - Distorção e Manipulação",
+          "focus": "Controle mental, manipulação de planos, distorção da realidade",
+          "philosophy": "A realidade espiritual não precisa ser apenas percepção. Nas mãos certas, é a ferramenta tática suprema.",
+          "aesthetic": "Energia espiritual controlada, padrões geométricos, manipulação precisa",
+
+          "tier_71_80": {
+            "primary_ability": {
+              "name": "Domínio Mental",
+              "unlock_level": 71,
+              "description": "Controla temporariamente a vontade de um espírito ou mortal.",
+              "cost": "120 EE + 30 EA",
+              "duration": "Concentração ou até serem libertados",
+              "targets": "Até 3 alvos",
+              "effects": [
+                "Controle total da vontade",
+                "Execução de comandos complexos",
+                "Compartilhamento de percepção",
+                "Coordenação perfeita entre alvos"
+              ]
+            },
+            "passive_improvements": [
+              "Pode controlar até 20 habilidades simultaneamente",
+              "Todos os espíritos ganham +50% de inteligência",
+              "Habilidades táticas não requerem concentração",
+              "Espíritos compartilham visão com usuário"
+            ],
+            "level_80_capstone": {
+              "name": "Comando Múltiplo",
+              "description": "Controle simultâneo de múltiplos espíritos.",
+              "effects": "Pode controlar 15 espíritos, 5 mortais, 3 entidades simultaneamente"
+            }
+          },
+
+          "tier_81_90": {
+            "primary_ability": {
+              "name": "Deslocamento Dimensional",
+              "unlock_level": 81,
+              "description": "Move-se entre planos espirituais.",
+              "cost": "180 EE + 50 EA",
+              "duration": "Concentração",
+              "effects": [
+                "Movimento entre planos",
+                "Percepção de múltiplas realidades",
+                "Manipulação de leis espirituais locais",
+                "Criação de portais dimensionais"
+              ]
+            },
+            "passive_improvements": [
+              "Espíritos nunca morrem - reconstituem-se após 2 turnos",
+              "Todos os espíritos ganham habilidades do usuário",
+              "Rede de controle cobre até 1km²",
+              "Realidade responde a condições automaticamente"
+            ],
+            "level_90_capstone": {
+              "name": "Consciência Expandida",
+              "description": "Consciência se espalha através de múltiplos planos.",
+              "effects": "Visão e controle através de qualquer plano espiritual em 5km"
+            }
+          },
+
+          "tier_91_100": {
+            "primary_ability": {
+              "name": "Trono das Almas",
+              "unlock_level": 91,
+              "description": "Governa múltiplos planos simultaneamente.",
+              "cost": "250 EE + 100 EA para estabelecer domínio",
+              "area": "Raio de 3 quilômetros",
+              "duration": "Enquanto mantiver concentração",
+              "effects": [
+                "Controla TODO plano espiritual na área",
+                "Pode ver através de qualquer espírito",
+                "Cria exército de 100+ espíritos",
+                "Transforma área em tabuleiro tático",
+                "Pode teletransportar entre espíritos",
+                "Coordenação perfeita de milhares de pontos"
+              ]
+            },
+            "level_progression": {
+              "92-99": "Cada nível expande área de controle em +1km"
+            },
+            "level_100_capstone": {
+              "name": "Domínio Anímico - Mestre dos Planos",
+              "description": "Controle perfeito sobre todos os planos espirituais.",
+              "effects": [
+                "Comando mental instantâneo de qualquer plano",
+                "Pode criar e controlar 10000+ espíritos",
+                "Cada espírito age com inteligência estratégica perfeita",
+                "Visão e controle através de qualquer plano",
+                "Pode reescrever leis espirituais",
+                "Espíritos podem se fundir e dividir dinamicamente",
+                "Realidade responde à vontade como organismo"
+              ]
+            }
+          }
+        },
+
+        {
+          "id": "restauracao",
+          "name": "Caminho da Restauração - Harmonia Espiritual",
+          "focus": "Cura espiritual, purificação, reconstrução de almas, equilíbrio vital",
+          "philosophy": "A alma não apenas existe - purifica e renova. Da fragmentação, nasce harmonia mais forte.",
+          "aesthetic": "Energia espiritual dourada, cura reconfortante, renovação através da harmonia",
+
+          "tier_71_80": {
+            "primary_ability": {
+              "name": "Benção dos Antigos",
+              "unlock_level": 71,
+              "description": "Espíritos benevolentes curam em área.",
+              "cost": "140 EE + 35 EA",
+              "cooldown": "1 uso por encontro",
+              "area": "Raio de 30 metros",
+              "healing": "10d10 + (Nível × 2) para todos aliados",
+              "additional_effects": {
+                "purification": [
+                  "Remove corrupção espiritual",
+                  "Limpa fragmentos de alma",
+                  "Restaura harmonia espiritual"
+                ],
+                "buffs": [
+                  "Regeneração: +3d8 por turno por 5 turnos",
+                  "+3 Sabedoria por 1 hora",
+                  "Resistência a necromancia"
+                ],
+                "environment": [
+                  "Energia curativa persiste (dura 1 hora)",
+                  "Área se torna zona de cura",
+                  "Aliados mortos podem ser curados"
+                ]
+              }
+            },
+            "passive_improvements": [
+              "Todas as curas aumentam em +100%",
+              "Espíritos criam aura de cura em 20m",
+              "Regeneração passiva para todos em 20m: +2d8 por turno",
+              "Aura permanente: +3 em salvaguardas para aliados"
+            ],
+            "level_80_capstone": {
+              "name": "Ciclo da Alma",
+              "description": "Cura escala com energia espiritual disponível.",
+              "mechanics": "50% da energia espiritual disponível é convertida em cura distribuída"
+            }
+          },
+
+          "tier_81_90": {
+            "primary_ability": {
+              "name": "Luz da Eternidade",
+              "unlock_level": 81,
+              "description": "Reconstrói essências destruídas.",
+              "cost": "Ativa automaticamente quando essência é destruída",
+              "cooldown": "1 uso por semana",
+              "effects": {
+                "reconstruction": "Reconstrói essências fragmentadas",
+                "soul_restoration": "Restaura almas partidas",
+                "fragment_reintegration": "Une fragmentos dispersos",
+                "harmony_restoration": "Restaura harmonia espiritual"
+              }
+            },
+            "passive_improvements": [
+              "Aliados ganham regeneração espiritual (3d10/turno)",
+              "Curas podem exceder HP máximo",
+              "Reconstruções não têm limite de tempo",
+              "Energia purificadora remove corrupção"
+            ],
+            "level_90_capstone": {
+              "name": "Alma Eterna",
+              "description": "Aliados não podem morrer permanentemente.",
+              "mechanics": "Ressurreição automática após 3 dias, sempre"
+            }
+          },
+
+          "tier_91_100": {
+            "primary_ability": {
+              "name": "Ressurreição Espiritual",
+              "unlock_level": 91,
+              "description": "Devolve uma alma ao corpo, uma única vez por ciclo espiritual.",
+              "cost": "300 EE + 80 EA para estabelecer",
+              "area": "Raio de 100 metros",
+              "duration": "Permanente",
+              "effects": {
+                "massive_healing": "Todos aliados regeneram 12d10 HP/turno",
+                "continuous_resurrection": "Aliados mortos ressuscitam após 1 turno",
+                "immortality_field": "Aliados não podem ter HP reduzido abaixo de 1",
+                "age_reversal": "Reverte envelhecimento e restaura juventude",
+                "purification": "Remove absolutamente qualquer condição",
+                "transformation": "Pode transformar inimigos em aliados"
+              },
+              "narrative": "Campo dourado de energia espiritual envolve tudo. Morte torna-se impossível. Harmonia flui eternamente."
+            },
+            "level_progression": {
+              "92-99": "Cada nível permite ressuscitar mortos mais antigos"
+            },
+            "level_100_capstone": {
+              "name": "Domínio Anímico - Guardião das Almas",
+              "description": "Controle absoluto sobre vida, morte e harmonia espiritual.",
+              "effects": [
+                "Pode ressuscitar qualquer pessoa que já morreu",
+                "Ressurreições são perfeitas - sem deterioração",
+                "Pode criar vida nova a partir de energia espiritual",
+                "Aliados marcados nunca morrem",
+                "Pode curar qualquer ferida ou doença",
+                "Imortalidade verdadeira para si e aliados",
+                "Pode reverter morte até 100 anos no passado",
+                "Cria ciclo perpétuo de harmonia em área massiva"
+              ]
+            }
+          }
+        }
+      ]
+    },
+
+    "combat_mechanics": {
+      "action_economy": {
+        "standard_casting": "Maioria das habilidades: 1 ação padrão",
+        "quick_abilities": [
+          "Toque Etéreo",
+          "Projétil Espiritual",
+          "Comunhão Espiritual"
+        ],
+        "concentration_spells": [
+          "Ruptura Espiritual",
+          "Correntes da Ruína",
+          "Transcendência Parcial"
+        ],
+        "full_round": [
+          "Silêncio da Existência",
+          "Desintegração Etérea",
+          "Aniquilação Total"
+        ]
+      },
+
+      "damage_types": {
+        "primary": "Necrótico (drenagem de vida)",
+        "secondary": "Psíquico (ataques mentais), Espiritual (manipulação de alma)",
+        "special": "Fragmentação (destrói almas), Harmonia (cura através da energia espiritual)"
+      },
+
+      "effectiveness_by_target": {
+        "highly_effective": {
+          "targets": ["Mortos-vivos", "Espíritos", "Criaturas espirituais"],
+          "bonus": "Dano dobrado ou mais",
+          "special": "Mortos-vivos são facilmente controlados ou destruídos"
+        },
+        "normally_effective": {
+          "targets": ["Maioria das criaturas vivas", "Humanoides"],
+          "bonus": "Dano normal"
+        },
+        "reduced_effectiveness": {
+          "targets": ["Criaturas sem alma", "Construtos puros"],
+          "penalty": "Sem alma para manipular",
+          "note": "ESP alto pode criar almas temporárias"
+        },
+        "ineffective": {
+          "targets": ["Elementais puros", "Criaturas imunes a necrótico"],
+          "note": "Mesmo assim, nível 90+ pode afetar com manipulação dimensional"
+        }
+      },
+
+      "tactical_considerations": {
+        "positioning": "Usar percepção espiritual para vantagem tática",
+        "resource_management": "Balancear EE para combates longos; EA acumula através de almas",
+        "environmental_effects": "Usar locais espirituais para amplificar poder",
+        "combo_potential": [
+          "Ruptura Espiritual + Consumo de Essência = controle total",
+          "Correntes da Ruína + Julgamento dos Mortos = devastação espiritual",
+          "Silêncio da Existência + Aniquilação Total = destruição absoluta"
+        ]
+      }
+    },
+
+    "interaction_systems": {
+      "with_environment": {
+        "amplified_in": [
+          "Locais espirituais: +30% poder, energia abundante",
+          "Cemitérios/templos: +25% eficácia",
+          "Durante eclipses: +20% percepção espiritual",
+          "Perto de mortes recentes: +15% regeneração"
+        ],
+        "normal_in": [
+          "Ambientes temperados",
+          "Áreas com vida moderada",
+          "Interiores normais"
+        ],
+        "hindered_in": [
+          "Locais profanos: -40% poder, energia corrompida",
+          "Áreas de anti-magia: -50% eficácia",
+          "Ambientes estéreis: -30% poder",
+          "Anti-magia absoluta: Nulifica completamente"
+        ]
+      },
+
+      "with_other_magics": {
+        "synergistic": {
+          "necromancy": "Necromancia fortalece manipulação espiritual +50%",
+          "light": "Luz purifica energia espiritual +30%",
+          "darkness": "Sombra esconde manipulação espiritual",
+          "divine": "Divino amplifica cura espiritual +40%"
+        },
+        "neutral": {
+          "elemental": "Elementos podem ser imbuídos com energia espiritual",
+          "mental": "Pode combinar com ataques mentais",
+          "time": "Tempo pode afetar persistência espiritual"
+        },
+        "antagonistic": {
+          "anti_magic": "Anti-magia cancela manipulação espiritual",
+          "chaos": "Caos pode corromper energia espiritual",
+          "order": "Ordem pode restringir manipulação espiritual"
+        }
+      },
+
+      "spiritual_persistence": {
+        "duration": "Efeitos espirituais persistem por 1d6 turnos após conjuração",
+        "reclamation": "Usuário pode reabsorver energia espiritual própria",
+        "environmental": "Energia espiritual pode contaminar área",
+        "tactical_use": "Criar redes espirituais, marcar território, controle de área"
+      }
+    },
+
+    "progression_guide": {
+      "early_game_1_20": {
+        "focus": "Aprender percepção espiritual básica",
+        "key_abilities": ["Toque Etéreo", "Projétil Espiritual", "Escudo Espiritual"],
+        "tactical_role": "Suporte espiritual, cura básica",
+        "tips": [
+          "Use Toque Etéreo para cura consistente",
+          "Projéteis são ótimos para alcance",
+          "Escudo Espiritual oferece proteção",
+          "Mantenha energia espiritual para emergências"
+        ]
+      },
+
+      "mid_game_21_50": {
+        "focus": "Masterização de manipulação espiritual",
+        "key_abilities": ["Ruptura Espiritual", "Correntes da Ruína", "Vínculo Espiritual"],
+        "tactical_role": "Controle espiritual, suporte avançado",
+        "tips": [
+          "Ruptura Espiritual muda completamente o combate",
+          "Correntes oferecem controle de área",
+          "Vínculo Espiritual coordena grupo",
+          "Comece a planejar especialização"
+        ]
+      },
+
+      "late_game_51_70": {
+        "focus": "Técnicas espirituais avançadas",
+        "key_abilities": ["Rasgo Dimensional", "Invocação Espiritual", "Julgamento dos Mortos"],
+        "tactical_role": "Manipulador espiritual, controle total",
+        "tips": [
+          "Rasgo Dimensional oferece dano devastador",
+          "Invocação Espiritual oferece números",
+          "Julgamento dos Mortos muda escala de combate",
+          "Prepare-se para especialização"
+        ]
+      },
+
+      "endgame_71_100": {
+        "focus": "Especialização e domínio absoluto",
+        "key_abilities": "Dependem do caminho escolhido",
+        "paths": {
+          "destruicao": "Aniquilador de almas e dimensões",
+          "estrategia": "Mestre da manipulação espiritual",
+          "restauracao": "Guardião da harmonia espiritual"
+        },
+        "tips": [
+          "Nível 91+: Seu poder afeta regiões inteiras",
+          "Nível 100: Você é força espiritual",
+          "Use poder responsavelmente",
+          "Considere impacto narrativo"
+        ]
+      }
+    },
+
+    "limitations_weaknesses": {
+      "hard_counters": [
+        {
+          "counter": "Anti-magia absoluta",
+          "effect": "Nulifica completamente",
+          "workaround": "Apenas nível 100 transcende isso"
+        },
+        {
+          "counter": "Criaturas sem alma",
+          "effect": "Sem material para manipular",
+          "workaround": "Usar energia espiritual própria como arma"
+        },
+        {
+          "counter": "Locais profanos",
+          "effect": "Corrompe energia espiritual",
+          "workaround": "Purificar área primeiro"
+        }
+      ],
+
+      "soft_counters": [
+        {
+          "counter": "Resistência a necrótico",
+          "effect": "Reduz dano de drenagem",
+          "mitigation": "ESP alto reduz resistências"
+        },
+        {
+          "counter": "Criaturas espirituais poderosas",
+          "effect": "Podem resistir à manipulação",
+          "mitigation": "Usar habilidades de nível superior"
+        },
+        {
+          "counter": "Ambientes estéreis",
+          "effect": "Sem energia espiritual",
+          "mitigation": "Usar energia própria"
+        }
+      ],
+
+      "situational_weaknesses": [
+        "Manipulação espiritual é sempre visível",
+        "Dependência de energia espiritual disponível",
+        "EE se esgota rápido em uso intensivo",
+        "EA só acumula através de almas",
+        "Consequências sociais de uso visível"
+      ]
+    },
+
+    "itemization": {
+      "recommended_equipment": {
+        "weapons": [
+          {
+            "item": "Cajado Etéreo",
+            "bonus": "+3 em ataques espirituais, +20% dano",
+            "special": "Armazena 80 EE adicional"
+          },
+          {
+            "item": "Lâmina de Alma",
+            "bonus": "Espada que causa +2d8 espiritual adicional",
+            "special": "Auto-regenera, nunca quebra"
+          }
+        ],
+        "armor": [
+          {
+            "item": "Armadura de Energia Espiritual",
+            "bonus": "+4 CA, resistência a necrótico",
+            "special": "Auto-repara com energia espiritual"
+          },
+          {
+            "item": "Manto Etéreo",
+            "bonus": "+3 CA, +40 EE máximo",
+            "special": "Aura espiritual passiva (1d6 em 3m)"
+          }
+        ],
+        "accessories": [
+          {
+            "item": "Anel da Harmonia",
+            "bonus": "Cura automática 1x/dia",
+            "special": "Compartilha energia espiritual com aliados"
+          },
+          {
+            "item": "Amuleto de Essência",
+            "bonus": "+30 EA máximo",
+            "special": "Dobra ganho de EA"
+          },
+          {
+            "item": "Gema Espiritual",
+            "bonus": "+25% controle espiritual",
+            "special": "Efeitos espirituais persistem +2 turnos"
+          }
+        ]
+      }
+    },
+
+    "advanced_combos": {
+      "destruction_path": [
+        {
+          "name": "Aniquilação Espiritual",
+          "components": ["Silêncio da Existência", "Desintegração Etérea"],
+          "execution": "Ative Silêncio, depois Desintegre",
+          "result": "Devastação espiritual apocalíptica em 100m+ de raio",
+          "cost": "350 EE + 100 EA",
+          "cooldown": "1x por batalha épica"
+        }
+      ],
+      "strategy_path": [
+        {
+          "name": "Domínio Espiritual",
+          "components": ["Domínio Mental", "Deslocamento Dimensional"],
+          "execution": "Controle mentes, depois mova-se entre planos",
+          "result": "Controle total sobre campo de batalha espiritual",
+          "tactical_value": "Inimigos não podem resistir"
+        }
+      ],
+      "restoration_path": [
+        {
+          "name": "Ciclo de Harmonia Eterno",
+          "components": ["Benção dos Antigos", "Luz da Eternidade"],
+          "execution": "Ative Benção, depois reconstrua essências",
+          "result": "Imortalidade de combate + cura massiva",
+          "narrative": "Você não pode perder enquanto a harmonia está ativa"
+        }
+      ]
+    },
+
+    "ritual_magic": {
+      "spiritual_circle_consecration": {
+        "name": "Consagração do Círculo Espiritual",
+        "level_requirement": 60,
+        "casting_time": "6 horas",
+        "cost": "250 EE + 100 EA",
+        "area": "500m²",
+        "effects": [
+          "Transforma área em zona espiritual permanente",
+          "Cura passiva para todos dentro: 2d10 por hora",
+          "Energia espiritual flui naturalmente na área",
+          "Proteção contra corrupção espiritual"
+        ]
+      },
+
+      "ethereal_nexus_creation": {
+        "name": "Criação do Nexus Etéreo",
+        "level_requirement": 75,
+        "casting_time": "12 horas",
+        "cost": "400 EE + 200 EA",
+        "requirements": "Local de grande atividade espiritual",
+        "effects": [
+          "Cria ponto de poder espiritual permanente",
+          "Amplifica todas as habilidades em 50%",
+          "Permite comunicação espiritual instantânea",
+          "Energia espiritual se regenera automaticamente"
+        ]
+      }
+    },
+
+    "legendary_techniques": {
+      "world_soul_connection": {
+        "name": "Conexão com a Alma do Mundo",
+        "requirements": {
+          "level": 85,
+          "prerequisites": ["Alma Condensada", "Experiência com Ritual de Nexus"]
+        },
+        "description": "Conecta-se à energia espiritual que flui através de toda vida",
+        "mechanics": {
+          "cost": "400 EE + 200 EA",
+          "duration": "1 hora",
+          "effects": [
+            "Consciência se expande através de toda energia espiritual",
+            "Pode manifestar poder em qualquer ser vivo",
+            "Acesso a conhecimento ancestral espiritual",
+            "Todas as habilidades custam 0 EE durante conexão"
+          ]
+        }
+      }
+    },
+
+    "gm_guidance": {
+      "encounter_design": {
+        "understanding_soul_users": {
+          "strengths": [
+            "Percepção espiritual constante",
+            "Controle de área através de energia espiritual",
+            "Versatilidade (destruição, tática ou cura)",
+            "Manipulação de almas e espíritos",
+            "Cura e suporte espiritual"
+          ],
+          "weaknesses": [
+            "Vulnerável a anti-magia",
+            "Dependência de energia espiritual",
+            "Uso visível chama atenção",
+            "Menos eficaz contra criaturas sem alma",
+            "Recursos limitados em ambientes estéreis"
+          ]
+        },
+
+        "balancing_encounters": {
+          "use_anti_magic": "Anti-magia reduz poder drasticamente",
+          "soulless_enemies": "Construtos, elementais puros",
+          "profane_environments": "Locais corrompidos reduzem eficácia",
+          "social_consequences": "Uso visível traz atenção indesejada",
+          "resource_drain": "Combates múltiplos antes de descanso"
+        },
+
+        "scaling_difficulty": {
+          "level_1_30": "Inimigos resistentes a espiritual, ambientes estéreis",
+          "level_31_60": "Múltiplas ondas, controle de área necessário",
+          "level_61_80": "Exércitos inteiros, combate em escala épica",
+          "level_81_100": "Ameaças regionais, batalhas que alteram realidade"
+        }
+      },
+
+      "narrative_considerations": {
+        "spiritual_visibility": "Manipulação espiritual é sempre visível - crie consequências sociais",
+        "environmental_impact": "Energia espiritual pode contaminar áreas",
+        "political_consequences": "Uso de energia espiritual pode ser visto como ameaça",
+        "reputation": "Usuários de energia espiritual são temidos e respeitados",
+        "world_changing_power": "Níveis 90+ podem alterar realidade espiritual"
+      }
+    },
+
+    "meta_information": {
+      "design_philosophy": "Magia Sobrenatural recompensa percepção espiritual, manipulação de almas e versatilidade tática. Forte em cura, controle e suporte espiritual.",
+      
+      "balancing_notes": [
+        "Recursos duplos (EE e EA) limitam spam",
+        "Dependência de energia espiritual cria desafios naturais",
+        "ESP incentiva uso harmonioso",
+        "Anti-magia é fraqueza intencional",
+        "Níveis 90+ podem literalmente alterar realidade espiritual"
+      ],
+
+      "dm_guidance": {
+        "managing_power": "Use ambientes, resistências e consequências sociais",
+        "epic_scale": "Permita que usuários brilhem em combates espirituais",
+        "consequences": "Manipulação espiritual visível deve ter impacto social",
+        "narrative_weight": "Energia espiritual é sempre visível - crie consequências",
+        "endgame": "Níveis 90+ são ameaças regionais"
+      },
+
+      "player_tips": [
+        "Gerencie EE cuidadosamente - regeneração é moderada",
+        "Use EA estrategicamente - acumula através de almas",
+        "Considere consequências sociais do uso visível",
+        "Escolha de caminho nível 71 define todo seu jogo",
+        "Trabalhe com grupo para maximizar vínculos",
+        "Crie redes espirituais para controle tático",
+        "Abrace a percepção espiritual - é sua força"
+      ]
+    },
+
+    "with_other_magics": {
+      "synergistic": ["light"],
+      "neutral": ["fire", "earth", "air", "thunder", "steel", "blood", "plant"],
+      "antagonistic": ["shadow", "necromancy"]
+    },
+
+    "version_control": {
+      "current_version": "1.0.0",
+      "last_updated": "2025",
+      "changelog": [
+        {
+          "version": "1.0.0",
+          "date": "2025",
+          "changes": [
+            "Sistema completo implementado",
+            "Três caminhos de especialização definidos (Destruição, Estratégia, Restauração)",
+            "100 níveis de progressão detalhados",
+            "Foco em percepção espiritual, manipulação de almas e cura",
+            "Sistema de Espiritualidade para recompensar harmonia",
+            "Recursos: Energia Espiritual e Essência Anímica",
+            "70 níveis base + 30 níveis especializados"
+          ]
+        }
+      ],
+      "design_notes": [
+        "Energia espiritual é intencionalmente versátil e tática",
+        "Foco em percepção sobre dominação",
+        "Manipulação de almas é feature principal",
+        "Consequências sociais são esperadas",
+        "Níveis altos podem remodelar realidade espiritual"
+      ]
+    }
+  }
+}
